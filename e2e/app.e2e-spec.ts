@@ -1,6 +1,6 @@
 import { AppPage } from './app.po';
 
-describe('angular-frontend App', () => {
+describe('amplio-frontend App', () => {
   let page: AppPage;
 
   beforeEach(() => {

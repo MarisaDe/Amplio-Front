@@ -2,6 +2,8 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 
 import { User } from '../models/user';
 
+import { AuthenticationService } from '../services/authentication.service';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -15,14 +17,12 @@ export class LoginComponent implements OnInit {
   name: string;
   password: string;
 
-  constructor() { }
+  constructor(private auth: AuthenticationService) { }
 
-  login() {
+  performLogin() {
     this.user = new User(this.name);
     console.log('login was clicked!');
-    console.log(this.name);
-    console.log(this.password);
-    console.log(this.user);
+    this.auth.login(this.name, this.password);
   }
 
   ngOnInit() {
