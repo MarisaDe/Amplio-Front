@@ -16,6 +16,11 @@ html, body {
   width: 100%;
 }
 
+h2 {
+  color: white;
+  text-shadow: 2px 2px 4px #000000;
+}
+
 .login_box {
   margin:0 auto;
   max-width: 400px;
@@ -69,7 +74,7 @@ html, body {
 }
 .btn_style:active {
   vertical-align: top;
-  padding: 8px 13px 6px;
+  padding: 8px 8px 8px;
 }
 .regbtn_style {
   background-color: rgb(38, 38, 38);
