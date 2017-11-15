@@ -7,6 +7,11 @@
       <li><a href = "#"><span> <img src="../../assets/images/profExample.png" width="10%" style="padding-right:5px">Mrunal Patel</span></a></li>
       <li><a href = "#"><span> <img src="../../assets/images/profExample.png" width="10%" style="padding-right:5px">Varun Goel</span></a></li>
       <li><a href = "#"><span> <img src="../../assets/images/profExample.png" width="10%" style="padding-right:5px">Rishab Chhabra</span></a></li>
+
+
+      <li *ngFor="let friend of friendList">
+        {{ friend }}
+
     </ul>
   </div>
 </div>

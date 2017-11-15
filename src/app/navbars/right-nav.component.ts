@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
+import {User} from "../models/user";
 
 @Component({
   selector: 'right-nav',
@@ -6,4 +7,6 @@ import { Component } from '@angular/core';
   styleUrls: ['../main.css']
 })
 export class RightNavComponent {
+  @Input() friendList: User[]
+
 }
