@@ -8,6 +8,8 @@
       </div>
       <div class="login_box">
         <section class="main-box">
+          <h3 align="center">Login as User</h3>
+          <hr>
           <form>
             <div class="input-box">
               <span class="input-group-addon i_icon"><i class="glyphicon glyphicon-user"></i></span>
@@ -18,9 +20,9 @@
               <input id="password" type="password" class="form-control input_layout" name="password" placeholder="Password" [(ngModel)]="password" required>
             </div>
           </form>
-          <button type="button" class="btn_style" (click)="performLogin()">LOGIN</button>
-          <button type="button" class="btn_style">REGISTER</button>
-          <button type="button" class="regbtn_style"><span>Sign in as an Admin or Artist</span></button>
+          <button type="submit" class="btn_style" (click)="performLogin()">LOGIN</button>
+          <button type="button" class="regbtn_style" [routerLink]="['/register']"> <span>Don't have an account? Register</span></button>
+          <button type="button" class="regbtn_style"><span>Login as an Admin or Artist instead</span></button>
         </section>
       </div>
     </div>

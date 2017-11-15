@@ -12,6 +12,7 @@ import { routing } from "./app.routing"
 import { LeftNavComponent } from "./navbars/left-nav.component";
 import { RightNavComponent } from "./navbars/right-nav.component";
 import { HomeComponent } from "./home/home.component";
+import {RegisterComponent} from "./register/register.component";
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { HomeComponent } from "./home/home.component";
     TopNavComponent,
     LeftNavComponent,
     RightNavComponent,
-    HomeComponent
+    HomeComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,

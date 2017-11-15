@@ -1,0 +1,43 @@
+<top-nav></top-nav>
+<div class="register">
+  <div class="row">
+    <div align="center">
+      <br><br>
+      <img src="../../assets/images/AmplioLogo.png"><br>
+      <h2><i>Another music streaming service.</i></h2>
+    </div>
+    <div class="register_box">
+      <section class="main-box">
+        <h3 align="center">Register for a User Account</h3>
+        <hr>
+        <form>
+          <div class="input-box">
+            <span class="input-group-addon i_icon"><i class="glyphicon glyphicon-user"></i></span>
+            <input id="email" type="text" class="form-control input_layout" name="user" placeholder="Username" [(ngModel)]="name" required>
+          </div>
+          <div class="input-box">
+            <span class="input-group-addon i_icon"><i class="glyphicon glyphicon-lock"></i></span>
+            <input id="password" type="password" class="form-control input_layout" name="password" placeholder="Password" [(ngModel)]="password" required>
+          </div>
+          <div class="input-box">
+            <span class="input-group-addon i_icon"><i class="glyphicon glyphicon-chevron-right"></i></span>
+            <input id="firstName" type="text" class="form-control input_layout" name="password" placeholder="First Name" [(ngModel)]="firstName" required>
+          </div>
+          <div class="input-box">
+            <span class="input-group-addon i_icon"><i class="glyphicon glyphicon-chevron-right"></i></span>
+            <input id="lastName" type="text" class="form-control input_layout" name="password" placeholder="Last Name" [(ngModel)]="lastName" required>
+          </div>
+          <div class="input-box">
+            <span class="input-group-addon i_icon"><i class="glyphicon glyphicon-envelope"></i></span>
+            <input id="email" type="text" class="form-control input_layout" name="email" placeholder="Email" [(ngModel)]="email" required>
+          </div>
+        </form>
+        <!--<button type="button" class="btn_style" (click)="performLogin()">LOGIN</button>-->
+        <button type="button" class="btn_style" [routerLink]="['/register']">REGISTER</button>
+        <button type="button" class="loginbtn_style" [routerLink]="['/login']"><span> Back to login as User</span></button>
+        <button type="button" class="loginbtn_style"><span>Back to login as Admin or Artist</span></button>
+      </section>
+    </div>
+  </div>
+</div>
+

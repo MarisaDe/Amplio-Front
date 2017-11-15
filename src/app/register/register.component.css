@@ -1,4 +1,4 @@
-.login {
+.register {
   background: linear-gradient(45deg,
   rgba(0, 0, 0, 0.98) 0%,
   rgb(61, 61, 60) 107%,
@@ -12,16 +12,14 @@ h3 {
   color: white;
 }
 
-
 h2 {
   color: white;
   text-shadow: 2px 2px 4px #000000;
 }
-
-.login_box {
+.register_box {
   margin:0 auto;
   max-width: 400px;
-  min-width: 320px;
+  min-width: 400px;
   width: 100%;
 }
 .input-box {
@@ -53,7 +51,7 @@ h2 {
   float: left;
   margin-bottom: 10%;
   margin-top: 10%;
-  padding: 10px 15px 50px 15px;
+  padding:  10px 15px 50px 15px;
   width: 100%;
   border: 1px solid #fffdfc;
 }
@@ -73,7 +71,7 @@ h2 {
   vertical-align: top;
   padding: 8px 8px 8px;
 }
-.regbtn_style {
+.loginbtn_style {
   background-color: rgb(38, 38, 38);
   color: #fff;
   padding: 10px 0;
@@ -82,28 +80,68 @@ h2 {
   margin-top: 20px;
   transition: all 0.5s;
 }
-.regbtn_style:hover {
+.loginbtn_style:hover {
   background-color: rgb(64, 61, 63);
   color: #ffffff;
 }
 
-.regbtn_style:hover span {
-  padding-right: 25px;
+.loginbtn_style:hover span {
+  padding-left: 25px;
 }
 
-.regbtn_style:hover span:after {
+.loginbtn_style:hover span:after {
   opacity: 1;
-  right: 0;
+  left: 0;
 }
 
-.regbtn_style span {
+.loginbtn_style span {
   cursor: pointer;
   display: inline-block;
   position: relative;
   transition: 0.5s;
 }
 
-.regbtn_style span:after {
+.loginbtn_style span:after {
+  content: '«';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  left: -20px;
+  transition: 0.5s;
+}
+
+
+.adminbtn_style {
+  background-color: rgb(38, 38, 38);
+  color: #fff;
+  padding: 10px 0;
+  width: 100%;
+  border: none;
+  margin-top: 20px;
+  transition: all 0.5s;
+}
+.adminbtn_style:hover {
+  background-color: rgb(64, 61, 63);
+  color: #ffffff;
+}
+
+.adminbtn_style:hover span {
+  padding-right: 25px;
+}
+
+.adminbtn_style:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+.adminbtn_style span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.adminbtn_style span:after {
   content: '\00bb';
   position: absolute;
   opacity: 0;

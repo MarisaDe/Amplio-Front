@@ -13,4 +13,16 @@ export class AuthenticationService {
     };
     return this.http.post('http://localhost:8080/api/user/login', attempt);
   }
+
+  register(username: string, password: string, firstName: string, lastName: string, email: string) {
+    const reg = {
+      username: username,
+      password: password,
+      firstName: firstName,
+      lastName: lastName,
+      email: email
+    };
+    return this.http.post('http://localhost:8080/api/user/register', reg);
+  }
+
 }
