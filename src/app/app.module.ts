@@ -19,6 +19,7 @@ import { RightNavComponent } from "./navbars/right-nav.component";
     LoginComponent,
     TopNavComponent,
     LeftNavComponent,
+    RightNavComponent
   ],
   imports: [
     BrowserModule,

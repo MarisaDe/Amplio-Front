@@ -15,12 +15,20 @@ const appRoutes: Routes = [
       children: [
         { path: '', component: LeftNavComponent,
           children: [
-            {
-              path: '', component: LoginComponent
-            }
+            { path: '', component: LoginComponent }
           ],
         }
       ]},
+
+  { path: 'home', component: TopNavComponent,
+    children: [
+      { path: '', component: LeftNavComponent,
+        children: [
+          { path: '', component: RightNavComponent },
+          { path: '',  component: LoginComponent }
+        ],
+      }
+    ]},
 
     // otherwise redirect to home
     { path: '**', redirectTo: '' }
