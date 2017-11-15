@@ -1,9 +1,7 @@
-body {
-  color:white;
-  background-color: #191919;
-  background-attachment:fixed;
-  padding-top:50px;
-
+html, body {
+  margin: 0;
+  height: 100%;
+  padding: 0px;
 }
 .navbar-default {
   width: 100%;
@@ -93,7 +91,6 @@ body {
 
 /* On using dropdown menu (To right shift popuped) */
 .navbar-fixed-left .navbar-nav > li > .dropdown-menu {
-  margin-top: -50px;
   margin-left: 140px;
 }
 
@@ -142,7 +139,7 @@ body {
   padding-right: 70px;
   transition: all .4s ease 0s;
   height: 100%;
-  margin-top: 50px;
+  padding-top: 50px;
 }
 
 #sidebar-wrapper-right {
@@ -163,6 +160,7 @@ body {
   list-style: none;
   margin: 0;
   padding: 0;
+
 }
 #page-content-wrapper-right {
   padding-left: 0;

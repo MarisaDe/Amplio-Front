@@ -3,7 +3,7 @@ export class User {
   private _username: string;
   private _firstName: string;
   private _lastName: string;
-  private _friends: User[];
+  public friends: User[];
 
   constructor (
     username: string,
@@ -36,12 +36,12 @@ export class User {
   }
 
 
-  get friends(): User[]{
-    return this._friends;
-  }
-
-  set friends(value: User[]) {
-    this._friends = value;
-  }
+  // get friends(): User[]{
+  //   return this._friends;
+  // }
+  //
+  // set friends(value: User[]) {
+  //   this._friends = value;
+  // }
 
 }

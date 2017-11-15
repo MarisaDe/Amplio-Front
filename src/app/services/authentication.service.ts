@@ -11,13 +11,6 @@ export class AuthenticationService {
       username: username,
       password: password
     };
-    return this.http.post('http://localhost:8080/api/user/login', attempt).subscribe(
-      resp => {
-        console.log(resp);
-      },
-      err => {
-        console.log(err);
-      }
-    );
+    return this.http.post('http://localhost:8080/api/user/login', attempt);
   }
 }
