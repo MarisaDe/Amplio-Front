@@ -12,7 +12,9 @@ import { routing } from "./app.routing"
 import { LeftNavComponent } from "./navbars/left-nav.component";
 import { RightNavComponent } from "./navbars/right-nav.component";
 import { HomeComponent } from "./home/home.component";
-import {RegisterComponent} from "./register/register.component";
+import { RegisterComponent } from "./register/register.component";
+import { AudioNavComponent } from "./navbars/audio-nav.component";
+import {PlaylistComponent} from "./playlist/playlist.component";
 
 
 @NgModule({
@@ -23,7 +25,9 @@ import {RegisterComponent} from "./register/register.component";
     LeftNavComponent,
     RightNavComponent,
     HomeComponent,
-    RegisterComponent
+    RegisterComponent,
+    AudioNavComponent,
+    PlaylistComponent
   ],
   imports: [
     BrowserModule,

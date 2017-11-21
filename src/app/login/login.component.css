@@ -71,7 +71,7 @@ h2 {
 }
 .btn_style:active {
   vertical-align: top;
-  padding: 8px 8px 8px;
+  background-color: #2c8723;
 }
 .regbtn_style {
   background-color: rgb(38, 38, 38);

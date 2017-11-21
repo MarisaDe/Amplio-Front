@@ -4,7 +4,7 @@ import {User} from "../models/user";
 @Component({
   selector: 'top-nav',
   templateUrl: './top-nav.component.html',
-  styleUrls: ['../main.css']
+  styleUrls: ['../main.css', './top-nav.component.css']
 })
 export class TopNavComponent implements OnInit {
   currentUser: User;

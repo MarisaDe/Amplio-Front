@@ -20,6 +20,59 @@
     <ul class="nav navbar-nav navbar-right">
       <li class = "green"><a href="#">UPGRADE</a></li>
       <li><img src = "../../assets/images/user.png" style="padding: 5px; width:50px"></li>
+      <li class = "green"><a href="#">Name</a></li>
+      <li>
+      <!--<i class="fa fa-chevron-down"style = "padding-right: 10px"></i>-->
+
+        <div class="dropdown">
+          <i class="arrow fa fa-chevron-down dropdown-toggle" data-toggle="dropdown" style = "padding-right: 10px"></i>
+          <!--<button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Tutorials-->
+            <!--<span class="caret"></span></button>-->
+          <ul class="dropdown-menu">
+            <li data-toggle="modal" data-target="#myModal" id="one"><a href="#" class="link">Account Info</a></li>
+            <!--<li class="divider"></li>-->
+            <li><a href="#" class="link">Settings</a></li>
+            <li><a href="#" class="link">Logout</a></li>
+          </ul>
+        </div>
+
+      </li>
     </ul>
   </div>
 </nav>
+
+<!-- Modal settings section --------------------------------------------------------------------->
+
+<!-- Modal -->
+<div id="myModal" class="modal fade" tabindex="-1" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Account Information</h4>
+      </div>
+      <div class="modal-body">
+
+        <ul class="nav nav-tabs"id="tabContent">
+          <li class="active"><a href="#info" data-toggle="tab">Account Info</a></li>
+          <li><a href="#security" data-toggle="tab">Security</a></li>
+        </ul>
+
+
+        <div class="tab-content">
+          <div class="tab-pane" id="info">
+            First Name
+            Last Name
+          </div>
+        </div>
+
+        </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
