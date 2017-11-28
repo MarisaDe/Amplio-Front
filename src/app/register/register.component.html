@@ -13,7 +13,7 @@
         <form>
           <div class="input-box">
             <span class="input-group-addon i_icon"><i class="glyphicon glyphicon-user"></i></span>
-            <input id="email" type="text" class="form-control input_layout" name="user" placeholder="Username" [(ngModel)]="name" required>
+            <input id="username" type="text" class="form-control input_layout" name="user" placeholder="Username" [(ngModel)]="name" required>
           </div>
           <div class="input-box">
             <span class="input-group-addon i_icon"><i class="glyphicon glyphicon-lock"></i></span>
@@ -29,11 +29,11 @@
           </div>
           <div class="input-box">
             <span class="input-group-addon i_icon"><i class="glyphicon glyphicon-envelope"></i></span>
-            <input id="email" type="text" class="form-control input_layout" name="email" placeholder="Email" [(ngModel)]="email" required>
+            <input id="email" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"
+                   type="text" class="form-control input_layout" name="email" placeholder="Email" [(ngModel)]="email" required>
           </div>
         </form>
-        <!--<button type="button" class="btn_style" (click)="performLogin()">LOGIN</button>-->
-        <button type="button" class="btn_style" [routerLink]="['/register']">REGISTER</button>
+        <button type="button" class="btn_style" (click)="performRegister()">REGISTER</button>
         <button type="button" class="loginbtn_style" [routerLink]="['/login']"><span> Back to login as User</span></button>
         <button type="button" class="loginbtn_style"><span>Back to login as Admin or Artist</span></button>
       </section>
