@@ -6,10 +6,10 @@ export class Follower {
   private _lastName: string;
 
   constructor(info: any) {
-    this._id = info._id;
-    this._userName = info._userName;
-    this._firstName = info._firstName;
-    this._lastName = info._lastName;
+    this._id = info.id;
+    this._userName = info.username;
+    this._firstName = info.firstName;
+    this._lastName = info.lastName;
   }
 
   get id(): number {

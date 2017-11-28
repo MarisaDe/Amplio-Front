@@ -18,7 +18,7 @@ export class User {
       this._userName = info;
     } else {
       this._id = info.id;
-      this._userName = info.userName;
+      this._userName = info.username;
       this._firstName = info.firstName;
       this._lastName = info.lastName;
       this._email = info.email;
@@ -34,7 +34,7 @@ export class User {
       followerList.push(new Follower(follower));
     }
     return followerList;
-}
+  }
 
   get name(): string {
     return this._firstName + ' ' + this._lastName;
