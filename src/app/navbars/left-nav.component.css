@@ -18,7 +18,10 @@
 }
 
 .navbar-fixed-left .navbar-nav > li:hover {
-  background-color: black
+  background-color: black;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
 
 }
 

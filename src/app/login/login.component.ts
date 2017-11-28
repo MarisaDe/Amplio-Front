@@ -1,6 +1,8 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { UserService } from '../services/user.service';
 import {User} from '../models/user';
+import { NG_VALIDATORS,Validator,
+  Validators,AbstractControl,ValidatorFn } from '@angular/forms';
 
 @Component({
   selector: 'app-login',

@@ -17,6 +17,7 @@ import { AudioNavComponent } from './navbars/audio-nav.component';
 import {PlaylistComponent} from './playlist/playlist.component';
 import {PlaylistService} from './services/playlist.service';
 import {SearchService} from './services/search.service';
+import {PersonComponent} from './person/person.component';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import {SearchService} from './services/search.service';
     HomeComponent,
     RegisterComponent,
     AudioNavComponent,
-    PlaylistComponent
+    PlaylistComponent,
+    PersonComponent
   ],
   imports: [
     BrowserModule,

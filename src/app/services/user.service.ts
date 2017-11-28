@@ -25,6 +25,7 @@ export class UserService {
       resp => {
         console.log(resp);
         const newUser = new User(resp);
+        console.log(newUser);
         this.userSource.next(newUser);
         this.router.navigate(['/home']);
       },

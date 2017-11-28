@@ -50,6 +50,38 @@ html,body {
   border: 1px solid lime;
 }
 
+.seeAll a{
+  color: grey;
+  text-decoration: none;
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.seeAll a:hover{
+  color: white;
+  text-decoration: none;
+}
+
+.seeAll a:active{
+  color: white;
+  text-decoration: none;
+}
+
+
+.seeAll a:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+
+
+
 .header {
   background-color: #222;
   font-size: 16px;

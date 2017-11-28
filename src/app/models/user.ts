@@ -22,7 +22,7 @@ export class User {
       this._firstName = info.firstName;
       this._lastName = info.lastName;
       this._email = info.email;
-      this._isPremium = info.isPremium;
+      this._isPremium = info.premium;
       this._following = this.generateFollowerList(info.following);
       this._followers = this.generateFollowerList(info.followers);
     }
