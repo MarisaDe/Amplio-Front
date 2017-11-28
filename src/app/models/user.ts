@@ -23,8 +23,7 @@ export class User {
     this.id = value;
   }
 
-
-  get getName(): string {
+  get name(): string {
     return this.firstName + ' ' + this.lastName;
   }
 
