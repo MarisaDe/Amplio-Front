@@ -17,7 +17,7 @@ export class TopNavComponent implements OnInit {
     this.userService.currentUser.subscribe(user => this.currentUser = user);
   }
 
-  getName() {
+  getName(): string {
     let name = null;
     if (this.currentUser != null) {
       name = this.currentUser.name;
