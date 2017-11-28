@@ -16,9 +16,9 @@ export class UserService {
     this.userSource.next(user);
   }
 
-  login(username: string, password: string) {
+  login(userName: string, password: string) {
     const body = {
-      username: username,
+      userName: userName,
       password: password
     };
     return this.http.post('http://localhost:8080/api/user/login', body).subscribe(
