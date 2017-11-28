@@ -7,7 +7,7 @@ export class Follower {
 
   constructor(info: any) {
     this._id = info.id;
-    this._userName = info.username;
+    this._userName = info.userName;
     this._firstName = info.firstName;
     this._lastName = info.lastName;
   }
