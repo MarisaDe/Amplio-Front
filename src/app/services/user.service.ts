@@ -11,9 +11,9 @@ export class UserService {
 
   constructor(private http: HttpClient, private router: Router) { }
 
-  login(username: string, password: string) {
+  login(userName: string, password: string) {
     const attempt = {
-      username: username,
+      userName: userName,
       password: password
     };
     return this.http.post('http://localhost:8080/api/user/login', attempt).subscribe(
