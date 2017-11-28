@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {User} from "../models/user";
+import {User} from '../models/user';
+import {UserService} from '../services/user.service';
 
 @Component({
   selector: 'top-nav',
@@ -9,10 +10,10 @@ import {User} from "../models/user";
 export class TopNavComponent implements OnInit {
   currentUser: User;
 
-  constructor(){
+  constructor(private userService: UserService) {
   }
 
   ngOnInit() {
-    console.log('hello from top component!');
+    this.userService.currentUser.subscribe(user => this.currentUser = user);
   }
 }

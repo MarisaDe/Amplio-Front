@@ -2,24 +2,30 @@ import { Injectable } from '@angular/core';
 import { User } from '../models/user';
 import { HttpClient } from '@angular/common/http';
 import {Router} from '@angular/router';
-import {Observable} from 'rxjs/Observable';
+import {BehaviorSubject} from 'rxjs/BehaviorSubject';
 
 @Injectable()
 export class UserService {
 
-  private user: User;
+  private userSource = new BehaviorSubject<User>(null);
+  public currentUser = this.userSource.asObservable();
 
   constructor(private http: HttpClient, private router: Router) { }
 
-  login(userName: string, password: string) {
-    const attempt = {
-      userName: userName,
+  updateCurrentUser(user: User) {
+    this.userSource.next(user);
+  }
+
+  login(username: string, password: string) {
+    const body = {
+      username: username,
       password: password
     };
-    return this.http.post('http://localhost:8080/api/user/login', attempt).subscribe(
+    return this.http.post('http://localhost:8080/api/user/login', body).subscribe(
       resp => {
         console.log(resp);
-        this.user = new User(resp);
+        const newUser = new User(resp);
+        this.userSource.next(newUser);
         this.router.navigate(['/home']);
       },
       err => {
@@ -29,22 +35,22 @@ export class UserService {
   }
 
   logout() {
-    this.user = null;
+    this.userSource.next(null);
     this.router.navigate(['/login']);
   }
 
   register(userName: string, password: string, firstName: string, lastName: string, email: string) {
-    const registration = {
+    const body = {
       userName: userName,
       password: password,
       firstName: firstName,
       lastName: lastName,
       email: email
     };
-    return this.http.post('http://localhost:8080/api/user/register', registration).subscribe(
+    return this.http.post('http://localhost:8080/api/user/register', body).subscribe(
       resp => {
         console.log(resp);
-        this.router.navigate(['/home']);
+        this.router.navigate(['/login']);
       },
       err => {
         console.error(err);
@@ -52,25 +58,21 @@ export class UserService {
     );
   }
 
-  get currentUser(): User {
-    return this.user;
-  }
 
-  search(query: string): any {
-    // const params: URLSearchParams = new URLSearchParams();
-    // params.set('query', query);
-    this.http.get('http://localhost:8080/api/user/search', {params: {query: query}})
+  follow(userId: number) {
+    const body = {
+      userId: userId
+    };
+    this.http.post('http://localhost:8080/api/user/follow', body)
       .subscribe(
         resp => {
-          return resp;
+          const updatedUser = new User(resp);
+          this.userSource.next(updatedUser);
         },
         err => {
           console.error(err);
         }
       );
   }
-
-
-
 
 }
