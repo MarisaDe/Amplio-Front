@@ -23,16 +23,13 @@ export class User {
     this.id = value;
   }
 
-  get getFirstName(): string {
-    return this.firstName;
+
+  get getName(): string {
+    return this.firstName + ' ' + this.lastName;
   }
 
   set setFirstName(value: string) {
     this.firstName = value;
-  }
-
-  get getLastName(): string {
-    return this.lastName;
   }
 
   set setLastName(value: string) {
