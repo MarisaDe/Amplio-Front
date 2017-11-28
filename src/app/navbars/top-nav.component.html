@@ -16,11 +16,11 @@
   </div>
 
   <!-- User settings section -->
-  <div class="col-sm-7">
+  <div class="col-sm-7" [hidden]= "currentUser == null">
     <ul class="nav navbar-nav navbar-right">
       <li class = "green"><a href="#">UPGRADE</a></li>
       <li><img src = "../../assets/images/user.png" style="padding: 5px; width:50px"></li>
-      <li class = "green"><a href="#">Name</a></li>
+      <li class = "green"><a href="#">{{getName()}} </a></li>
       <li>
       <!--<i class="fa fa-chevron-down"style = "padding-right: 10px"></i>-->
 
