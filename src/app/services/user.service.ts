@@ -9,12 +9,10 @@ export class UserService {
 
   private userSource = new BehaviorSubject<User>(null);
   public currentUser = this.userSource.asObservable();
+  private personSource = new BehaviorSubject<User>(null);
+  public person = this.personSource.asObservable(); // TODO: Artist
 
   constructor(private http: HttpClient, private router: Router) { }
-
-  updateCurrentUser(user: User) {
-    this.userSource.next(user);
-  }
 
   login(userName: string, password: string) {
     const body = {
@@ -59,6 +57,20 @@ export class UserService {
     );
   }
 
+
+  getUser(userId: number) {
+    this.http.get('http://localhost:8080/api/user/' + userId)
+      .subscribe(
+        resp => {
+          const newUser = new User(resp);
+          this.personSource.next(newUser);
+          this.router.navigate(['/user', newUser.id]);
+        },
+        err => {
+          console.error(err);
+        }
+      );
+  }
 
   follow(userId: number) {
     const body = {

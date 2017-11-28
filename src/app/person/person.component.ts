@@ -9,12 +9,14 @@ import {UserService} from '../services/user.service';
 })
 export class PersonComponent implements OnInit {
   currentUser: User;
+  person: User; // TODO Artist
 
   constructor(private userService: UserService) {
   }
 
   ngOnInit() {
     this.userService.currentUser.subscribe(user => this.currentUser = user);
+    this.userService.person.subscribe(person => this.person = person);
   }
 
 }
