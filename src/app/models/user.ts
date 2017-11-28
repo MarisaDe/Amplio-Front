@@ -1,47 +1,50 @@
 export class User {
-  private _id: number;
-  private _username: string;
-  private _firstName: string;
-  private _lastName: string;
-  public friends: User[];
+  private id: number;
+  private username: string;
+  private firstName: string;
+  private lastName: string;
+  private friends: User[];
 
   constructor (
-    username: string,
+    info: any
   ) {
-    this._username = username;
+    if (typeof info === 'string') {
+      this.username = info;
+    } else {
+      console.log('todo');
+    }
   }
 
-  get id(): number {
-    return this._id;
+  get getId(): number {
+    return this.id;
   }
 
-  set id(value: number) {
-    this._id = value;
+  set setId(value: number) {
+    this.id = value;
   }
 
-  get firstName(): string {
-    return this._firstName;
+  get getFirstName(): string {
+    return this.firstName;
   }
 
-  set firstName(value: string) {
-    this._firstName = value;
+  set setFirstName(value: string) {
+    this.firstName = value;
   }
 
-  get lastName(): string {
-    return this._lastName;
+  get getLastName(): string {
+    return this.lastName;
   }
 
-  set lastName(value: string) {
-    this._lastName = value;
+  set setLastName(value: string) {
+    this.lastName = value;
   }
 
+  get getFriends(): User[]{
+    return this.friends;
+  }
 
-  // get friends(): User[]{
-  //   return this._friends;
-  // }
-  //
-  // set friends(value: User[]) {
-  //   this._friends = value;
-  // }
+  set setFriends(value: User[]) {
+    this.friends = value;
+  }
 
 }
