@@ -7,7 +7,7 @@ import {UserService} from '../services/user.service';
   templateUrl: './right-nav.component.html',
   styleUrls: ['./right-nav.component.css', '../main.css']
 })
-export class RightNavComponent implements OnInit{
+export class RightNavComponent implements OnInit {
   currentUser: User;
 
   constructor(private userService: UserService) {
@@ -15,6 +15,11 @@ export class RightNavComponent implements OnInit{
 
   ngOnInit() {
     this.userService.currentUser.subscribe(user => this.currentUser = user);
+  }
+
+  // TODO Artist
+  loadPersonPage(userId: number) {
+    this.userService.getUser(userId);
   }
 
 }

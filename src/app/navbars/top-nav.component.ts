@@ -25,4 +25,7 @@ export class TopNavComponent implements OnInit {
     return name;
   }
 
+  getUserPage() {
+    this.userService.getUser(this.currentUser.id);
+  }
 }
