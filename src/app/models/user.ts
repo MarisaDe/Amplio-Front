@@ -1,46 +1,99 @@
-export class User {
-  private id: number;
-  private username: string;
-  private firstName: string;
-  private lastName: string;
-  private friends: User[];
+import {Follower} from './follower';
 
-  constructor (
-    info: any
-  ) {
+export class User {
+
+  private _id: number;
+  private _userName: string;
+  private _firstName: string;
+  private _lastName: string;
+  private _email: string;
+  private _following: Follower[];
+  private _followers: Follower[];
+  private _isPremium: boolean;
+  // TODO
+  // private _profilePicture: any;
+
+  constructor (info: any) {
     if (typeof info === 'string') {
-      this.username = info;
+      this._userName = info;
     } else {
-      console.log('todo');
+      this._id = info.id;
+      this._userName = info.userName;
+      this._firstName = info.firstName;
+      this._lastName = info.lastName;
+      this._email = info.email;
+      this._isPremium = info.isPremium;
+      this._following = this.generateFollowerList(info.following);
+      this._followers = this.generateFollowerList(info.followers);
     }
   }
 
-  get getId(): number {
-    return this.id;
-  }
-
-  set setId(value: number) {
-    this.id = value;
-  }
+  generateFollowerList(followers: any): Follower[] {
+    const followerList: Follower[] = Array<Follower>();
+    for (const follower of followers) {
+      followerList.push(new Follower(follower));
+    }
+    return followerList;
+}
 
   get name(): string {
-    return this.firstName + ' ' + this.lastName;
+    return this._firstName + ' ' + this._lastName;
   }
 
-  set setFirstName(value: string) {
-    this.firstName = value;
+  set firstName(value: string) {
+    this._firstName = value;
   }
 
-  set setLastName(value: string) {
-    this.lastName = value;
+  set lastName(value: string) {
+    this._lastName = value;
   }
 
-  get getFriends(): User[]{
-    return this.friends;
+  get id(): number {
+    return this._id;
   }
 
-  set setFriends(value: User[]) {
-    this.friends = value;
+  set id(value: number) {
+    this._id = value;
+  }
+
+  get userName(): string {
+    return this._userName;
+  }
+
+  set userName(value: string) {
+    this._userName = value;
+  }
+
+  get email(): string {
+    return this._email;
+  }
+
+  set email(value: string) {
+    this._email = value;
+  }
+
+  get following(): Follower[] {
+    return this._following;
+  }
+
+  set following(value: Follower[]) {
+    this._following = value;
+  }
+
+  get followers(): Follower[] {
+    return this._followers;
+  }
+
+  set followers(value: Follower[]) {
+    this._followers = value;
+  }
+
+  get isPremium(): boolean {
+    return this._isPremium;
+  }
+
+  set isPremium(value: boolean) {
+    this._isPremium = value;
   }
 
 }
