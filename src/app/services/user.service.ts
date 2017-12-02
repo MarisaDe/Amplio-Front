@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { User } from '../models/user';
-import { HttpClient } from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Router} from '@angular/router';
 import {BehaviorSubject} from 'rxjs/BehaviorSubject';
 
@@ -19,7 +19,8 @@ export class UserService {
       userName: userName,
       password: password
     };
-    return this.http.post('http://localhost:8080/api/user/login', body).subscribe(
+
+    return this.http.post('http://localhost:8080/api/user/login', body, { withCredentials: true }).subscribe(
       resp => {
         console.log(resp);
         const newUser = new User(resp);
@@ -35,6 +36,7 @@ export class UserService {
 
   logout() {
     this.userSource.next(null);
+    this.http.post('http://localhost:8080/api/user/logout', null, { withCredentials: true }).subscribe();
     this.router.navigate(['/login']);
   }
 
@@ -46,7 +48,7 @@ export class UserService {
       lastName: lastName,
       email: email
     };
-    return this.http.post('http://localhost:8080/api/user/register', body).subscribe(
+    return this.http.post('http://localhost:8080/api/user/register', body, { withCredentials: true }).subscribe(
       resp => {
         console.log(resp);
         this.router.navigate(['/login']);

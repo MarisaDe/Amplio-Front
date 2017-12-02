@@ -16,12 +16,6 @@
               <input id="email" type="text" class="form-control input_layout" name="user" placeholder="Username"
                      [(ngModel)]="name" required>
 
-              <div [hidden]="name.valid"
-                   class="alert alert-danger">
-                <div [hidden]="!name.errors?.required">Name is required</div>
-                <div [hidden]="!name.errors?.pattern">Only alphabetsallowed</div>
-              </div>
-
 
             </div>
             <div class="input-box">
