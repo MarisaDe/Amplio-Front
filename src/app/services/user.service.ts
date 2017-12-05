@@ -38,23 +38,8 @@ export class UserService {
     this.router.navigate(['/login']);
   }
 
-  register(userName: string, password: string, firstName: string, lastName: string, email: string) {
-    const body = {
-      userName: userName,
-      password: password,
-      firstName: firstName,
-      lastName: lastName,
-      email: email
-    };
-    return this.http.post('http://localhost:8080/api/user/register', body).subscribe(
-      resp => {
-        console.log(resp);
-        this.router.navigate(['/login']);
-      },
-      err => {
-        console.error(err);
-      }
-    );
+  register(model: any) {
+    return this.http.post('http://localhost:8080/api/user/register', model);
   }
 
 
