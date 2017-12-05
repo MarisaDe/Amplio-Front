@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {User} from '../models/user';
 import {UserService} from '../services/user.service';
+import {AuthService} from "../services/auth.service";
 
 @Component({
   selector: 'top-nav',
@@ -10,7 +11,7 @@ import {UserService} from '../services/user.service';
 export class TopNavComponent implements OnInit {
   currentUser: User;
 
-  constructor(private userService: UserService) {
+  constructor(private userService: UserService, private authService: AuthService) {
   }
 
   ngOnInit() {
@@ -30,7 +31,7 @@ export class TopNavComponent implements OnInit {
   }
 
   logout() {
-    this.userService.logout();
+    this.authService.logout();
     console.log('logout has been clicked. omg wow yay! i cant even');
   }
 }

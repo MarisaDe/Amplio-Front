@@ -1,8 +1,9 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { UserService } from '../services/user.service';
 import {User} from '../models/user';
-import { NG_VALIDATORS,Validator,
-  Validators,AbstractControl,ValidatorFn } from '@angular/forms';
+import {AlertService} from "../services/alert.service";
+import {AuthService} from "../services/auth.service";
+import {Router} from "@angular/router";
+import {UserService} from "../services/user.service";
 
 @Component({
   selector: 'app-login',
@@ -12,19 +13,33 @@ import { NG_VALIDATORS,Validator,
 })
 export class LoginComponent implements OnInit {
 
-  private name: string;
-  private password: string;
+  private attempt: any = {};
   private currentUser: User;
 
-  constructor(private userService: UserService) { }
+  constructor(private authService: AuthService,
+              private alertService: AlertService,
+              private userService: UserService,
+              private router: Router) { }
 
   performLogin() {
     console.log('Login was clicked!');
-    this.userService.login(this.name, this.password);
+    this.authService.login(this.attempt).subscribe(
+      resp => {
+        console.log(resp);
+        const newUser = new User(resp);
+        this.userService.setUser(newUser);
+        console.log(newUser);
+        this.router.navigate(['/home']);
+      },
+      err => {
+        console.error(err.message);
+        this.alertService.error(err.message);
+      }
+    );
   }
 
   ngOnInit() {
-    this.userService.currentUser.subscribe(user => this.currentUser = user);
+    this.authService.logout();
   }
 
 }

@@ -20,6 +20,7 @@ import {SearchService} from './services/search.service';
 import {PersonComponent} from './person/person.component';
 import {AlertService} from './services/alert.service';
 import {AlertComponent} from './alert/alert.component';
+import {AuthService} from './services/auth.service';
 
 
 @NgModule({
@@ -46,7 +47,8 @@ import {AlertComponent} from './alert/alert.component';
     UserService,
     PlaylistService,
     SearchService,
-    AlertService
+    AlertService,
+    AuthService
   ],
   bootstrap: [AppComponent]
 })

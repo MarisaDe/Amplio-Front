@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { User } from '../models/user';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {HttpClient} from '@angular/common/http';
 import {Router} from '@angular/router';
 import {BehaviorSubject} from 'rxjs/BehaviorSubject';
 
@@ -14,37 +14,12 @@ export class UserService {
 
   constructor(private http: HttpClient, private router: Router) { }
 
-  login(userName: string, password: string) {
-    const body = {
-      userName: userName,
-      password: password
-    };
 
-    return this.http.post('http://localhost:8080/api/user/login', body, { withCredentials: true }).subscribe(
-      resp => {
-        console.log(resp);
-        const newUser = new User(resp);
-        console.log(newUser);
-        this.userSource.next(newUser);
-        this.router.navigate(['/home']);
-      },
-      err => {
-        console.log(err);
-      }
-    );
+  setUser(user: User) {
+    this.userSource.next(user);
   }
 
-  logout() {
-    this.userSource.next(null);
-    this.http.post('http://localhost:8080/api/user/logout', null, { withCredentials: true }).subscribe();
-    this.router.navigate(['/login']);
-  }
-
-  register(model: any) {
-    return this.http.post('http://localhost:8080/api/user/register', model, { withCredentials: true });
-  }
-
-
+  // TODO : update to not do any router logic here.
   getUser(userId: number) {
     this.http.get('http://localhost:8080/api/user/' + userId)
       .subscribe(
@@ -63,7 +38,7 @@ export class UserService {
     const body = {
       userId: userId
     };
-    this.http.post('http://localhost:8080/api/user/follow', body)
+    this.http.post('http://localhost:8080/api/user/follow', body, { withCredentials: true })
       .subscribe(
         resp => {
           const updatedUser = new User(resp);
