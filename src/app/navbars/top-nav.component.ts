@@ -28,4 +28,9 @@ export class TopNavComponent implements OnInit {
   getUserPage() {
     this.userService.getUser(this.currentUser.id);
   }
+
+  logout() {
+    this.userService.logout();
+    console.log('logout has been clicked. omg wow yay! i cant even');
+  }
 }
