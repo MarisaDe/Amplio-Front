@@ -24,9 +24,12 @@
           <img src = "../../assets/images/audio/next.svg" id="next"/>
           <img src = "../../assets/images/audio/repeat.svg" (click)="toggleLoop()" id="repeat"/>
         </div>
+        <span id="duration">0:00 / 0:00</span>
         <input type="range" class="track">
+
       </td>
       <td align="right">
+        <img src = "../../assets/images/audio/queue.svg" id="songQueue"/>
         <img src = "../../assets/images/audio/volume.svg" (click)="toggleMute()" id = "volume"/>
         <input type="range" class="volume">
       </td>

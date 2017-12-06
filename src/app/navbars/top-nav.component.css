@@ -1,5 +1,6 @@
 .dropdown-menu{
   background-color: #222222;
+  color: #F5F5F5;
 }
 
 .dropdown-menu > a{
@@ -8,7 +9,8 @@
 
 
 .dropdown-menu a:hover {
-  background-color: #383738
+  background-color: #383738;
+  color: #1fb752;
 }
 
 .arrow {
