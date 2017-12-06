@@ -78,60 +78,20 @@
 }
 
 
-/* Volume */
-/*#volume {*/
-  /*width: 100%;*/
-  /*height: 100%;*/
-  /*position: absolute;*/
-  /*top: 0;*/
-  /*left: 0;*/
-  /*background-color: rgba(0, 0, 0, 0.5);*/
-  /*touch-action: none;*/
-  /*-webkit-user-select: none;*/
-  /*-webkit-tap-highlight-color: rgba(0, 0, 0, 0);*/
-  /*display: none;*/
-/*}*/
-.bar {
-  position: absolute;
-  top: 50%;
-  left: 5%;
-  margin: -5px auto;
-  height: 10px;
-  background-color: rgba(255, 255, 255, 0.9);
-  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.33);
-}
-#barEmpty {
-  width: 90%;
-  opacity: 0.5;
-  box-shadow: none;
-  cursor: pointer;
-}
-#barFull {
-  width: 90%;
-}
-#sliderBtn {
-  width: 50px;
-  height: 50px;
-  position: absolute;
-  top: 50%;
-  left: 93.25%;
-  margin: -25px auto;
-  background-color: rgba(255, 255, 255, 0.8);
-  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.33);
-  border-radius: 25px;
-  cursor: pointer;
-}
-
 .controls{
   display: inline-block;
 }
 .song-info{
   color:white;
-  margin-left:10px;
+  margin-left:5px;
 }
 .song-spacing{
-  padding-bottom: 20px;
+  padding-top: 5px;
+  padding-bottom: 15px;
 
+}
+#song-title{
+  font-size: 20px;
 }
 table{
   table-layout: fixed;
@@ -142,8 +102,9 @@ table{
 
 input[type=range].track {
   -webkit-appearance: none;
-  width: 50%;
-  margin: 6.15px 0;
+  width: 65%;
+  margin-top: 8px;
+  margin-bottom: 6.15px;
 }
 input[type=range].track:focus {
   outline: none;
