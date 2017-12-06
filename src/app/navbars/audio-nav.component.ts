@@ -35,11 +35,11 @@ export class AudioNavComponent implements OnInit {
     if (this.playing !== false) {
       this.player.pause();
       this.playing = false;
-      this.playPauseImg = '../../assets/images/audio/pause.svg';
+      this.playPauseImg = '../../assets/images/audio/play.svg';
     } else {
       this.player.play();
       this.playing = true;
-      this.playPauseImg = '../../assets/images/audio/play.svg';
+      this.playPauseImg = '../../assets/images/audio/pause.svg';
     }
   }
   toggleMute() {
