@@ -1,13 +1,61 @@
-
-<script>
-  $( function() {
-    $( 'audio' ).audioPlayer(); } );
-</script>
-
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/amplitudejs@3.2.3/dist/amplitude.js"></script>
 <div class="audiobar" align="center">
-  <audio controls="controls" id="player2" preload="none" src="http://sound30.mp3slash.net/320/indian/freakyali/02%20-%20Parinda%20Hai%20Parinda%20-%20Freaky%20Ali%20[Songs.PK].mp3"
-         style="height: 100%; width: 100%;" type="audio/mp3">
-  </audio>
+
+  <img src = "../../assets/images/audio/shuffle.svg" id="shuffle"/>
+  <img src = "../../assets/images/audio/previous.svg" id="previous"/>
+  <!--<img src = "../../assets/images/audio/play.svg" (click)="togglePlay()" id="play-pause"/>-->
+  <img src = {{playPauseButton}} (click)="togglePlay()" id="play-pause"/>
+  <img src = "../../assets/images/audio/next.svg" id="next"/>
+  <img src = "../../assets/images/audio/repeat.svg" (click)="toggleLoop()" id="repeat"/>
+  <img src = "../../assets/images/audio/mute.svg" (click)="toggleMute()" id="mute"/>
+
+  <!--<div class="btn" id="playBtn"></div>-->
+  <!--<div class="btn" id="pauseBtn"></div>-->
+  <!--<div class="btn" id="prevBtn"></div>-->
+  <!--<div class="btn" id="nextBtn"></div>-->
+  <!--<h1>{{duration}}</h1>-->
+
+  <div class="btn" id="volumeBtn" (click)="toggleVolume()"></div>
+
+  <!-- Volume -->
+  <div id="volume" class="fadeout" (click)="toggleVolume()">
+    <div id="barFull" class="bar" (click)="updateVolume()"></div>
+    <div id="barEmpty" class="bar"></div>
+    <div id="sliderBtn"></div>
+  </div>
+
+  <div id="slidecontainer">
+    <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
+    <p>Value: <span id="demo"></span></p>
+  </div>
+
+
+  <!--volumeBtn.addEventListener('click', function() {-->
+  <!--player.toggleVolume();-->
+  <!--});-->
+  <!--volume.addEventListener('click', function() {-->
+  <!--player.toggleVolume();-->
+  <!--});-->
+
+  <!--// Setup the event listeners to enable dragging of volume slider.-->
+
+
+  <!--barEmpty.addEventListener('click', function(event) {-->
+  <!--var per = event.layerX / parseFloat(barEmpty.scrollWidth);-->
+  <!--player.volume(per);-->
+  <!--});-->
+  <!--sliderBtn.addEventListener('mousedown', function() {-->
+  <!--window.sliderDown = true;-->
+  <!--});-->
+  <!--sliderBtn.addEventListener('touchstart', function() {-->
+  <!--window.sliderDown = true;-->
+  <!--});-->
+  <!--volume.addEventListener('mouseup', function() {-->
+  <!--window.sliderDown = false;-->
+  <!--});-->
+  <!--volume.addEventListener('touchend', function() {-->
+  <!--window.sliderDown = false;-->
+  <!--});-->
+
+
 </div>
 
