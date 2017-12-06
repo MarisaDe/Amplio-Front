@@ -12,13 +12,14 @@ import {Song} from '../models/song';
 export class AudioNavComponent implements OnInit {
   currentUser: User;
   player: Howl;
-  playPause = '../../assets/images/audio/play.svg';
+  playPauseImg = '../../assets/images/audio/play.svg';
+  volImg = '../../assets/images/audio/volume.svg';
+  repeatImg = '../../assets/images/audio/repeat.svg';
   playing: boolean;
   muted: boolean;
   duration: number;
   loop: boolean;
   songExample = Song;
-  volImg = '../../assets/images/audio/volume.svg';
 
   constructor(private userService: UserService) {
     this.playing = false;
@@ -34,11 +35,11 @@ export class AudioNavComponent implements OnInit {
     if (this.playing !== false) {
       this.player.pause();
       this.playing = false;
-      this.playPause = '../../assets/images/audio/pause.svg';
+      this.playPauseImg = '../../assets/images/audio/pause.svg';
     } else {
       this.player.play();
       this.playing = true;
-      this.playPause = '../../assets/images/audio/play.svg';
+      this.playPauseImg = '../../assets/images/audio/play.svg';
     }
   }
   toggleMute() {
@@ -53,12 +54,14 @@ export class AudioNavComponent implements OnInit {
       }
     }
   toggleLoop() {
-    if (this.muted === false) {
+    if (this.loop === false) {
       this.player.loop(true);
       this.loop = true;
+      this.repeatImg = '../../assets/images/audio/repeat-on.svg';
     } else {
       this.player.loop(false);
       this.loop = false;
+      this.repeatImg = '../../assets/images/audio/repeat.svg';
     }
   }
 
