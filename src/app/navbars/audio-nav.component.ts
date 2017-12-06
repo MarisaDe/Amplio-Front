@@ -12,40 +12,44 @@ import {Song} from '../models/song';
 export class AudioNavComponent implements OnInit {
   currentUser: User;
   player: Howl;
-  playPauseButton = '../../assets/images/audio/play.svg';
+  playPause = '../../assets/images/audio/play.svg';
   playing: boolean;
   muted: boolean;
-  duration: any;
+  duration: number;
   loop: boolean;
   songExample = Song;
+  volImg = '../../assets/images/audio/volume.svg';
 
   constructor(private userService: UserService) {
-    // this.playPauseButton = '../../assets/images/audio/play.svg';
     this.playing = false;
     this.muted = false;
     this.player = new Howl({
         src: ['../../assets/sample.mp3']
     });
-    this.duration = (Math.round(this.player.duration()));
-    console.log(this.playPauseButton);
+    this.duration = this.player.duration();
+    console.log(this.player.duration);
   }
 
   togglePlay() {
     if (this.playing !== false) {
       this.player.pause();
       this.playing = false;
+      this.playPause = '../../assets/images/audio/pause.svg';
     } else {
       this.player.play();
       this.playing = true;
+      this.playPause = '../../assets/images/audio/play.svg';
     }
   }
   toggleMute() {
     if (this.muted === false) {
       this.player.mute(true);
       this.muted = true;
+      this.volImg = '../../assets/images/audio/mute-on.svg';
     } else {
       this.player.mute(false);
       this.muted = false;
+      this.volImg = '../../assets/images/audio/volume.svg';
       }
     }
   toggleLoop() {
@@ -59,7 +63,13 @@ export class AudioNavComponent implements OnInit {
   }
 
   changeVolume(value: number) {
-    this.player.volume(value/100);
+    this.player.volume(value / 100);
+  }
+
+  changePos(value: number) {
+    if (this.player.playing()) {
+      this.player.seek(this.player.duration() * value);
+    }
   }
   ngOnInit() {
     this.userService.currentUser.subscribe(user => this.currentUser = user);
