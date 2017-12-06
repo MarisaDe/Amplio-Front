@@ -53,6 +53,9 @@
   cursor: pointer;
 }
 
+.grow { transition: all .2s ease-in-out; }
+.grow:hover { transform: scale(1.1); }
+
 #songQueue{
   width: 20px;
   height: 20px;
