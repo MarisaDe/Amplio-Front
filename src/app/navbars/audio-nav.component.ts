@@ -12,7 +12,7 @@ import {Song} from '../models/song';
 export class AudioNavComponent implements OnInit {
   currentUser: User;
   player: Howl;
-  playPauseButton: string;
+  playPauseButton = '../../assets/images/audio/play.svg';
   playing: boolean;
   muted: boolean;
   duration: any;
@@ -20,14 +20,14 @@ export class AudioNavComponent implements OnInit {
   songExample = Song;
 
   constructor(private userService: UserService) {
-    this.playPauseButton = '../../assets/images/audio/play.svg';
+    // this.playPauseButton = '../../assets/images/audio/play.svg';
     this.playing = false;
     this.muted = false;
     this.player = new Howl({
         src: ['../../assets/sample.mp3']
     });
     this.duration = (Math.round(this.player.duration()));
-    console.log(this.duration);
+    console.log(this.playPauseButton);
   }
 
   togglePlay() {
@@ -56,6 +56,10 @@ export class AudioNavComponent implements OnInit {
       this.player.loop(false);
       this.loop = false;
     }
+  }
+
+  changeVolume(value: number) {
+    this.player.volume(value/100);
   }
   ngOnInit() {
     this.userService.currentUser.subscribe(user => this.currentUser = user);

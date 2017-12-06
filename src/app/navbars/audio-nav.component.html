@@ -20,7 +20,7 @@
           <img src = "../../assets/images/audio/shuffle.svg" id="shuffle" title="Shuffle"/>
           <img src = "../../assets/images/audio/previous.svg" id="previous" title="Play Previous Song"/>
           <!--<img src = "../../assets/images/audio/play.svg" (click)="togglePlay()" id="play-pause"/>-->
-          <img src = "../../assets/images/audio/play.svg" (click)="togglePlay()" class = "grow" id="play-pause"/>
+          <img [src] = "playPauseButton" (click)="togglePlay()" class = "grow" id="play-pause"/>
           <img src = "../../assets/images/audio/next.svg" id="next" title="Play Next Song"/>
           <img src = "../../assets/images/audio/repeat.svg" (click)="toggleLoop()" id="repeat" title="Repeat"/>
         </div>
@@ -31,7 +31,8 @@
       <td align="right">
         <img src = "../../assets/images/audio/queue.svg" id="songQueue" title="Queue"/>
         <img src = "../../assets/images/audio/volume.svg" (click)="toggleMute()" id = "volume" title="Mute"/>
-        <input type="range" class="volume">
+        <input type="range" class="volume" min="0" max="100" #volume (input) = "changeVolume(volume.value)"
+        defaultValue = "100"/>
       </td>
     </tr>
   </table>
