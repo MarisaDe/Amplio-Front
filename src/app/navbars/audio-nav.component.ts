@@ -3,6 +3,8 @@ import {UserService} from '../services/user.service';
 import {User} from '../models/user';
 import 'howler';
 import {Song} from '../models/song';
+import {ActivatedRoute} from '@angular/router';
+import {Observable} from 'rxjs/Observable';
 
 @Component({
   selector: 'audio-nav',
@@ -11,26 +13,54 @@ import {Song} from '../models/song';
 })
 export class AudioNavComponent implements OnInit {
   currentUser: User;
-  player: Howl;
   playPauseImg = '../../assets/images/audio/play.svg';
   volImg = '../../assets/images/audio/volume.svg';
   repeatImg = '../../assets/images/audio/repeat.svg';
   playing: boolean;
   muted: boolean;
-  duration: number;
+  duration: any;
   loop: boolean;
-  songExample = Song;
+  shuffle: boolean;
+  player: Howl;
+  playlist= new Array<Howl>();
+  playlistIndex = 0;
+  timeLeft = 0;
+  progress: number;
 
-  constructor(private userService: UserService) {
-    this.playing = false;
-    this.muted = false;
-    this.player = new Howl({
-        src: ['../../assets/sample.mp3']
-    });
-    this.duration = this.player.duration();
-    console.log(this.player.duration);
+  constructor(private userService: UserService, private route: ActivatedRoute) {
+
   }
 
+
+  getNext() {
+    this.player.stop();
+    if (this.playlistIndex === this.playlist.length - 1) {
+      this.playlistIndex = 0;
+      this.player = this.playlist[this.playlistIndex];
+    } else {
+      this.playlistIndex += 1;
+      this.player = this.playlist[this.playlistIndex];
+    }
+    this.player.play();
+    this.playing = true;
+    this.playPauseImg = '../../assets/images/audio/pause.svg';
+  }
+
+  getPrev() {
+    this.player.stop();
+    if (this.shuffle) {
+      this.playlistIndex = Math.random();
+    } else if (this.playlistIndex === 0) {
+      this.playlistIndex = this.playlist.length - 1;
+      this.player = this.playlist[this.playlistIndex];
+    } else {
+      this.playlistIndex -= 1;
+      this.player = this.playlist[this.playlistIndex];
+    }
+    this.player.play();
+    this.playing = true;
+    this.playPauseImg = '../../assets/images/audio/pause.svg';
+  }
   togglePlay() {
     if (this.playing !== false) {
       this.player.pause();
@@ -65,16 +95,60 @@ export class AudioNavComponent implements OnInit {
     }
   }
 
+  toggleShuffle() {
+    if (this.shuffle === false) {
+      this.shuffle = true;
+    } else {
+      this.shuffle = false;
+    }
+  }
   changeVolume(value: number) {
     this.player.volume(value / 100);
   }
 
-  changePos(value: number) {
-    if (this.player.playing()) {
-      this.player.seek(this.player.duration() * value);
+  changeSeek(value: number) {
+      // this.timeLeft = this.player[this.playlistIndex].duration() * value;
+      // this.player.seek(this.timeLeft);
+      // console.log(this.timeLeft);
+
+      // Get the Howl we want to manipulate.
+      const sound = this.player[this.playlistIndex];
+
+      // Convert the percent into a seek position.
+      if (sound.playing()) {
+        sound.seek(sound.duration() * value);
+    }
+  }
+  step() {
+      const sound = this.player[this.playlistIndex];
+      this.progress = Math.round(sound.seek());
+      // this.progress = (((seek / song.duration()) * 100) || 0) + '%';
+      console.log(this.progress);
+      if (this.player.playing()) {
+        this.step();
     }
   }
   ngOnInit() {
     this.userService.currentUser.subscribe(user => this.currentUser = user);
+    this.shuffle = false;
+    this.playing = false;
+    this.muted = false;
+    for (let i = 1; i < 7; i++) {
+      const song = new Howl({
+        src: ['../../assets/audio/' + i + '.wav'],
+        onplay: () => {
+          this.duration = (Math.round(song.duration()));
+          this.playPauseImg = '../../assets/images/audio/pause.svg';
+          this.step();
+        },
+        onend: () => {
+          this.playPauseImg = '../../assets/images/audio/play.svg';
+        },
+      });
+      this.playlist.push(song);
+    }
+    this.player = this.playlist[0];
+    console.log(this.playlist[0]);
+    // this.duration = Math.round(this.playlist[0].duration());
   }
 }
