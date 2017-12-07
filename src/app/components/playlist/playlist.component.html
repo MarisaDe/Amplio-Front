@@ -1,0 +1,86 @@
+
+
+<script type="text/javascript">
+  function myFunction() {
+    var table = document.getElementById("songs");
+
+    for (i = 0; i < 400; i++) {
+      var row = table.insertRow(0);
+      var cell1 = row.insertCell(0);
+      var cell2 = row.insertCell(1);
+      var cell3 = row.insertCell(2);
+      var cell4 = row.insertCell(3);
+      var cell5 = row.insertCell(4);
+      var cell6 = row.insertCell(5);
+      var cell7 = row.insertCell(6);
+
+      cell1.innerHTML = "";
+      cell2.innerHTML = "<a href='#'><i class='fa fa-plus green'></i></a>";
+      cell3.innerHTML = "Feel It Still";
+      cell4.innerHTML = "Portugal, The Man";
+      cell5.innerHTML = "Woodstock";
+      cell6.innerHTML = "2016-11-29";
+      cell7.innerHTML = "4:54";
+
+    }
+
+    var header = table.createTHead();
+    var row = header.insertRow(0);
+    var cell1 = row.insertCell(0);
+    var cell2 = row.insertCell(1);
+    var cell3 = row.insertCell(2);
+    var cell4 = row.insertCell(3);
+    var cell5 = row.insertCell(4);
+    var cell6 = row.insertCell(5);
+    var cell7 = row.insertCell(6);
+
+    cell1.innerHTML = "";
+    cell2.innerHTML = "";
+    cell3.innerHTML = "<b>Title</b>";
+    cell4.innerHTML = "<b>Artist</b>";
+    cell5.innerHTML = "<b>Album</b>";
+    cell6.innerHTML = "<b>Date</b>";
+    cell7.innerHTML = "<b>Time</b>";
+
+  }
+  myFunction();
+</script>
+
+
+<div class = "bg">
+<div class="container" style="margin-left:15%;margin-right:30%">
+  <div class="row">
+    <img src = "../../../assets/images/ad.jpg">
+  </div>
+
+  <div class="row">
+    <table cellspacing="0" cellpadding="0">
+      <tr>
+        <td colspan="1" style = "padding:30px; padding-left: 0px"><img src = "../../../assets/images/album-art/default.png" width = 200px></td>
+        <td rowspan="1">PLAYLIST<br>
+          <h1><b>MJXT</b></h1><br>
+          Created by: Marisa DePasquale - 446 Songs, 33hr, 59 min<br><br>
+          <button type="button" class="btn btn-success">Play</button>
+
+        </td>
+      </tr>
+    </table>
+
+  </div>
+  <div class="row">
+    <form class="navbar-form" role="search">
+      <div class="input-group">
+        <input type="text" class="form-control search-input" name="srch-term" placeholder="Filter">
+        <div class="input-group-btn">
+          <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <br>
+  <div class="row">
+    <table class="table table-hover" id = "songs"></table>
+  </div>
+</div>
+</div>

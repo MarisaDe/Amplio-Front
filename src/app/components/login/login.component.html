@@ -1,0 +1,37 @@
+ <top-nav></top-nav>
+ <div class="login">
+    <div class="row">
+      <div align="center">
+        <br><br>
+        <img src="../../../assets/images/AmplioLogo.png"><br>
+        <h2><i>Another music streaming service.</i></h2>
+      </div>
+      <alert></alert>
+      <div class="login_box">
+        <section class="main-box">
+          <h3 align="center">Login as User</h3>
+          <hr>
+          <form (ngSubmit)="f.form.valid && performLogin()" #f="ngForm">
+            <!--TODO: ngClass-->
+            <div class="input-box">
+              <span class="input-group-addon i_icon"><i class="glyphicon glyphicon-user"></i></span>
+              <input id="user" type="text" class="form-control input_layout" name="userName" placeholder="Username"
+                     [(ngModel)]="attempt.userName" required>
+              <div *ngIf="f.submitted && !userName.valid">AHH bad user</div>
+            </div>
+            <!--TODO: ngClass-->
+            <div class="input-box">
+              <span class="input-group-addon i_icon"><i class="glyphicon glyphicon-lock"></i></span>
+              <input id="password" type="password" class="form-control input_layout" name="password" placeholder="Password"
+                     [(ngModel)]="attempt.password" required>
+              <div *ngIf="f.submitted && !password.valid">AHH bad user</div>
+            </div>
+            <button type="submit" class="btn_style">LOGIN</button>
+          </form>
+          <button type="button" class="regbtn_style" [routerLink]="['/register']"> <span>Don't have an account? Register</span></button>
+          <button type="button" class="regbtn_style"><span>Login as an Admin or Artist instead</span></button>
+        </section>
+      </div>
+    </div>
+  </div>
+
