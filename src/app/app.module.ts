@@ -21,6 +21,7 @@ import {PersonComponent} from './person/person.component';
 import {AlertService} from './services/alert.service';
 import {AlertComponent} from './alert/alert.component';
 import {AuthService} from './services/auth.service';
+import {MainLayoutComponent} from './mainlayout/main-layout.component';
 
 
 @NgModule({
@@ -35,7 +36,8 @@ import {AuthService} from './services/auth.service';
     AudioNavComponent,
     PlaylistComponent,
     PersonComponent,
-    AlertComponent
+    AlertComponent,
+    MainLayoutComponent
   ],
   imports: [
     BrowserModule,
