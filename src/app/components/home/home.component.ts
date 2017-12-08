@@ -13,7 +13,8 @@ export class HomeComponent implements OnInit {
   currentUser: User;
   genrePlaylists: Playlist[];
 
-  constructor(private userService: UserService, private playlistService: PlaylistService) {
+  constructor(private userService: UserService,
+              private playlistService: PlaylistService) {
     console.log('howdy from the home compenent!');
 
   }
@@ -22,7 +23,7 @@ export class HomeComponent implements OnInit {
     this.playlistService.getGenrePlaylists(this.currentUser.id).subscribe(
       resp => {
         console.log(resp);
-        this.genrePlaylists = Playlist.generatePlaylistList(resp);
+        this.playlistService.setGenrePlaylists(Playlist.generatePlaylistList(resp));
         console.log(this.genrePlaylists);
       },
       err => {
@@ -34,6 +35,7 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     console.log('hello from home component!');
     this.userService.currentUser.subscribe(user => this.currentUser = user);
+    this.playlistService.genrePlayist.subscribe(playlist => this.genrePlaylists = playlist);
     this.loadGenrePlaylists();
     // const p1 = new Playlist(1, '../../assets/images/genre/POP.JPG' , 'Pop');
     // const p2 = new Playlist(2, '../../assets/images/genre/ROCK.JPG' , 'Rock');
