@@ -14,7 +14,7 @@ export class GuardService implements CanActivate, OnInit {
     if (this.currentUser) {
       return true;
     }
-    this.router.navigate(['/login'], { queryParams: { prevUrl: state.url }});
+    this.router.navigate(['/login']);
     return false;
   }
 

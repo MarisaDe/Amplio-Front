@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
         this.userService.setUser(newUser);
         // TODO: remove debug
         console.log(newUser);
-        this.router.navigate([this.prevUrl]);
+        this.router.navigate(['/home']);
       },
       err => {
         console.error(err.message);
@@ -43,7 +43,6 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.authService.logout();
-    this.prevUrl = this.route.snapshot.queryParams['prevUrl'] || '/home';
   }
 
 }

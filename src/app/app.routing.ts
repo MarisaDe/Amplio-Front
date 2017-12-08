@@ -18,7 +18,7 @@ const appRoutes: Routes = [
     children: [
       {path: 'home', component: HomeComponent},
       {path: 'playlist', component: PlaylistComponent},
-      {path: 'user/:id', component: PersonComponent},
+      {path: 'user/:id', component: PersonComponent}
     ]
   },
   // otherwise redirect to home
