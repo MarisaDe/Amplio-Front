@@ -2,11 +2,26 @@ import {Artist} from './artist';
 
 export class Album {
   private _id: number;
-  private _artist: Artist;
-  // private _label: Label;
+  private _artists: Array<Artist>;
   private _title: string;
   private _image: string;
-  private _date: string;
+  private _date: Date;
+
+  constructor(album: any) {
+    this._id = album.albumId;
+    this._title = album.title;
+    this._date = new Date(album.date);
+    this._image = album.image;
+    this._artists = Artist.generateArtistList(album.artists);
+  }
+
+  static generateArtistList(artists: any): Artist[] {
+    const artistList: Artist[] = [];
+    for (const artist of artists) {
+      artistList.push(new Artist(artists));
+    }
+    return artistList;
+  }
 
   get id(): number {
     return this._id;
@@ -16,12 +31,12 @@ export class Album {
     this._id = value;
   }
 
-  get artist(): Artist {
-    return this._artist;
+  get artists(): Artist[] {
+    return this._artists;
   }
 
-  set artist(value: Artist) {
-    this._artist = value;
+  set artists(value: Artist[]) {
+    this._artists = value;
   }
 
   get title(): string {
@@ -40,11 +55,11 @@ export class Album {
     this._image = value;
   }
 
-  get date(): string {
+  get date(): Date {
     return this._date;
   }
 
-  set date(value: string) {
+  set date(value: Date) {
     this._date = value;
   }
 }

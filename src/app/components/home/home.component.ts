@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {User} from '../../models/user';
 import {UserService} from '../../services/user/user.service';
 import {PlaylistService} from '../../services/playlist/playlist.service';
+import {Playlist} from "../../models/playlist";
 
 @Component({
   selector: 'home',
@@ -10,19 +11,18 @@ import {PlaylistService} from '../../services/playlist/playlist.service';
 })
 export class HomeComponent implements OnInit {
   currentUser: User;
+  genrePlaylists: Playlist[];
 
   constructor(private userService: UserService, private playlistService: PlaylistService) {
     console.log('howdy from the home compenent!');
 
   }
 
-  // changeName() {
-  //   this.currentUser.setFirstName('hi');
-  // }
   loadGenrePlaylists() {
     this.playlistService.getGenrePlaylists(this.currentUser.id).subscribe(
       resp => {
-        console.log(resp);
+        this.genrePlaylists = Playlist.generatePlaylistList(resp);
+        console.log(this.genrePlaylists);
       },
       err => {
         console.error(err);

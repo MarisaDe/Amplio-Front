@@ -3,7 +3,7 @@ import {Album} from './album';
 
 export class Artist {
   private _id: number;
-  private _artistName: string;
+  private _name: string;
   private _biblio: number;
   // private _concerts: Concert[];
   private _albums: Album[];
@@ -13,19 +13,21 @@ export class Artist {
 
   constructor(info: any) {
     this._id = info.id;
-    this._artistName = info.artistName;
-    this._biblio = info.biblio;
+    this._name = info.name;
+    this._biblio = info.bibliography;
     this._albums = info.albums;
     this._uploadRequests = info.uploadRequests;
     this._deleteRequests = info.deleteRequests;
   }
-  generateArtistList(artists: any): Artist[] {
+
+  static generateArtistList(artists: any): Artist[] {
     const artistList: Artist[] = Array<Artist>();
     for (const artist of artists) {
       artistList.push(new Artist(artist));
     }
     return artistList;
   }
+
   get id(): number {
     return this._id;
   }
@@ -34,12 +36,12 @@ export class Artist {
     this._id = value;
   }
 
-  get artistName(): string {
-    return this._artistName;
+  get name(): string {
+    return this._name;
   }
 
-  set artistName(value: string) {
-    this._artistName = value;
+  set name(value: string) {
+    this._name = value;
   }
 
   get biblio(): number {
