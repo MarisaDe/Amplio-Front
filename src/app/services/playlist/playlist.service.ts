@@ -16,9 +16,12 @@ export class PlaylistService {
     this.genrePlaylistSource.next(playlists);
   }
 
-  getGenrePlaylists(userId: number) {
+  getGenrePlaylists() {
     // return this.http.get('http://localhost:8080/api/playists/genres');
     return this.http.get('http://localhost:8080/api/playlist/generated', {withCredentials: true});
   }
 
+  getPlaylist(playlistId: number) {
+    return this.http.get('http://localhost:8080/api/playlist/' + playlistId, {withCredentials: true});
+  }
 }
