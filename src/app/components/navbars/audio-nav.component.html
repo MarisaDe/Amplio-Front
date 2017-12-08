@@ -29,7 +29,7 @@
       </td>
       <td align="right">
         <img src = "../../../assets/images/audio/queue.svg" id="songQueue" title="Queue"/>
-        <img [src] = "volImg" (click)="toggleMute()" id="volume" title="Mute"/>
+        <img [src] = "volImg" (click)="toggleMute()" id="volume" title="Mute" value="100"/>
         <input type="range" class="volume" min="0" max="100" #volume (input) = "changeVolume(volume.value)"/>
       </td>
     </tr>
