@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {User} from '../../models/user';
 import {UserService} from '../../services/user/user.service';
 import {PlaylistService} from '../../services/playlist/playlist.service';
-import {Playlist} from "../../models/playlist";
+import {Playlist} from '../../models/playlist';
 
 @Component({
   selector: 'home',
@@ -21,6 +21,7 @@ export class HomeComponent implements OnInit {
   loadGenrePlaylists() {
     this.playlistService.getGenrePlaylists(this.currentUser.id).subscribe(
       resp => {
+        console.log(resp);
         this.genrePlaylists = Playlist.generatePlaylistList(resp);
         console.log(this.genrePlaylists);
       },
@@ -34,5 +35,9 @@ export class HomeComponent implements OnInit {
     console.log('hello from home component!');
     this.userService.currentUser.subscribe(user => this.currentUser = user);
     this.loadGenrePlaylists();
+    // const p1 = new Playlist(1, '../../assets/images/genre/POP.JPG' , 'Pop');
+    // const p2 = new Playlist(2, '../../assets/images/genre/ROCK.JPG' , 'Rock');
+    // this.genrePlaylists = [p1, p2];
+    console.log(this.genrePlaylists);
   }
 }

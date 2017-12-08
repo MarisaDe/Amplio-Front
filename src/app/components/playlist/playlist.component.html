@@ -56,10 +56,10 @@
   <div class="row">
     <table cellspacing="0" cellpadding="0">
       <tr>
-        <td colspan="1" style = "padding:30px; padding-left: 0px"><img src = "../../../assets/images/album-art/default.png" width = 200px></td>
+        <td colspan="1" style = "padding:30px; padding-left: 0px"><img src ="{{playlist.image}}"width = 200px></td>
         <td rowspan="1">PLAYLIST<br>
-          <h1><b>MJXT</b></h1><br>
-          Created by: Marisa DePasquale - 446 Songs, 33hr, 59 min<br><br>
+          <h1><b>{{playlist.title}}</b></h1><br>
+          Created by: {{playlist.owner}} - 446 Songs, 33hr, 59 min<br><br>
           <button type="button" class="btn btn-success">Play</button>
 
         </td>
@@ -80,7 +80,14 @@
 
   <br>
   <div class="row">
-    <table class="table table-hover" id = "songs"></table>
+    <table class="table table-hover" id = "songs">
+      <tr *ngFor = "let song of playlist.songs">
+        <td>{{song.title}}</td>
+        <td>{{song.artists}}</td>
+        <td>{{song.date}}</td>
+        <td>{{song.duration}}</td>
+      </tr>
+    </table>
   </div>
 </div>
 </div>

@@ -21,7 +21,7 @@ const appRoutes: Routes = [
         // canActivateChild: [GuardService],
         children: [
           {path: 'home', component: HomeComponent},
-          {path: 'playlist', component: PlaylistComponent},
+          {path: 'playlist/:id', component: PlaylistComponent},
           {path: 'user/:id', component: PersonComponent}
         ]
       }

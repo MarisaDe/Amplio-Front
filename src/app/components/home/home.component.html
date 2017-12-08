@@ -13,28 +13,9 @@
   <!-- List genres -->
   <div class="row">
   <div id="grid">
-    <div id="gridtop1">
-      <a href="#"><img src="../../../assets/images/profExample.png" class = "fade"></a>
-      <p align="center">Rock</p>
-      <p align="center">100,000 FOLLOWERS</p>
-    </div>
-
-    <div id="gridtop2">
-      <a href="#"><img src="../../../assets/images/profExample.png" class = "fade"></a>
-      <p align="center">EDM</p>
-      <p align="center">2,974,944 FOLLOWERS</p>
-    </div>
-
-    <div id="gridtop3">
-      <a href="#"><img src="../../../assets/images/profExample.png" class = "fade"></a>
-      <p align="center">Country</p>
-      <p align="center">445,784 FOLLOWERS</p>
-    </div>
-
-    <div id="gridtop4">
-      <a href="#"><img src="../../../assets/images/profExample.png" class = "fade"></a>
-      <p align="center">Hip Hop</p>
-      <p align="center">4,141,286 FOLLOWERS</p>
+    <div id="gridtop1" *ngFor="let genre of genrePlaylists">
+      <a routerLink = "/playlist/{{genre.id}}"><img src ="{{genre.image}}" class = "fade"></a>
+      <p align="center">{{genre.title}}</p>
     </div>
   </div>
   </div>

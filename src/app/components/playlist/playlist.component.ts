@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {User} from '../../models/user';
 import {UserService} from '../../services/user/user.service';
+import {Playlist} from "../../models/playlist";
 
 @Component({
   selector: 'playlist',
@@ -9,6 +10,7 @@ import {UserService} from '../../services/user/user.service';
 })
 export class PlaylistComponent implements OnInit {
   currentUser: User;
+  playlist: Playlist;
 
   constructor(private userService: UserService) {
   }

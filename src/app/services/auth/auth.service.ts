@@ -12,14 +12,14 @@ export class AuthService {
   constructor(private http: HttpClient, private userService: UserService, private router: Router) { }
 
   login(attempt: any): Observable<any> {
-    return this.http.post('http://localhost:8080/api/user/login', attempt, { withCredentials: true });
+    return this.http.post('http://localhost:8080/api/session/login', attempt, { withCredentials: true });
 
   }
 
   logout() {
     this.userService.setUser(null);
     localStorage.removeItem('currentUser');
-    this.http.post('http://localhost:8080/api/user/logout', null, { withCredentials: true })
+    this.http.post('http://localhost:8080/api/session/logout', null, { withCredentials: true })
       .subscribe(
         resp => {},
         err => {}
@@ -28,6 +28,6 @@ export class AuthService {
   }
 
   register(model: any): Observable<any> {
-    return this.http.post('http://localhost:8080/api/user/register', model, { withCredentials: true });
+    return this.http.post('http://localhost:8080/api/session/register', model, { withCredentials: true });
   }
 }

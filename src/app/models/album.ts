@@ -2,7 +2,7 @@ import {Artist} from './artist';
 
 export class Album {
   private _id: number;
-  private _artists: Array<Artist>;
+  private _artist: Artist;
   private _title: string;
   private _image: string;
   private _date: Date;
@@ -12,10 +12,7 @@ export class Album {
     this._title = album.title;
     this._date = new Date(album.date);
     this._image = album.image;
-    this._artists = [];
-    for (const artist of album.artists) {
-      this._artists.push(new Artist(artist));
-    }
+    this._artist = new Artist(album.artist);
   }
 
   // static generateArtistList(artists: any): Artist[] {
@@ -34,12 +31,12 @@ export class Album {
     this._id = value;
   }
 
-  get artists(): Artist[] {
-    return this._artists;
+  get artist(): Artist {
+    return this._artist;
   }
 
-  set artists(value: Artist[]) {
-    this._artists = value;
+  set artists(value: Artist) {
+    this._artist = value;
   }
 
   get title(): string {
