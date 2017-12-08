@@ -16,12 +16,12 @@ export class PlaylistComponent implements OnInit {
 
   constructor(private userService: UserService,
               private playlistService: PlaylistService,
-              private route: ActivatedRouteSnapshot) {
+              private route: ActivatedRoute) {
   }
 
   ngOnInit() {
     this.userService.currentUser.subscribe(user => this.currentUser = user);
-    this.playlistService.getPlaylist(this.route.params['id']).subscribe(
+    this.playlistService.getPlaylist(this.route.snapshot.params['id']).subscribe(
       resp => {
         console.log('Playlist Page: ' + resp);
         this.playlist = new Playlist(resp);
