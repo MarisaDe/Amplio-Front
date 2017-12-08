@@ -4,6 +4,7 @@ import {UserService} from '../../services/user/user.service';
 import {Playlist} from '../../models/playlist';
 import {PlaylistService} from '../../services/playlist/playlist.service';
 import {ActivatedRoute} from '@angular/router';
+import {AudioService} from '../../services/audio/audio.service';
 
 @Component({
   selector: 'playlist',
@@ -16,6 +17,7 @@ export class PlaylistComponent implements OnInit {
 
   constructor(private userService: UserService,
               private playlistService: PlaylistService,
+              private audioService: AudioService,
               private route: ActivatedRoute) {
   }
 
@@ -28,7 +30,8 @@ export class PlaylistComponent implements OnInit {
       }
     }
     songList = [...songList.slice(index, songList.length), ...songList.slice(0, index)];
-    let howlList: Array<Howl> = [];
+    this.audioService.setQueue(songList);
+    // let howlList: Array<Howl> = [];
   }
 
   ngOnInit() {
