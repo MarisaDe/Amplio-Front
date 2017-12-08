@@ -12,16 +12,19 @@ export class Album {
     this._title = album.title;
     this._date = new Date(album.date);
     this._image = album.image;
-    this._artists = Artist.generateArtistList(album.artists);
+    this._artists = [];
+    for (const artist of album.artists) {
+      this._artists.push(new Artist(artist));
+    }
   }
 
-  static generateArtistList(artists: any): Artist[] {
-    const artistList: Artist[] = [];
-    for (const artist of artists) {
-      artistList.push(new Artist(artists));
-    }
-    return artistList;
-  }
+  // static generateArtistList(artists: any): Artist[] {
+  //   const artistList: Artist[] = [];
+  //   for (const artist of artists) {
+  //     artistList.push(new Artist(artists));
+  //   }
+  //   return artistList;
+  // }
 
   get id(): number {
     return this._id;

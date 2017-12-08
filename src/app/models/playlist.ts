@@ -16,7 +16,10 @@ export class Playlist {
     this._image = playlist.image;
     this._title = playlist.title;
     this._owner = new User(playlist.owner);
-    this._songs = Song.generateSongList(playlist.songs);
+    this._songs = [];
+    for (const song of playlist.songs) {
+      this._songs.push(new Song(song));
+    }
   }
 
   static generatePlaylistList(playlists: any): Playlist[] {

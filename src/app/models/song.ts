@@ -12,21 +12,24 @@ export class Song {
 
   constructor(song: any) {
     this._id = song.songId;
-    this._artists = Artist.generateArtistList(song.artist);
     this._album = new Album(song.album);
     this._duration = song.duration;
     this._lyrics = song.lyrics;
     this._numPlays = song.numPlays;
     this._songName = song.songName;
+    this._artists = [];
+    for (const artist of song.artists) {
+      this._artists.push(new Artist(artist));
+    }
   }
 
-  static generateSongList(songs: any): Song[] {
-    const songList: Song[] = [];
-    for (const song of songs) {
-      songList.push(new Song(song));
-    }
-    return songList;
-  }
+  // static generateSongList(songs: any): Song[] {
+  //   const songList: Song[] = [];
+  //   for (const song of songs) {
+  //     songList.push(new Song(song));
+  //   }
+  //   return songList;
+  // }
 
   get id(): number {
     return this.id;

@@ -20,13 +20,13 @@ export class Artist {
     this._deleteRequests = info.deleteRequests;
   }
 
-  static generateArtistList(artists: any): Artist[] {
-    const artistList: Artist[] = Array<Artist>();
-    for (const artist of artists) {
-      artistList.push(new Artist(artist));
-    }
-    return artistList;
-  }
+  // static generateArtistList(artists: any): Artist[] {
+  //   const artistList: Artist[] = Array<Artist>();
+  //   for (const artist of artists) {
+  //     artistList.push(new Artist(artist));
+  //   }
+  //   return artistList;
+  // }
 
   get id(): number {
     return this._id;
