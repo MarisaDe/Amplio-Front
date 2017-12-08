@@ -14,15 +14,21 @@ const appRoutes: Routes = [
   {
     path: '',
     component: MainLayoutComponent,
-    canActivate: [GuardService],
+    // canActivate: [GuardService],
     children: [
-      {path: 'home', component: HomeComponent},
-      {path: 'playlist', component: PlaylistComponent},
-      {path: 'user/:id', component: PersonComponent}
+      {
+        path: '',
+        // canActivateChild: [GuardService],
+        children: [
+          {path: 'home', component: HomeComponent},
+          {path: 'playlist', component: PlaylistComponent},
+          {path: 'user/:id', component: PersonComponent}
+        ]
+      }
     ]
   },
   // otherwise redirect to home
-  {path: '**', redirectTo: ''}
+  {path: '**', redirectTo: 'home'}
 ];
 
 export const RoutingModule = RouterModule.forRoot(appRoutes);

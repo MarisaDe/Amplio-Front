@@ -30,6 +30,7 @@ export class LoginComponent implements OnInit {
         console.log(resp);
         const newUser = new User(resp);
         this.userService.setUser(newUser);
+        localStorage.setItem('currentUser', JSON.stringify(newUser));
         // TODO: remove debug
         console.log(newUser);
         this.router.navigate(['/home']);

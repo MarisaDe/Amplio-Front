@@ -20,7 +20,8 @@ import {AlertService} from './services/alert/alert.service';
 import {AlertComponent} from './components/alert/alert.component';
 import {AuthService} from './services/auth/auth.service';
 import {MainLayoutComponent} from './components/mainlayout/main-layout.component';
-import {GuardService} from "./services/auth/guard.service";
+import {GuardService} from './services/auth/guard.service';
+import {AudioService} from "./services/audio/audio.service";
 
 
 @NgModule({
@@ -50,7 +51,8 @@ import {GuardService} from "./services/auth/guard.service";
     SearchService,
     AlertService,
     AuthService,
-    GuardService
+    GuardService,
+    AudioService
   ],
   bootstrap: [AppComponent]
 })

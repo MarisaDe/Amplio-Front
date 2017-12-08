@@ -23,6 +23,7 @@ export class TopNavComponent implements OnInit {
     if (this.currentUser != null) {
       name = this.currentUser.name;
     }
+    console.log('FROM TOP: ' + this.currentUser);
     return name;
   }
 

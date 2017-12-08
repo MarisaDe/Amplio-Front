@@ -1,25 +1,24 @@
 import {Injectable, OnInit} from '@angular/core';
-import { Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
+import {Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, CanActivateChild} from '@angular/router';
 import {UserService} from '../user/user.service';
 import {User} from '../../models/user';
 
 @Injectable()
-export class GuardService implements CanActivate, OnInit {
+export class GuardService implements CanActivate, CanActivateChild {
 
-  private currentUser: User;
-
-  constructor(private router: Router, private userService: UserService) { }
+  constructor(private router: Router) { }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-    if (this.currentUser) {
+    const currentUser = localStorage.getItem('currentUser');
+    if (currentUser) {
       return true;
     }
     this.router.navigate(['/login']);
     return false;
   }
 
-  ngOnInit() {
-    this.userService.currentUser.subscribe(user => this.currentUser = user);
+  canActivateChild(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
+    return this.canActivate(route, state);
   }
 }
 

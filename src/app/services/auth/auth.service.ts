@@ -18,8 +18,12 @@ export class AuthService {
 
   logout() {
     this.userService.setUser(null);
+    localStorage.removeItem('currentUser');
     this.http.post('http://localhost:8080/api/user/logout', null, { withCredentials: true })
-      .subscribe();
+      .subscribe(
+        resp => {},
+        err => {}
+      );
     this.router.navigate(['/login']);
   }
 
