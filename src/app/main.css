@@ -164,7 +164,7 @@ html,body {
     transition: all .4s ease 0s;
   }
 }
-#grid div {
+#grid div {f
   float: left;
   padding-right: 65px;
 }

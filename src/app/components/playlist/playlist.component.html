@@ -59,7 +59,7 @@
         <td colspan="1" style = "padding:30px; padding-left: 0px"><img src ="{{playlist.image}}"width = 200px></td>
         <td rowspan="1">PLAYLIST<br>
           <h1><b>{{playlist.title}}</b></h1><br>
-          Created by: {{playlist.owner}} - 446 Songs, 33hr, 59 min<br><br>
+          Created by: {{playlist.owner.name}} - 446 Songs, 33hr, 59 min<br><br>
           <button type="button" class="btn btn-success">Play</button>
 
         </td>
@@ -81,11 +81,17 @@
   <br>
   <div class="row">
     <table class="table table-hover" id = "songs">
+      <th></th>
+      <th>Title</th>
+      <th>Artist</th>
+      <th>Album</th>
+
       <tr *ngFor = "let song of playlist.songs">
-        <td>{{song.title}}</td>
-        <td>{{song.artists}}</td>
-        <td>{{song.date}}</td>
-        <td>{{song.duration}}</td>
+        <td><i class="fa fa-plus" aria-hidden="true"></i></td>
+        <td class="overflow">{{song.songName}}</td>
+        <td class="overflow">{{song.artists}}</td>
+        <td class="overflow">{{song.album.title}}</td>
+        <!--<td>{{song.duration}}</td>-->
       </tr>
     </table>
   </div>

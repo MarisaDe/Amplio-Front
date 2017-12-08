@@ -8,3 +8,27 @@
   height: 100%;
   overflow-y: scroll;
 }
+
+.container{
+  margin-bottom: 10%;
+}
+
+#songs tr:hover{
+  background-color:#595959 !important;
+}
+
+.row{
+  padding-right:5%;
+}
+
+#songs tr:hover + img{
+  display: block;
+}
+
+.overflow {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100px;
+}
+
