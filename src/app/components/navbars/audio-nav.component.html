@@ -23,7 +23,7 @@
           <img src = "../../../assets/images/audio/next.svg" (click)="getNext()" id="next" title="Play Next Song"/>
           <img [src] = "repeatImg" (click)="toggleLoop()" id="repeat" title="Repeat"/>
         </div>
-        <span id="duration">{{progress}} / {{duration}}</span>
+        <span id="duration">{{progress}} {{duration}}</span>
         <input type="range" class="track" #track (input) = "changeSeek(track.value)"/>
 
       </td>

@@ -21,9 +21,6 @@
   padding-right:5%;
 }
 
-#songs tr:hover + img{
-  display: block;
-}
 
 .overflow {
   white-space: nowrap;
