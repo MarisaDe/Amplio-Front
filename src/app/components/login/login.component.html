@@ -11,20 +11,22 @@
         <section class="main-box">
           <h3 align="center">Login as User</h3>
           <hr>
-          <form (ngSubmit)="f.form.valid && performLogin()" #f="ngForm">
+          <form class="form-group"(ngSubmit)="f.form.valid && performLogin()" #f="ngForm">
             <!--TODO: ngClass-->
             <div class="input-box">
               <span class="input-group-addon i_icon"><i class="glyphicon glyphicon-user"></i></span>
               <input id="user" type="text" class="form-control input_layout" name="userName" placeholder="Username" #userName="ngModel"
                      [(ngModel)]="attempt.userName" required>
-              <div *ngIf="f.submitted && !userName.valid">AHH bad user</div>
+              <div *ngIf="f.submitted && !userName.valid">
+                <div [ngClass] = "'alert alert-danger'">Username Required</div>
+              </div>
             </div>
             <!--TODO: ngClass-->
             <div class="input-box">
               <span class="input-group-addon i_icon"><i class="glyphicon glyphicon-lock"></i></span>
               <input id="password" type="password" class="form-control input_layout" name="password" placeholder="Password" #password="ngModel"
                      [(ngModel)]="attempt.password" required>
-              <div *ngIf="f.submitted && !password.valid">AHH bad user</div>
+              <div [ngClass] = "'alert alert-danger'" *ngIf="f.submitted && !password.valid">Password Required</div>
             </div>
             <button type="submit" class="btn_style">LOGIN</button>
           </form>

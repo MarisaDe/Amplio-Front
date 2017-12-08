@@ -113,3 +113,11 @@ h2 {
   transition: 0.5s;
 }
 
+.error {
+  border: medium none;
+  border-radius: 0;
+  float: left;
+  height: 40px;
+  width: 89%;
+  color: red;
+}
