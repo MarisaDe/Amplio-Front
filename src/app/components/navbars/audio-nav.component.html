@@ -24,7 +24,7 @@
           <img [src] = "repeatImg" (click)="toggleLoop()" id="repeat" title="Repeat"/>
         </div>
         <span id="duration">{{progress}} {{duration}}</span>
-        <input type="range" class="track" #track (input) = "changeSeek(track.value)"/>
+        <input type="range" class="track" #track (input) = "changeSeek(track.value)" value = "0"/>
 
       </td>
       <td align="right">
