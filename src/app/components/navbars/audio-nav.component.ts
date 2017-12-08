@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import 'howler';
-import {AudioService} from '../../services/audio/audio.service';
-import {Song} from "../../models/song";
+import {AudioService} from "../../services/audio/audio.service";
 
 @Component({
   selector: 'audio-nav',
@@ -18,7 +17,7 @@ export class AudioNavComponent implements OnInit {
   loop: boolean;
   shuffle: boolean;
   player: Howl;
-  songQueue: Array<Song>;
+  songQueue: Array<Howl>;
   songQueueIndex = 0;
   timeLeft = 0;
   progress: number;
@@ -31,10 +30,10 @@ export class AudioNavComponent implements OnInit {
     this.player.stop();
     if (this.songQueueIndex === this.songQueue.length - 1) {
       this.songQueueIndex = 0;
-      // this.player = this.songQueue[this.songQueueIndex];
+      this.player = this.songQueue[this.songQueueIndex];
     } else {
       this.songQueueIndex += 1;
-      // this.player = this.songQueue[this.songQueueIndex];
+      this.player = this.songQueue[this.songQueueIndex];
     }
     this.player.play();
     this.playing = true;
@@ -47,10 +46,10 @@ export class AudioNavComponent implements OnInit {
       this.songQueueIndex = Math.random();
     } else if (this.songQueueIndex === 0) {
       this.songQueueIndex = this.songQueue.length - 1;
-      // this.player = this.songQueue[this.songQueueIndex];
+      this.player = this.songQueue[this.songQueueIndex];
     } else {
       this.songQueueIndex -= 1;
-      // this.player = this.songQueue[this.songQueueIndex];
+      this.player = this.songQueue[this.songQueueIndex];
     }
     this.player.play();
     this.playing = true;
@@ -100,7 +99,6 @@ export class AudioNavComponent implements OnInit {
     // this.timeLeft = this.player[this.songQueueIndex].duration() * value;
     // this.player.seek(this.timeLeft);
     // console.log(this.timeLeft);
-
     // Get the Howl we want to manipulate.
     const sound = this.player[this.songQueueIndex];
 
@@ -120,52 +118,29 @@ export class AudioNavComponent implements OnInit {
     }
   }
 
-  createHowl(song: Song) {
-    const howl = new Howl({
-      src: ['../../../assets/' + song.id + '.mp3'],
-      onplay: () => {
-        this.duration = (Math.round(howl.duration()));
-        this.playPauseImg = '../../../assets/images/audio/pause.svg';
-        this.step();
-      },
-      onend: () => {
-        this.playPauseImg = '../../../assets/images/audio/play.svg';
-      }
-    });
-    return howl;
-  }
-
-
-
   ngOnInit() {
 
-    this.audioService.songQueue.subscribe((songQueue) => {
-      this.songQueue = songQueue;
-      if (songQueue.length > 0) {
-        this.player = this.createHowl(songQueue[this.songQueueIndex]);
-        this.playing = false;
-        this.togglePlay();
-      }
-    });
-    // this.songQueue = [];
+    // this.audioService.songQueue.subscribe(songQueue => this.songQueue = songQueue);
+    this.songQueue = [];
     this.shuffle = false;
     this.playing = false;
     this.muted = false;
-    // for (let i = 1; i < 7; i++) {
-    //   const song = new Howl({
-    //     src: ['../../../assets/audio/' + i + '.wav'],
-    //     onplay: () => {
-    //       this.duration = (Math.round(song.duration()));
-    //       this.playPauseImg = '../../../assets/images/audio/pause.svg';
-    //       this.step();
-    //     },
-    //     onend: () => {
-    //       this.playPauseImg = '../../../assets/images/audio/play.svg';
-    //     }
-    //   });
-    //   this.songQueue.push(song);
-    // }
-    // this.player = this.songQueue;
+    for (let i = 1; i < 7; i++) {
+      const song = new Howl({
+        src: ['../../../assets/audio/' + i + '.wav'],
+        onplay: () => {
+          this.duration = (Math.round(song.duration()));
+          this.playPauseImg = '../../../assets/images/audio/pause.svg';
+          this.step();
+
+        },
+        onend: () => {
+          this.playPauseImg = '../../../assets/images/audio/play.svg';
+        },
+      });
+      this.songQueue.push(song);
+    }
+    this.player = this.songQueue[0];
     console.log(this.songQueue[0]);
   }
 }
