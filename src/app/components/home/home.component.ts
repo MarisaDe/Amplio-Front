@@ -20,7 +20,7 @@ export class HomeComponent implements OnInit {
   }
 
   loadGenrePlaylists() {
-    this.playlistService.getGenrePlaylists(this.currentUser.id).subscribe(
+    this.playlistService.getGenrePlaylists().subscribe(
       resp => {
         console.log(resp);
         this.playlistService.setGenrePlaylists(Playlist.generatePlaylistList(resp));
