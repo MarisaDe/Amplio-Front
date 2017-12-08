@@ -43,7 +43,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.authService.logout();
-    this.prevUrl = this.route.snapshot.queryParams['prevUrl'] || '/';
+    this.prevUrl = this.route.snapshot.queryParams['prevUrl'] || '/home';
   }
 
 }
