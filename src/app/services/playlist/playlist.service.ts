@@ -7,8 +7,8 @@ import {Playlist} from "../../models/playlist";
 @Injectable()
 export class PlaylistService {
 
-  private genrePlaylistSource = new BehaviorSubject<Playlist[]>(null);
-  public genrePlayist = this.genrePlaylistSource.asObservable();
+  private genrePlaylistSource = new BehaviorSubject<Array<Playlist>>(null);
+  public genrePlaylist = this.genrePlaylistSource.asObservable();
 
   constructor(private http: HttpClient, private router: Router) { }
 

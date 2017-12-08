@@ -35,11 +35,10 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     console.log('hello from home component!');
     this.userService.currentUser.subscribe(user => this.currentUser = user);
-    this.playlistService.genrePlayist.subscribe(playlist => this.genrePlaylists = playlist);
+    this.playlistService.genrePlaylist.subscribe(playlist => this.genrePlaylists = playlist);
     this.loadGenrePlaylists();
     // const p1 = new Playlist(1, '../../assets/images/genre/POP.JPG' , 'Pop');
     // const p2 = new Playlist(2, '../../assets/images/genre/ROCK.JPG' , 'Rock');
     // this.genrePlaylists = [p1, p2];
-    console.log(this.genrePlaylists);
   }
 }
