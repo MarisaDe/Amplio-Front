@@ -141,9 +141,11 @@ export class AudioNavComponent implements OnInit {
 
     this.audioService.songQueue.subscribe((songQueue) => {
       this.songQueue = songQueue;
-      this.player = this.createHowl(songQueue[this.songQueueIndex]);
-      this.playing = false;
-      this.togglePlay();
+      if (songQueue.length > 0) {
+        this.player = this.createHowl(songQueue[this.songQueueIndex]);
+        this.playing = false;
+        this.togglePlay();
+      }
     });
     // this.songQueue = [];
     this.shuffle = false;
