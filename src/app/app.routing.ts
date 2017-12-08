@@ -6,7 +6,7 @@ import {RegisterComponent} from './components/register/register.component';
 import {PlaylistComponent} from './components/playlist/playlist.component';
 import {PersonComponent} from './components/person/person.component';
 import {MainLayoutComponent} from './components/mainlayout/main-layout.component';
-import {GuardService} from "./services/auth/guard.service";
+import {GuardService} from './services/auth/guard.service';
 
 const appRoutes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -14,11 +14,11 @@ const appRoutes: Routes = [
   {
     path: '',
     component: MainLayoutComponent,
-    // canActivate: [GuardService],
+    canActivate: [GuardService],
     children: [
       {
         path: '',
-        // canActivateChild: [GuardService],
+        canActivateChild: [GuardService],
         children: [
           {path: 'home', component: HomeComponent},
           {path: 'playlist/:id', component: PlaylistComponent},

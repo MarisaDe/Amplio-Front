@@ -11,13 +11,19 @@ export class Artist {
   private _deleteRequests: Song[];
   // private _label: Label;
 
-  constructor(info: any) {
-    this._id = info.id;
-    this._name = info.name;
-    this._biblio = info.bibliography;
-    this._albums = info.albums;
-    this._uploadRequests = info.uploadRequests;
-    this._deleteRequests = info.deleteRequests;
+  constructor(artist: any) {
+    this._id = artist.id;
+    this._name = artist.name;
+    const name_tokens = artist.name.split(' ');
+    let i = 0;
+    for (i = 0; i < name_tokens.length; i++){
+      name_tokens[i] = name_tokens[i].charAt(0).toUpperCase() + name_tokens[i].substring(1);
+    }
+    this._name = name_tokens.join(" ");
+    this._biblio = artist.bibliography;
+    this._albums = artist.albums;
+    this._uploadRequests = artist.uploadRequests;
+    this._deleteRequests = artist.deleteRequests;
   }
 
   // static generateArtistList(artists: any): Artist[] {

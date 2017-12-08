@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import 'howler';
-import {AudioService} from "../../services/audio/audio.service";
+import {AudioService} from '../../services/audio/audio.service';
 
 @Component({
   selector: 'audio-nav',
@@ -121,8 +121,8 @@ export class AudioNavComponent implements OnInit {
 
   ngOnInit() {
 
-    // this.audioService.songQueue.subscribe(songQueue => this.songQueue = songQueue);
-    this.songQueue = [];
+    this.audioService.songQueue.subscribe(songQueue => this.songQueue = songQueue);
+    // this.songQueue = [];
     this.shuffle = false;
     this.playing = false;
     this.muted = false;
@@ -133,11 +133,10 @@ export class AudioNavComponent implements OnInit {
           this.duration = (Math.round(song.duration()));
           this.playPauseImg = '../../../assets/images/audio/pause.svg';
           this.step();
-
         },
         onend: () => {
           this.playPauseImg = '../../../assets/images/audio/play.svg';
-        },
+        }
       });
       this.songQueue.push(song);
     }

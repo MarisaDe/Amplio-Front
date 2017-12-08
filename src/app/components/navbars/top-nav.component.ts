@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {User} from '../../models/user';
 import {UserService} from '../../services/user/user.service';
-import {AuthService} from "../../services/auth/auth.service";
+import {AuthService} from '../../services/auth/auth.service';
 
 @Component({
   selector: 'top-nav',

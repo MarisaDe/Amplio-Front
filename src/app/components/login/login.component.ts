@@ -1,9 +1,9 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import {User} from '../../models/user';
-import {AlertService} from "../../services/alert/alert.service";
-import {AuthService} from "../../services/auth/auth.service";
-import {ActivatedRoute, Router} from "@angular/router";
-import {UserService} from "../../services/user/user.service";
+import {AlertService} from '../../services/alert/alert.service';
+import {AuthService} from '../../services/auth/auth.service';
+import {ActivatedRoute, Router} from '@angular/router';
+import {UserService} from '../../services/user/user.service';
 
 @Component({
   selector: 'app-login',

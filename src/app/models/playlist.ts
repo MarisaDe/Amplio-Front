@@ -1,6 +1,6 @@
 
-import {User} from "./user";
-import {Song} from "./song";
+import {User} from './user';
+import {Song} from './song';
 
 export class Playlist {
   private _id: number;
