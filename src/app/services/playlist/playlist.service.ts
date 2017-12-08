@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Router} from '@angular/router';
-import {BehaviorSubject} from "rxjs/BehaviorSubject";
-import {Playlist} from "../../models/playlist";
+import {BehaviorSubject} from 'rxjs/BehaviorSubject';
+import {Playlist} from '../../models/playlist';
 
 @Injectable()
 export class PlaylistService {

@@ -21,7 +21,7 @@ import {AlertComponent} from './components/alert/alert.component';
 import {AuthService} from './services/auth/auth.service';
 import {MainLayoutComponent} from './components/mainlayout/main-layout.component';
 import {GuardService} from './services/auth/guard.service';
-import {AudioService} from "./services/audio/audio.service";
+import {AudioService} from './services/audio/audio.service';
 
 
 @NgModule({
