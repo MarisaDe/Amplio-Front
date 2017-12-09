@@ -12,7 +12,13 @@
     <!--</div>-->
 
     <div class = "header">
-      <li>Playlists <a href="#"><i class="fa fa-plus green" aria-hidden="true" style = "padding-left: 70px"></i></a>
+      <li>Playlists
+
+      <a href="#" class="link">
+        <i class="fa fa-plus green" aria-hidden="true" style = "padding-left: 70px"
+           data-toggle="modal" data-target="#addPlaylist" id="add-playlist"></i>
+      </a>
+
     </div>
 
     <li [routerLink]="['/playlist']"><a>MJXT </a></li>
@@ -28,3 +34,64 @@
   </ul>
 </div>
 
+<!-- Modal settings section --------------------------------------------------------------------->
+
+<!-- Modal -->
+<div id="addPlaylist" class="modal fade" tabindex="-1" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+        <!--<button type="button" class="close" data-dismiss="modal">&times;</button>-->
+
+      <div class="modal-body">
+
+          <h4 class="modal-title green" align="center">Create Playlist</h4>
+
+
+        <b>Title</b><br>
+        <form class="form-group"(ngSubmit)="f.form.valid && performLogin()" #f="ngForm">
+          <div class="input-box">
+            <input id="title" type="text" class="form-control input_layout" name="userName" placeholder="untitled" #title="ngModel"
+                   [(ngModel)]="attempt.userName" required>
+            <div *ngIf="f.submitted && !userName.valid">
+              <div [ngClass] = "'alert alert-danger'">Title Required</div>
+            </div>
+          </div>
+        </form>
+
+        <table cellspacing="0" cellpadding="0">
+          <tr>
+            <td colspan="1" style = "padding:30px; padding-left: 0px">
+              Image:
+              <img src = "../../assets/images/album-art/default.png" height="200px"><br>
+              <!--<button for = "myImage" type="button" class="btn-5 choose">-->
+                <input type="file" class="chooseImg" id="myImage" accept="image/x-png,image/gif,image/jpeg" />
+                <label for= "myImage" class="btn-5 choose">
+                  Choose an image</label>
+              <!--</button>-->
+            </td>
+            <td rowspan="2" valign="top" style="padding-top:30px;">
+              Description:
+              <form class="form-group"(ngSubmit)="f.form.valid && performLogin()" #f="ngForm">
+                <div class="input-box">
+                  <textarea id="description" type="text" class="form-control input_layout"
+                         style="width: 338px; height:270px"
+                         placeholder="description" #desc="ngModel"
+                         [(ngModel)]="attempt.userName">
+                  </textarea>
+                </div>
+              </form>
+            </td>
+          </tr>
+        </table>
+      <div align="center">
+        <button type="button" class="btn-5 cancel"  data-dismiss="modal">Cancel</button>
+        <button type="submit" formmethod="post" class="btn-5 create">Create</button>
+      </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>
