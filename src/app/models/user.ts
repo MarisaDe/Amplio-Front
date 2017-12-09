@@ -10,8 +10,7 @@ export class User {
   private _following: Follower[];
   private _followers: Follower[];
   private _isPremium: boolean;
-  // TODO
-  // private _profilePicture: any;
+  private _profilePicture: any;
 
   constructor (info: any) {
     if (typeof info === 'string') {
@@ -94,6 +93,14 @@ export class User {
 
   set isPremium(value: boolean) {
     this._isPremium = value;
+  }
+
+  get profilePicture(): any {
+    return this._profilePicture;
+  }
+
+  set profilePicture(value: any) {
+    this._profilePicture = value;
   }
 
 }

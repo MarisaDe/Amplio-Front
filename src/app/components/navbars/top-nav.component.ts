@@ -35,4 +35,8 @@ export class TopNavComponent implements OnInit {
     this.authService.logout();
     console.log('logout has been clicked. omg wow yay! i cant even');
   }
+  setImg(value: any) {
+    console.log(value);
+    this.currentUser.profilePicture = value;
+  }
 }

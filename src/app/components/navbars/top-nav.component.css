@@ -35,23 +35,58 @@
   opacity: 1 !important;
 }
 
+.prof-img {
+  cursor: pointer;
+}
 
-/*.upgrade {*/
-  /*margin-left: 20px;*/
-  /*display: inline-block;*/
-  /*background-color: #222222;*/
-  /*!*color: rgb(87, 216, 0);*!*/
-  /*padding: 10px 0;*/
-  /*width: 40%;*/
-  /*border:1px solid #4ab900;*/
-/*}*/
-/*.upgrade:active {*/
-  /*vertical-align: top;*/
-/*}*/
+.choose {
+  display: inline-block;
+  background-color: #222222;
+  padding: 10px 0;
+  width: 100%;
+  margin-top:5%;
+  border: 1px solid #ffffff;
+  text-align:center;
+  cursor: pointer;
+}
 
+.chooseImg {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+button.close{
+  color:white;
+  opacity:1;
+}
 .upgrade{
   color:white;
 }
+
+.cancel {
+  display: inline-block;
+  background-color: #222222;
+  margin-right:5%;
+  padding: 10px 0;
+  width: 40%;
+  margin-top: 10%;
+  border: 1px solid #ffffff;
+}
+
+
+.create {
+  display: inline-block;
+  margin-right:5px;
+  background-color: #1fb752;
+  color: #fff;
+  padding: 10px 0;
+  width: 40%;
+  border: 1px solid rgb(74, 185, 0);
+}
+
 /* Global Button Styles */
 a.animated-button:link, a.animated-button:visited {
   /*position: relative;*/
