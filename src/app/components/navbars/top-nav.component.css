@@ -16,7 +16,7 @@
 .arrow {
   display: inline-block;
   padding-top: 18px;
-  color: #2c8723;
+  color: #4ab900;
 }
 
 .link {
@@ -33,4 +33,77 @@
 }
 .fade {
   opacity: 1 !important;
+}
+
+
+/*.upgrade {*/
+  /*margin-left: 20px;*/
+  /*display: inline-block;*/
+  /*background-color: #222222;*/
+  /*!*color: rgb(87, 216, 0);*!*/
+  /*padding: 10px 0;*/
+  /*width: 40%;*/
+  /*border:1px solid #4ab900;*/
+/*}*/
+/*.upgrade:active {*/
+  /*vertical-align: top;*/
+/*}*/
+
+.upgrade{
+  color:white;
+}
+/* Global Button Styles */
+a.animated-button:link, a.animated-button:visited {
+  /*position: relative;*/
+  display: inline-block;
+  margin-top: 5px;
+  /*margin: 30px auto 0;*/
+  padding: 10px 5px;
+  margin-bottom: 0px;
+  color: #fff;
+  font-size:14px;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  overflow: hidden;
+  letter-spacing: .09em;
+  border-radius: 0;
+  text-shadow: 0 0 1px rgba(0, 0, 0, 0.2), 0 1px 0 rgba(0, 0, 0, 0.2);
+  -webkit-transition: all 1s ease;
+  -moz-transition: all 1s ease;
+  -o-transition: all 1s ease;
+  transition: all 1s ease;
+}
+a.animated-button:link:after, a.animated-button:visited:after {
+  content: "";
+  position: absolute;
+  height: 0%;
+  left: 50%;
+  top: 50%;
+  width: 150%;
+  z-index: -1;
+  -webkit-transition: all 0.75s ease 0s;
+  -moz-transition: all 0.75s ease 0s;
+  -o-transition: all 0.75s ease 0s;
+  transition: all 0.75s ease 0s;
+}
+a.animated-button:link:hover, a.animated-button:visited:hover {
+  color: #FFF;
+  text-shadow: none;
+}
+a.animated-button:link:hover:after, a.animated-button:visited:hover:after {
+  height: 100%;
+}
+a.animated-button.green-effect:after {
+  background: #4ab900;
+  opacity: .5;
+  -moz-transform: translateY(-50%) translateX(-50%) rotate(90deg);
+  -ms-transform: translateY(-50%) translateX(-50%) rotate(90deg);
+  -webkit-transform: translateY(-50%) translateX(-50%) rotate(90deg);
+  transform: translateY(-50%) translateX(-50%) rotate(90deg);
+}
+a.animated-button.green-effect:hover:after {
+  opacity: 1;
+  height: 200% !important;
 }

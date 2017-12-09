@@ -22,6 +22,8 @@ import {AuthService} from './services/auth/auth.service';
 import {MainLayoutComponent} from './components/mainlayout/main-layout.component';
 import {GuardService} from './services/auth/guard.service';
 import {AudioService} from './services/audio/audio.service';
+import {Ng2PageTransitionModule} from "ng2-page-transition";
+import {RouterModule} from "@angular/router";
 
 
 @NgModule({
@@ -43,7 +45,8 @@ import {AudioService} from './services/audio/audio.service';
     BrowserModule,
     FormsModule,
     HttpClientModule,
-    RoutingModule
+    RoutingModule,
+    Ng2PageTransitionModule,
   ],
   providers: [
     UserService,

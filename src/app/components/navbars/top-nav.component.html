@@ -18,7 +18,9 @@
   <!-- User settings section -->
   <div class="col-sm-7" *ngIf= "currentUser != null">
     <ul class="nav navbar-nav navbar-right">
-      <li class = "green" *ngIf= "currentUser.isPremium == false" ><a href="#">UPGRADE</a></li>
+      <li class = "green" *ngIf= "currentUser.isPremium == false">
+        <a routerLink="home" class ="upgrade animated-button green-effect">UPGRADE</a>
+      </li>
       <li><img src = "../../../assets/images/user.png" style="padding: 5px; width:50px"></li>
       <li class = "green"><a routerLink="/user/{{currentUser.id}}">{{currentUser.name}}</a></li>
       <li>
