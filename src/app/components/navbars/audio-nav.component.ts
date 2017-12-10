@@ -133,7 +133,9 @@ export class AudioNavComponent implements OnInit {
   }
 
   changeVolume(value: number) {
+    if (this.mute) {
     this.song.media.volume = value / 100;
+    }
   }
 
   nextSong() {
