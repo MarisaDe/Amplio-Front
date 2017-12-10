@@ -2,18 +2,6 @@
   background-color:#595959 !important;
 }
 
-/*.row{*/
-  /*padding-right:5%;*/
-/*}*/
-
-
-.overflow {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  max-width: 100px;
-}
-
 .cover{
   width: 200px;
   border:1px solid #999999;

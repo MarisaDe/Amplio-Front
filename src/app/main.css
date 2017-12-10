@@ -259,3 +259,10 @@ html, body {
 #body.loaded .fadein {
   opacity: 1;
 }
+
+.overflow {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100px;
+}

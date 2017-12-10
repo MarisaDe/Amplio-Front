@@ -1,0 +1,20 @@
+.table td,th,td{
+  border-color: #595959;
+}
+.table-hover>tbody>tr .play-each {
+  height: 25px;
+  visibility: hidden;
+}
+
+tr:hover{
+  background-color:#595959 !important;
+}
+
+
+.table-hover>tbody>tr:hover .play-each{
+  visibility: visible
+}
+
+.play-each:hover{
+  transform: scale(1.1);
+}

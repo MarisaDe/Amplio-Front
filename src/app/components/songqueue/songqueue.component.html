@@ -1,7 +1,64 @@
 <div class = "bg">
   <div class="container">
     <div class="row">
-      QUEUE HELLO
+      <h1>SONG QUEUE</h1>
+      <hr>
+      <br>
+
+      <h3>Now Playing</h3>
+      <div class="row">
+        <table class="table table-hover table-responsive songs">
+          <th></th>
+          <th></th>
+          <th>Title</th>
+          <th>Artist</th>
+          <th>Album</th>
+          <th>Duration</th>
+
+          <tr>
+            <td width="50px"><img [src] ="playPauseImg" class="grow play-each"></td>
+            <td><i class="fa fa-plus" aria-hidden="true"></i></td>
+            <!--<td align="left" class="overflow">{{song.songName}}</td>-->
+            <td class="overflow">Title</td>
+            <td class="overflow">Artist Name</td>
+            <!--<td class="overflow">-->
+              <!--{{song.artist.name}}</td>-->
+            <!--<td class="overflow">{{song.album.title}}</td>-->
+            <td class="overflow">Album</td>
+            <td class="overflow">Time</td>
+            <!--<td>{{getMinSec(song.duration)}}</td>-->
+          </tr>
+        </table>
+      </div>
+
+      <br>
+      <h3>Next Up</h3>
+      <div class="row">
+        <table class="table table-hover table-responsive songs">
+          <th></th>
+          <th></th>
+          <th>Title</th>
+          <th>Artist</th>
+          <th>Album</th>
+          <th>Duration</th>
+
+          <tr>
+            <td width="50px"><img [src] ="playPauseImg" class="grow play-each"></td>
+            <td><i class="fa fa-plus" aria-hidden="true"></i></td>
+            <!--<td align="left" class="overflow">{{song.songName}}</td>-->
+            <td class="overflow">Title</td>
+            <td class="overflow">Artist Name</td>
+            <!--<td class="overflow">-->
+            <!--{{song.artist.name}}</td>-->
+            <!--<td class="overflow">{{song.album.title}}</td>-->
+            <td class="overflow">Album</td>
+            <td class="overflow">Time</td>
+            <!--<td>{{getMinSec(song.duration)}}</td>-->
+          </tr>
+        </table>
+      </div>
+
+
     </div>
   </div>
 </div>
