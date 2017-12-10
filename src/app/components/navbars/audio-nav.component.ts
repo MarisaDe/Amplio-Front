@@ -16,7 +16,7 @@ export class AudioNavComponent implements OnInit {
   private shuffle: boolean;
   private mute: boolean;
   private currentTime: number;
-  private progress: number;
+  private progress = 0;
   private repeatState: Repeat;
   private playPauseImg = Config.PLAY_IMAGE;
   private repeatImg = Config.REPEAT_OFF_IMAGE;
