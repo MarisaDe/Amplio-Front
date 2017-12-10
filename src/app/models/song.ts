@@ -1,8 +1,6 @@
 import {Artist} from './artist';
 import {Album} from './album';
-
-// TODO: Load path from config
-const path = '../../../assets/audio/';
+import {Config} from '../common/config';
 
 export class Song {
   private _id: number;
@@ -26,9 +24,10 @@ export class Song {
       this._artists.push(new Artist(artist));
     }
     if (song.path) {
-      this._media = new Audio(path + song.songId + '.mp3');
+      console.log(Config.AUDIO_PATH + song.songId + '.mp3');
+      this._media = new Audio(Config.AUDIO_PATH + song.songId + '.mp3');
     } else {
-      this._media = new Audio(path + 'dummy.mp3');
+      this._media = new Audio(Config.AUDIO_PATH + 'dummy.mp3');
     }
   }
 

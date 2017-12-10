@@ -2,6 +2,7 @@ export class Config {
   /* App Resources */
   public static readonly API_URI = 'http://localhost:8080/api/';
   public static readonly ASSETS_PATH = '../../assets/';
+  public static readonly AUDIO_PATH = Config.ASSETS_PATH + 'audio/';
   public static readonly AUDIO_IMAGES = Config.ASSETS_PATH + 'images/audio/';
   public static readonly ALBUM_IMAGES = Config.ASSETS_PATH + 'images/album-art/';
 
