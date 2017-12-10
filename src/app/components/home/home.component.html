@@ -12,23 +12,10 @@
 
   <!-- List genres -->
   <div class = "row">
-    <div class="grid" *ngFor="let genre of genrePlaylists | pairs;">
-      <div>
+    <div class="wrapper" *ngFor="let genre of genrePlaylists;">
         <a routerLink = "/playlist/{{genre.id}}">
           <img src ="{{genre.image}}"  width = 200px class = "fade"></a>
         <p align="center">{{genre.title}}</p>
-      </div>
-    </div>
-  </div>
-
-
-  <div class = "row">
-    <div class="grid" *ngFor="let genre of genrePlaylists; let i = index">
-      <div *ngIf="i<5">
-        <a routerLink = "/playlist/{{genre.id}}">
-          <img src ="{{genre.image}}"  width = 200px class = "fade"></a>
-        <p align="center">{{genre.title}}</p>
-      </div>
     </div>
   </div>
 <!-- Recently Played Artists-->

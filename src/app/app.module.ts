@@ -23,7 +23,6 @@ import {MainLayoutComponent} from './components/mainlayout/main-layout.component
 import {GuardService} from './services/auth/guard.service';
 import {AudioService} from './services/audio/audio.service';
 import {Ng2PageTransitionModule} from "ng2-page-transition";
-import {RouterModule} from "@angular/router";
 
 
 @NgModule({
@@ -40,7 +39,6 @@ import {RouterModule} from "@angular/router";
     PersonComponent,
     AlertComponent,
     MainLayoutComponent,
-    PairsPipe
   ],
   imports: [
     BrowserModule,

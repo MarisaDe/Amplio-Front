@@ -201,3 +201,15 @@ html,body {
   outline-offset: 15px;
   text-shadow: 1px 1px 2px #427388;
 }
+
+.wrapper div img {
+  width: 200px;
+  padding-bottom: 20px;
+}
+.wrapper {
+  float: left;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-gap: 25px;
+}
+
