@@ -11,6 +11,7 @@ export class Config {
   public static readonly LOGO_IMAGE = Config.ASSETS_PATH + Config.IMAGES_PATH + 'AmplioLogo.png';
   public static readonly LOGO_SMALL_IMAGE = Config.ASSETS_PATH + Config.IMAGES_PATH + 'AmplioLogoSmall.png';
   public static readonly CREDIT_CARDS_IMAGE = Config.ASSETS_PATH + Config.IMAGES_PATH + 'creditcards.png';
+  public static readonly ALBUM_DEFAULT_IMAGE = Config.ASSETS_PATH + Config.IMAGES_PATH + Config.ALBUM_IMAGES + 'default.png';
 
   /* Audio Nav Bar Configuration */
   public static readonly PLAY_IMAGE = Config.AUDIO_IMAGES + 'play.svg';
