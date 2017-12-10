@@ -1,6 +1,23 @@
-html,body {
-  margin: auto;
+html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0px;
+  overflow-x: hidden;
 }
+
+.bg{
+  background:linear-gradient(45deg,
+  rgba(0, 0, 0, 0.98) 0%,
+  rgb(61, 61, 60) 107%,
+  rgba(10, 3, 8, 0.84) 122%,
+  rgb(24, 23, 23) 100%) no-repeat;
+  color: #F5F5F5;
+  height: 100%;
+  width: 100%;
+  overflow-y: scroll;
+}
+
+
 .navbar-default {
   width: 100%;
   background-color: black;

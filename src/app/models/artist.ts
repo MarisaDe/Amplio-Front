@@ -10,17 +10,19 @@ export class Artist {
   private _deleteRequests: Song[];
 
   constructor(artist: any) {
-    this._id = artist.id;
-    this._name = artist.name;
-    const name_tokens = artist.name.split(' ');
-    let i = 0;
-    for (i = 0; i < name_tokens.length; i++){
-      name_tokens[i] = name_tokens[i].charAt(0).toUpperCase() + name_tokens[i].substring(1);
+    if (artist != null) {
+      this._id = artist.id;
+      this._name = artist.name;
+      const name_tokens = artist.name.split(' ');
+      let i = 0;
+      for (i = 0; i < name_tokens.length; i++) {
+        name_tokens[i] = name_tokens[i].charAt(0).toUpperCase() + name_tokens[i].substring(1);
+      }
+      this._name = name_tokens.join(' ');
+      this._biblio = artist.bibliography;
+      this._uploadRequests = artist.uploadRequests;
+      this._deleteRequests = artist.deleteRequests;
     }
-    this._name = name_tokens.join(' ');
-    this._biblio = artist.bibliography;
-    this._uploadRequests = artist.uploadRequests;
-    this._deleteRequests = artist.deleteRequests;
   }
 
   get id(): number {

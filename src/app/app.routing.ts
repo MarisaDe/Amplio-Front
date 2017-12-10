@@ -7,6 +7,7 @@ import {PlaylistComponent} from './components/playlist/playlist.component';
 import {PersonComponent} from './components/person/person.component';
 import {MainLayoutComponent} from './components/mainlayout/main-layout.component';
 import {GuardService} from './services/auth/guard.service';
+import {SongqueueComponent} from "./components/songqueue/songqueue.component";
 
 const appRoutes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -22,7 +23,8 @@ const appRoutes: Routes = [
         children: [
           {path: 'home', component: HomeComponent},
           {path: 'playlist/:id', component: PlaylistComponent},
-          {path: 'user/:id', component: PersonComponent}
+          {path: 'user/:id', component: PersonComponent},
+          {path: 'queue', component: SongqueueComponent}
         ]
       }
     ]
