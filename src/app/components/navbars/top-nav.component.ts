@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {User} from '../../models/user';
 import {UserService} from '../../services/user/user.service';
 import {AuthService} from '../../services/auth/auth.service';
+import {Config} from "../../common/config";
 
 @Component({
   selector: 'top-nav',
@@ -9,7 +10,8 @@ import {AuthService} from '../../services/auth/auth.service';
   styleUrls: ['../../main.css', './top-nav.component.css']
 })
 export class TopNavComponent implements OnInit {
-  currentUser: User;
+  private currentUser: User;
+  private readonly logoImg = Config.LOGO_SMALL_IMAGE;
 
   constructor(private userService: UserService, private authService: AuthService) {
   }

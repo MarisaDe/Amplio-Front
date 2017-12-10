@@ -4,6 +4,7 @@ import {AlertService} from '../../services/alert/alert.service';
 import {AuthService} from '../../services/auth/auth.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {UserService} from '../../services/user/user.service';
+import {Config} from "../../common/config";
 
 @Component({
   selector: 'app-login',
@@ -15,6 +16,7 @@ export class LoginComponent implements OnInit {
 
   private attempt: any = {};
   prevUrl: string;
+  private readonly logoImg = Config.LOGO_IMAGE;
 
   constructor(private authService: AuthService,
               private alertService: AlertService,

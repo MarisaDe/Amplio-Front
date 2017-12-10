@@ -1,12 +1,12 @@
 <nav class="navbar navbar-default  navbar-static-top" role="navigation">
   <!-- Brand and toggle get grouped for better mobile display -->
   <div class="navbar-header">
-    <a class="navbar-brand" routerLink="/home"><img src = "../../../assets/images/AmplioLogoSmall.png" style= "padding-left: 20px; width: 100px"></a>
+    <a class="navbar-brand" routerLink="/home"><img [src] = "logoImg" style= "padding-left: 20px; width: 100px"></a>
   </div>
   <div class="col-sm-3 col-md-3"  *ngIf= "currentUser != null">
     <form class="navbar-form" role="search" style = "padding-left: 55px">
       <div class="input-group">
-        <input type="text" class="form-control" placeholder="Search" name="q">
+        <input type="text" class="form-control" placeholder="Search">
         <div class="input-group-btn">
           <button class="btn btn-default green" type="submit"><i class="glyphicon glyphicon-search"></i></button>
         </div>
@@ -18,7 +18,8 @@
   <div class="col-sm-7" *ngIf= "currentUser != null">
     <ul class="nav navbar-nav navbar-right">
       <li class = "green" *ngIf= "currentUser.isPremium == false">
-        <a routerLink="home" class ="upgrade animated-button green-effect">UPGRADE</a>
+        <a routerLink="home" class ="upgrade animated-button green-effect"
+           data-toggle="modal" data-target="#upgrade">UPGRADE</a>
       </li>
       <li><img src = "../../../assets/images/user.png" data-toggle="modal" data-target="#profImg"
                class = "prof-img" style="padding: 5px; width:50px"></li>
@@ -38,7 +39,7 @@
   </div>
 </nav>
 
-<!-- Account settings section --------------------------------------------------------------------->
+<!-- Account settings Modal --------------------------------------------------------------------->
 
 <!-- Modal -->
 <div id="accSettings" class="modal fade" tabindex="-1" role="dialog">
@@ -74,7 +75,7 @@
   </div>
 </div>
 
-<!-- Change Image section --------------------------------------------------------------------->
+<!-- Change Image Modal --------------------------------------------------------------------->
 
 <!-- Modal -->
 <div id="profImg" class="modal fade" tabindex="-1" role="dialog">
@@ -111,3 +112,23 @@
   </div>
 </div>
 
+<!-- Upgrade Modal --------------------------------------------------------------------->
+
+<!-- Modal -->
+<div id="upgrade" class="modal fade" tabindex="-1" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Upgrade to Premium</h4>
+      </div>
+      <div class="modal-body" align="center">
+
+
+      </div>
+    </div>
+
+  </div>
+</div>

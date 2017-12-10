@@ -1,10 +1,14 @@
 export class Config {
+
   /* App Resources */
   public static readonly API_URI = 'http://localhost:8080/api/';
   public static readonly ASSETS_PATH = '../../assets/';
   public static readonly AUDIO_PATH = Config.ASSETS_PATH + 'audio/';
+  public static readonly IMAGES_PATH = Config.ASSETS_PATH + 'images/';
   public static readonly AUDIO_IMAGES = Config.ASSETS_PATH + 'images/audio/';
   public static readonly ALBUM_IMAGES = Config.ASSETS_PATH + 'images/album-art/';
+  public static readonly LOGO_IMAGE = Config.ASSETS_PATH + Config.IMAGES_PATH + 'AmplioLogo.png';
+  public static readonly LOGO_SMALL_IMAGE = Config.ASSETS_PATH + Config.IMAGES_PATH + 'AmplioLogoSmall.png';
 
   /* Audio Nav Bar Configuration */
   public static readonly PLAY_IMAGE = Config.AUDIO_IMAGES + 'play.svg';
