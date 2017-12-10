@@ -6,8 +6,8 @@ export class Config {
   public static readonly ASSETS_PATH = '../../assets/';
   public static readonly AUDIO_PATH = Config.ASSETS_PATH + 'audio/';
   public static readonly IMAGES_PATH = Config.ASSETS_PATH + 'images/';
-  public static readonly AUDIO_IMAGES = Config.ASSETS_PATH + 'images/audio/';
-  public static readonly ALBUM_IMAGES = Config.ASSETS_PATH + 'images/album-art/';
+  public static readonly AUDIO_IMAGES = Config.ASSETS_PATH + Config.IMAGES_PATH + 'audio/';
+  public static readonly ALBUM_IMAGES = Config.ASSETS_PATH + Config.IMAGES_PATH + 'album-art/';
   public static readonly LOGO_IMAGE = Config.ASSETS_PATH + Config.IMAGES_PATH + 'AmplioLogo.png';
   public static readonly LOGO_SMALL_IMAGE = Config.ASSETS_PATH + Config.IMAGES_PATH + 'AmplioLogoSmall.png';
   public static readonly CREDIT_CARDS_IMAGE = Config.ASSETS_PATH + Config.IMAGES_PATH + 'creditcards.png';

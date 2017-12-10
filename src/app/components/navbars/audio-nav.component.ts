@@ -25,14 +25,16 @@ export class AudioNavComponent implements OnInit {
   private readonly nextImg = Config.NEXT_IMAGE;
   private readonly prevImg = Config.PREVIOUS_IMAGE;
   private readonly queueImg = Config.QUEUE_IMAGE;
-
-  constructor(private audioService: AudioService) {
-    this.audioService.songQueue.subscribe(songQueue => this.songQueue = songQueue);
+  private readonly onTimeUpdateListener = function () {
+    this.currentTime = this.song.media.currentTime;
+    this.progress = (this.currentTime / this.song.media.duration) * Config.PLAYER_GRANULARITY;
+  }
+  private readonly onEndedListener = function () {
+    this.playPauseImg = Config.PLAY_IMAGE;
   }
 
-
-  ngOnInit() {
-    this.song =  new Song({
+  constructor(private audioService: AudioService) {
+    this.song = new Song({
       songId: 1,
       duration: 180,
       album: {
@@ -51,15 +53,13 @@ export class AudioNavComponent implements OnInit {
       songName: 'Lose Yourself',
       artists: []
     });
-    console.log(this.song.album.image);
-    this.song.media.addEventListener('timeupdate', () => {
-      this.currentTime = this.song.media.currentTime;
-      this.progress = (this.currentTime / this.song.media.duration) * Config.PLAYER_GRANULARITY;
-    });
-    this.song.media.addEventListener('ended', () => {
-      this.playPauseImg = Config.PLAY_IMAGE;
-    });
+    this.song.media.addEventListener('timeupdate', this.onTimeUpdateListener);
+    this.song.media.addEventListener('ended', this.onEndedListener);
     this.shuffle = false;
+  }
+
+  ngOnInit() {
+    this.audioService.songQueue.subscribe(songQueue => this.songQueue = songQueue);
   }
 
   songSeek(value: number) {
@@ -102,7 +102,7 @@ export class AudioNavComponent implements OnInit {
       this.song.media.volume = 0;
     } else {
       this.volImg = Config.VOLUME_IMAGE;
-      this.song.media.volume = value/100;
+      this.song.media.volume = value / 100;
     }
     this.mute = !this.mute;
   }
@@ -133,8 +133,8 @@ export class AudioNavComponent implements OnInit {
   }
 
   changeVolume(value: number) {
-    if (this.mute) {
-    this.song.media.volume = value / 100;
+    if (!this.mute) {
+      this.song.media.volume = value / 100;
     }
   }
 
@@ -145,6 +145,7 @@ export class AudioNavComponent implements OnInit {
   prevSong() {
     console.log('TODO: prev song');
   }
+
   // playPauseImg = '../../assets/images/audio/play.svg';
   // volImg = '../../assets/images/audio/volume.svg';
   // repeatImg = '../../assets/images/audio/repeat.svg';

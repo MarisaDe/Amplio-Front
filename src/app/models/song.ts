@@ -4,7 +4,7 @@ import {Config} from '../common/config';
 
 export class Song {
   private _id: number;
-  private _artists: Array<Artist>;
+  private _artist: Artist;
   private _album: Album;
   private _duration: number;
   private _lyrics: string;
@@ -19,12 +19,7 @@ export class Song {
     this._lyrics = song.lyrics;
     this._numPlays = song.numPlays;
     this._songName = song.songName;
-    this._artists = [];
-    if (song.artists != null) {
-      for (const artist of song.artists) {
-        this._artists.push(new Artist(artist));
-      }
-    }
+    this._artist = new Artist(song.artist);
     if (song.path) {
       console.log(Config.AUDIO_PATH + song.songId + '.mp3');
       this._media = new Audio(Config.AUDIO_PATH + song.songId + '.mp3');
@@ -89,20 +84,12 @@ export class Song {
     this._songName = value;
   }
 
-  get artists(): Array<Artist> {
-    return this._artists;
+  get artist(): Artist {
+    return this._artist;
   }
 
-  get artistsString(): string {
-    let artistStr = '';
-    for (const artist of this._artists) {
-      artistStr += artist.name + ' ';
-    }
-    return artistStr.trim();
-  }
-
-  set artists(value: Array<Artist>) {
-    this._artists = value;
+  set artist(value: Artist) {
+    this._artist = value;
   }
 
   get media(): HTMLAudioElement {
