@@ -1,3 +1,22 @@
+td{
+  width:50%;
+}
+
+.disclaimer{
+  align:left;
+  margin:3%;
+}
+.combobox{
+  width:95%;
+}
+
+.disclaimer-box {
+  /*background-color: lightgrey;*/
+  border: 2px solid #1fb752;
+  padding: 25px;
+  margin: 20px 0px;
+}
+
 .dropdown-menu{
   background-color: #222222;
   color: #F5F5F5;
@@ -87,6 +106,9 @@ button.close{
   border: 1px solid rgb(74, 185, 0);
 }
 
+.credit {
+  width:100%;
+}
 /* Global Button Styles */
 a.animated-button:link, a.animated-button:visited {
   /*position: relative;*/

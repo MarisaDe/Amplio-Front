@@ -9,6 +9,7 @@ export class Config {
   public static readonly ALBUM_IMAGES = Config.ASSETS_PATH + 'images/album-art/';
   public static readonly LOGO_IMAGE = Config.ASSETS_PATH + Config.IMAGES_PATH + 'AmplioLogo.png';
   public static readonly LOGO_SMALL_IMAGE = Config.ASSETS_PATH + Config.IMAGES_PATH + 'AmplioLogoSmall.png';
+  public static readonly CREDIT_CARDS_IMAGE = Config.ASSETS_PATH + Config.IMAGES_PATH + 'creditcards.png';
 
   /* Audio Nav Bar Configuration */
   public static readonly PLAY_IMAGE = Config.AUDIO_IMAGES + 'play.svg';

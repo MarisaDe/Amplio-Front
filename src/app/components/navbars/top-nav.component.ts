@@ -12,12 +12,18 @@ import {Config} from "../../common/config";
 export class TopNavComponent implements OnInit {
   private currentUser: User;
   private readonly logoImg = Config.LOGO_SMALL_IMAGE;
+  private readonly ccardImg = Config.CREDIT_CARDS_IMAGE;
+  private monthYear: Array <number>;
 
   constructor(private userService: UserService, private authService: AuthService) {
   }
 
   ngOnInit() {
     this.userService.currentUser.subscribe(user => this.currentUser = user);
+    this.monthYear = [];
+    for ( let i = 17; i < 60; i++) {
+      this.monthYear.push(i);
+    }
   }
 
   getName(): string {
