@@ -10,7 +10,6 @@ import {Config} from '../../common/config';
   styleUrls: ['./audio-nav.component.css']
 })
 export class AudioNavComponent implements OnInit {
-  private viewConfig = new Config();
   private songQueue: Array<Song>;
   private song: Song;
   private playing: boolean;
@@ -23,6 +22,9 @@ export class AudioNavComponent implements OnInit {
   private repeatImg = Config.REPEAT_OFF_IMAGE;
   private volImg = Config.VOLUME_IMAGE;
   private shuffleImg = Config.SHUFFLE_OFF_IMAGE;
+  private readonly nextImg = Config.NEXT_IMAGE;
+  private readonly prevImg = Config.PREVIOUS_IMAGE;
+  private readonly queueImg = Config.QUEUE_IMAGE;
 
   constructor(private audioService: AudioService) {
     this.audioService.songQueue.subscribe(songQueue => this.songQueue = songQueue);
