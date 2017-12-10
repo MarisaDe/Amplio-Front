@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Router} from '@angular/router';
+import {Config} from '../../common/config'
 
 @Injectable()
 export class SearchService {
@@ -11,7 +12,7 @@ export class SearchService {
   search(query: string) {
     // const params: URLSearchParams = new URLSearchParams();
     // params.set('query', query);
-    this.http.get('http://localhost:8080/api/user/search', {params: {query: query}})
+    this.http.get(Config.API_URI + 'user/search', {params: {query: query}})
       .subscribe(
         resp => {
           console.log(resp);

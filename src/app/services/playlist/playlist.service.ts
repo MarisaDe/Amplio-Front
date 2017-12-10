@@ -3,6 +3,7 @@ import {HttpClient} from '@angular/common/http';
 import {Router} from '@angular/router';
 import {BehaviorSubject} from 'rxjs/BehaviorSubject';
 import {Playlist} from '../../models/playlist';
+import {Config} from "../../common/config";
 
 @Injectable()
 export class PlaylistService {
@@ -17,11 +18,11 @@ export class PlaylistService {
   }
 
   getGenrePlaylists() {
-    // return this.http.get('http://localhost:8080/api/playists/genres');
-    return this.http.get('http://localhost:8080/api/playlist/generated', {withCredentials: true});
+    // return this.http.get(Config.API_URI + 'playists/genres');
+    return this.http.get(Config.API_URI + 'playlist/generated', {withCredentials: true});
   }
 
   getPlaylist(playlistId: number) {
-    return this.http.get('http://localhost:8080/api/playlist/' + playlistId, {withCredentials: true});
+    return this.http.get(Config.API_URI + 'playlist/' + playlistId, {withCredentials: true});
   }
 }

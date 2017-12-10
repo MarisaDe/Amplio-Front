@@ -3,6 +3,7 @@ import { User } from '../../models/user';
 import {HttpClient} from '@angular/common/http';
 import {Router} from '@angular/router';
 import {BehaviorSubject} from 'rxjs/BehaviorSubject';
+import {Config} from "../../common/config";
 
 @Injectable()
 export class UserService {
@@ -21,7 +22,7 @@ export class UserService {
 
   // TODO : update to not do any router logic here.
   getUser(userId: number) {
-    this.http.get('http://localhost:8080/api/user/' + userId)
+    this.http.get(Config.API_URI + 'user/' + userId)
       .subscribe(
         resp => {
           const newUser = new User(resp);
@@ -38,7 +39,7 @@ export class UserService {
     const body = {
       userId: userId
     };
-    this.http.post('http://localhost:8080/api/user/follow', body, { withCredentials: true })
+    this.http.post(Config.API_URI + 'user/follow', body, { withCredentials: true })
       .subscribe(
         resp => {
           const updatedUser = new User(resp);
