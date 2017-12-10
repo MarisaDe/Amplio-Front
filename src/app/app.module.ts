@@ -22,8 +22,9 @@ import {AuthService} from './services/auth/auth.service';
 import {MainLayoutComponent} from './components/mainlayout/main-layout.component';
 import {GuardService} from './services/auth/guard.service';
 import {AudioService} from './services/audio/audio.service';
-import {Ng2PageTransitionModule} from "ng2-page-transition";
-import {SongqueueComponent} from "./components/songqueue/songqueue.component";
+import {Ng2PageTransitionModule} from 'ng2-page-transition';
+import {SongqueueComponent} from './components/songqueue/songqueue.component';
+import {ArtistComponent} from './components/artist/artist.component';
 
 
 @NgModule({
@@ -40,7 +41,8 @@ import {SongqueueComponent} from "./components/songqueue/songqueue.component";
     PersonComponent,
     AlertComponent,
     MainLayoutComponent,
-    SongqueueComponent
+    SongqueueComponent,
+    ArtistComponent
   ],
   imports: [
     BrowserModule,
