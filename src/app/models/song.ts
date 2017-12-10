@@ -20,8 +20,10 @@ export class Song {
     this._numPlays = song.numPlays;
     this._songName = song.songName;
     this._artists = [];
-    for (const artist of song.artists) {
-      this._artists.push(new Artist(artist));
+    if (song.artists != null) {
+      for (const artist of song.artists) {
+        this._artists.push(new Artist(artist));
+      }
     }
     if (song.path) {
       console.log(Config.AUDIO_PATH + song.songId + '.mp3');

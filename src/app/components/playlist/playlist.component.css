@@ -56,19 +56,6 @@
 
 
 
-.follow {
-  margin-left: 20px;
-  display: inline-block;
-  background-color: #222222;
-  /*color: rgb(87, 216, 0);*/
-  padding: 10px 0;
-  width: 40%;
-  border:1px solid #4ab900;
-}
-.follow:active {
-  vertical-align: top;
-}
-
 .table td, .table th{
   border-color: #999999;
 }
