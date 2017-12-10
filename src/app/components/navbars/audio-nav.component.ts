@@ -25,13 +25,6 @@ export class AudioNavComponent implements OnInit {
   private readonly nextImg = Config.NEXT_IMAGE;
   private readonly prevImg = Config.PREVIOUS_IMAGE;
   private readonly queueImg = Config.QUEUE_IMAGE;
-  private readonly onTimeUpdateListener = function () {
-    this.currentTime = this.song.media.currentTime;
-    this.progress = (this.currentTime / this.song.media.duration) * Config.PLAYER_GRANULARITY;
-  }
-  private readonly onEndedListener = function () {
-    this.playPauseImg = Config.PLAY_IMAGE;
-  }
 
   constructor(private audioService: AudioService) {
     this.song = new Song({
@@ -51,10 +44,19 @@ export class AudioNavComponent implements OnInit {
       lyrics: 'It\'s like I\'m in the dirt...',
       numPlays: 1,
       songName: 'Lose Yourself',
-      artists: []
+      artist: {
+        id: 1,
+        name: 'Eminem',
+        bibliography: 'G.O.A.T'
+      }
     });
-    this.song.media.addEventListener('timeupdate', this.onTimeUpdateListener);
-    this.song.media.addEventListener('ended', this.onEndedListener);
+    this.song.media.addEventListener('timeupdate', () => {
+      this.currentTime = this.song.media.currentTime;
+      this.progress = (this.currentTime / this.song.media.duration) * Config.PLAYER_GRANULARITY;
+    });
+    this.song.media.addEventListener('ended', () => {
+      this.playPauseImg = Config.PLAY_IMAGE;
+    });
     this.shuffle = false;
   }
 

@@ -9,7 +9,7 @@ import {TopNavComponent} from './components/navbars/top-nav.component';
 import {RoutingModule} from './app.routing';
 import {LeftNavComponent} from './components/navbars/left-nav.component';
 import {RightNavComponent} from './components/navbars/right-nav.component';
-import {HomeComponent, PairsPipe} from './components/home/home.component';
+import {HomeComponent} from './components/home/home.component';
 import {RegisterComponent} from './components/register/register.component';
 import {AudioNavComponent} from './components/navbars/audio-nav.component';
 import {PlaylistComponent} from './components/playlist/playlist.component';

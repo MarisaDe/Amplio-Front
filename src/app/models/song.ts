@@ -13,6 +13,7 @@ export class Song {
   private _media: HTMLAudioElement;
 
   constructor(song: any) {
+    console.log(song);
     this._id = song.songId;
     this._album = new Album(song.album);
     this._duration = song.duration;
