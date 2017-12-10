@@ -25,7 +25,11 @@ export class Song {
     for (const artist of song.artists) {
       this._artists.push(new Artist(artist));
     }
-    this._media = new Audio(path + song.songId + '.mp3');
+    if (song.path) {
+      this._media = new Audio(path + song.songId + '.mp3');
+    } else {
+      this._media = new Audio(path + 'dummy.mp3');
+    }
   }
 
   // static generateSongList(songs: any): Song[] {
