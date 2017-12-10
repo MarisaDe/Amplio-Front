@@ -5,6 +5,7 @@ import {Playlist} from '../../models/playlist';
 import {PlaylistService} from '../../services/playlist/playlist.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {AudioService} from '../../services/audio/audio.service';
+import {Config} from "../../common/config";
 
 @Component({
   selector: 'playlist',
@@ -14,6 +15,7 @@ import {AudioService} from '../../services/audio/audio.service';
 export class PlaylistComponent implements OnInit {
   currentUser: User;
   playlist: Playlist;
+  private playPauseImg = Config.PLAY_IMAGE;
 
   constructor(private userService: UserService,
               private playlistService: PlaylistService,
@@ -39,6 +41,28 @@ export class PlaylistComponent implements OnInit {
     this.router.navigateByUrl('/user');
     this.router.navigate(['this.playlist.owner.id']);
   }
+
+  togglePlay() {
+    if (this.playPauseImg === Config.PAUSE_IMAGE) {
+      this.playPauseImg = Config.PLAY_IMAGE;
+    } else {
+      this.playPauseImg = Config.PAUSE_IMAGE;
+    }
+  }
+  getMinSec(value: number): string {
+    const min = Math.floor(value / 60);
+    const sec = Math.round(value % 60);
+    let minstr = String(min);
+    let secstr = String(sec);
+    if (min < 10) {
+      minstr = '0' + minstr;
+    }
+    if (sec < 10) {
+      secstr = '0' + secstr;
+    }
+    return minstr + ':' + secstr;
+  }
+
   ngOnInit() {
     this.userService.currentUser.subscribe(user => this.currentUser = user);
     this.playlistService.getPlaylist(this.route.snapshot.params['id']).subscribe(

@@ -38,12 +38,15 @@
       <th>Duration</th>
 
       <tr *ngFor = "let song of playlist.songs">
-        <td width="50px"><img src="../../assets/images/audio/play.svg" class="grow play-each"></td>
+        <td width="50px"><img [src] ="playPauseImg" class="grow play-each"
+                              (onclick) = "togglePlay()"></td>
         <td><i class="fa fa-plus" aria-hidden="true"></i></td>
         <td align="left" class="overflow">{{song.songName}}</td>
-        <td class="overflow">{{song.artists[0].name}}</td>
+        <!--<td class="overflow">{{song.artists[0].name}}</td>-->
+        <td class="overflow" *ngFor="let artists of song.artists">
+          {{artists.name}}</td>
         <td class="overflow">{{song.album.title}}</td>
-        <td>{{song.duration}} s</td>
+        <td>{{getMinSec(song.duration)}}</td>
       </tr>
     </table>
   </div>
