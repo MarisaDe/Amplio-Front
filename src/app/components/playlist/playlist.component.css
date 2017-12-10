@@ -1,7 +1,3 @@
-.container{
-  margin-bottom: 10%;
-}
-
 #songs tr:hover{
   background-color:#595959 !important;
 }
