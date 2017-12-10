@@ -1,4 +1,5 @@
 import {Artist} from './artist';
+import {Config} from '../common/config'
 
 export class Album {
   private _id: number;
@@ -11,7 +12,7 @@ export class Album {
     this._id = album.albumId;
     this._title = album.title;
     this._date = new Date(album.date);
-    this._image = album.image;
+    this._image = Config.ALBUM_IMAGES + album.image;
     this._artist = new Artist(album.artist);
   }
 
