@@ -95,11 +95,13 @@ export class AudioNavComponent implements OnInit {
     }
   }
 
-  toggleMute() {
+  toggleMute(value: number) {
     if (this.mute) {
       this.volImg = Config.MUTE_IMAGE;
+      this.song.media.volume = 0;
     } else {
       this.volImg = Config.VOLUME_IMAGE;
+      this.song.media.volume = value/100;
     }
     this.mute = !this.mute;
   }

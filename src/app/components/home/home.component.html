@@ -1,5 +1,5 @@
 <div class = "bg">
-<div class="container" style="margin-left:15%;margin-right:30%">
+<div class="container">
   <!-- Welcome User -->
   <div class="row">
     <table width = "90%">
@@ -7,30 +7,40 @@
         <td><h3>Welcome {{currentUser.name}}!</h3></td>
       </tr>
     </table>
-    <hr style="margin-right:80px">
+    <hr>
   </div>
 
   <!-- List genres -->
-
   <div class = "row">
-    <div id="grid" *ngFor="let genre of genrePlaylists; let i = index">
-      <div *ngIf="i < 4">
-        <a routerLink = "/playlist/{{genre.id}}"><img src ="{{genre.image}}" class = "fade"></a>
+    <div class="grid" *ngFor="let genre of genrePlaylists | pairs;">
+      <div>
+        <a routerLink = "/playlist/{{genre.id}}">
+          <img src ="{{genre.image}}"  width = 200px class = "fade"></a>
         <p align="center">{{genre.title}}</p>
       </div>
     </div>
   </div>
 
+
+  <div class = "row">
+    <div class="grid" *ngFor="let genre of genrePlaylists; let i = index">
+      <div *ngIf="i<5">
+        <a routerLink = "/playlist/{{genre.id}}">
+          <img src ="{{genre.image}}"  width = 200px class = "fade"></a>
+        <p align="center">{{genre.title}}</p>
+      </div>
+    </div>
+  </div>
 <!-- Recently Played Artists-->
 
 <div class="row">
-  <table width = "90%">
+  <table>
     <tr>
       <td><h3>Public Playlists</h3></td>
       <!--<td align="right" class = linkInfo><a href = "#">See All</a></td>-->
     </tr>
   </table>
-  <hr style="margin-right:80px">
+  <hr>
 </div>
 </div>
 </div>

@@ -1,8 +1,17 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, Pipe, PipeTransform} from '@angular/core';
 import {User} from '../../models/user';
 import {UserService} from '../../services/user/user.service';
 import {PlaylistService} from '../../services/playlist/playlist.service';
 import {Playlist} from '../../models/playlist';
+
+
+@Pipe({ name: 'pairs' })
+export class PairsPipe implements PipeTransform {
+  transform(value: any) {
+    return value.filter((v, i) => i % 4 === 0).map((v, i) => [value[i * 5], value[i * 6 + 1]]);
+  }
+}
+
 
 @Component({
   selector: 'home',

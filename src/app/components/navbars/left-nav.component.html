@@ -52,11 +52,11 @@
         <b>Title</b><br>
         <form class="form-group"(ngSubmit)="f.form.valid && performLogin()" #f="ngForm">
           <div class="input-box">
-            <input id="title" type="text" class="form-control input_layout" name="userName" placeholder="untitled" #title="ngModel"
-                   [(ngModel)]="attempt.userName" required>
-            <div *ngIf="f.submitted && !userName.valid">
-              <div [ngClass] = "'alert alert-danger'">Title Required</div>
-            </div>
+            <input id="title" type="text" class="form-control input_layout" name="userName" placeholder="untitled" >
+                   <!--#title="ngModel" required>-->
+            <!--<div *ngIf="f.submitted && !userName.valid">-->
+              <!--<div [ngClass] = "'alert alert-danger'">Title Required</div>-->
+            <!--</div>-->
           </div>
         </form>
 
@@ -73,12 +73,10 @@
             </td>
             <td rowspan="2" valign="top" style="padding-top:30px;">
               Description:
-              <form class="form-group"(ngSubmit)="f.form.valid && performLogin()" #f="ngForm">
+              <form class="form-group">
                 <div class="input-box">
-                  <textarea id="description" type="text" class="form-control input_layout"
-                         style="width: 338px; height:270px"
-                         placeholder="description" #desc="ngModel"
-                         [(ngModel)]="attempt.userName">
+                  <textarea id="description" type="text" class="form-control input_layout" style="width: 338px; height:270px"
+                         placeholder="description">
                   </textarea>
                 </div>
               </form>

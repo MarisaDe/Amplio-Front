@@ -116,10 +116,6 @@ html,body {
   -webkit-box-shadow: inset 0 0 3px rgba(0,0,0,.3);
   background-color: #595959;
 }
-.row{
-  margin-left:0px;
-  /*margin-right:60px;*/
-}
 
 #main_icon
 {
@@ -164,14 +160,20 @@ html,body {
     transition: all .4s ease 0s;
   }
 }
-#grid div {
+.grid div {
   float: left;
-  padding-right: 65px;
+  margin-left:15px;
+  margin-right:15px;
+  margin-bottom:2%;
 }
 
-#grid div img{
+.grid div img{
   width: 200px;
-  padding-bottom: 20px;
+  margin-bottom: 20px;
+
+}
+.cover-art {
+  float:left;
 }
 
 .fade

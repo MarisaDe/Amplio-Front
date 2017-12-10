@@ -3,7 +3,7 @@ import {User} from '../../models/user';
 import {UserService} from '../../services/user/user.service';
 import {Playlist} from '../../models/playlist';
 import {PlaylistService} from '../../services/playlist/playlist.service';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {AudioService} from '../../services/audio/audio.service';
 
 @Component({
@@ -18,7 +18,8 @@ export class PlaylistComponent implements OnInit {
   constructor(private userService: UserService,
               private playlistService: PlaylistService,
               private audioService: AudioService,
-              private route: ActivatedRoute) {
+              private route: ActivatedRoute,
+              private router: Router) {
   }
 
   playPlaylist(songId: number) {
@@ -34,6 +35,10 @@ export class PlaylistComponent implements OnInit {
     // let howlList: Array<Howl> = [];
   }
 
+  navigate() {
+    this.router.navigateByUrl('/user');
+    this.router.navigate(['this.playlist.owner.id']);
+  }
   ngOnInit() {
     this.userService.currentUser.subscribe(user => this.currentUser = user);
     this.playlistService.getPlaylist(this.route.snapshot.params['id']).subscribe(
