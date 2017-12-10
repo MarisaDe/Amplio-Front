@@ -3,8 +3,6 @@ import {AudioService} from '../../services/audio/audio.service';
 import {Song} from '../../models/song';
 import {Repeat} from '../../common/repeat.enum';
 import {Config} from '../../common/config';
-import {Album} from "../../models/album";
-import {Artist} from "../../models/artist";
 
 @Component({
   selector: 'audio-nav',
@@ -21,9 +19,10 @@ export class AudioNavComponent implements OnInit {
   private currentTime: number;
   private progress: number;
   private repeatState: Repeat;
-  private playPauseImg: string;
-  private repeatImg: string;
-  private volImg: string;
+  private playPauseImg = Config.PLAY_IMAGE;
+  private repeatImg = Config.REPEAT_OFF_IMAGE;
+  private volImg = Config.VOLUME_IMAGE;
+  private shuffleImg = Config.SHUFFLE_OFF_IMAGE;
 
   constructor(private audioService: AudioService) {
     this.audioService.songQueue.subscribe(songQueue => this.songQueue = songQueue);
@@ -34,28 +33,29 @@ export class AudioNavComponent implements OnInit {
     this.song =  new Song({
       songId: 1,
       duration: 180,
-      album: new Album({
+      album: {
         albumId: 1,
         title: 'Curtain Call',
         date: '06-06-2006',
         image: 'key.jpg',
-        artist: new Artist({
+        artist: {
           id: 1,
           name: 'Eminem',
           bibliography: 'G.O.A.T'
-        }),
-      }),
+        },
+      },
       lyrics: 'It\'s like I\'m in the dirt...',
       numPlays: 1,
       songName: 'Lose Yourself',
       artists: []
     });
+    console.log(this.song.album.image);
     this.song.media.addEventListener('timeupdate', () => {
       this.currentTime = this.song.media.currentTime;
       this.progress = (this.currentTime / this.song.media.duration) * Config.PLAYER_GRANULARITY;
     });
     this.song.media.addEventListener('ended', () => {
-      this.playPauseImg = '../../assets/images/audio/play.svg';
+      this.playPauseImg = Config.PLAY_IMAGE;
     });
   }
 
@@ -65,6 +65,11 @@ export class AudioNavComponent implements OnInit {
   }
 
   toggleShuffle() {
+    if (this.shuffle) {
+      this.shuffleImg = Config.SHUFFLE_ON_IMAGE;
+    } else {
+      this.shuffleImg = Config.SHUFFLE_OFF_IMAGE;
+    }
     this.shuffle = !this.shuffle;
   }
 
@@ -109,7 +114,6 @@ export class AudioNavComponent implements OnInit {
   }
 
   getMinSec(value: number): string {
-    console.log(value);
     const min = Math.floor(value / 60);
     const sec = Math.round(value % 60);
     let minstr = String(min);

@@ -17,10 +17,10 @@
 
       <td colspan="2" align="center">
         <div class = "controls">
-          <img [src] = "Config.SHUFFLE_IMAGE" (click)="toggleShuffle()" id="shuffle" title="Shuffle"/>
-          <img [src] = "Config.PREVIOUS_IMAGE" (click)="prevSong()" id="previous" title="Play Previous Song"/>
+          <img [src] = "shuffleImg" (click)="toggleShuffle()" id="shuffle" title="Shuffle"/>
+          <img [src] = "viewConfig.PREVIOUS_IMAGE" (click)="prevSong()" id="previous" title="Play Previous Song"/>
           <img [src] = "playPauseImg" (click)="togglePlay()" class = "grow" id="play-pause"/>
-          <img [src] = "Config.NEXT_IMAGE" (click)="nextSong()" id="next" title="Play Next Song"/>
+          <img [src] = "viewConfig.NEXT_IMAGE" (click)="nextSong()" id="next" title="Play Next Song"/>
           <img [src] = "repeatImg" (click)="toggleRepeat()" id="repeat" title="Repeat"/>
         </div>
         <span id="duration">{{getMinSec(song.media.currentTime)}} / {{getMinSec(song.media.duration)}}</span>
@@ -28,7 +28,7 @@
 
       </td>
       <td align="right">
-        <img [src] = "Config.QUEUE_IMAGE" id="songQueue" title="Queue"/>
+        <img [src] = "viewConfig.QUEUE_IMAGE" id="songQueue" title="Queue"/>
         <img [src] = "volImg" (click)="toggleMute()" id="volume" title="Mute"/>
         <input type="range" class="volume" #volume value=100 (input) = "changeVolume(volume.value)"/>
       </td>

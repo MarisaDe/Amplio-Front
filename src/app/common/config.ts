@@ -8,7 +8,8 @@ export class Config {
   /* Audio Nav Bar Configuration */
   public static readonly PLAY_IMAGE = Config.AUDIO_IMAGES + 'play.svg';
   public static readonly PAUSE_IMAGE = Config.AUDIO_IMAGES + 'pause.svg';
-  public static readonly SHUFFLE_IMAGE = Config.AUDIO_IMAGES + 'shuffle.svg';
+  public static readonly SHUFFLE_OFF_IMAGE = Config.AUDIO_IMAGES + 'shuffle.svg';
+  public static readonly SHUFFLE_ON_IMAGE = Config.AUDIO_IMAGES + 'shuffle-on.svg';
   public static readonly PREVIOUS_IMAGE = Config.AUDIO_IMAGES + 'previous.svg';
   public static readonly NEXT_IMAGE = Config.AUDIO_IMAGES + 'next.svg';
   public static readonly QUEUE_IMAGE = Config.AUDIO_IMAGES + 'queue.svg';
