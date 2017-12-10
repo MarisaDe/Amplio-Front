@@ -59,6 +59,7 @@ export class AudioNavComponent implements OnInit {
     this.song.media.addEventListener('ended', () => {
       this.playPauseImg = Config.PLAY_IMAGE;
     });
+    this.shuffle = false;
   }
 
   songSeek(value: number) {
