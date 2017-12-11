@@ -18,8 +18,3 @@ tr:hover{
 .play-each:hover{
   transform: scale(1.1);
 }
-
-.sticky {
-  position:sticky;
-  top:0;
-}

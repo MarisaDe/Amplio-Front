@@ -93,11 +93,13 @@
         <img [src]= "currentUser.profilePicture" width="200" height="200">
         <!--<img *ngIf="currentUser.profilePicture != null" src="currentUser.profilePicture">-->
 
+        <form method="post" enctype="multipart/form-data">
         <input type="file" class="chooseImg" id="myImage" name="myImage" value="myImage"
-               #newImg accept="image/x-png,image/gif,image/jpeg"/><br>
-        <label for= "myImage" class="choose expand-effect">
+               #myImage accept="image/x-png,image/gif,image/jpeg"
+                (onchange) = "setImg(myImage.files)"/><br>
+        <label for= "myImage" class="choose expand-effect"(onchange) = "setImg(myImage.files)">
           Choose an image</label>
-
+        </form>
         <button type="button" class="choose expand-effect"  data-dismiss="modal">Reset to Default</button>
 
         <div align="center">

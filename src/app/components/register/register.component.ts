@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {AlertService} from '../../services/alert/alert.service';
 import {Router} from '@angular/router';
 import {AuthService} from '../../services/auth/auth.service';
+import {Config} from "../../common/config";
 
 @Component({
   selector: 'register',
@@ -18,6 +19,7 @@ export class RegisterComponent {
 
   performRegister() {
     console.log('register was clicked!');
+    this.newUser.profilePicture = Config.PROFILE_DEFAULT_IMAGE;
     this.authService.register(this.newUser).subscribe(
       resp => {
         console.log(resp);

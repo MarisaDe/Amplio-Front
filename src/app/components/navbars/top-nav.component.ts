@@ -44,7 +44,7 @@ export class TopNavComponent implements OnInit {
     console.log('logout has been clicked. omg wow yay! i cant even');
   }
   setImg(value: any) {
-    console.log(value);
-    this.currentUser.profilePicture = value;
+    console.log('HELLO FROM CHANGE IMG');
+    this.currentUser.profilePicture = value[0];
   }
 }

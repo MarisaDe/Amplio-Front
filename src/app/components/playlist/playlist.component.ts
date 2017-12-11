@@ -15,6 +15,7 @@ import {Config} from "../../common/config";
 export class PlaylistComponent implements OnInit {
   currentUser: User;
   playlist: Playlist;
+  hideObject: string;
   private playPauseImg = Config.PLAY_IMAGE;
 
   constructor(private userService: UserService,
@@ -63,7 +64,12 @@ export class PlaylistComponent implements OnInit {
     return minstr + ':' + secstr;
   }
 
+  hide() {
+    this.hideObject = 'none';
+
+  }
   ngOnInit() {
+    this.hideObject = 'show';
     this.userService.currentUser.subscribe(user => this.currentUser = user);
     this.playlistService.getPlaylist(this.route.snapshot.params['id']).subscribe(
       resp => {

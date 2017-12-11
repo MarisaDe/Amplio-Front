@@ -8,18 +8,23 @@
     <table cellspacing="0" cellpadding="0">
       <tr>
         <td colspan="1" style = "padding:30px; padding-left: 0px">
-          <img [src] = "currentUser.profilePicture" style = "border-radius: 50%; width: 200px"></td>
+          <img [src] = "person.profilePicture" style = "border-radius: 50%; width: 200px"></td>
         <td rowspan="1">USER<br>
-          <h1>{{currentUser.name}}</h1><br>
+          <h1>{{person.name}}</h1><br>
           <div></div>
 
           <div *ngIf="currentUser.id != personId">
           <!-- TODO: If id not in {{currentUser.following}}, display this-->
-          <button type="button" class="follow-user expand-effect"
-          (onclick) = follow()>Follow</button>
 
+            <div *ngIf="!isFollowing">
+            <button type="button" class="follow-user expand-effect"
+          (onclick) = follow()>Follow</button>
+            </div>
+
+            <div *ngIf="isFollowing">
           <!-- TODO: If following, display this instead-->
-          <!--<button type="button" class="follow-user expand-effect">Unfollow</button>-->
+            <button type="button" class="follow-user expand-effect">Unfollow</button>
+            </div>
           </div>
         </td>
       <td>

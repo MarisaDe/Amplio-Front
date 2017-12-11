@@ -1,15 +1,23 @@
+import {Config} from "../common/config";
+
 export class Follower {
 
   private _id: number;
   private _userName: string;
   private _firstName: string;
   private _lastName: string;
+  private _profilePicture: any;
 
   constructor(info: any) {
     this._id = info.id;
     this._userName = info.userName;
     this._firstName = info.firstName;
     this._lastName = info.lastName;
+    if (info.profilePicture == null) {
+      this._profilePicture = Config.PROFILE_DEFAULT_IMAGE;
+    }else {
+      this._profilePicture = info.profilePicture;
+    }
   }
 
   get id(): number {

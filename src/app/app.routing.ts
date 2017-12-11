@@ -11,6 +11,7 @@ import {SongqueueComponent} from "./components/songqueue/songqueue.component";
 import {ArtistComponent} from "./components/artist/artist.component";
 import {AdminloginComponent} from "./components/adminlogin/adminlogin.component";
 import {LibraryComponent} from "./components/library/library.component";
+import {ArtistsComponent} from "./components/artists/artists.component";
 
 const appRoutes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -30,6 +31,7 @@ const appRoutes: Routes = [
           {path: 'user/:id', component: PersonComponent},
           {path: 'queue', component: SongqueueComponent},
           {path: 'artist', component: ArtistComponent},
+          {path: 'artists', component: ArtistsComponent},
           {path: 'library', component: LibraryComponent},
         ]
       }
