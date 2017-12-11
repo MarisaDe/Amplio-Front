@@ -6,7 +6,7 @@
         <td colspan="1" style = "padding:30px; padding-left: 0px"><img src ="{{playlist.image}}" class= "cover"></td>
         <td rowspan="1">PLAYLIST<br>
           <h1><b>{{playlist.title}}</b></h1><br>
-          Created by: <a routerLink="user/{{playlist.owner.id}}">{{playlist.owner.name}}</a> - {{playlist.songs.length}} Songs <br><br>
+          Created by: <a routerLink="/user/{{playlist.owner.id}}" class="linkInfo">{{playlist.owner.name}}</a> - {{playlist.songs.length}} Songs <br><br>
           <div></div>
           <button type="button" class="play expand-effect">Play</button>
           <button type="button" class="follow expand-effect">Follow</button>

@@ -5,7 +5,7 @@ import {Playlist} from '../../models/playlist';
 import {PlaylistService} from '../../services/playlist/playlist.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {AudioService} from '../../services/audio/audio.service';
-import {Config} from "../../common/config";
+import {Config} from '../../common/config';
 
 @Component({
   selector: 'playlist',
