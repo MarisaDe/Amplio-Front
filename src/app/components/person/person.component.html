@@ -11,7 +11,13 @@
         <td rowspan="1">USER<br>
           <h1>{{currentUser.name}}</h1><br>
           <div></div>
-          <button type="button" class="follow-user expand-effect">Follow</button>
+
+          <!-- TODO: If id not in {{currentUser.following}}, display this-->
+          <button type="button" class="follow-user expand-effect"
+          (onclick) = follow()>Follow</button>
+
+          <!-- TODO: If following, display this instead-->
+          <!--<button type="button" class="follow-user expand-effect">Unfollow</button>-->
         </td>
       <td>
       </td>

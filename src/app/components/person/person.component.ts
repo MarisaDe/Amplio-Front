@@ -14,6 +14,14 @@ export class PersonComponent implements OnInit {
   constructor(private userService: UserService) {
   }
 
+  follow(userToFollow: any) {
+    this.currentUser.following.push(userToFollow);
+  }
+
+  unfollow(userToUnfollow: any) {
+    const indexToDel = this.currentUser.following.indexOf(userToUnfollow);
+    this.currentUser.following.splice(indexToDel, 1);
+  }
   ngOnInit() {
     this.userService.currentUser.subscribe(user => this.currentUser = user);
     this.userService.person.subscribe(person => this.person = person);

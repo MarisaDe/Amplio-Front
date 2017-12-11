@@ -26,6 +26,7 @@ import {Ng2PageTransitionModule} from 'ng2-page-transition';
 import {SongqueueComponent} from './components/songqueue/songqueue.component';
 import {ArtistComponent} from './components/artist/artist.component';
 import {AdminloginComponent} from './components/adminlogin/adminlogin.component';
+import {LibraryComponent} from "./components/library/library.component";
 
 
 @NgModule({
@@ -44,7 +45,8 @@ import {AdminloginComponent} from './components/adminlogin/adminlogin.component'
     MainLayoutComponent,
     SongqueueComponent,
     ArtistComponent,
-    AdminloginComponent
+    AdminloginComponent,
+    LibraryComponent
   ],
   imports: [
     BrowserModule,
