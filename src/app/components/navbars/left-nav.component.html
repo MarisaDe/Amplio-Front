@@ -66,10 +66,11 @@
           <tr>
             <td colspan="1" style = "padding:30px; padding-left: 0px">
               Image:<br>
-              <img src = "../../assets/images/album-art/default.png" height="200px"><br>
+              <img [src] = "playlistImage" height="200px"><br>
               <!--<button for = "myImage" type="button" class="btn-5 choose">-->
-                <input type="file" class="chooseImg" id="myImage" accept="image/x-png,image/gif,image/jpeg" />
-                <label for= "myImage" class="choose expand-effect">
+                <input type="file" class="chooseImg" id="myImage" accept="image/x-png,image/gif,image/jpeg" #img
+                (change) = "updatePic($event)"/>
+                <label for = "myImage" class="choose expand-effect">
                   Choose an image</label>
               <!--</button>-->
             </td>

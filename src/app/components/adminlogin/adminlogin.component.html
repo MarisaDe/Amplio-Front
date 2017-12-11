@@ -1,0 +1,48 @@
+<top-nav></top-nav>
+<div class="login">
+  <div class="row">
+    <table align="center" class="admin">
+      <tr>
+        <td style="padding-right: 100px">
+        <div align="center">
+          <br><br>
+          <img [src]="logoImg"><br>
+          <h2><i>Another music streaming service.</i></h2>
+        </div>
+        </td>
+
+        <td>
+          <alert></alert>
+          <div class="login_box">
+            <section class="main-box">
+              <h3 align="center">ADMIN LOGIN</h3><hr>
+              <form class="form-group"(ngSubmit)="f.form.valid && performLogin()" #f="ngForm">
+                <div class="input-box">
+                  <span class="input-group-addon i_icon"><i class="glyphicon glyphicon-user"></i></span>
+                  <input id="user" type="text" class="form-control input_layout" name="userName"
+                         placeholder="Username" #userName="ngModel"
+                         [(ngModel)]="attempt.userName" required>
+                  <div *ngIf="f.submitted && !userName.valid">
+                    <div [ngClass] = "'alert alert-danger'">Username Required</div>
+                  </div>
+                </div>
+                <div class="input-box">
+                  <span class="input-group-addon i_icon"><i class="glyphicon glyphicon-lock"></i></span>
+                  <input id="password" type="password" class="form-control input_layout" name="password"
+                         placeholder="Password" #password="ngModel"
+                         [(ngModel)]="attempt.password" required>
+                  <div [ngClass] = "'alert alert-danger'" *ngIf="f.submitted && !password.valid">Password Required</div>
+                </div>
+                <button type="submit" class="btn_style">LOGIN</button>
+              </form>
+
+              <button type="button" class="regbtn_style" [routerLink]="['/login']">
+                <span>Not an Admin? Login as a user instead.</span></button>
+            </section>
+          </div>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+

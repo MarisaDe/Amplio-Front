@@ -7,12 +7,12 @@ import {UserService} from '../../services/user/user.service';
 import {Config} from '../../common/config';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['../../main.css', './login.component.css'],
+  selector: 'admin-login',
+  templateUrl: './adminlogin.component.html',
+  styleUrls: ['../../main.css', './adminlogin.component.css'],
   encapsulation: ViewEncapsulation.None
 })
-export class LoginComponent implements OnInit {
+export class AdminloginComponent implements OnInit {
 
   private attempt: any = {};
   prevUrl: string;
@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit {
               private route: ActivatedRoute) { }
 
   performLogin() {
-    console.log('Login was clicked!');
+    console.log('Admin login was clicked!');
     this.authService.login(this.attempt).subscribe(
       resp => {
         // TODO: remove debug
@@ -45,7 +45,7 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.authService.logout();
+    // this.authService.logout();
   }
 
 }

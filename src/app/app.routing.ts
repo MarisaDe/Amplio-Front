@@ -9,10 +9,12 @@ import {MainLayoutComponent} from './components/mainlayout/main-layout.component
 import {GuardService} from './services/auth/guard.service';
 import {SongqueueComponent} from "./components/songqueue/songqueue.component";
 import {ArtistComponent} from "./components/artist/artist.component";
+import {AdminloginComponent} from "./components/adminlogin/adminlogin.component";
 
 const appRoutes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
+  {path: 'adminlogin', component: AdminloginComponent},
   {
     path: '',
     component: MainLayoutComponent,
@@ -26,7 +28,7 @@ const appRoutes: Routes = [
           {path: 'playlist/:id', component: PlaylistComponent},
           {path: 'user/:id', component: PersonComponent},
           {path: 'queue', component: SongqueueComponent},
-          {path: 'artist', component: ArtistComponent}
+          {path: 'artist', component: ArtistComponent},
         ]
       }
     ]
