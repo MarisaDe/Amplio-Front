@@ -3,7 +3,8 @@ import {HttpClient} from '@angular/common/http';
 import {Router} from '@angular/router';
 import {BehaviorSubject} from 'rxjs/BehaviorSubject';
 import {Playlist} from '../../models/playlist';
-import {Config} from "../../common/config";
+import {Config} from '../../common/config';
+import {Observable} from 'rxjs/Observable';
 
 @Injectable()
 export class PlaylistService {
@@ -24,5 +25,9 @@ export class PlaylistService {
 
   getPlaylist(playlistId: number) {
     return this.http.get(Config.API_URI + 'playlist/' + playlistId, {withCredentials: true});
+  }
+
+  createPlaylist(playlist: any): Observable<any> {
+    return this.http.post(Config.API_URI + 'playlist/create', playlist,{withCredentials: true});
   }
 }
