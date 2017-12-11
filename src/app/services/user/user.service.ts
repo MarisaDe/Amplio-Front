@@ -38,6 +38,10 @@ export class UserService {
       );
   }
 
+  getPlaylists() {
+    return this.http.get(Config.API_URI + 'user/playlists', {withCredentials: true});
+  }
+
   follow(userId: number) {
     const body = {
       userId: userId

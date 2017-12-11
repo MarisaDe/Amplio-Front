@@ -20,13 +20,8 @@
 
     </div>
 
-    <li [routerLink]="['/playlist']"><a>MJXT </a></li>
-    <li [routerLink]="['/playlist/1']"><a>LATIN</a></li>
-    <li [routerLink]="['/user/1']"><a>Playlist #2 </a></li>
-    <li [routerLink]="['/home']"><a>Playlist #2 </a></li>
-    <li [routerLink]="['/home']"><a>Playlist #2 </a></li>
-    <li [routerLink]="['/home']"><a>Playlist #2 </a></li>
-    <li [routerLink]="['/home']"><a>Playlist #2 </a></li>
+    <li *ngFor = "let playlist of userPlaylists">
+      <a [routerLink]="['/playlist/'+ playlist.id]">{{playlist.title}}</a>
 
 
 

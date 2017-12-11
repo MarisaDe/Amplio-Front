@@ -14,6 +14,7 @@ export class LeftNavComponent implements OnInit {
   currentUser: User;
   private playlistImg = Config.ALBUM_DEFAULT_IMAGE;
   playlist: any = {};
+  userPlaylists: any;
 
   constructor(private userService: UserService,
               private playlistService: PlaylistService) {
@@ -30,6 +31,19 @@ export class LeftNavComponent implements OnInit {
       },
       err => {
         console.error(err.message);
+      }
+    );
+  }
+
+  loadPlaylists() {
+    this.userService.getPlaylists().subscribe(
+      resp => {
+        console.log(resp);
+        this.userPlaylists = Playlist.generatePlaylistList(resp);
+        console.log(this.userPlaylists);
+      },
+      err => {
+        console.error(err);
       }
     );
   }
@@ -50,5 +64,6 @@ export class LeftNavComponent implements OnInit {
   ngOnInit() {
     this.userService.currentUser.subscribe(user => this.currentUser = user);
     console.log(this.playlistImg);
+    this.loadPlaylists();
   }
 }
