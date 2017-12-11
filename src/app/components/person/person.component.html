@@ -1,8 +1,11 @@
 <div class = "bg">
 <div class="container">
-  <div class="row" *ngIf="!currentUser.isPremium">
-    <img src = "https://www.jhsph.edu/sebin/f/d/placeholder-720x180.png" width = 1150px height = 150px>
+  <div class="row sticky" *ngIf="!currentUser.isPremium" id="ad">
+    <button class="close" id = "x" onclick="document.getElementById('ad').style.display='none'">
+      <i class="fa fa-times-circle" aria-hidden="true"></i></button>
+    <img [src] = "adImg" height = 150px>
   </div>
+
 
   <div class="row">
     <table cellspacing="0" cellpadding="0">

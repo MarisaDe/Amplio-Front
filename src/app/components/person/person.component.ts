@@ -5,6 +5,7 @@ import {ActivatedRoute} from '@angular/router';
 import {Config} from '../../common/config';
 import {HttpClient} from '@angular/common/http';
 import {Follower} from '../../models/follower';
+import {AdsService} from '../../services/ads/ads.service';
 
 @Component({
   selector: 'person',
@@ -16,13 +17,14 @@ export class PersonComponent implements OnInit {
   person: User; // TODO Artist
   personId: any;
   isFollowing: boolean;
+  adImg: any;
   name: string;
+  showAd = true;
 
   constructor(private userService: UserService,
               private route: ActivatedRoute,
-              private http: HttpClient) {
+              private adsService: AdsService) {
   }
-
   follow(userToFollow: any) {
     this.currentUser.following.push(userToFollow);
   }
@@ -38,7 +40,7 @@ export class PersonComponent implements OnInit {
       this.personId = params['id'];
       // put this here so it won'to break
       this.person = this.currentUser;
-
+      this.adImg = this.adsService.getRandomAd();
       // User service getUser doesn't return anything
       // this.person = this.userService.getUser(params['id']);
       //

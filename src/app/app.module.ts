@@ -30,6 +30,7 @@ import {LibraryComponent} from "./components/library/library.component";
 import {ArtistsComponent} from "./components/artists/artists.component";
 import {AlbumsComponent} from "./components/albums/albums.component";
 import {LyricsComponent} from "./components/lyrics/lyrics.component";
+import {AdsService} from "./services/ads/ads.service";
 
 
 @NgModule({
@@ -68,7 +69,8 @@ import {LyricsComponent} from "./components/lyrics/lyrics.component";
     AlertService,
     AuthService,
     GuardService,
-    AudioService
+    AudioService,
+    AdsService
   ],
   bootstrap: [AppComponent]
 })
