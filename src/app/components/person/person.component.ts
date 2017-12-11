@@ -26,6 +26,7 @@ export class PersonComponent implements OnInit {
   }
   ngOnInit() {
     this.userService.currentUser.subscribe(user => this.currentUser = user);
+    console.log(this.currentUser);
     // this.userService.person.subscribe(person => this.person = person);
     this.route.params.subscribe(params => {
       // console.log(params);

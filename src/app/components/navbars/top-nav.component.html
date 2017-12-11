@@ -21,7 +21,7 @@
         <a href="" class ="upgrade animated-button green-effect"
            data-toggle="modal" data-target="#upgrade">UPGRADE</a>
       </li>
-      <li><img src = "../../../assets/images/user.png" data-toggle="modal" data-target="#profImg"
+      <li><img [src] = "currentUser.profilePicture" data-toggle="modal" data-target="#profImg"
                class = "prof-img" style="padding: 5px; width:50px"></li>
       <li class = "green"><a routerLink="/user/{{currentUser.id}}">{{currentUser.name}}</a></li>
       <li>
@@ -90,8 +90,8 @@
       <div class="modal-body" align="center">
 
 
-        <img *ngIf="currentUser.profilePicture == null" src="../../assets/images/user.png" width="200" height="200">
-        <img *ngIf="currentUser.profilePicture != null" src="currentUser.profilePicture">
+        <img [src]= "currentUser.profilePicture" width="200" height="200">
+        <!--<img *ngIf="currentUser.profilePicture != null" src="currentUser.profilePicture">-->
 
         <input type="file" class="chooseImg" id="myImage" name="myImage" value="myImage"
                #newImg accept="image/x-png,image/gif,image/jpeg"/><br>

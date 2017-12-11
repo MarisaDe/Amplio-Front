@@ -1,4 +1,5 @@
 import {Follower} from './follower';
+import {Config} from "../common/config";
 
 export class User {
 
@@ -24,6 +25,11 @@ export class User {
       this._isPremium = info.premium;
       this._following = this.generateFollowerList(info.following);
       this._followers = this.generateFollowerList(info.followers);
+      if (info.profilePicture == null) {
+        this._profilePicture = Config.PROFILE_DEFAULT_IMAGE;
+      }else {
+        this._profilePicture = info.profilePicture;
+      }
     }
   }
 
