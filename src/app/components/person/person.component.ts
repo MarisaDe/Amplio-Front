@@ -11,6 +11,7 @@ import {ActivatedRoute} from '@angular/router';
 export class PersonComponent implements OnInit {
   currentUser: User;
   person: User; // TODO Artist
+  personId: any;
 
   constructor(private userService: UserService,
               private route: ActivatedRoute) {
@@ -31,6 +32,7 @@ export class PersonComponent implements OnInit {
     this.route.params.subscribe(params => {
       // console.log(params);
       // console.log(params['id']);
+      this.personId = params['id'];
       this.userService.getUser(params['id']);
     });
   }
