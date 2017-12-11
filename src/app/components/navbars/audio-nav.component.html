@@ -28,6 +28,7 @@
 
       </td>
       <td align="right">
+        <img [src] = "lyricsImg" id="lyrics" routerLink="/lyrics" title="Lyrics"/>
         <img [src] = "queueImg" id="songQueue" routerLink="/queue" title="Queue"/>
         <img [src] = "volImg" (click)="toggleMute(volume.value)" id="volume" title="Mute"/>
         <input type="range" class="volume" #volume value=100 (input) = "changeVolume(volume.value)"/>

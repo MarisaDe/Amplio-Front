@@ -29,5 +29,7 @@ export class Config {
   // TODO Repeat one
   public static readonly REPEAT_ONE_IMAGE = Config.AUDIO_IMAGES + 'repeat-on.svg';
   public static readonly PLAYER_GRANULARITY = 1000000;
+  public static readonly LYRICS_OFF_IMAGE = Config.AUDIO_IMAGES + 'lyrics.svg';
+  public static readonly LYRICS_ON_IMAGE = Config.AUDIO_IMAGES + 'lyrics-on.svg';
 
 }

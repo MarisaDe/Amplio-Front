@@ -22,6 +22,7 @@ export class AudioNavComponent implements OnInit {
   private repeatImg = Config.REPEAT_OFF_IMAGE;
   private volImg = Config.VOLUME_IMAGE;
   private shuffleImg = Config.SHUFFLE_OFF_IMAGE;
+  private lyricsImg = Config.LYRICS_OFF_IMAGE;
   private readonly nextImg = Config.NEXT_IMAGE;
   private readonly prevImg = Config.PREVIOUS_IMAGE;
   private readonly queueImg = Config.QUEUE_IMAGE;
