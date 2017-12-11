@@ -29,6 +29,7 @@ import {AdminloginComponent} from './components/adminlogin/adminlogin.component'
 import {LibraryComponent} from "./components/library/library.component";
 import {ArtistsComponent} from "./components/artists/artists.component";
 import {AlbumsComponent} from "./components/albums/albums.component";
+import {LyricsComponent} from "./components/lyrics/lyrics.component";
 
 
 @NgModule({
@@ -50,7 +51,8 @@ import {AlbumsComponent} from "./components/albums/albums.component";
     AdminloginComponent,
     LibraryComponent,
     ArtistsComponent,
-    AlbumsComponent
+    AlbumsComponent,
+    LyricsComponent
   ],
   imports: [
     BrowserModule,
