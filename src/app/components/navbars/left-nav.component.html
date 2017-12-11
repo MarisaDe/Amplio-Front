@@ -48,10 +48,8 @@
       </div>
 
       <div class="modal-body">
-
-
         <b>Title</b><br>
-        <form class="form-group"(ngSubmit)="f.form.valid && performLogin()" #f="ngForm">
+        <form class="form-group"(ngSubmit)="f.form.valid" #f="ngForm">
           <div class="input-box">
             <input id="title" type="text" class="form-control input_layout" name="userName" placeholder="Untitled" >
                    <!--#title="ngModel" required>-->
@@ -65,7 +63,7 @@
           <tr>
             <td colspan="1" style = "padding:30px; padding-left: 0px">
               Image:<br>
-              <img [src] = "playlistImage" height="200px"><br>
+              <img [src] = "playlistImg" height="200px"><br>
               <!--<button for = "myImage" type="button" class="btn-5 choose">-->
                 <input type="file" class="chooseImg" id="myImage" accept="image/x-png,image/gif,image/jpeg" #img
                 (change) = "updatePic($event)"/>
@@ -78,7 +76,7 @@
               <form class="form-group">
 
                   <textarea id="description" class="form-control" type="text" class="form-control input_layout"
-                            style="width: 338px; height:265px"
+                            style="width: 338px; height:260px"
                             placeholder="Description"></textarea>
               </form>
             </td>

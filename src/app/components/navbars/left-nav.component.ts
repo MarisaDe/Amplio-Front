@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {UserService} from '../../services/user/user.service';
 import {User} from '../../models/user';
-import {Config} from "../../common/config";
+import {Config} from '../../common/config';
 
 @Component({
   selector: 'left-nav',
@@ -10,7 +10,7 @@ import {Config} from "../../common/config";
 })
 export class LeftNavComponent implements OnInit {
   currentUser: User;
-  playlistImg = Config.ALBUM_DEFAULT_IMAGE;
+  private playlistImg = Config.ALBUM_DEFAULT_IMAGE;
 
   constructor(private userService: UserService) {
   }
