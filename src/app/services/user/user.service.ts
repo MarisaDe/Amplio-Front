@@ -25,9 +25,12 @@ export class UserService {
     this.http.get(Config.API_URI + 'user/' + userId)
       .subscribe(
         resp => {
+          console.log(resp);
           const newUser = new User(resp);
           this.personSource.next(newUser);
-          this.router.navigate(['/user', newUser.id]);
+          console.log(newUser);
+          return newUser;
+          // this.router.navigate(['/user', newUser.id]);
         },
         err => {
           console.error(err);
