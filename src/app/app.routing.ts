@@ -12,6 +12,7 @@ import {ArtistComponent} from "./components/artist/artist.component";
 import {AdminloginComponent} from "./components/adminlogin/adminlogin.component";
 import {LibraryComponent} from "./components/library/library.component";
 import {ArtistsComponent} from "./components/artists/artists.component";
+import {AlbumsComponent} from "./components/albums/albums.component";
 
 const appRoutes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -33,6 +34,7 @@ const appRoutes: Routes = [
           {path: 'artist', component: ArtistComponent},
           {path: 'artists', component: ArtistsComponent},
           {path: 'library', component: LibraryComponent},
+          {path: 'albums', component: AlbumsComponent},
         ]
       }
     ]
