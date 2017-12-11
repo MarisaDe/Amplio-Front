@@ -1,0 +1,9 @@
+<!-- For advertisement -->
+<div class="adbar">
+  <div class="row sticky" *ngIf="!currentUser.isPremium" id="ad">
+    <button class="close" id = "x" onclick="document.getElementById('ad').style.display='none'">
+      <i class="fa fa-times-circle" aria-hidden="true"></i></button>
+    <img [src] = "adImg" height = 150px id="space">
+    <div class="ad-spacing"></div>
+  </div>
+</div>

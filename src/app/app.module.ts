@@ -31,6 +31,7 @@ import {ArtistsComponent} from "./components/artists/artists.component";
 import {AlbumsComponent} from "./components/albums/albums.component";
 import {LyricsComponent} from "./components/lyrics/lyrics.component";
 import {AdsService} from "./services/ads/ads.service";
+import {AdComponent} from "./components/ad/ad.component";
 
 
 @NgModule({
@@ -53,7 +54,8 @@ import {AdsService} from "./services/ads/ads.service";
     LibraryComponent,
     ArtistsComponent,
     AlbumsComponent,
-    LyricsComponent
+    LyricsComponent,
+    AdComponent,
   ],
   imports: [
     BrowserModule,

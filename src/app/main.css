@@ -15,6 +15,7 @@ html, body {
   height: 100%;
   width: 100%;
   overflow-y: scroll;
+  margin-bottom: 5%;
 }
 
 .container{
@@ -25,39 +26,6 @@ html, body {
   -webkit-animation: fadein 2s; /* Safari and Chrome */
   -o-animation: fadein 2s; /* Opera */
 }
-@keyframes fadein {
-  from {
-    opacity:0;
-  }
-  to {
-    opacity:1;
-  }
-}
-@-moz-keyframes fadein { /* Firefox */
-  from {
-    opacity:0;
-  }
-  to {
-    opacity:1;
-  }
-}
-@-webkit-keyframes fadein { /* Safari and Chrome */
-  from {
-    opacity:0;
-  }
-  to {
-    opacity:1;
-  }
-}
-@-o-keyframes fadein { /* Opera */
-  from {
-    opacity:0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
 
 .navbar-default {
   width: 100%;
@@ -69,6 +37,9 @@ html, body {
   top:0
 
 }
+
+/************** Link and Text Styling *****************/
+
 .green {
   color: #1fb752;
 }
@@ -138,8 +109,6 @@ html, body {
 }
 
 
-
-
 .header {
   background-color: #222;
   font-size: 16px;
@@ -149,13 +118,12 @@ html, body {
   padding-bottom: 15px;
 }
 
+/************** Scroll bar Styling *****************/
 .scrollbar
 {
   background: #F5F5F5;
   overflow-y: scroll;
 }
-
-
 
 ::-webkit-scrollbar-track
 {
@@ -174,6 +142,8 @@ html, body {
   -webkit-box-shadow: inset 0 0 3px rgba(0,0,0,.3);
   background-color: #595959;
 }
+
+/************** Form icon Styling *****************/
 
 #main_icon
 {
@@ -218,21 +188,8 @@ html, body {
     transition: all .4s ease 0s;
   }
 }
-.grid div {
-  float: left;
-  margin-left:15px;
-  margin-right:15px;
-  margin-bottom:2%;
-}
 
-.grid div img{
-  width: 200px;
-  margin-bottom: 20px;
-
-}
-.cover-art {
-  float:left;
-}
+/******** Album/Artist/Playlist Hover Styling *****************/
 
 .fade
 {
@@ -242,6 +199,28 @@ html, body {
 {
   opacity:0.5;
 }
+
+
+/******** Grid Layout Styling *****************/
+
+.wrapper div img {
+  width: 200px;
+  padding-bottom: 20px;
+}
+.wrapper {
+  float: top;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-gap: 35px;
+}
+
+.overflow {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100px;
+}
+/******** Button Styling *****************/
 
 .expand-effect {
   border: 0 solid ;
@@ -259,18 +238,6 @@ html, body {
   outline-offset: 15px;
   text-shadow: 1px 1px 2px #427388;
 }
-
-.wrapper div img {
-  width: 200px;
-  padding-bottom: 20px;
-}
-.wrapper {
-  float: top;
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  grid-gap: 35px;
-}
-
 .follow {
   margin-left: 20px;
   display: inline-block;
@@ -295,15 +262,7 @@ html, body {
 #body.loaded .fadein {
   opacity: 1;
 }
-
-.overflow {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  max-width: 100px;
-}
-
-<!---->
+/******** Page Transition Styling *****************/
 
 .transition {
   margin-top: 25px;
@@ -345,4 +304,39 @@ html, body {
   to {
     opacity: 1;
   }
+}
+
+/********* Advertisement Styling *****************/
+
+.sticky {
+  position:fixed;
+  /*width: 100%;*/
+  margin-top: -10px;
+  margin-right:20%;
+  z-index: 1;
+  margin-bottom: 5%;
+}
+
+.sticky img {
+  top: 0;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 1200px;
+}
+
+
+#x {
+  position: absolute;
+  /*background: red;*/
+  font-size: 26px;
+  color: white;
+  top: 0px;
+  right: 0px;
+  opacity: 1;
+}
+
+.ad-spacing {
+  margin-top:10%;
+  height: 150px;
 }
