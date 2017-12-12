@@ -6,6 +6,7 @@ import {Config} from '../../common/config';
 import {HttpClient} from '@angular/common/http';
 import {Follower} from '../../models/follower';
 import {AdsService} from '../../services/ads/ads.service';
+import {Playlist} from '../../models/playlist';
 
 @Component({
   selector: 'person',
@@ -20,13 +21,38 @@ export class PersonComponent implements OnInit {
   adImg: any;
   name: string;
   showAd = true;
+  userPlaylists: any;
 
   constructor(private userService: UserService,
               private route: ActivatedRoute,
               private adsService: AdsService) {
   }
-  follow(userToFollow: any) {
-    this.currentUser.following.push(userToFollow);
+  // follow(userToFollow: any) {
+  //   this.currentUser.following.push(userToFollow);
+  // }
+
+  toggleFollow() {
+    this.userService.followUser(this.personId).subscribe(
+      resp => {
+        console.log(resp);
+      },
+      err => {
+        console.error(err.message);
+      }
+    );
+  }
+
+  loadPlaylists() {
+    this.userService.getPlaylists().subscribe(
+      resp => {
+        console.log(resp);
+        this.userPlaylists = Playlist.generatePlaylistList(resp);
+        console.log(this.userPlaylists);
+      },
+      err => {
+        console.error(err);
+      }
+    );
   }
 
   unfollow(userToUnfollow: any) {
@@ -51,5 +77,6 @@ export class PersonComponent implements OnInit {
         }
       );
     });
+    this.loadPlaylists();
   }
 }

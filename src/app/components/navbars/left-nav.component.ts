@@ -69,10 +69,10 @@ export class LeftNavComponent implements OnInit {
     this.userService.currentUser.subscribe(user => this.currentUser = user);
     console.log(this.playlistImg);
     this.loadPlaylists();
-    this.sub = this.route.params.subscribe(params => {
-      const term = params['term'];
-      this.service.get(term).then(result => { console.log(result); });
-    });
+    // this.sub = this.route.params.subscribe(params => {
+    //   const term = params['term'];
+    //   this.service.get(term).then(result => { console.log(result); });
+    // });
 
 
   }

@@ -14,7 +14,7 @@
 
             <div *ngIf="!isFollowing">
             <button type="button" class="follow-user expand-effect"
-          (onclick) = follow()>Follow</button>
+          (onclick) = toggleFollow()>Follow</button>
             </div>
 
             <div *ngIf="isFollowing">
@@ -106,47 +106,47 @@
   <br>
     <div class="row">
       <div class="wrapper">
-        <div>
-          <a href="#"><img src="../../../assets/images/albumExample.png" class = "fade"></a>
-          <p>Fresh Finds</p>
+        <div *ngFor="let playlist of userPlaylists">
+          <a [routerLink]="['/playlist/'+ playlist.id]"><img [src]="playlist.image" class = "fade"></a>
+          <p>{{playlist.title}}</p>
           <p>0 Followers</p>
         </div>
 
-        <div>
-          <a href="#"><img src="../../../assets/images/albumExample.png" class = "fade"></a>
-          <p>My Playlist</p>
-          <p>0 Followers</p>
-        </div>
+        <!--<div>-->
+          <!--<a href="#"><img src="../../../assets/images/albumExample.png" class = "fade"></a>-->
+          <!--<p>My Playlist</p>-->
+          <!--<p>0 Followers</p>-->
+        <!--</div>-->
 
-        <div>
-          <a href="#"><img src="../../../assets/images/albumExample.png" class = "fade"></a>
-          <p>Playlist 3</p>
-          <p>0 Followers</p>
-        </div>
+        <!--<div>-->
+          <!--<a href="#"><img src="../../../assets/images/albumExample.png" class = "fade"></a>-->
+          <!--<p>Playlist 3</p>-->
+          <!--<p>0 Followers</p>-->
+        <!--</div>-->
 
-        <div>
-          <a href="#"><img src="../../../assets/images/albumExample.png" class = "fade"></a>
-          <p>Cool Tunes</p>
-          <p>0 Followers</p>
-        </div>
+        <!--<div>-->
+          <!--<a href="#"><img src="../../../assets/images/albumExample.png" class = "fade"></a>-->
+          <!--<p>Cool Tunes</p>-->
+          <!--<p>0 Followers</p>-->
+        <!--</div>-->
 
-        <div>
-          <a href="#"><img src="../../../assets/images/albumExample.png" class = "fade"></a>
-          <p>Cool Tunes</p>
-          <p>0 Followers</p>
-        </div>
+        <!--<div>-->
+          <!--<a href="#"><img src="../../../assets/images/albumExample.png" class = "fade"></a>-->
+          <!--<p>Cool Tunes</p>-->
+          <!--<p>0 Followers</p>-->
+        <!--</div>-->
 
-        <div>
-          <a href="#"><img src="../../../assets/images/albumExample.png" class = "fade"></a>
-          <p>Cool Tunes</p>
-          <p>0 Followers</p>
-        </div>
+        <!--<div>-->
+          <!--<a href="#"><img src="../../../assets/images/albumExample.png" class = "fade"></a>-->
+          <!--<p>Cool Tunes</p>-->
+          <!--<p>0 Followers</p>-->
+        <!--</div>-->
 
-        <div>
-          <a href="#"><img src="../../../assets/images/albumExample.png" class = "fade"></a>
-          <p>Cool Tunes</p>
-          <p>0 Followers</p>
-        </div>
+        <!--<div>-->
+          <!--<a href="#"><img src="../../../assets/images/albumExample.png" class = "fade"></a>-->
+          <!--<p>Cool Tunes</p>-->
+          <!--<p>0 Followers</p>-->
+        <!--</div>-->
       </div>
       </div>
     <ad></ad>

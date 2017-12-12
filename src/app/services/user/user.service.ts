@@ -3,7 +3,7 @@ import { User } from '../../models/user';
 import {HttpClient} from '@angular/common/http';
 import {Router} from '@angular/router';
 import {BehaviorSubject} from 'rxjs/BehaviorSubject';
-import {Config} from "../../common/config";
+import {Config} from '../../common/config';
 
 @Injectable()
 export class UserService {
@@ -47,6 +47,9 @@ export class UserService {
     return this.http.get(Config.API_URI + 'user/playlists', {withCredentials: true});
   }
 
+  followUser(userId: number) {
+    return this.http.post(Config.API_URI + 'user/follow' + userId, {withCredentials: true });
+  }
   follow(userId: number) {
     const body = {
       userId: userId
