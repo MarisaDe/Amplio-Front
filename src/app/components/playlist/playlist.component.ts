@@ -68,6 +68,17 @@ export class PlaylistComponent implements OnInit {
     this.hideObject = 'none';
 
   }
+  deletePlaylist() {
+    this.playlistService.deletePlaylist(this.playlist.id).subscribe(
+      resp => {
+        console.log(resp);
+        this.router.navigate(['/home']);
+      },
+      err => {
+        console.error(err.message);
+      }
+    );
+  }
   ngOnInit() {
     this.hideObject = 'show';
     this.userService.currentUser.subscribe(user => this.currentUser = user);

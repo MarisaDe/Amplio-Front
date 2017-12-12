@@ -34,8 +34,13 @@ export class UserService {
         },
         err => {
           console.error(err);
+          return;
         }
       );
+  }
+
+  getUser2(userId: number) {
+    return this.http.get(Config.API_URI + 'user/' + userId, {withCredentials: true});
   }
 
   getPlaylists() {

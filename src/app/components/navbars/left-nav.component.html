@@ -14,6 +14,11 @@
       <li>Followed Playlists</li>
     </div>
 
+    <li *ngFor = "let playlist of followedPlaylists">
+      <a [routerLink]="['/playlist/'+ playlist.id]">{{playlist.title}}</a>
+    </li>
+
+
     <div class = "header">
       <li>My Playlists
 

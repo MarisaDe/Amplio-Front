@@ -56,3 +56,25 @@ button.close {
   color:#F5F5F5;
   opacity: 1;
 }
+
+.disclaimer{
+  align:left;
+  margin:3%;
+}
+
+.disclaimer-box {
+  /*background-color: lightgrey;*/
+  border: 2px solid #ff1d2a;
+  padding: 25px;
+  margin: 20px 0px;
+}
+
+.delete-modal {
+  display: inline-block;
+  background-color: #ff1d2a;
+  margin-right:5%;
+  padding: 10px 0;
+  width: 40%;
+  margin-top: 10%;
+  border: 1px solid #ff1d2a;
+}

@@ -14,7 +14,7 @@ import {AdsService} from '../../services/ads/ads.service';
 })
 export class PersonComponent implements OnInit {
   currentUser: User;
-  person: User; // TODO Artist
+  person: any;  // TODO Artist
   personId: any;
   isFollowing: boolean;
   adImg: any;
@@ -39,23 +39,17 @@ export class PersonComponent implements OnInit {
     this.route.params.subscribe(params => {
       this.personId = params['id'];
       // put this here so it won'to break
-      this.person = this.currentUser;
-      this.adImg = this.adsService.getRandomAd();
-      // User service getUser doesn't return anything
-      // this.person = this.userService.getUser(params['id']);
-      //
-      // TODO: Get this to work using UserService instead of having it here
-      // const resp = this.http.get(Config.API_URI + 'user/' + this.personId)
-      // this.person = new User(resp);
-      // this.name = this.person.name;
-      // console.log('THIS PERSON SHOULD BE GOOD OK');
-      // console.log(this.person);
-      // const follower = new Follower(this.person);
-      // if (this.currentUser.following.indexOf(follower) > -1) {
-      //   this.isFollowing = true;
-      // } else {
-      //   this.isFollowing = false;
-      // }
+      // this.person = this.currentUser;
+      this.userService.getUser2(params['id']).subscribe(
+        resp => {
+          console.log('Playlist Page: ' + resp);
+          this.person = new User(resp);
+          console.log(this.person);
+        },
+        err => {
+          console.error(err);
+        }
+      );
     });
   }
 }
