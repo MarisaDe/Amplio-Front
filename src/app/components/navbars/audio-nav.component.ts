@@ -10,7 +10,7 @@ import {Config} from '../../common/config';
   styleUrls: ['./audio-nav.component.css']
 })
 export class AudioNavComponent implements OnInit {
-  private songQueue: Array<Song>;
+  // private songQueue: Array<Song>;
   private song: Song;
   private playing: boolean;
   private shuffle: boolean;
@@ -51,22 +51,17 @@ export class AudioNavComponent implements OnInit {
         bibliography: 'G.O.A.T'
       }
     });
-    this.song.media.addEventListener('timeupdate', () => {
-      this.currentTime = this.song.media.currentTime;
-      this.progress = (this.currentTime / this.song.media.duration) * Config.PLAYER_GRANULARITY;
-    });
-    this.song.media.addEventListener('ended', () => {
-      this.playPauseImg = Config.PLAY_IMAGE;
-    });
+    this.updateSong();
     this.shuffle = false;
   }
 
   ngOnInit() {
-    this.audioService.songQueue.subscribe(songQueue => this.songQueue = songQueue);
+    // this.audioService.songQueue.subscribe(songQueue => this.songQueue = songQueue);
+    this.audioService.currentSong.subscribe(song => this.song = song);
   }
 
   songSeek(value: number) {
-    console.log(value);
+    // console.log(value);
     this.song.media.currentTime = (value / Config.PLAYER_GRANULARITY) * this.song.media.duration;
   }
 
@@ -141,148 +136,41 @@ export class AudioNavComponent implements OnInit {
     }
   }
 
+  updateSong() {
+    this.song.media = <HTMLAudioElement>this.song.media.cloneNode(true);
+    this.song.media.addEventListener('timeupdate', () => {
+      this.currentTime = this.song.media.currentTime;
+      this.progress = (this.currentTime / this.song.media.duration) * Config.PLAYER_GRANULARITY;
+    });
+    this.song.media.addEventListener('ended', () => {
+      switch (this.repeatState) {
+        case Repeat.Off:
+          this.playPauseImg = Config.PLAY_IMAGE;
+          break;
+        case Repeat.All:
+          this.nextSong();
+          break;
+        case Repeat.One:
+          this.song.media.play();
+          break;
+      }
+    });
+    if (this.playing) {
+      this.song.media.play();
+    }
+  }
+
   nextSong() {
-    console.log('TODO: next song');
+    this.song.media.pause();
+    this.audioService.nextSong();
+    this.updateSong();
+    // console.log('TODO: next song');
   }
 
   prevSong() {
-    console.log('TODO: prev song');
+    this.song.media.pause();
+    this.audioService.prevSong();
+    this.updateSong();
+    // console.log('TODO: prev song');
   }
-
-  // playPauseImg = '../../assets/images/audio/play.svg';
-  // volImg = '../../assets/images/audio/volume.svg';
-  // repeatImg = '../../assets/images/audio/repeat.svg';
-  // playing: boolean;
-  // muted: boolean;
-  // duration: any;
-  // loop: boolean;
-  // shuffle: boolean;
-  // player: Howl;
-  // songQueue: Array<Howl>;
-  // songQueueIndex = 0;
-  // timeLeft = 0;
-  // progress: number;
-  //
-  // constructor(private audioService: AudioService) {
-  //
-  // }
-  //
-  // getNext() {
-  //   this.player.stop();
-  //   if (this.songQueueIndex === this.songQueue.length - 1) {
-  //     this.songQueueIndex = 0;
-  //     this.player = this.songQueue[this.songQueueIndex];
-  //   } else {
-  //     this.songQueueIndex += 1;
-  //     this.player = this.songQueue[this.songQueueIndex];
-  //   }
-  //   this.player.play();
-  //   this.playing = true;
-  //   this.playPauseImg = '../../assets/images/audio/pause.svg';
-  // }
-  //
-  // getPrev() {
-  //   this.player.stop();
-  //   if (this.shuffle) {
-  //     this.songQueueIndex = Math.random();
-  //   } else if (this.songQueueIndex === 0) {
-  //     this.songQueueIndex = this.songQueue.length - 1;
-  //     this.player = this.songQueue[this.songQueueIndex];
-  //   } else {
-  //     this.songQueueIndex -= 1;
-  //     this.player = this.songQueue[this.songQueueIndex];
-  //   }
-  //   this.player.play();
-  //   this.playing = true;
-  //   this.playPauseImg = '../../assets/images/audio/pause.svg';
-  // }
-  //
-  // togglePlay() {
-  //   if (this.playing) {
-  //     this.player.pause();
-  //     this.playPauseImg = '../../assets/images/audio/play.svg';
-  //   } else {
-  //     this.player.play();
-  //     this.playPauseImg = '../../assets/images/audio/pause.svg';
-  //   }
-  //   this.playing = !this.playing;
-  // }
-  //
-  // toggleMute() {
-  //   if (this.muted) {
-  //     this.volImg = '../../../assets/images/audio/volume.svg';
-  //   } else {
-  //     this.volImg = '../../../assets/images/audio/mute-on.svg';
-  //   }
-  //   this.player.mute(!this.muted);
-  //   this.muted = !this.muted;
-  // }
-  //
-  // toggleLoop() {
-  //   if (this.loop) {
-  //     this.repeatImg = '../../assets/images/audio/repeat.svg';
-  //   } else {
-  //     this.repeatImg = '../../../assets/images/audio/repeat-on.svg';
-  //   }
-  //   this.player.loop(!this.loop);
-  //   this.loop = !this.loop;
-  // }
-  //
-  // toggleShuffle() {
-  //   this.shuffle = !this.shuffle;
-  // }
-  //
-  // changeVolume(value: number) {
-  //   this.player.volume(value / 100);
-  // }
-  //
-  // changeSeek(value: number) {
-  //   // this.timeLeft = this.player[this.songQueueIndex].duration() * value;
-  //   // this.player.seek(this.timeLeft);
-  //   // console.log(this.timeLeft);
-  //
-  //   // Get the Howl we want to manipulate.
-  //   const sound = this.player[this.songQueueIndex];
-  //
-  //   // Convert the percent into a seek position.
-  //   if (sound.playing()) {
-  //     sound.seek(sound.duration() * value);
-  //   }
-  // }
-  //
-  // step() {
-  //   const sound = this.player[this.songQueueIndex];
-  //   this.progress = Math.round(sound.seek());
-  //   // this.progress = (((seek / song.duration()) * 100) || 0) + '%';
-  //   console.log(this.progress);
-  //   if (this.player.playing()) {
-  //     this.step();
-  //   }
-  // }
-  //
-  // ngOnInit() {
-  //
-  //   // this.audioService.songQueue.subscribe(songQueue => this.songQueue = songQueue);
-  //   this.songQueue = [];
-  //   this.shuffle = false;
-  //   this.playing = false;
-  //   this.muted = false;
-  //   for (let i = 1; i < 7; i++) {
-  //     const song = new Howl({
-  //       src: ['../../../assets/audio/' + i + '.wav'],
-  //       onplay: () => {
-  //         this.duration = (Math.round(song.duration()));
-  //         this.playPauseImg = '../../../assets/images/audio/pause.svg';
-  //         this.step();
-  //
-  //       },
-  //       onend: () => {
-  //         this.playPauseImg = '../../../assets/images/audio/play.svg';
-  //       },
-  //     });
-  //     this.songQueue.push(song);
-  //   }
-  //   this.player = this.songQueue[0];
-  //   console.log(this.songQueue[0]);
-  // }
 }

@@ -11,7 +11,7 @@ export class Playlist {
   private _title: string;
 
   constructor(playlist: any) {
-    console.log(playlist);
+    // console.log(playlist);
     this._id = playlist.playlistId;
     this._description = playlist.description;
     this._image = playlist.image;

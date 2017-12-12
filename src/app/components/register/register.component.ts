@@ -22,7 +22,7 @@ export class RegisterComponent {
     this.newUser.profilePicture = Config.PROFILE_DEFAULT_IMAGE;
     this.authService.register(this.newUser).subscribe(
       resp => {
-        console.log(resp);
+        // console.log(resp);
         this.alertService.success('Success! Welcome to Amplio!', true);
         this.router.navigate(['/login']);
       },
