@@ -35,7 +35,7 @@ export class PersonComponent implements OnInit {
 
   // TODO Unfollow User
   toggleFollow() {
-    if (!isFollowing) {
+    if (!this.isFollowing) {
       this.userService.followUser(this.personId).subscribe(
         resp => {
           console.log(resp);

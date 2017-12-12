@@ -14,6 +14,7 @@ import {LibraryComponent} from "./components/library/library.component";
 import {ArtistsComponent} from "./components/artists/artists.component";
 import {AlbumsComponent} from "./components/albums/albums.component";
 import {LyricsComponent} from "./components/lyrics/lyrics.component";
+import {AlbumComponent} from "./components/album/album.component";
 
 const appRoutes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -30,9 +31,10 @@ const appRoutes: Routes = [
         children: [
           {path: 'home', component: HomeComponent},
           {path: 'playlist/:id', component: PlaylistComponent},
+          {path: 'album/:id', component: AlbumComponent},
           {path: 'user/:id', component: PersonComponent},
+          {path: 'artist/:id', component: ArtistComponent},
           {path: 'queue', component: SongqueueComponent},
-          {path: 'artist', component: ArtistComponent},
           {path: 'artists', component: ArtistsComponent},
           {path: 'library', component: LibraryComponent},
           {path: 'albums', component: AlbumsComponent},

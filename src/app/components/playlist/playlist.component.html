@@ -64,8 +64,10 @@
         <td align="left" class="overflow">{{song.songName}}</td>
         <!--<td class="overflow">{{song.artists[0].name}}</td>-->
         <td class="overflow">
-          {{song.artist.name}}</td>
-        <td class="overflow">{{song.album.title}}</td>
+          <a class ="green" [routerLink]="'/artist/'+ song.artist.id">{{song.artist.name}}</a></td>
+        <td class="overflow">
+          <a class ="green" [routerLink]="'/album/'+ song.album.id"> {{song.album.title}}</a>
+        </td>
         <td>{{getMinSec(song.duration)}}</td>
       </tr>
     </table>

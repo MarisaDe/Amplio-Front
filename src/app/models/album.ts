@@ -12,10 +12,12 @@ export class Album {
     this._id = album.albumId;
     this._title = album.title;
     this._date = new Date(album.date);
-    this._image = Config.ALBUM_IMAGES + album.image;
     this._artist = new Artist(album.artist);
+    this._image = Config.ALBUM_IMAGES + decodeURI(album.image);
   }
-
+  replaceAll(input: string, find: string, replace: string): string {
+    return input.replace(new RegExp(find, 'g'), replace);
+  }
   // static generateArtistList(artists: any): Artist[] {
   //   const artistList: Artist[] = [];
   //   for (const artist of artists) {

@@ -32,6 +32,9 @@ import {AlbumsComponent} from "./components/albums/albums.component";
 import {LyricsComponent} from "./components/lyrics/lyrics.component";
 import {AdsService} from "./services/ads/ads.service";
 import {AdComponent} from "./components/ad/ad.component";
+import {AlbumComponent} from "./components/album/album.component";
+import {AlbumService} from "./services/album/album.service";
+import {SongService} from "./services/song/song.service";
 
 
 @NgModule({
@@ -56,6 +59,7 @@ import {AdComponent} from "./components/ad/ad.component";
     AlbumsComponent,
     LyricsComponent,
     AdComponent,
+    AlbumComponent
   ],
   imports: [
     BrowserModule,
@@ -72,7 +76,9 @@ import {AdComponent} from "./components/ad/ad.component";
     AuthService,
     GuardService,
     AudioService,
-    AdsService
+    AdsService,
+    AlbumService,
+    SongService
   ],
   bootstrap: [AppComponent]
 })

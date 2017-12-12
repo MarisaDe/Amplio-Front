@@ -1,0 +1,79 @@
+#songs tr:hover{
+  background-color:#595959 !important;
+}
+
+.cover{
+  width: 200px;
+  border:1px solid #999999;
+}
+
+.play {
+  display: inline-block;
+  background-color: #1fb752;
+  color: #fff;
+  padding: 10px 0;
+  width: 95px;
+  border: 1px solid rgb(74, 185, 0);
+}
+.play:hover {
+  background-color: #23d95d;
+  color: #ffffff;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+}
+
+.play:active {
+  vertical-align: top;
+  background-color: #2c8723;
+}
+
+.modal.fade {
+  opacity:1;
+}
+
+.table td, .table th{
+  border-color: #595959;
+}
+.table-hover>tbody>tr .play-each {
+  height: 25px;
+  visibility: hidden;
+}
+
+.table-hover>tbody>tr:hover .play-each{
+  visibility: visible
+}
+
+.play-each:hover{
+  transform: scale(1.1);
+}
+
+
+.fade {
+  opacity: 1 !important;
+}
+
+button.close {
+  color:#F5F5F5;
+  opacity: 1;
+}
+
+.disclaimer{
+  align:left;
+  margin:3%;
+}
+
+.disclaimer-box {
+  /*background-color: lightgrey;*/
+  border: 2px solid #ff1d2a;
+  padding: 25px;
+  margin: 20px 0px;
+}
+
+.delete-modal {
+  display: inline-block;
+  background-color: #ff1d2a;
+  padding: 10px 0;
+  width: 40%;
+  margin-top: 10%;
+  border: 1px solid #ff1d2a;
+}

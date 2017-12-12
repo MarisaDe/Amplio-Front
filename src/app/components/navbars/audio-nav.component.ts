@@ -28,6 +28,11 @@ export class AudioNavComponent implements OnInit {
   private readonly queueImg = Config.QUEUE_IMAGE;
 
   constructor(private audioService: AudioService) {
+  }
+
+  ngOnInit() {
+    // this.audioService.songQueue.subscribe(songQueue => this.songQueue = songQueue);
+    this.audioService.currentSong.subscribe(song => this.song = song);
     this.song = new Song({
       songId: 1,
       duration: 180,
@@ -35,7 +40,7 @@ export class AudioNavComponent implements OnInit {
         albumId: 1,
         title: 'Curtain Call',
         date: '06-06-2006',
-        image: 'key.jpg',
+        image: Config.ALBUM_DEFAULT_IMAGE,
         artist: {
           id: 1,
           name: 'Eminem',
@@ -53,11 +58,7 @@ export class AudioNavComponent implements OnInit {
     });
     this.updateSong();
     this.shuffle = false;
-  }
-
-  ngOnInit() {
-    // this.audioService.songQueue.subscribe(songQueue => this.songQueue = songQueue);
-    this.audioService.currentSong.subscribe(song => this.song = song);
+    console.log(this.song);
   }
 
   songSeek(value: number) {

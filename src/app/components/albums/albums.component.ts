@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {User} from '../../models/user';
 import {UserService} from '../../services/user/user.service';
 import {PlaylistService} from '../../services/playlist/playlist.service';
-import {Playlist} from '../../models/playlist';
+import {SongService} from "../../services/song/song.service";
 
 @Component({
   selector: 'albums',
@@ -13,11 +13,10 @@ export class AlbumsComponent implements OnInit {
   currentUser: User;
 
   constructor(private userService: UserService,
-              private playlistService: PlaylistService) {
+              private songService: SongService) {
 
   }
   ngOnInit() {
-    console.log('hello from artists component!');
     this.userService.currentUser.subscribe(user => this.currentUser = user);
 
   }

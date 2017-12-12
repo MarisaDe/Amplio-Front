@@ -1,0 +1,58 @@
+<div class = "bg">
+  <div class="container">
+    <div class="row">
+      <table cellspacing="0" cellpadding="0">
+        <tr>
+          <td colspan="1" style = "padding:30px; padding-left: 0px"><img src ="{{album.image}}" class= "cover"></td>
+          <td rowspan="1">ALBUM<br>
+            <h1><b>{{album.title}}</b></h1><br>
+            Created by: <a routerLink="" class="green">{{album.artist.name}}</a> - {{songList.length}} Songs <br><br>
+            <div></div>
+            <button type="button" class="play expand-effect">Play</button>
+
+            <!-- Current user's songs options -->
+            <button type="button" class="follow expand-effect">
+              Follow</button>
+          </td>
+        </tr>
+      </table>
+
+    </div>
+
+    <!--<div class ="row" *ngIf="song.description">-->
+      <!--<h3>Description</h3><hr>-->
+      <!--{{song.description}}-->
+      <!--<br><br>-->
+    <!--</div>-->
+
+    <br>
+    <div class="row">
+      <div *ngIf="songList.length == 0" align="center">
+        <i><h3>There doesn't seem to be any songs in this song yet.</h3></i>
+      </div>
+
+      <table class="table table-hover table-responsive" id = "songs" *ngIf="songList.length > 0">
+        <th></th>
+        <th></th>
+        <th>Title</th>
+        <th>Artist</th>
+        <th>Album</th>
+        <th>Duration</th>
+
+        <tr *ngFor = "let song of songList">
+          <td width="50px"><img [src] ="playPauseImg" class="grow play-each"
+                                (onclick) = "togglePlay()"></td>
+          <td><i class="fa fa-plus" aria-hidden="true"></i></td>
+          <td align="left" class="overflow">{{song.songName}}</td>
+          <!--<td class="overflow">{{song.artists[0].name}}</td>-->
+          <td class="overflow">
+            {{song.artist.name}}</td>
+          <td class="overflow">
+            <a href="#"> {{album.title}}</a>
+          </td>
+          <td>{{getMinSec(song.duration)}}</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
