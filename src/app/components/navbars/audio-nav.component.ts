@@ -143,7 +143,17 @@ export class AudioNavComponent implements OnInit {
       this.progress = (this.currentTime / this.song.media.duration) * Config.PLAYER_GRANULARITY;
     });
     this.song.media.addEventListener('ended', () => {
-      this.playPauseImg = Config.PLAY_IMAGE;
+      switch (this.repeatState) {
+        case Repeat.Off:
+          this.playPauseImg = Config.PLAY_IMAGE;
+          break;
+        case Repeat.All:
+          this.nextSong();
+          break;
+        case Repeat.One:
+          this.song.media.play();
+          break;
+      }
     });
     if (this.playing) {
       this.song.media.play();
