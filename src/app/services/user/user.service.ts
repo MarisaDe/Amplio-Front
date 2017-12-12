@@ -53,6 +53,15 @@ export class UserService {
     };
     return this.http.post(Config.API_URI + 'user/follow/' + userId, body, {withCredentials: true });
   }
+
+  unfollowUser(userId: number) {
+    const body = {
+      userId: userId
+    };
+    return this.http.post(Config.API_URI + 'user/unfollow/' + userId, body, {withCredentials: true });
+  }
+
+
   follow(userId: number) {
     const body = {
       userId: userId

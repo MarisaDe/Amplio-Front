@@ -38,9 +38,18 @@ export class PersonComponent implements OnInit {
     if (!this.isFollowing) {
       this.userService.followUser(this.personId).subscribe(
         resp => {
-          console.log(resp);
           console.log('User Followed!');
           this.isFollowing = true;
+        },
+        err => {
+          console.error(err.message);
+        }
+      );
+    } else {
+      this.userService.unfollowUser(this.personId).subscribe(
+        resp => {
+          console.log('User Unfollowed!');
+          this.isFollowing = false;
         },
         err => {
           console.error(err.message);
@@ -52,9 +61,7 @@ export class PersonComponent implements OnInit {
   loadPlaylists() {
     this.playlistService.getPlaylists(this.personId).subscribe(
       resp => {
-        console.log(resp);
         this.userPlaylists = Playlist.generatePlaylistList(resp);
-        console.log(this.userPlaylists);
       },
       err => {
         console.error(err);
@@ -65,8 +72,10 @@ export class PersonComponent implements OnInit {
   checkFollowing() {
     if (this.currentUser.following.indexOf(this.person)) {
       this.isFollowing = true;
+      console.log('Already following user');
     } else {
       this.isFollowing = false;
+      console.log('Havent followed user yet');
     }
   }
   unfollow(userToUnfollow: any) {

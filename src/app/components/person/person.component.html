@@ -19,7 +19,8 @@
 
             <div *ngIf="isFollowing">
           <!-- TODO: If following, display this instead-->
-            <button type="button" class="follow-user expand-effect">Unfollow</button>
+            <button type="button" class="follow-user expand-effect"
+                    (click) = toggleFollow()>Unfollow</button>
             </div>
           </div>
         </td>
