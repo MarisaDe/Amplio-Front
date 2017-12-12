@@ -27,7 +27,9 @@
   background-color: #2c8723;
 }
 
-
+.modal.fade {
+  opacity:1;
+}
 
 .table td, .table th{
   border-color: #595959;
@@ -46,3 +48,11 @@
 }
 
 
+.fade {
+  opacity: 1 !important;
+}
+
+button.close {
+  color:#F5F5F5;
+  opacity: 1;
+}

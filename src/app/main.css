@@ -38,6 +38,10 @@ html, body {
 
 }
 
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Barlow Semi Condensed', sans-serif;
+}
+
 /************** Link and Text Styling *****************/
 
 .green {
@@ -111,11 +115,12 @@ html, body {
 
 .header {
   background-color: #222;
-  font-size: 16px;
+  font-size: 18px;
   color: #1fb752;
   padding-left: 15px;
   padding-top: 40px;
   padding-bottom: 15px;
+  font-family: 'Barlow Semi Condensed', sans-serif;
 }
 
 /************** Scroll bar Styling *****************/
@@ -245,10 +250,53 @@ html, body {
   /*color: rgb(87, 216, 0);*/
   padding: 10px 0;
   width: 95px;
-  border:1px solid #4ab900;
+  border: 1px solid #4ab900;
 }
 .follow:active {
   vertical-align: top;
+}
+
+.delete {
+  margin-left: 20px;
+  display: inline-block;
+  background-color: #ff1d2a;
+  color: #fff;
+  padding: 10px 0;
+  width: 95px;
+  border: 1px solid rgb(255, 29, 42);
+  right: 0;
+}
+.delete:hover {
+  background-color: #ff1d2a;
+  color: #ffffff;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+}
+
+.edit {
+  margin-left: 20px;
+  display: inline-block;
+  right: 0;
+  background-color: #222222;
+  /*color: rgb(87, 216, 0);*/
+  padding: 10px 0;
+  width: 95px;
+  border:1px solid #57d800;
+  position: absolute;
+  right: 0;
+}
+.edit:active {
+  vertical-align: top;
+}
+
+.cancel {
+  display: inline-block;
+  background-color: #222222;
+  margin-right:5%;
+  padding: 10px 0;
+  width: 40%;
+  margin-top: 10%;
+  border: 1px solid #4ab900;
 }
 
 .fadein {
@@ -262,6 +310,46 @@ html, body {
 #body.loaded .fadein {
   opacity: 1;
 }
+
+
+.create {
+  display: inline-block;
+  margin-right:5px;
+  background-color: #1fb752;
+  color: #fff;
+  padding: 10px 0;
+  width: 40%;
+  border: 1px solid rgb(74, 185, 0);
+}
+.create:hover {
+  background-color: #23d95d;
+  color: #ffffff;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+}
+
+.choose {
+  display: inline-block;
+  background-color: #222222;
+  /*color: rgb(87, 216, 0);*/
+  padding: 10px 0;
+  width: 100%;
+  margin-top: 10%;
+  border: 1px solid #4ab900;
+  text-align:center;
+  cursor: pointer;
+}
+
+.chooseImg {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+
+
 /******** Page Transition Styling *****************/
 
 .transition {
@@ -306,6 +394,24 @@ html, body {
   }
 }
 
+/********* Modal Styling *****************/
+
+.modal-header{
+  background-color: #222222;
+  color: #1fb752;
+}
+
+.modal-content{
+  background-color: #222222;
+  color: #F5F5F5;
+}
+
+.modal.title{
+  width:100%;
+  margin-top:20px;
+  color: #4ab900;
+
+}
 /********* Advertisement Styling *****************/
 
 .sticky {

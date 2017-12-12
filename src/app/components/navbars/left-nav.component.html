@@ -11,18 +11,22 @@
     <!--</div>-->
 
     <div class = "header">
-      <li>Playlists
+      <li>Followed Playlists</li>
+    </div>
+
+    <div class = "header">
+      <li>My Playlists
 
       <a href="#" class="link">
-        <i class="fa fa-plus-circle fa-lg green" aria-hidden="true" style = "padding-left: 70px"
+        <i class="fa fa-plus-circle fa-lg green" aria-hidden="true" style = "padding-left: 55px"
            data-toggle="modal" data-target="#addPlaylist" id="add-playlist"></i>
       </a>
-
+      </li>
     </div>
 
     <li *ngFor = "let playlist of userPlaylists">
       <a [routerLink]="['/playlist/'+ playlist.id]">{{playlist.title}}</a>
-
+    </li>
 
 
   </ul>

@@ -106,3 +106,9 @@
   color: #fff;
   background: none;
 }
+
+.header-font{
+  margin-left: 15px;
+  font-family: 'Barlow Semi Condensed', sans-serif;
+  font-size: 18px;
+}
