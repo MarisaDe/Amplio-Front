@@ -7,6 +7,7 @@ import {HttpClient} from '@angular/common/http';
 import {Follower} from '../../models/follower';
 import {AdsService} from '../../services/ads/ads.service';
 import {Playlist} from '../../models/playlist';
+import {PlaylistService} from "../../services/playlist/playlist.service";
 
 @Component({
   selector: 'person',
@@ -25,7 +26,8 @@ export class PersonComponent implements OnInit {
 
   constructor(private userService: UserService,
               private route: ActivatedRoute,
-              private adsService: AdsService) {
+              private adsService: AdsService,
+              private playlistService: PlaylistService) {
   }
   // follow(userToFollow: any) {
   //   this.currentUser.following.push(userToFollow);
@@ -48,7 +50,7 @@ export class PersonComponent implements OnInit {
   }
 
   loadPlaylists() {
-    this.userService.getPlaylists().subscribe(
+    this.playlistService.getPlaylists(this.personId).subscribe(
       resp => {
         console.log(resp);
         this.userPlaylists = Playlist.generatePlaylistList(resp);

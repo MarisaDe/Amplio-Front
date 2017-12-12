@@ -27,8 +27,12 @@ export class PlaylistService {
     return this.http.get(Config.API_URI + 'playlist/' + playlistId, {withCredentials: true});
   }
 
+  getPlaylists(userId: number) {
+    return this.http.get(Config.API_URI + 'playlist/user/' + userId, {withCredentials: true});
+  }
+
   createPlaylist(playlist: any): Observable<any> {
-    return this.http.post(Config.API_URI + 'playlist/create', playlist, {withCredentials: true});
+    return this.http.post(Config.API_URI + 'playlist/create/', playlist, {withCredentials: true});
   }
 
   deletePlaylist(playlistId: number): Observable<any> {
