@@ -47,7 +47,11 @@
 
   <br>
   <div class="row">
-    <table class="table table-hover table-responsive" id = "songs" *ngIf="playlist.songs != null">
+    <div *ngIf="playlist.songs.length == 0" align="center">
+      <i><h3>There doesn't seem to be any songs in this playlist yet.</h3></i>
+    </div>
+
+    <table class="table table-hover table-responsive" id = "songs" *ngIf="playlist.songs.length > 0">
       <th></th>
       <th></th>
       <th>Title</th>

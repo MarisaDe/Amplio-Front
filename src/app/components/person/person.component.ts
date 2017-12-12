@@ -31,15 +31,20 @@ export class PersonComponent implements OnInit {
   //   this.currentUser.following.push(userToFollow);
   // }
 
+  // TODO Unfollow User
   toggleFollow() {
-    this.userService.followUser(this.personId).subscribe(
-      resp => {
-        console.log(resp);
-      },
-      err => {
-        console.error(err.message);
-      }
-    );
+    if (!isFollowing) {
+      this.userService.followUser(this.personId).subscribe(
+        resp => {
+          console.log(resp);
+          console.log('User Followed!');
+          this.isFollowing = true;
+        },
+        err => {
+          console.error(err.message);
+        }
+      );
+    }
   }
 
   loadPlaylists() {
@@ -64,8 +69,6 @@ export class PersonComponent implements OnInit {
     // this.userService.person.subscribe(person => this.person = person);
     this.route.params.subscribe(params => {
       this.personId = params['id'];
-      // put this here so it won'to break
-      // this.person = this.currentUser;
       this.userService.getUser2(params['id']).subscribe(
         resp => {
           console.log('Playlist Page: ' + resp);

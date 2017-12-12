@@ -4,8 +4,9 @@
       <li class="sidebar-brand-right green header-font">Following</li>
     </ul>
     <ul class="sidebar-nav-right" id="sidebar-right" *ngFor="let following of currentUser.following">
-      <li><a href = "#"><span> <img [src]="following.image" width="10%" style="padding-left:5px">
-        {{following.name}}</span></a></li>
+      <!-- Following user Id is BROKEN routerlink = undefined-->
+      <li><a [routerLink]="['/user/'+ following.id]"><span> <img [src]="following.profilePicture" width="10%" style="padding-left:5px">
+        {{following.firstName}} {{following.lastName}}</span></a></li>
     </ul>
   </div>
 </div>

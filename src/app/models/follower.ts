@@ -51,4 +51,12 @@ export class Follower {
   set lastName(value: string) {
     this._lastName = value;
   }
+
+  get profilePicture(): any {
+    return this._profilePicture;
+  }
+
+  set profilePicture(value: any) {
+    this._profilePicture = value;
+  }
 }

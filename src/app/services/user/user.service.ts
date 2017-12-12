@@ -48,7 +48,10 @@ export class UserService {
   }
 
   followUser(userId: number) {
-    return this.http.post(Config.API_URI + 'user/follow' + userId, {withCredentials: true });
+    const body = {
+      userId: userId
+    };
+    return this.http.post(Config.API_URI + 'user/follow/' + userId, body, {withCredentials: true });
   }
   follow(userId: number) {
     const body = {
