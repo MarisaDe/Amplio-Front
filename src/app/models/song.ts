@@ -13,7 +13,7 @@ export class Song {
   private _media: HTMLAudioElement;
 
   constructor(song: any) {
-    console.log(song);
+    // console.log(song);
     this._id = song.songId;
     this._album = new Album(song.album);
     this._duration = song.duration;
@@ -22,7 +22,7 @@ export class Song {
     this._songName = song.songName;
     this._artist = new Artist(song.artist);
     if (song.path) {
-      console.log(Config.AUDIO_PATH + song.songId + '.mp3');
+      // console.log(Config.AUDIO_PATH + song.songId + '.mp3');
       this._media = new Audio(Config.AUDIO_PATH + song.songId + '.mp3');
     } else {
       this._media = new Audio(Config.AUDIO_PATH + 'dummy.mp3');
@@ -96,4 +96,9 @@ export class Song {
   get media(): HTMLAudioElement {
     return this._media;
   }
+
+  set media(media: HTMLAudioElement) {
+    this._media = media;
+  }
+
 }

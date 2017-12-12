@@ -31,6 +31,8 @@ export class LeftNavComponent implements OnInit {
     this.playlistService.createPlaylist(this.playlist).subscribe(
       resp => {
         console.log(resp);
+        this.userPlaylists = Playlist.generatePlaylistList(resp);
+        console.log(this.userPlaylists);
       },
       err => {
         console.error(err.message);

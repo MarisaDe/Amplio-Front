@@ -25,12 +25,16 @@ export class LoginComponent implements OnInit {
               private route: ActivatedRoute) { }
 
   performLogin() {
-    console.log('Login was clicked!');
+    // console.log('Login was clicked!');
     this.authService.login(this.attempt).subscribe(
       resp => {
+        // TODO: remove debug
+        // console.log(resp);
         const newUser = new User(resp);
         this.userService.setUser(newUser);
         localStorage.setItem('currentUser', JSON.stringify(newUser));
+        // TODO: remove debug
+        // console.log(newUser);
         this.router.navigate(['/home']);
       },
       err => {

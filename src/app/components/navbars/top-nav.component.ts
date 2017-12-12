@@ -31,7 +31,7 @@ export class TopNavComponent implements OnInit {
     if (this.currentUser != null) {
       name = this.currentUser.name;
     }
-    console.log('FROM TOP: ' + this.currentUser);
+    // console.log('FROM TOP: ' + this.currentUser);
     return name;
   }
 
@@ -41,7 +41,7 @@ export class TopNavComponent implements OnInit {
 
   logout() {
     this.authService.logout();
-    console.log('logout has been clicked. omg wow yay! i cant even');
+    // console.log('logout has been clicked. omg wow yay! i cant even');
   }
   setImg(value: any) {
     console.log('HELLO FROM CHANGE IMG');

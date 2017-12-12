@@ -15,16 +15,16 @@ export class HomeComponent implements OnInit {
 
   constructor(private userService: UserService,
               private playlistService: PlaylistService) {
-    console.log('howdy from the home compenent!');
+    // console.log('howdy from the home compenent!');
 
   }
 
   loadGenrePlaylists() {
     this.playlistService.getGenrePlaylists().subscribe(
       resp => {
-        console.log(resp);
+        // console.log(resp);
         this.playlistService.setGenrePlaylists(Playlist.generatePlaylistList(resp));
-        console.log(this.genrePlaylists);
+        // console.log(this.genrePlaylists);
       },
       err => {
         console.error(err);
@@ -33,7 +33,7 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log('hello from home component!');
+    // console.log('hello from home component!');
     this.userService.currentUser.subscribe(user => this.currentUser = user);
     this.playlistService.genrePlaylist.subscribe(playlist => this.genrePlaylists = playlist);
     this.loadGenrePlaylists();

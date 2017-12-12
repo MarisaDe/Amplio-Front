@@ -8,7 +8,7 @@
           <h1><b>{{playlist.title}}</b></h1><br>
           Created by: <a routerLink="/user/{{playlist.owner.id}}" class="green">{{playlist.owner.name}}</a> - {{playlist.songs.length}} Songs <br><br>
           <div></div>
-          <button type="button" class="play expand-effect">Play</button>
+          <button type="button" class="play expand-effect" (click)="playPlaylist()">Play</button>
 
           <!-- Current user's playlists options -->
           <span *ngIf="playlist.owner.id == currentUser.id">
@@ -21,8 +21,6 @@
 
           <button *ngIf="playlist.owner.id != currentUser.id" type="button" class="follow expand-effect">
             Follow</button>
-
-
         </td>
       </tr>
     </table>

@@ -25,13 +25,17 @@ export class PlaylistComponent implements OnInit {
               private router: Router) {
   }
 
-  playPlaylist(songId: number) {
+  playPlaylist(songId: number = 0) {
     let index = -1;
     let songList = this.playlist.songs;
-    for (const i in songList) {
-      if (songList[i].id === songId) {
-        index = parseInt(i,  10);
+    if (songId) {
+      for (const i in songList) {
+        if (songList[i].id === songId) {
+          index = parseInt(i, 10);
+        }
       }
+    } else {
+      index = 0;
     }
     songList = [...songList.slice(index, songList.length), ...songList.slice(0, index)];
     this.audioService.setQueue(songList);
@@ -84,9 +88,9 @@ export class PlaylistComponent implements OnInit {
     this.userService.currentUser.subscribe(user => this.currentUser = user);
     this.playlistService.getPlaylist(this.route.snapshot.params['id']).subscribe(
       resp => {
-        console.log('Playlist Page: ' + resp);
+        // console.log('Playlist Page: ' + resp);
         this.playlist = new Playlist(resp);
-        console.log(this.playlist);
+        // console.log(this.playlist);
       },
       err => {
         console.error(err);

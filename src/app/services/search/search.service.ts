@@ -15,7 +15,7 @@ export class SearchService {
     this.http.get(Config.API_URI + 'user/search', {params: {query: query}})
       .subscribe(
         resp => {
-          console.log(resp);
+          // console.log(resp);
           console.log('TODO SEARCH');
           this.router.navigate(['/search']);
         },
