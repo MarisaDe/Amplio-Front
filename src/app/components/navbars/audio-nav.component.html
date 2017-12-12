@@ -1,4 +1,4 @@
-<div class="audiobar">
+<div class="audiobar" *ngIf="song != null; else noAudio">
 
   <table cellspacing="0" cellpadding="0">
     <tr>
@@ -36,4 +36,40 @@
     </tr>
   </table>
 </div>
+
+<ng-template #noAudio>
+  <div class="audiobar">
+    <table cellspacing="0" cellpadding="0">
+      <tr>
+        <td colspan="1" style = "padding-left: 10px; padding-top: 5px" width=7.5%>
+        </td>
+        <td valign="top" width = 20%>
+          <div class="song-info">
+            <div class="song-spacing">
+            </div>
+          </div>
+        </td>
+
+        <td colspan="2" align="center">
+          <div class = "controls">
+            <img [src] = "shuffleImg" (click)="toggleShuffle()" id="shuffle" title="Shuffle"/>
+            <img [src] = "prevImg" (click)="prevSong()" id="previous" title="Play Previous Song"/>
+            <img [src] = "playPauseImg" (click)="togglePlay()" class = "grow" id="play-pause"/>
+            <img [src] = "nextImg" (click)="nextSong()" id="next" title="Play Next Song"/>
+            <img [src] = "repeatImg" (click)="toggleRepeat()" id="repeat" title="Repeat"/>
+          </div>
+          <!--<span id="duration">{{getMinSec(song.media.currentTime)}} / {{getMinSec(song.media.duration)}}</span>-->
+          <input type="range" [value]="progress" max=1000000 class="track" #track (input) = "songSeek(track.value)"/>
+
+        </td>
+        <td align="right">
+          <!--<img [src] = "lyricsImg" id="lyrics" routerLink="/lyrics" title="Lyrics"/>-->
+          <!--<img [src] = "queueImg" id="songQueue" routerLink="/queue" title="Queue"/>-->
+          <img [src] = "volImg" (click)="toggleMute(volume.value)" id="volume" title="Mute"/>
+          <input type="range" class="volume" #volume value=100 (input) = "changeVolume(volume.value)"/>
+        </td>
+      </tr>
+    </table>
+  </div>
+</ng-template>
 

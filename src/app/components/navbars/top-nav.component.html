@@ -90,8 +90,8 @@
       <div class="modal-body" align="center">
 
 
-        <img [src]= "currentUser.profilePicture" width="200" height="200">
-        <!--<img *ngIf="currentUser.profilePicture != null" src="currentUser.profilePicture">-->
+        <!--<img [src]= "currentUser.profilePicture" width="200" height="200">-->
+        <img *ngIf="currentUser != null" src="currentUser.profilePicture">
 
         <form method="post" enctype="multipart/form-data">
         <input type="file" class="chooseImg" id="myImage" name="myImage" value="myImage"

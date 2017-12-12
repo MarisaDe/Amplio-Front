@@ -15,7 +15,7 @@ export class LyricsComponent implements OnInit {
 
   ngOnInit() {
     this.userService.currentUser.subscribe(user => this.currentUser = user);
-    this.userService.person.subscribe(person => this.person = person);
+    // this.userService.person.subscribe(person => this.person = person);
   }
 
 }

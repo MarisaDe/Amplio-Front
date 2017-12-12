@@ -15,7 +15,6 @@ import {Config} from '../../common/config';
 export class LoginComponent implements OnInit {
 
   private attempt: any = {};
-  prevUrl: string;
   private readonly logoImg = Config.LOGO_IMAGE;
 
   constructor(private authService: AuthService,
