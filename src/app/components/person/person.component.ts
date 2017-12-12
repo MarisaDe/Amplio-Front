@@ -62,6 +62,13 @@ export class PersonComponent implements OnInit {
     );
   }
 
+  checkFollowing() {
+    if (this.currentUser.following.indexOf(this.person)) {
+      this.isFollowing = true;
+    } else {
+      this.isFollowing = false;
+    }
+  }
   unfollow(userToUnfollow: any) {
     const indexToDel = this.currentUser.following.indexOf(userToUnfollow);
     this.currentUser.following.splice(indexToDel, 1);
@@ -83,5 +90,6 @@ export class PersonComponent implements OnInit {
       );
     });
     this.loadPlaylists();
+    this.checkFollowing();
   }
 }
