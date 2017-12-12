@@ -70,7 +70,7 @@ export class PersonComponent implements OnInit {
   }
 
   checkFollowing() {
-    if (this.currentUser.following.indexOf(this.person)) {
+    if (this.currentUser.following.indexOf(this.person) > -1) {
       this.isFollowing = true;
       console.log('Already following user');
     } else {

@@ -35,6 +35,7 @@ import {AdComponent} from "./components/ad/ad.component";
 import {AlbumComponent} from "./components/album/album.component";
 import {AlbumService} from "./services/album/album.service";
 import {SongService} from "./services/song/song.service";
+import {SearchComponent} from "./components/search/search.component";
 
 
 @NgModule({
@@ -59,7 +60,8 @@ import {SongService} from "./services/song/song.service";
     AlbumsComponent,
     LyricsComponent,
     AdComponent,
-    AlbumComponent
+    AlbumComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,
@@ -78,7 +80,7 @@ import {SongService} from "./services/song/song.service";
     AudioService,
     AdsService,
     AlbumService,
-    SongService
+    SongService,
   ],
   bootstrap: [AppComponent]
 })

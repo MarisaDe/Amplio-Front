@@ -3,6 +3,7 @@ import {User} from '../../models/user';
 import {UserService} from '../../services/user/user.service';
 import {AuthService} from '../../services/auth/auth.service';
 import {Config} from "../../common/config";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'top-nav',
@@ -15,7 +16,9 @@ export class TopNavComponent implements OnInit {
   private readonly ccardImg = Config.CREDIT_CARDS_IMAGE;
   private monthYear: Array <number>;
 
-  constructor(private userService: UserService, private authService: AuthService) {
+  constructor(private userService: UserService,
+              private authService: AuthService,
+              private route: Router) {
   }
 
   ngOnInit() {
@@ -26,19 +29,17 @@ export class TopNavComponent implements OnInit {
     }
   }
 
-  getName(): string {
-    let name = null;
-    if (this.currentUser != null) {
-      name = this.currentUser.name;
-    }
-    // console.log('FROM TOP: ' + this.currentUser);
-    return name;
+  enterSearch(value: any) {
+    this.userService.search(value).subscribe(
+      resp => {
+        console.log(resp);
+        this.route.navigate(['/search']);
+      },
+      err => {
+        console.error(err.message);
+      }
+    );
   }
-
-  getUserPage() {
-    this.userService.getUser(this.currentUser.id);
-  }
-
   logout() {
     this.authService.logout();
     // console.log('logout has been clicked. omg wow yay! i cant even');

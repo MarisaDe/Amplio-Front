@@ -12,6 +12,7 @@ export class User {
   private _followers: Follower[];
   private _isPremium: boolean;
   private _profilePicture: any;
+  private _songQueue: any;
 
   constructor (info: any) {
     if (typeof info === 'string') {
@@ -30,6 +31,7 @@ export class User {
       }else {
         this._profilePicture = info.profilePicture;
       }
+      this._songQueue = info.songQueue;
     }
   }
 

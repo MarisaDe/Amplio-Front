@@ -29,7 +29,6 @@ export class UserService {
           const newUser = new User(resp);
           this.personSource.next(newUser);
           console.log(newUser);
-          return newUser;
           // this.router.navigate(['/user', newUser.id]);
         },
         err => {
@@ -59,6 +58,10 @@ export class UserService {
       userId: userId
     };
     return this.http.post(Config.API_URI + 'user/unfollow/' + userId, body, {withCredentials: true });
+  }
+
+  search(query: string) {
+    return this.http.get(Config.API_URI + 'user/search/' + query,{withCredentials: true });
   }
 
 

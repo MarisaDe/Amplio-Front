@@ -16,6 +16,7 @@ export class PlaylistComponent implements OnInit {
   currentUser: User;
   playlist: Playlist;
   hideObject: string;
+  deleted = false;
   private playPauseImg = Config.PLAY_IMAGE;
 
   constructor(private userService: UserService,
@@ -77,6 +78,7 @@ export class PlaylistComponent implements OnInit {
       resp => {
         console.log(resp);
         this.router.navigate(['/home']);
+        this.deleted = true;
       },
       err => {
         console.error(err.message);
