@@ -29,16 +29,8 @@ export class TopNavComponent implements OnInit {
     }
   }
 
-  enterSearch(value: any) {
-    this.userService.search(value).subscribe(
-      resp => {
-        console.log(resp);
-        this.route.navigate(['/search']);
-      },
-      err => {
-        console.error(err.message);
-      }
-    );
+  enterSearch(value: string) {
+    this.route.navigate(['/search/' + value]);
   }
   logout() {
     this.authService.logout();

@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, Type} from '@angular/core';
 import {User} from '../../models/user';
 import {UserService} from '../../services/user/user.service';
 import {Playlist} from '../../models/playlist';
@@ -6,6 +6,7 @@ import {PlaylistService} from '../../services/playlist/playlist.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {AudioService} from '../../services/audio/audio.service';
 import {Config} from '../../common/config';
+import {isType} from '@angular/core/src/type';
 
 @Component({
   selector: 'search',
@@ -14,6 +15,9 @@ import {Config} from '../../common/config';
 })
 export class SearchComponent implements OnInit {
   currentUser: User;
+  query: string;
+  results: any;
+  response: any;
 
   constructor(private userService: UserService,
               private playlistService: PlaylistService,
@@ -22,7 +26,30 @@ export class SearchComponent implements OnInit {
               private router: Router) {
   }
 
-  ngOnInit() {
+  getSearchResults() {
+    this.userService.search(this.query).subscribe(
+      resp => {
+        console.log(resp);
+        this.response = resp;
+        this.results = [];
+        for (const result of this.response) {
+          const resultElement = new User(result);
+          this.results.push(resultElement);
+        }
+      });
+  }
 
+  isUser(val: any) {
+    if (val instanceof User) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+  ngOnInit() {
+    this.route.params.subscribe(params => {
+      this.query = params['id'];
+    });
+    this.getSearchResults();
   }
 }

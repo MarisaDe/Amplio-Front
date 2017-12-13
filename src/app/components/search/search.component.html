@@ -1,9 +1,27 @@
 <div class = "bg">
   <div class="container">
     <div class="row">
-      <h1>Search Results</h1>
+      <h1>Search Results - {{query}}</h1>
       <hr>
       <br>
+
+      <div *ngIf = "results.length > 0">
+        {{results.length}} results found<br><br>
+
+        <h1>Users</h1>
+        <hr>
+        <div class="row">
+          <div class="wrapper">
+            <div *ngFor = "let result of results">
+              <div *ngIf ="isUser(result)">
+                <div>
+                  <a [routerLink]="'/user/'+ result.id"><img [src]="result.profilePicture" class = "fade"></a>
+                  <p align="center">Name: {{result.name}}</p>
+                  <p align="center">Username: {{result.userName}}</p>
+                </div>
+              </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>

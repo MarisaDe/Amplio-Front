@@ -6,6 +6,7 @@ import {PlaylistService} from '../../services/playlist/playlist.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {AudioService} from '../../services/audio/audio.service';
 import {Config} from '../../common/config';
+import {Song} from "../../models/song";
 
 @Component({
   selector: 'songqueue',
@@ -14,6 +15,7 @@ import {Config} from '../../common/config';
 })
 export class SongqueueComponent implements OnInit {
   currentUser: User;
+  private songQueue: Array<Song>;
 
   constructor(private userService: UserService,
               private playlistService: PlaylistService,
@@ -23,6 +25,7 @@ export class SongqueueComponent implements OnInit {
   }
 
   ngOnInit() {
-
+    this.audioService.songQueue.subscribe(songQueue => this.songQueue = songQueue);
+    console.log(this.songQueue);
   }
 }

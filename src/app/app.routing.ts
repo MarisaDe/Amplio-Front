@@ -40,7 +40,7 @@ const appRoutes: Routes = [
           {path: 'library', component: LibraryComponent},
           {path: 'albums', component: AlbumsComponent},
           {path: 'lyrics', component: LyricsComponent},
-          {path: 'search', component: SearchComponent},
+          {path: 'search/:id', component: SearchComponent},
         ]
       }
     ]

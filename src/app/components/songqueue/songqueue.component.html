@@ -42,18 +42,18 @@
           <th>Album</th>
           <th>Duration</th>
 
-          <tr>
+          <tr *ngFor="let song of songQueue">
             <td width="50px"><img [src] ="playPauseImg" class="grow play-each"></td>
             <td><i class="fa fa-plus" aria-hidden="true"></i></td>
-            <!--<td align="left" class="overflow">{{song.songName}}</td>-->
-            <td class="overflow">Title</td>
-            <td class="overflow">Artist Name</td>
-            <!--<td class="overflow">-->
-            <!--{{song.artist.name}}</td>-->
-            <!--<td class="overflow">{{song.album.title}}</td>-->
-            <td class="overflow">Album</td>
-            <td class="overflow">Time</td>
-            <!--<td>{{getMinSec(song.duration)}}</td>-->
+            <td align="left" class="overflow">{{song.songName}}</td>
+            <!--<td class="overflow">Title</td>-->
+            <!--<td class="overflow">Artist Name</td>-->
+            <td class="overflow">
+            {{song.artist.name}}</td>
+            <td class="overflow">{{song.album.title}}</td>
+            <!--<td class="overflow">Album</td>-->
+            <!--<td class="overflow">Time</td>-->
+            <td>{{getMinSec(song.duration)}}</td>
           </tr>
         </table>
       </div>
