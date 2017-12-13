@@ -12,9 +12,9 @@ import {Config} from '../../common/config';
 export class AudioNavComponent implements OnInit {
   // private songQueue: Array<Song>;
   private song: Song;
-  private playing: boolean;
-  private shuffle: boolean;
-  private mute: boolean;
+  private playing = false;
+  private shuffle = false;
+  private mute = false;
   private currentTime: number;
   private progress = 0;
   private progressMinSec = '';

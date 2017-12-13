@@ -39,11 +39,11 @@ export class Song {
   // }
 
   get id(): number {
-    return this.id;
+    return this._id;
   }
 
   set id(value: number) {
-    this.id = value;
+    this._id = value;
   }
 
   get album(): Album {

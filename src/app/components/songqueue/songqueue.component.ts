@@ -5,8 +5,8 @@ import {Playlist} from '../../models/playlist';
 import {PlaylistService} from '../../services/playlist/playlist.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {AudioService} from '../../services/audio/audio.service';
+import {Song} from '../../models/song';
 import {Config} from '../../common/config';
-import {Song} from "../../models/song";
 
 @Component({
   selector: 'songqueue',
@@ -16,6 +16,8 @@ import {Song} from "../../models/song";
 export class SongqueueComponent implements OnInit {
   currentUser: User;
   private songQueue: Array<Song>;
+  private song: Song;
+  private playPauseImg = Config.PLAY_IMAGE;
 
   constructor(private userService: UserService,
               private playlistService: PlaylistService,
@@ -24,8 +26,26 @@ export class SongqueueComponent implements OnInit {
               private router: Router) {
   }
 
+  getMinSec(value: number): string {
+    const min = Math.floor(value / 60);
+    const sec = Math.round(value % 60);
+    let minstr = String(min);
+    let secstr = String(sec);
+    if (min < 10) {
+      minstr = '0' + minstr;
+    }
+    if (sec < 10) {
+      secstr = '0' + secstr;
+    }
+    return minstr + ':' + secstr;
+  }
+
   ngOnInit() {
     this.audioService.songQueue.subscribe(songQueue => this.songQueue = songQueue);
+    this.audioService.currentSong.subscribe(song => {
+      this.song = song;
+      this.songQueue = this.audioService.getRemainingQueue();
+    });
     console.log(this.songQueue);
   }
 }

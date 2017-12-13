@@ -45,4 +45,12 @@ export class AudioService {
     }
     this.songSource.next(queue[this.currentIndex]);
   }
+
+  getRemainingQueue(): Song[] {
+    if (this.currentIndex === this.queueSource.getValue().length - 1) {
+      return this.queueSource.getValue();
+    } else {
+      return this.queueSource.getValue().slice(this.currentIndex + 1);
+    }
+  }
 }

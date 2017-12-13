@@ -44,6 +44,7 @@ export class PlaylistComponent implements OnInit {
   // }
 
   playPlaylist(songId: number = 0) {
+    console.log(songId);
     this.playlistService.playSongList(this.playlist.songs, songId);
   }
   navigate() {
