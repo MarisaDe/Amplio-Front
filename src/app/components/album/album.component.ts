@@ -9,6 +9,7 @@ import {Playlist} from '../../models/playlist';
 import {Song} from '../../models/song';
 import {AudioService} from '../../services/audio/audio.service';
 import {PlaylistService} from '../../services/playlist/playlist.service';
+import {Config} from "../../common/config";
 
 @Component({
   selector: 'album',
@@ -21,6 +22,7 @@ export class AlbumComponent implements OnInit {
   album: Album;
   songList: Song[] = [];
   playlist: Playlist;
+  readonly playPauseImg = Config.PLAY_IMAGE;
 
   constructor(private userService: UserService,
               private songService: SongService,

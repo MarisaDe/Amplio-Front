@@ -27,7 +27,6 @@ export class AudioNavComponent implements OnInit {
   private readonly nextImg = Config.NEXT_IMAGE;
   private readonly prevImg = Config.PREVIOUS_IMAGE;
   private readonly queueImg = Config.QUEUE_IMAGE;
-  private song2: Song;
 
   constructor(private audioService: AudioService) {
   }
@@ -68,6 +67,7 @@ export class AudioNavComponent implements OnInit {
           }
         });
         this.song.media.play();
+        this.playPauseImg = Config.PAUSE_IMAGE;
       }
     });
     // this.song = new Song({

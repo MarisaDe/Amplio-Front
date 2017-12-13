@@ -15,8 +15,9 @@ export class Album {
     this._artist = new Artist(album.artist);
     if (album.image == null) {
       this._image = Config.ALBUM_DEFAULT_IMAGE;
+    } else {
+      this._image = Config.ALBUM_IMAGES + album.title + '.jpg';
     }
-    this._image = Config.ALBUM_IMAGES + album.image;
   }
 
   static generateAlbumList(albums: any): Album[] {
