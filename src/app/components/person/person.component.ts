@@ -39,9 +39,7 @@ export class PersonComponent implements OnInit {
       this.userService.followUser(this.personId).subscribe(
         resp => {
           console.log('User Followed!');
-          const userfollow = new Follower(this.person);
-          console.log(userfollow);
-          this.currentUser.following.push(userfollow);
+          this.currentUser.following = User.generateFollowerList(resp);
           this.isFollowing = true;
         },
         err => {
@@ -52,10 +50,8 @@ export class PersonComponent implements OnInit {
       this.userService.unfollowUser(this.personId).subscribe(
         resp => {
           console.log('User Unfollowed!');
+          this.currentUser.following = User.generateFollowerList(resp);
           this.isFollowing = false;
-          const checkFollower = new Follower(this.person);
-          const index = this.currentUser.following.indexOf(checkFollower);
-          this.currentUser.following.splice(index, 1);
         },
         err => {
           console.error(err.message);
@@ -93,8 +89,7 @@ export class PersonComponent implements OnInit {
     this.userService.currentUser.subscribe(user => this.currentUser = user);
     // this.userService.person.subscribe(person => this.person = person);
     this.route.params.subscribe(params => {
-      this.personId = params['id'];
-      this.userService.getUser2(params['id']).subscribe(
+      this.userService.getUser(params['id']).subscribe(
         resp => {
           console.log('Playlist Page: ' + resp);
           this.person = new User(resp);

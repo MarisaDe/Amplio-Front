@@ -25,8 +25,8 @@ export class User {
       this._lastName = info.lastName;
       this._email = info.email;
       this._isPremium = info.premium;
-      this._following = this.generateFollowerList(info.following);
-      this._followers = this.generateFollowerList(info.followers);
+      this._following = User.generateFollowerList(info.following);
+      this._followers = User.generateFollowerList(info.followers);
       if (info.profilePicture == null) {
         this._profilePicture = Config.PROFILE_DEFAULT_IMAGE;
       }else {
@@ -36,7 +36,7 @@ export class User {
     }
   }
 
-  generateFollowerList(followers: any): Follower[] {
+  public static generateFollowerList(followers: any): Follower[] {
     const followerList: Follower[] = Array<Follower>();
     for (const follower of followers) {
       followerList.push(new Follower(follower));

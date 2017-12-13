@@ -20,25 +20,7 @@ export class UserService {
     this.userSource.next(user);
   }
 
-  // TODO : update to not do any router logic here.
   getUser(userId: number) {
-    this.http.get(Config.API_URI + 'user/' + userId)
-      .subscribe(
-        resp => {
-          console.log(resp);
-          const newUser = new User(resp);
-          this.personSource.next(newUser);
-          console.log(newUser);
-          // this.router.navigate(['/user', newUser.id]);
-        },
-        err => {
-          console.error(err);
-          return;
-        }
-      );
-  }
-
-  getUser2(userId: number) {
     return this.http.get(Config.API_URI + 'user/' + userId, {withCredentials: true});
   }
 
