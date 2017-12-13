@@ -16,8 +16,9 @@ import {isType} from '@angular/core/src/type';
 export class SearchComponent implements OnInit {
   currentUser: User;
   query: string;
-  results: any;
+  userResults: any;
   response: any;
+  resultNum = 0;
 
   constructor(private userService: UserService,
               private playlistService: PlaylistService,
@@ -31,21 +32,22 @@ export class SearchComponent implements OnInit {
       resp => {
         console.log(resp);
         this.response = resp;
-        this.results = [];
+        this.userResults = [];
         for (const result of this.response) {
           const resultElement = new User(result);
-          this.results.push(resultElement);
+          this.userResults.push(resultElement);
+          this.resultNum += 1;
         }
       });
   }
 
-  isUser(val: any) {
-    if (val instanceof User) {
-      return true;
-    } else {
-      return false;
-    }
-  }
+  // isUser(val: any) {
+  //   if (val instanceof User) {
+  //     return true;
+  //   } else {
+  //     return false;
+  //   }
+  // }
   ngOnInit() {
     this.route.params.subscribe(params => {
       this.query = params['id'];
