@@ -20,6 +20,7 @@ export class SearchComponent implements OnInit {
   query: string;
   userResults: User[];
   artistResults: Artist[];
+  playlistResults: Playlist[];
   response: any;
   resultNum = 0;
 
@@ -59,6 +60,19 @@ export class SearchComponent implements OnInit {
       });
   }
 
+  getPlaylistSearchResults() {
+    this.playlistService.search(this.query).subscribe(
+      resp => {
+        console.log(resp);
+        this.response = resp;
+        this.playlistResults = [];
+        for (const result of this.response) {
+          const resultElement = new Playlist(result);
+          this.playlistResults.push(resultElement);
+          this.resultNum += 1;
+        }
+      });
+  }
   // isUser(val: any) {
   //   if (val instanceof User) {
   //     return true;
@@ -72,5 +86,6 @@ export class SearchComponent implements OnInit {
     });
     this.getUserSearchResults();
     this.getArtistSearchResults();
+    this.getPlaylistSearchResults();
   }
 }

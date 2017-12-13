@@ -36,6 +36,9 @@ export class PlaylistService {
     this.genrePlaylistSource.next(playlists);
   }
 
+  search(query: string) {
+    return this.http.get(Config.API_URI + 'playlist/search/' + query,{withCredentials: true });
+  }
   getGenrePlaylists() {
     // return this.http.get(Config.API_URI + 'playists/genres');
     return this.http.get(Config.API_URI + 'playlist/generated', {withCredentials: true});
