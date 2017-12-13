@@ -1,5 +1,6 @@
 import {Song} from './song';
 import {Album} from './album';
+import {Config} from "../common/config";
 
 export class Artist {
   private _id: number;
@@ -8,6 +9,7 @@ export class Artist {
   // private _concerts: Concert[];
   private _uploadRequests: Song[];
   private _deleteRequests: Song[];
+  private _image: string;
 
   constructor(artist: any) {
     if (artist != null) {
@@ -22,7 +24,20 @@ export class Artist {
       this._biblio = artist.bibliography;
       this._uploadRequests = artist.uploadRequests;
       this._deleteRequests = artist.deleteRequests;
+      if (artist.image == null) {
+        this._image = Config.PROFILE_DEFAULT_IMAGE;
+      }else {
+        this._image = Config.ARTIST_IMAGES + artist.image + '.jpg';
+      }
     }
+  }
+
+  get image(): string {
+    return this._image;
+  }
+
+  set image(value: string) {
+    this._image = value;
   }
 
   get id(): number {

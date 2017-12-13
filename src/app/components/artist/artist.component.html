@@ -3,7 +3,8 @@
     <div class="row">
       <table cellspacing="0" cellpadding="0">
         <tr>
-          <td colspan="1" style = "padding:30px; padding-left: 0px"><img src = "../../../assets/images/profExample.png" width = 200px></td>
+          <td colspan="1" style = "padding:30px; padding-left: 0px">
+            <img [src] = "artist.image" style = "border-radius: 50%; width: 200px; height:200px;"></td>
           <td rowspan="1">ARTIST<br>
             <h1>{{artist.name}}</h1><br>
             <div></div>
@@ -20,22 +21,12 @@
       <div class= "linkInfo">
         <ul align>
           <li class = "current"> <a href="" class = "active">OVERVIEW</a></li>
-          <li> <a href="#">RECENTLY PLAYED ARTISTS</a></li>
-          <li> <a href="#">PUBLIC PLAYLISTS</a></li>
+          <li> <a href="#">ALBUMS</a></li>
           <li> <a href="#">FOLLOWING (0)</a></li>
         </ul>
       </div>
     </div>
     <br>
-    <div class="row">
-      <table>
-        <tr>
-          <td><h3>Albums</h3></td>
-          <!--<td align="right" class = seeAll><a href = "#">See All</a></td>-->
-        </tr>
-      </table>
-      <hr>
-    </div>
     <!-- Recently Played Artists-->
 
     <div class="row">
@@ -51,48 +42,11 @@
     <br>
     <div class="row">
       <div class="wrapper">
-        <div>
-          <a href="#"><img src="../../../assets/images/albumExample.png" class = "fade"></a>
-          <p>Fresh Finds</p>
+        <div *ngFor="let album of albums">
+          <a [routerLink]="['/album/'+ album.id]"><img [src]="album.image" class = "fade"></a>
+          <p>{{album.title}}</p>
           <p>0 Followers</p>
         </div>
-
-        <div>
-          <a href="#"><img src="../../../assets/images/albumExample.png" class = "fade"></a>
-          <p>My Playlist</p>
-          <p>0 Followers</p>
-        </div>
-
-        <div>
-          <a href="#"><img src="../../../assets/images/albumExample.png" class = "fade"></a>
-          <p>Playlist 3</p>
-          <p>0 Followers</p>
-        </div>
-
-        <div>
-          <a href="#"><img src="../../../assets/images/albumExample.png" class = "fade"></a>
-          <p>Cool Tunes</p>
-          <p>0 Followers</p>
-        </div>
-
-        <div>
-          <a href="#"><img src="../../../assets/images/albumExample.png" class = "fade"></a>
-          <p>Cool Tunes</p>
-          <p>0 Followers</p>
-        </div>
-
-        <div>
-          <a href="#"><img src="../../../assets/images/albumExample.png" class = "fade"></a>
-          <p>Cool Tunes</p>
-          <p>0 Followers</p>
-        </div>
-
-        <div>
-          <a href="#"><img src="../../../assets/images/albumExample.png" class = "fade"></a>
-          <p>Cool Tunes</p>
-          <p>0 Followers</p>
-        </div>
-
       </div>
     </div>
   </div>

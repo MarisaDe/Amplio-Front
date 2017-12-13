@@ -19,10 +19,17 @@ export class Album {
     this._image = Config.ALBUM_IMAGES + album.image;
   }
 
+  static generateAlbumList(albums: any): Album[] {
+    const AlbumList: Album[] = [];
+    for (const album of albums) {
+      AlbumList.push(new Album(album));
+    }
+    return AlbumList;
+  }
+
   replaceAll(input: string, find: string, replace: string): string {
     return input.replace(new RegExp(find, 'g'), replace);
   }
-
   // static generateArtistList(artists: any): Artist[] {
   //   const artistList: Artist[] = [];
   //   for (const artist of artists) {

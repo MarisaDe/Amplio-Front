@@ -15,6 +15,9 @@ export class AlbumService {
   getAlbum(albumId: number) {
     return this.http.get(Config.API_URI + 'album/' + albumId, {withCredentials: true});
   }
+  getAlbumByArtist(artistId: number){
+    return this.http.get(Config.API_URI + 'album/artist/' + artistId,{withCredentials: true});
+  }
 
 
 }
