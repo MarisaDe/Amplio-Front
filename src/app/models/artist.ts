@@ -60,7 +60,7 @@ export class Artist {
     return this._biblio;
   }
 
-  set bilbio(value: number) {
+  set biblio(value: number) {
     this._biblio = value;
   }
 
