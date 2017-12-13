@@ -33,29 +33,29 @@ export class AudioNavComponent implements OnInit {
   ngOnInit() {
     // this.audioService.songQueue.subscribe(songQueue => this.songQueue = songQueue);
     this.audioService.currentSong.subscribe(song => this.song = song);
-    this.song = new Song({
-      id: 1,
-      duration: 180,
-      album: {
-        id: 1,
-        title: 'Curtain Call',
-        date: '06-06-2006',
-        image: Config.ALBUM_DEFAULT_IMAGE,
-        artist: {
-          id: 1,
-          name: 'Eminem',
-          bibliography: 'G.O.A.T'
-        },
-      },
-      lyrics: 'It\'s like I\'m in the dirt...',
-      numPlays: 1,
-      songName: 'Lose Yourself',
-      artist: {
-        id: 1,
-        name: 'Eminem',
-        bibliography: 'G.O.A.T'
-      }
-    });
+    // this.song = new Song({
+    //   id: 1,
+    //   duration: 180,
+    //   album: {
+    //     id: 1,
+    //     title: 'Curtain Call',
+    //     date: '06-06-2006',
+    //     image: Config.ALBUM_DEFAULT_IMAGE,
+    //     artist: {
+    //       id: 1,
+    //       name: 'Eminem',
+    //       bibliography: 'G.O.A.T'
+    //     },
+    //   },
+    //   lyrics: 'It\'s like I\'m in the dirt...',
+    //   numPlays: 1,
+    //   songName: 'Lose Yourself',
+    //   artist: {
+    //     id: 1,
+    //     name: 'Eminem',
+    //     bibliography: 'G.O.A.T'
+    //   }
+    // });
     this.updateSong();
     this.shuffle = false;
     console.log(this.song);

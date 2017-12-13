@@ -9,7 +9,7 @@
           <h1>{{person.name}}</h1><br>
           <div></div>
 
-          <div *ngIf="currentUser.id != personId">
+          <div *ngIf="currentUser.id != person.id">
           <!-- TODO: If id not in {{currentUser.following}}, display this-->
 
             <div *ngIf="!isFollowing">

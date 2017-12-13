@@ -1,0 +1,11 @@
+.follow-user {
+  display: inline-block;
+  background-color: #222222;
+  padding: 10px 10px;
+  width: 100px;
+  border:1px solid #4ab900;
+}
+.follow-user:active {
+  vertical-align: top;
+}
+

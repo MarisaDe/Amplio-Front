@@ -130,6 +130,14 @@ table{
   table-layout: fixed;
   width: 100%;
 }
+
+.overflow {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 400px;
+}
+
 /* ************************************************ */
 
 

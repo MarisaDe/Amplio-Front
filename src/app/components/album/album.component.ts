@@ -61,6 +61,7 @@ export class AlbumComponent implements OnInit {
   }
 
   playAlbum(songId: number = 0) {
+    console.log(songId);
     this.playlistService.playPlaylist(this.playlist, songId);
   }
 
