@@ -80,10 +80,12 @@ export class PersonComponent implements OnInit {
       }
     }
   }
+
   unfollow(userToUnfollow: any) {
     const indexToDel = this.currentUser.following.indexOf(userToUnfollow);
     this.currentUser.following.splice(indexToDel, 1);
   }
+
   ngOnInit() {
     this.userService.currentUser.subscribe(user => this.currentUser = user);
     // this.userService.person.subscribe(person => this.person = person);
@@ -93,13 +95,13 @@ export class PersonComponent implements OnInit {
           console.log('Playlist Page: ' + resp);
           this.person = new User(resp);
           console.log(this.person);
+          this.loadPlaylists();
+          this.checkFollowing();
         },
         err => {
           console.error(err);
         }
       );
     });
-    this.loadPlaylists();
-    this.checkFollowing();
   }
 }
