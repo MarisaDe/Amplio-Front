@@ -7,6 +7,8 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {AudioService} from '../../services/audio/audio.service';
 import {Config} from '../../common/config';
 import {isType} from '@angular/core/src/type';
+import {ArtistService} from "../../services/artist/artist.service";
+import {Artist} from "../../models/artist";
 
 @Component({
   selector: 'search',
@@ -16,7 +18,8 @@ import {isType} from '@angular/core/src/type';
 export class SearchComponent implements OnInit {
   currentUser: User;
   query: string;
-  userResults: any;
+  userResults: User[];
+  artistResults: Artist[];
   response: any;
   resultNum = 0;
 
@@ -24,10 +27,11 @@ export class SearchComponent implements OnInit {
               private playlistService: PlaylistService,
               private audioService: AudioService,
               private route: ActivatedRoute,
-              private router: Router) {
+              private router: Router,
+              private artistService: ArtistService) {
   }
 
-  getSearchResults() {
+  getUserSearchResults() {
     this.userService.search(this.query).subscribe(
       resp => {
         console.log(resp);
@@ -36,6 +40,20 @@ export class SearchComponent implements OnInit {
         for (const result of this.response) {
           const resultElement = new User(result);
           this.userResults.push(resultElement);
+          this.resultNum += 1;
+        }
+      });
+  }
+
+  getArtistSearchResults() {
+    this.artistService.search(this.query).subscribe(
+      resp => {
+        console.log(resp);
+        this.response = resp;
+        this.artistResults = [];
+        for (const result of this.response) {
+          const resultElement = new Artist(result);
+          this.artistResults.push(resultElement);
           this.resultNum += 1;
         }
       });
@@ -52,6 +70,7 @@ export class SearchComponent implements OnInit {
     this.route.params.subscribe(params => {
       this.query = params['id'];
     });
-    this.getSearchResults();
+    this.getUserSearchResults();
+    this.getArtistSearchResults();
   }
 }
