@@ -18,6 +18,7 @@ export class AudioService {
   setQueue(songs: Array<Song>) {
     this.queueSource.next(songs);
     this.currentIndex = 0;
+    this.songSource.next(null);
     this.songSource.next(songs[0]);
   }
 

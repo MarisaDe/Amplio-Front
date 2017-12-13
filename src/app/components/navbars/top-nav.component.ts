@@ -12,10 +12,12 @@ import {ActivatedRoute, Router} from "@angular/router";
 })
 export class TopNavComponent implements OnInit {
   private currentUser: User;
+  private displayImage: any;
   private readonly logoImg = Config.LOGO_SMALL_IMAGE;
   private readonly ccardImg = Config.CREDIT_CARDS_IMAGE;
   private monthYear: Array <number>;
-  files : FileList;
+  private dismiss: any;
+  files: FileList;
 
   constructor(private userService: UserService,
               private authService: AuthService,
@@ -24,6 +26,9 @@ export class TopNavComponent implements OnInit {
 
   ngOnInit() {
     this.userService.currentUser.subscribe(user => this.currentUser = user);
+    if (this.currentUser != null) {
+      this.displayImage = this.currentUser.profilePicture;
+    }
     this.monthYear = [];
     for ( let i = 17; i < 60; i++) {
       this.monthYear.push(i);
@@ -40,10 +45,21 @@ export class TopNavComponent implements OnInit {
 
   onChange(event) {
     this.files = event.target.files;
-    console.log(this.files);
+    const reader = new FileReader();
+    reader.onload = this.handleReaderLoaded.bind(this);
+    reader.readAsDataURL(this.files[0]);
   }
-  setImg(value: any) {
-    console.log('HELLO FROM CHANGE IMG');
-    this.currentUser.profilePicture = value[0];
+
+  handleReaderLoaded(e) {
+    const reader = e.target;
+    this.displayImage = reader.result;
+  }
+
+  reset() {
+    this.displayImage = Config.PROFILE_DEFAULT_IMAGE;
+  }
+  setImg() {
+    this.currentUser.profilePicture = this.displayImage;
+    this.dismiss = 'modal';
   }
 }

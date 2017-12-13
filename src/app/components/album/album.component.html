@@ -41,7 +41,7 @@
 
         <tr *ngFor = "let song of songList">
           <td width="50px"><img [src] ="playPauseImg" class="grow play-each"
-                                (click)="playPlaylist(song.id)"></td>
+                                (click)="playAlbum(song.id)"></td>
           <td><i class="fa fa-plus" aria-hidden="true"></i></td>
           <td align="left" class="overflow">{{song.songName}}</td>
           <td class="overflow">{{song.artist.name}}</td>

@@ -57,7 +57,7 @@
       <th>Album</th>
       <th>Duration</th>
 
-      <tr *ngFor = "let song of playlist.songs">
+      <tr *ngFor = "let song of playlist.songs;let index = i">
         <td width="50px"><img [src] ="playPauseImg" class="grow play-each"
                               (click) = "playPlaylist(song.id)"></td>
         <td><i class="fa fa-plus" aria-hidden="true"></i></td>
@@ -78,7 +78,7 @@
 <!-- Delete Playlist section --------------------------------------------------------------------->
 
 <!-- Modal -->
-<div id="delPlaylist" class="modal fade" tabindex="-1" role="dialog">
+<div id="delPlaylist" class="modal fade" tabindex="-1" role="dialog" *ngIf="playlist!=null">
   <div class="modal-dialog">
 
     <!-- Modal content-->
@@ -120,7 +120,7 @@
 <!-- Edit Playlist section --------------------------------------------------------------------->
 
 <!-- Modal -->
-<div id="editPlaylist" class="modal fade" tabindex="-1" role="dialog">
+<div id="editPlaylist" class="modal fade" tabindex="-1" role="dialog" *ngIf="playlist!=null">
   <div class="modal-dialog">
 
     <!-- Modal content-->
@@ -135,7 +135,7 @@
         <b>Title</b><br>
         <div class="input-box">
           <input id="title" type="text" class="form-control input_layout" name="userName"
-                 [(ngModel)]="playlist.title" [placeholder]="playlist.title" >
+                 [placeholder]="playlist.title" >
           <!--#title="ngModel" required>-->
           <!--<div *ngIf="f.submitted && !userName.valid">-->
           <!--<div [ngClass] = "'alert alert-danger'">Title Required</div>-->
@@ -156,7 +156,7 @@
             </td>
             <td rowspan="1" valign="top" style="padding-top:30px;">
               Description:<br>
-              <textarea id="description" type="text" name = "desc" [(ngModel)]="playlist.description"
+              <textarea id="description" type="text" name = "desc"
                         class="form-control input_layout" style="width: 338px; height:260px"
                         [placeholder]="playlist.description"></textarea>
 

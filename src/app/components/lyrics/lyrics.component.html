@@ -2,10 +2,24 @@
   <div class="transition">
     <div class="container">
       <div class="row">
-        <h1><i class="fa fa-music" style = "padding-right: 10px"></i> Lyrics</h1>
+
+        <div *ngIf="song == null; else showLyrics">
+          <h1><i class="fa fa-music" style = "padding-right: 10px"></i> Lyrics</h1>
+          <hr>
+          <br>
+         No song is currently playing.
+        </div>
+    <ng-template #showLyrics>
+        <h1><i class="fa fa-music" style = "padding-right: 10px"></i> Lyrics for {{song.songName}} by {{song.artist.name}}</h1>
         <hr>
         <br>
-
+        <div *ngIf="song.lyrics.length == 0" >
+          There are no lyrics for this song.
+        </div>
+        <div  *ngIf="song.lyrics.length > 0">
+        <span style="white-space: pre-line">{{song.lyrics}}</span>
+        </div>
+    </ng-template>
       </div>
     </div>
   </div>

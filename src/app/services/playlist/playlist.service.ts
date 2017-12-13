@@ -6,6 +6,7 @@ import {Playlist} from '../../models/playlist';
 import {Config} from '../../common/config';
 import {Observable} from 'rxjs/Observable';
 import {AudioService} from "../audio/audio.service";
+import {Song} from "../../models/song";
 
 @Injectable()
 export class PlaylistService {
@@ -17,9 +18,8 @@ export class PlaylistService {
               private audioService: AudioService) {
   }
 
-  playPlaylist(playlist: Playlist, songId: number = 0) {
+  playSongList(songList: Song[], songId: number = 0) {
     let index = -1;
-    let songList = playlist.songs;
     if (songId) {
       for (const i in songList) {
         if (songList[i].id === songId) {

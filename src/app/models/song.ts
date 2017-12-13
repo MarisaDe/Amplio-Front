@@ -11,6 +11,7 @@ export class Song {
   private _numPlays: number;
   private _songName: string;
   private _media: HTMLAudioElement;
+  private _path: any;
 
   constructor(song: any) {
     // console.log(song);
@@ -21,6 +22,7 @@ export class Song {
     this._numPlays = song.numPlays;
     this._songName = song.songName;
     this._artist = new Artist(song.artist);
+    this._path = song.path;
     if (song.path) {
       this._media = new Audio(Config.AUDIO_PATH + song.id + '.mp3');
     } else {
@@ -100,4 +102,12 @@ export class Song {
     this._media = media;
   }
 
+  resetMedia() {
+    this._media.pause();
+    if (this._path) {
+      this._media = new Audio(Config.AUDIO_PATH + this._id + '.mp3');
+    } else {
+      this._media = new Audio(Config.AUDIO_PATH + 'dummy.mp3');
+    }
+  }
 }

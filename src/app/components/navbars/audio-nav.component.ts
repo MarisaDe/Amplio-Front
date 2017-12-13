@@ -17,6 +17,7 @@ export class AudioNavComponent implements OnInit {
   private mute: boolean;
   private currentTime: number;
   private progress = 0;
+  private progressMinSec = '';
   private repeatState: Repeat;
   private playPauseImg = Config.PLAY_IMAGE;
   private repeatImg = Config.REPEAT_OFF_IMAGE;
@@ -26,13 +27,49 @@ export class AudioNavComponent implements OnInit {
   private readonly nextImg = Config.NEXT_IMAGE;
   private readonly prevImg = Config.PREVIOUS_IMAGE;
   private readonly queueImg = Config.QUEUE_IMAGE;
+  private song2: Song;
 
   constructor(private audioService: AudioService) {
   }
 
   ngOnInit() {
     // this.audioService.songQueue.subscribe(songQueue => this.songQueue = songQueue);
-    this.audioService.currentSong.subscribe(song => this.song = song);
+    this.audioService.currentSong.subscribe(song => {
+      console.log(song);
+      if (song) {
+        if (this.song) {
+          this.song.resetMedia();
+          // console.log(this.song.media);
+        }
+        this.song = song;
+        // this.song.resetMedia();
+        this.song.media.addEventListener('timeupdate', () => {
+          // console.log(this.song.media.id);
+          this.currentTime = this.song.media.currentTime;
+          if (song.media.duration) {
+            this.progress = (song.media.currentTime / song.media.duration) * Config.PLAYER_GRANULARITY;
+            this.progressMinSec = this.getMinSec(song.media.currentTime) + '/' + this.getMinSec(song.media.duration);
+          } else {
+            this.progress = 0;
+            this.progressMinSec = '--:--/--:--';
+          }
+        });
+        this.song.media.addEventListener('ended', () => {
+          switch (this.repeatState) {
+            case Repeat.Off:
+              this.playPauseImg = Config.PLAY_IMAGE;
+              break;
+            case Repeat.All:
+              this.nextSong();
+              break;
+            case Repeat.One:
+              this.song.media.play();
+              break;
+          }
+        });
+        this.song.media.play();
+      }
+    });
     // this.song = new Song({
     //   id: 1,
     //   duration: 180,
@@ -56,7 +93,6 @@ export class AudioNavComponent implements OnInit {
     //     bibliography: 'G.O.A.T'
     //   }
     // });
-    this.updateSong();
     this.shuffle = false;
     console.log(this.song);
   }
@@ -137,41 +173,15 @@ export class AudioNavComponent implements OnInit {
     }
   }
 
-  updateSong() {
-    this.song.media = <HTMLAudioElement>this.song.media.cloneNode(true);
-    this.song.media.addEventListener('timeupdate', () => {
-      this.currentTime = this.song.media.currentTime;
-      this.progress = (this.currentTime / this.song.media.duration) * Config.PLAYER_GRANULARITY;
-    });
-    this.song.media.addEventListener('ended', () => {
-      switch (this.repeatState) {
-        case Repeat.Off:
-          this.playPauseImg = Config.PLAY_IMAGE;
-          break;
-        case Repeat.All:
-          this.nextSong();
-          break;
-        case Repeat.One:
-          this.song.media.play();
-          break;
-      }
-    });
-    if (this.playing) {
-      this.song.media.play();
-    }
-  }
-
   nextSong() {
     this.song.media.pause();
     this.audioService.nextSong();
-    this.updateSong();
     // console.log('TODO: next song');
   }
 
   prevSong() {
     this.song.media.pause();
     this.audioService.prevSong();
-    this.updateSong();
     // console.log('TODO: prev song');
   }
 }

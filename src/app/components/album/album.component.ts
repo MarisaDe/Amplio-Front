@@ -7,8 +7,8 @@ import {ActivatedRoute} from '@angular/router';
 import {SongService} from '../../services/song/song.service';
 import {Playlist} from '../../models/playlist';
 import {Song} from '../../models/song';
-import {AudioService} from "../../services/audio/audio.service";
-import {PlaylistService} from "../../services/playlist/playlist.service";
+import {AudioService} from '../../services/audio/audio.service';
+import {PlaylistService} from '../../services/playlist/playlist.service';
 
 @Component({
   selector: 'album',
@@ -19,8 +19,7 @@ export class AlbumComponent implements OnInit {
   currentUser: User;
   albumId: number;
   album: Album;
-  songs: any;
-  songList: any;
+  songList: Song[] = [];
   playlist: Playlist;
 
   constructor(private userService: UserService,
@@ -44,10 +43,10 @@ export class AlbumComponent implements OnInit {
     this.songService.getAlbumSongs(this.albumId).subscribe(
       resp => {
         console.log(resp);
-        this.songs = resp;
+        const songs: any = resp;
         this.songList = [];
-        console.log(this.songs);
-        for (const song of this.songs) {
+        console.log(songs);
+        for (const song of songs) {
           const newSong = new Song(song);
           this.songList.push(newSong);
         }
@@ -62,7 +61,8 @@ export class AlbumComponent implements OnInit {
 
   playAlbum(songId: number = 0) {
     console.log(songId);
-    this.playlistService.playPlaylist(this.playlist, songId);
+    // this.playlist.songs = this.songList;
+    this.playlistService.playSongList(this.songList, songId);
   }
 
   getMinSec(value: number): string {
@@ -79,12 +79,17 @@ export class AlbumComponent implements OnInit {
     return minstr + ':' + secstr;
   }
 
+  // generatePlaylist() {
+  //   this.playlist = new Playlist(this.album);
+  //   console.log(this.playlist);
+  // }
   ngOnInit() {
     this.userService.currentUser.subscribe(user => this.currentUser = user);
     this.route.params.subscribe(params => {
       this.albumId = params['id'];
       this.getAlbum();
       this.loadAlbumSongs();
+      // this.generatePlaylist();
     });
   }
 }

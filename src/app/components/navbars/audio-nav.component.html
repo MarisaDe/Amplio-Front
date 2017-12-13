@@ -3,8 +3,8 @@
   <table cellspacing="0" cellpadding="0">
     <tr>
       <td colspan="1" style = "padding-left: 10px; padding-top: 10px" width=7.5% align="top" height="100%">
-        <a [routerLink]="'/album/'+ song.album.id">
-          <img [src]="song.album.image" class="fade" width=100px; height=100px;></a>
+        <!--<a [routerLink]="'/album/'+ song.album.id">-->
+          <!--<img [src]="song.album.image" class="fade" width=100px; height=100px;></a>-->
       </td>
       <td valign="top" width = 20% style="height:100%">
         <div class="song-info" style="height:100%">
@@ -24,12 +24,12 @@
           <img [src] = "nextImg" (click)="nextSong()" id="next" title="Play Next Song"/>
           <img [src] = "repeatImg" (click)="toggleRepeat()" id="repeat" title="Repeat"/>
         </div>
-        <span id="duration">{{getMinSec(song.media.currentTime)}} / {{getMinSec(song.media.duration)}}</span>
+        <span id="duration">{{progressMinSec}}</span>
         <input type="range" [value]="progress" max=1000000 class="track" #track (input) = "songSeek(track.value)"/>
 
       </td>
       <td align="right">
-        <img [src] = "lyricsImg" id="lyrics" routerLink="/lyrics" title="Lyrics"/>
+        <img [src] = "lyricsImg" id="lyrics" routerLink= "/lyrics" title="Lyrics"/>
         <img [src] = "queueImg" id="songQueue" routerLink="/queue" title="Queue"/>
         <img [src] = "volImg" (click)="toggleMute(volume.value)" id="volume" title="Mute"/>
         <input type="range" class="volume" #volume value=100 (input) = "changeVolume(volume.value)"/>
@@ -38,6 +38,7 @@
   </table>
 </div>
 
+<!-- NO AUDIO BAR -->
 <ng-template #noAudio>
   <div class="audiobar">
     <table cellspacing="0" cellpadding="0">
