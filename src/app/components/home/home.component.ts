@@ -23,7 +23,7 @@ export class HomeComponent implements OnInit {
     this.playlistService.getGenrePlaylists().subscribe(
       resp => {
         console.log(resp);
-        this.playlistService.setGenrePlaylists(Playlist.generatePlaylistList(resp));
+        this.genrePlaylists = Playlist.generatePlaylistList(resp);
         console.log(this.genrePlaylists);
       },
       err => {

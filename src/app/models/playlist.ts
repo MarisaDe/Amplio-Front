@@ -23,11 +23,6 @@ export class Playlist {
     }
   }
 
-  // constructor(id: number, img: string, title: string) {
-  //     this._id = id;
-  //     this._image = img;
-  //     this._title = title;
-  // }
   static generatePlaylistList(playlists: any): Playlist[] {
     const playlistList: Playlist[] = [];
     for (const playlist of playlists) {
