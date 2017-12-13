@@ -72,13 +72,12 @@ export class PersonComponent implements OnInit {
   }
 
   checkFollowing() {
-    const checkFollower = new Follower(this.person);
-    if (this.currentUser.following.indexOf(checkFollower) > -1) {
-      this.isFollowing = true;
-      console.log('Already following user');
-    } else {
-      this.isFollowing = false;
-      console.log('Havent followed user yet');
+    this.isFollowing = false;
+    for (const user of this.currentUser.following) {
+      if (this.personId === user.id) {
+        this.isFollowing = true;
+        break;
+      }
     }
   }
   unfollow(userToUnfollow: any) {
