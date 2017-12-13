@@ -7,6 +7,8 @@ import {ActivatedRoute} from '@angular/router';
 import {SongService} from '../../services/song/song.service';
 import {Playlist} from '../../models/playlist';
 import {Song} from '../../models/song';
+import {AudioService} from "../../services/audio/audio.service";
+import {PlaylistService} from "../../services/playlist/playlist.service";
 
 @Component({
   selector: 'album',
@@ -19,11 +21,13 @@ export class AlbumComponent implements OnInit {
   album: Album;
   songs: any;
   songList: any;
+  playlist: Playlist;
 
   constructor(private userService: UserService,
               private songService: SongService,
               private albumService: AlbumService,
-              private route: ActivatedRoute) {
+              private route: ActivatedRoute,
+              private playlistService: PlaylistService) {
 
   }
 
@@ -54,6 +58,10 @@ export class AlbumComponent implements OnInit {
         console.error(err);
       }
     );
+  }
+
+  playAlbum(songId: number = 0) {
+    this.playlistService.playPlaylist(this.playlist, songId);
   }
 
   getMinSec(value: number): string {

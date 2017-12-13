@@ -2,11 +2,12 @@
 
   <table cellspacing="0" cellpadding="0">
     <tr>
-      <td colspan="1" style = "padding-left: 10px; padding-top: 5px" width=7.5%>
-        <img [src]="song.album" width=100px; height=100px>
+      <td colspan="1" style = "padding-left: 10px; padding-top: 10px" width=7.5%>
+        <a [routerLink]="'/album/'+ song.album.id"><img [src]="song.album.image" class="fade"
+                                                        width=100px; height=100px;></a>
       </td>
       <td valign="top" width = 20%>
-        <div class="song-info">
+        <div class="song-info" style="height:100%">
           <div class="song-spacing">
             <span id="song-title">{{song.songName}}</span>
           </div>

@@ -26,23 +26,26 @@ export class PlaylistComponent implements OnInit {
               private router: Router) {
   }
 
-  playPlaylist(songId: number = 0) {
-    let index = -1;
-    let songList = this.playlist.songs;
-    if (songId) {
-      for (const i in songList) {
-        if (songList[i].id === songId) {
-          index = parseInt(i, 10);
-        }
-      }
-    } else {
-      index = 0;
-    }
-    songList = [...songList.slice(index, songList.length), ...songList.slice(0, index)];
-    this.audioService.setQueue(songList);
-    // let howlList: Array<Howl> = [];
-  }
+  // playPlaylist(songId: number = 0) {
+  //   let index = -1;
+  //   let songList = this.playlist.songs;
+  //   if (songId) {
+  //     for (const i in songList) {
+  //       if (songList[i].id === songId) {
+  //         index = parseInt(i, 10);
+  //       }
+  //     }
+  //   } else {
+  //     index = 0;
+  //   }
+  //   songList = [...songList.slice(index, songList.length), ...songList.slice(0, index)];
+  //   this.audioService.setQueue(songList);
+  //   // let howlList: Array<Howl> = [];
+  // }
 
+  playPlaylist(songId: number = 0) {
+    this.playlistService.playPlaylist(this.playlist, songId);
+  }
   navigate() {
     this.router.navigateByUrl('/user');
     this.router.navigate(['this.playlist.owner.id']);

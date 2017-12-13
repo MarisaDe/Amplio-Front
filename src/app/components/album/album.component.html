@@ -8,7 +8,7 @@
             <h1><b>{{album.title}}</b></h1><br>
             Created by: <a routerLink="" class="green">{{album.artist.name}}</a> - {{songList.length}} Songs <br><br>
             <div></div>
-            <button type="button" class="play expand-effect">Play</button>
+            <button type="button" class="play expand-effect" (click)="playAlbum()">Play</button>
 
             <!-- Current user's songs options -->
             <button type="button" class="follow expand-effect">
@@ -41,7 +41,7 @@
 
         <tr *ngFor = "let song of songList">
           <td width="50px"><img [src] ="playPauseImg" class="grow play-each"
-                                (onclick) = "togglePlay()"></td>
+                                (click)="playPlaylist(song.id)"></td>
           <td><i class="fa fa-plus" aria-hidden="true"></i></td>
           <td align="left" class="overflow">{{song.songName}}</td>
           <td class="overflow">{{song.artist.name}}</td>

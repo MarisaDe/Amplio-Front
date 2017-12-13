@@ -13,7 +13,10 @@ export class Album {
     this._title = album.title;
     this._date = new Date(album.date);
     this._artist = new Artist(album.artist);
-    this._image = Config.ALBUM_IMAGES + decodeURI(album.image);
+    if (album.image == null) {
+      this._image = Config.ALBUM_DEFAULT_IMAGE;
+    }
+    this._image = Config.ALBUM_IMAGES + album.image;
   }
 
   replaceAll(input: string, find: string, replace: string): string {
