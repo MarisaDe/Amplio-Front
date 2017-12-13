@@ -12,7 +12,7 @@ export class Playlist {
 
   constructor(playlist: any) {
     // console.log(playlist);
-    this._id = playlist.playlistId;
+    this._id = playlist.id;
     this._description = playlist.description;
     this._image = playlist.image;
     this._title = playlist.title;

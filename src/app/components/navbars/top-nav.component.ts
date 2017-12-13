@@ -15,6 +15,7 @@ export class TopNavComponent implements OnInit {
   private readonly logoImg = Config.LOGO_SMALL_IMAGE;
   private readonly ccardImg = Config.CREDIT_CARDS_IMAGE;
   private monthYear: Array <number>;
+  files : FileList;
 
   constructor(private userService: UserService,
               private authService: AuthService,
@@ -35,6 +36,11 @@ export class TopNavComponent implements OnInit {
   logout() {
     this.authService.logout();
     // console.log('logout has been clicked. omg wow yay! i cant even');
+  }
+
+  onChange(event) {
+    this.files = event.target.files;
+    console.log(this.files);
   }
   setImg(value: any) {
     console.log('HELLO FROM CHANGE IMG');

@@ -75,6 +75,7 @@ export class PersonComponent implements OnInit {
     this.isFollowing = false;
     for (const user of this.currentUser.following) {
       if (this.personId === user.id) {
+        console.log(user.id);
         this.isFollowing = true;
         break;
       }

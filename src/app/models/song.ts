@@ -14,7 +14,7 @@ export class Song {
 
   constructor(song: any) {
     // console.log(song);
-    this._id = song.songId;
+    this._id = song.id;
     this._album = new Album(song.album);
     this._duration = song.duration;
     this._lyrics = song.lyrics;

@@ -9,7 +9,7 @@ export class Album {
   private _date: Date;
 
   constructor(album: any) {
-    this._id = album.albumId;
+    this._id = album.id;
     this._title = album.title;
     this._date = new Date(album.date);
     this._artist = new Artist(album.artist);

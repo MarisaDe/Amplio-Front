@@ -19,7 +19,7 @@ export class User {
     if (typeof info === 'string') {
       this._userName = info;
     } else {
-      this._id = info.userId;
+      this._id = info.id;
       this._userName = info.userName;
       this._firstName = info.firstName;
       this._lastName = info.lastName;
