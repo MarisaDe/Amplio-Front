@@ -55,6 +55,7 @@ export class PlaylistComponent implements OnInit {
       this.playPauseImg = Config.PAUSE_IMAGE;
     }
   }
+
   getMinSec(value: number): string {
     const min = Math.floor(value / 60);
     const sec = Math.round(value % 60);
@@ -71,8 +72,8 @@ export class PlaylistComponent implements OnInit {
 
   hide() {
     this.hideObject = 'none';
-
   }
+
   deletePlaylist() {
     this.playlistService.deletePlaylist(this.playlist.id).subscribe(
       resp => {

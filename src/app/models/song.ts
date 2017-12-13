@@ -22,8 +22,7 @@ export class Song {
     this._songName = song.songName;
     this._artist = new Artist(song.artist);
     if (song.path) {
-      // console.log(Config.AUDIO_PATH + song.songId + '.mp3');
-      this._media = new Audio(Config.AUDIO_PATH + song.songId + '.mp3');
+      this._media = new Audio(Config.AUDIO_PATH + song.id + '.mp3');
     } else {
       this._media = new Audio(Config.AUDIO_PATH + 'dummy.mp3');
     }

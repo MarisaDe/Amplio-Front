@@ -34,10 +34,10 @@ export class AudioNavComponent implements OnInit {
     // this.audioService.songQueue.subscribe(songQueue => this.songQueue = songQueue);
     this.audioService.currentSong.subscribe(song => this.song = song);
     this.song = new Song({
-      songId: 1,
+      id: 1,
       duration: 180,
       album: {
-        albumId: 1,
+        id: 1,
         title: 'Curtain Call',
         date: '06-06-2006',
         image: Config.ALBUM_DEFAULT_IMAGE,

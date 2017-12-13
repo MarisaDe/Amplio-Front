@@ -15,9 +15,11 @@ export class Album {
     this._artist = new Artist(album.artist);
     this._image = Config.ALBUM_IMAGES + decodeURI(album.image);
   }
+
   replaceAll(input: string, find: string, replace: string): string {
     return input.replace(new RegExp(find, 'g'), replace);
   }
+
   // static generateArtistList(artists: any): Artist[] {
   //   const artistList: Artist[] = [];
   //   for (const artist of artists) {

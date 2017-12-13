@@ -30,37 +30,20 @@ export class UserService {
 
   followUser(userId: number) {
     const body = {
-      userId: userId
+      id: userId
     };
     return this.http.post(Config.API_URI + 'user/follow/' + userId, body, {withCredentials: true });
   }
 
   unfollowUser(userId: number) {
     const body = {
-      userId: userId
+      id: userId
     };
     return this.http.post(Config.API_URI + 'user/unfollow/' + userId, body, {withCredentials: true });
   }
 
   search(query: string) {
     return this.http.get(Config.API_URI + 'user/search/' + query,{withCredentials: true });
-  }
-
-
-  follow(userId: number) {
-    const body = {
-      userId: userId
-    };
-    this.http.post(Config.API_URI + 'user/follow', body, { withCredentials: true })
-      .subscribe(
-        resp => {
-          const updatedUser = new User(resp);
-          this.userSource.next(updatedUser);
-        },
-        err => {
-          console.error(err);
-        }
-      );
   }
 
 }

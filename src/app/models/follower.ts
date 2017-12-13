@@ -10,7 +10,7 @@ export class Follower {
 
   constructor(info: any) {
     console.log(info);
-    this._id = info.id || info.userId;
+    this._id = info.id;
     this._userName = info.userName;
     this._firstName = info.firstName;
     this._lastName = info.lastName;
