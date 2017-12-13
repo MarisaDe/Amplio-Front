@@ -2,22 +2,20 @@
   <div class="container">
     <div class="row">
       <h1>Search Results - {{query}}</h1>
-      <br><hr>
 
       <!-- Display num results found -->
       <div *ngIf = "resultNum == 0">
-        0 results found for {{query}}
+        <h3><i>0 results found for {{query}}</i></h3>
       </div>
 
       <div *ngIf = "resultNum == 1">
-        {{resultNum}} result found for {{query}}
+        <h3><i>{{resultNum}} result found for {{query}}</i></h3>
       </div>
 
       <div *ngIf = "resultNum > 1">
-        {{resultNum}} results found for {{query}}
+        <h3>{{resultNum}} results found for {{query}}</h3>
       </div>
-     <br>
-
+      <hr>
       <div *ngIf = "userResults.length > 0">
         <h1>Users</h1>
         <hr>

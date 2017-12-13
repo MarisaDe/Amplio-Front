@@ -7,7 +7,7 @@ import {HttpClient} from '@angular/common/http';
 import {Follower} from '../../models/follower';
 import {AdsService} from '../../services/ads/ads.service';
 import {Playlist} from '../../models/playlist';
-import {PlaylistService} from "../../services/playlist/playlist.service";
+import {PlaylistService} from '../../services/playlist/playlist.service';
 
 @Component({
   selector: 'person',
@@ -39,6 +39,9 @@ export class PersonComponent implements OnInit {
       this.userService.followUser(this.personId).subscribe(
         resp => {
           console.log('User Followed!');
+          const userfollow = new Follower(this.person);
+          console.log(userfollow);
+          this.currentUser.following.push(userfollow);
           this.isFollowing = true;
         },
         err => {
@@ -50,6 +53,9 @@ export class PersonComponent implements OnInit {
         resp => {
           console.log('User Unfollowed!');
           this.isFollowing = false;
+          const checkFollower = new Follower(this.person);
+          const index = this.currentUser.following.indexOf(checkFollower);
+          this.currentUser.following.splice(index, 1);
         },
         err => {
           console.error(err.message);
@@ -70,7 +76,8 @@ export class PersonComponent implements OnInit {
   }
 
   checkFollowing() {
-    if (this.currentUser.following.indexOf(this.person) > -1) {
+    const checkFollower = new Follower(this.person);
+    if (this.currentUser.following.indexOf(checkFollower) > -1) {
       this.isFollowing = true;
       console.log('Already following user');
     } else {

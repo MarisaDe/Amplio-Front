@@ -1,5 +1,6 @@
 import {Follower} from './follower';
 import {Config} from "../common/config";
+import {Playlist} from "./playlist";
 
 export class User {
 
@@ -12,6 +13,7 @@ export class User {
   private _followers: Follower[];
   private _isPremium: boolean;
   private _profilePicture: any;
+  private _followedPlaylists: Playlist[];
 
   constructor (info: any) {
     if (typeof info === 'string') {
@@ -30,6 +32,7 @@ export class User {
       }else {
         this._profilePicture = info.profilePicture;
       }
+      this._followedPlaylists = info.followedPlaylists;
     }
   }
 

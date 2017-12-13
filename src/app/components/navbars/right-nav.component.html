@@ -5,8 +5,8 @@
     </ul>
     <ul class="sidebar-nav-right" id="sidebar-right" *ngFor="let following of currentUser.following">
       <!-- Following user Id is BROKEN routerlink = undefined-->
-      <li><a [routerLink]="['/user/'+ following.id]"><span> <img [src]="following.profilePicture" width="10%" style="padding-left:5px">
-        {{following.firstName}} {{following.lastName}}</span></a></li>
+      <li><a [routerLink]="'/user/'+ following.id"><span> <img [src]="following.profilePicture" width="10%" style="padding-left:5px">
+        {{following._userName}} {{following.lastName}}</span></a></li>
     </ul>
   </div>
 </div>
