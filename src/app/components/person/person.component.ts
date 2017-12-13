@@ -17,8 +17,7 @@ import {PlaylistService} from '../../services/playlist/playlist.service';
 export class PersonComponent implements OnInit {
   currentUser: User;
   person: any;  // TODO Artist
-  personId: any;
-  isFollowing: boolean;
+  isFollowing = false;
   adImg: any;
   name: string;
   showAd = true;
@@ -28,6 +27,7 @@ export class PersonComponent implements OnInit {
               private route: ActivatedRoute,
               private adsService: AdsService,
               private playlistService: PlaylistService) {
+
   }
   // follow(userToFollow: any) {
   //   this.currentUser.following.push(userToFollow);
@@ -36,7 +36,7 @@ export class PersonComponent implements OnInit {
   // TODO Unfollow User
   toggleFollow() {
     if (!this.isFollowing) {
-      this.userService.followUser(this.personId).subscribe(
+      this.userService.followUser(this.person.id).subscribe(
         resp => {
           console.log('User Followed!');
           this.currentUser.following = User.generateFollowerList(resp);
@@ -47,7 +47,7 @@ export class PersonComponent implements OnInit {
         }
       );
     } else {
-      this.userService.unfollowUser(this.personId).subscribe(
+      this.userService.unfollowUser(this.person.id).subscribe(
         resp => {
           console.log('User Unfollowed!');
           this.currentUser.following = User.generateFollowerList(resp);
@@ -61,7 +61,7 @@ export class PersonComponent implements OnInit {
   }
 
   loadPlaylists() {
-    this.playlistService.getPlaylists(this.personId).subscribe(
+    this.playlistService.getPlaylists(this.person.id).subscribe(
       resp => {
         this.userPlaylists = Playlist.generatePlaylistList(resp);
       },
@@ -74,8 +74,7 @@ export class PersonComponent implements OnInit {
   checkFollowing() {
     this.isFollowing = false;
     for (const user of this.currentUser.following) {
-      if (this.personId === user.id) {
-        console.log(user.id);
+      if (this.person.id === user.id) {
         this.isFollowing = true;
         break;
       }
@@ -93,7 +92,7 @@ export class PersonComponent implements OnInit {
     this.route.params.subscribe(params => {
       this.userService.getUser(params['id']).subscribe(
         resp => {
-          console.log('Playlist Page: ' + resp);
+          console.log(resp);
           this.person = new User(resp);
           console.log(this.person);
           this.loadPlaylists();
