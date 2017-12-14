@@ -15,7 +15,7 @@ export class Follower {
     this._lastName = info.lastName;
     if (info.profilePicture == null) {
       this._profilePicture = Config.PROFILE_DEFAULT_IMAGE;
-    }else {
+    } else {
       this._profilePicture = info.profilePicture;
     }
   }
@@ -58,5 +58,9 @@ export class Follower {
 
   set profilePicture(value: any) {
     this._profilePicture = value;
+  }
+
+  get name(): string {
+    return this._firstName + ' ' + this._lastName;
   }
 }

@@ -16,7 +16,7 @@ export class User {
   private _profilePicture: any;
   private _followedPlaylists: Playlist[];
   private _followedArtists: Artist[];
-  // private _playlists: Playlist[];
+  private _playlists: Playlist[];
 
   constructor (info: any) {
     if (typeof info === 'string') {
@@ -37,7 +37,7 @@ export class User {
       }
       this._followedPlaylists = Playlist.generatePlaylistList(info.followedPlaylists);
       this._followedArtists = Artist.generateArtistList(info.followedArtists);
-      // this._playlists = Playlist.generateUserPlaylists(info.playlists);
+      this._playlists = Playlist.generateUserPlaylists(info);
     }
   }
 
@@ -141,11 +141,11 @@ export class User {
     this._followedArtists = value;
   }
 
-  // get playlists(): Playlist[] {
-  //   return this._playlists;
-  // }
-  //
-  // set playlists(value: Playlist[]) {
-  //   this._playlists = value;
-  // }
+  get playlists(): Playlist[] {
+    return this._playlists;
+  }
+
+  set playlists(value: Playlist[]) {
+    this._playlists = value;
+  }
 }

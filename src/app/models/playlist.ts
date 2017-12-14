@@ -1,12 +1,13 @@
 
 import {User} from './user';
 import {Song} from './song';
+import {Follower} from './follower';
 
 export class Playlist {
   private _id: number;
   private _description: string;
   private _image: string;
-  private _owner: User;
+  private _owner: Follower;
   private _songs: Array<Song>;
   private _title: string;
 
@@ -17,7 +18,7 @@ export class Playlist {
     this._image = playlist.image;
     this._title = playlist.title;
     if (playlist.owner != null) {
-    this._owner = new User(playlist.owner);
+      this._owner = new Follower(playlist.owner);
     }
     this._songs = [];
     for (const song of playlist.songs) {
@@ -33,12 +34,13 @@ export class Playlist {
     return playlistList;
   }
 
-  static generateUserPlaylists(playlists: any): Playlist[] {
+  static generateUserPlaylists(user: any): Playlist[] {
+    const playlists: any = user.playlists;
     const playlistList: Playlist[] = [];
     for (const playlist of playlists) {
       console.log(playlist);
-      let p = new Playlist(playlist)
-      p.owner = null;
+      const p = new Playlist(playlist);
+      p.owner = new Follower(user);
       playlistList.push(p);
     }
     return playlistList;
@@ -68,11 +70,11 @@ export class Playlist {
     this._image = value;
   }
 
-  get owner(): User {
+  get owner(): Follower {
     return this._owner;
   }
 
-  set owner(value: User) {
+  set owner(value: Follower) {
     this._owner = value;
   }
 
