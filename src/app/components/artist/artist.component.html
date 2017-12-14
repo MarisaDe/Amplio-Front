@@ -8,7 +8,15 @@
           <td rowspan="1">ARTIST<br>
             <h1>{{artist.name}}</h1><br>
             <div></div>
-            <button type="button" class="follow-user expand-effect">Follow</button>
+            <div *ngIf="!isFollowing">
+              <button type="button" class="follow-user expand-effect"
+                      (click) = toggleFollow()>Follow</button>
+            </div>
+
+            <div *ngIf="isFollowing">
+              <button type="button" class="follow-user expand-effect"
+                      (click) = toggleFollow()>Unfollow</button>
+            </div>
           </td>
           <td>
           </td>

@@ -31,7 +31,13 @@ export class Artist {
       }
     }
   }
-
+  public static generateArtistList(artists: any): Artist[] {
+    const artistList: Artist[] = Array<Artist>();
+    for (const artist of artists) {
+      artistList.push(new Artist(artist));
+    }
+    return artistList;
+  }
   get image(): string {
     return this._image;
   }

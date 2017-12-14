@@ -1,6 +1,7 @@
 import {Follower} from './follower';
 import {Config} from "../common/config";
 import {Playlist} from "./playlist";
+import {Artist} from "./artist";
 
 export class User {
 
@@ -14,6 +15,7 @@ export class User {
   private _isPremium: boolean;
   private _profilePicture: any;
   private _followedPlaylists: Playlist[];
+  private _followedArtists: Artist[];
 
   constructor (info: any) {
     if (typeof info === 'string') {
@@ -32,7 +34,8 @@ export class User {
       }else {
         this._profilePicture = info.profilePicture;
       }
-      this._followedPlaylists = info.followedPlaylists;
+      this._followedPlaylists = Playlist.generatePlaylistList(info.followedPlaylists);
+      this._followedArtists = Artist.generateArtistList(info.followedArtists);
     }
   }
 
@@ -112,4 +115,19 @@ export class User {
     this._profilePicture = value;
   }
 
+  get followedPlaylists(): Playlist[] {
+    return this._followedPlaylists;
+  }
+
+  set followedPlaylists(value: Playlist[]) {
+    this._followedPlaylists = value;
+  }
+
+  get followedArtists(): Artist[] {
+    return this._followedArtists;
+  }
+
+  set followedArtists(value: Artist[]) {
+    this._followedArtists = value;
+  }
 }

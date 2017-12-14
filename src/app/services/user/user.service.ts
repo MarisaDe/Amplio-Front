@@ -42,6 +42,20 @@ export class UserService {
     return this.http.post(Config.API_URI + 'user/unfollow/' + userId, body, {withCredentials: true });
   }
 
+  followArtist(artistId: number) {
+    const body = {
+      id: artistId
+    };
+    return this.http.post(Config.API_URI + 'user/followartist/' + artistId, body, {withCredentials: true });
+  }
+
+  unfollowArtist(artistId: number) {
+    const body = {
+      id: artistId
+    };
+    return this.http.post(Config.API_URI + 'user/unfollowartist/' + artistId, body, {withCredentials: true });
+  }
+
   search(query: string) {
     return this.http.get(Config.API_URI + 'user/search/' + query,{withCredentials: true });
   }

@@ -1,15 +1,28 @@
 <div id="wrapper-right" class="">
   <div id="sidebar-wrapper-right">
     <ul id="sidebar_menu" class="sidebar-nav-right">
-      <li class="sidebar-brand-right green header-font">Following</li>
+      <li class="sidebar-brand-right green header-font">Followed Users</li>
     </ul>
-    <ul class="sidebar-nav-right" id="sidebar-right" *ngFor="let following of currentUser.following">
-      <!-- Following user Id is BROKEN routerlink = undefined-->
-      <li><a [routerLink]="['/user/', following.id]"><span> <img [src]="following.profilePicture" width="10%" style="padding-left:5px">
-        {{following.firstName}} {{following.lastName}}</span></a></li>
+    <!--<div *ngFor="let following of currentUser.following">-->
+    <ul class="sidebar-nav-right" *ngFor="let following of currentUser.following">
+        <li><a [routerLink]="['/user/', following.id]">
+          <span>
+          <img [src]="following.profilePicture" width="10%" style="padding-left:5px">
+          {{following.firstName}} {{following.lastName}}
+          </span></a></li>
     </ul>
+    <!--</div>-->
+
+    <ul id="sidebar_menu" class="sidebar-nav-right">
+      <li class="sidebar-brand-right green header-font">Followed Artists</li>
+    </ul>
+
+      <!--<div *ngFor="let following of currentUser.followedArtists">-->
+        <ul class="sidebar-nav-right" *ngFor="let following of currentUser.followedArtists">
+          <li><a [routerLink]="['/artist/', following.id]"><span>
+            <img [src]="following.image" width="10%" style="padding-left:5px">
+          {{following.name}}</span></a></li>
+        </ul>
+      <!--</div>-->
   </div>
 </div>
-
-<!--<li><a href = "#"><span> <img src="../../../assets/images/profExample.png" width="10%" style="padding-left:5px"> Mrunal Patel</span></a></li>-->
-<!--<li><a href = "#"><span> <img src="../../../assets/images/profExample.png" width="10%" style="padding-left:5px"> Mrunal Patel</span></a></li>-->

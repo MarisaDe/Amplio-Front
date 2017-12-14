@@ -18,6 +18,7 @@ export class ArtistComponent implements OnInit {
   currentUser: User;
   artist: Artist;
   albums: Album[];
+  isFollowing = false;
 
   constructor(private userService: UserService,
               private playlistService: PlaylistService,
@@ -28,6 +29,31 @@ export class ArtistComponent implements OnInit {
 
   }
 
+  toggleFollow() {
+    if (!this.isFollowing) {
+      this.userService.followArtist(this.artist.id).subscribe(
+        resp => {
+          console.log('Artist Followed!');
+          this.currentUser.followedArtists = Artist.generateArtistList(resp);
+          this.isFollowing = true;
+        },
+        err => {
+          console.error(err.message);
+        }
+      );
+    } else {
+      this.userService.unfollowArtist(this.artist.id).subscribe(
+        resp => {
+          console.log('Artist Unfollowed!');
+          this.currentUser.followedArtists = Artist.generateArtistList(resp);
+          this.isFollowing = false;
+        },
+        err => {
+          console.error(err.message);
+        }
+      );
+    }
+  }
   loadAlbums(artistId: number) {
     this.albumService.getAlbumByArtist(artistId).subscribe(
       resp => {
@@ -41,6 +67,16 @@ export class ArtistComponent implements OnInit {
   );
   }
 
+  checkFollowing() {
+    this.isFollowing = false;
+    for (const artist of this.currentUser.followedArtists) {
+      if (this.artist.id === artist.id) {
+        this.isFollowing = true;
+        break;
+      }
+    }
+  }
+
   ngOnInit() {
     this.userService.currentUser.subscribe(user => this.currentUser = user);
     // this.userService.person.subscribe(person => this.person = person);
@@ -52,7 +88,7 @@ export class ArtistComponent implements OnInit {
           this.artist = new Artist(resp);
           console.log(this.artist);
           this.loadAlbums(this.artist.id);
-          // this.checkFollowing();
+          this.checkFollowing();
         },
         err => {
           console.error(err);

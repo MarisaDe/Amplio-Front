@@ -29,11 +29,6 @@ export class PersonComponent implements OnInit {
               private playlistService: PlaylistService) {
 
   }
-  // follow(userToFollow: any) {
-  //   this.currentUser.following.push(userToFollow);
-  // }
-
-  // TODO Unfollow User
   toggleFollow() {
     if (!this.isFollowing) {
       this.userService.followUser(this.person.id).subscribe(
@@ -79,11 +74,6 @@ export class PersonComponent implements OnInit {
         break;
       }
     }
-  }
-
-  unfollow(userToUnfollow: any) {
-    const indexToDel = this.currentUser.following.indexOf(userToUnfollow);
-    this.currentUser.following.splice(indexToDel, 1);
   }
 
   ngOnInit() {
