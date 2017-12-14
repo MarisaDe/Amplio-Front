@@ -18,6 +18,20 @@ export class HistoryComponent implements OnInit {
 
   }
 
+  getMinSec(value: number): string {
+    const min = Math.floor(value / 60);
+    const sec = Math.round(value % 60);
+    let minstr = String(min);
+    let secstr = String(sec);
+    if (min < 10) {
+      minstr = '0' + minstr;
+    }
+    if (sec < 10) {
+      secstr = '0' + secstr;
+    }
+    return minstr + ':' + secstr;
+  }
+
   ngOnInit() {
     this.userService.currentUser.subscribe(user => this.currentUser = user);
   }
