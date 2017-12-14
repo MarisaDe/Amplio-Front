@@ -19,8 +19,17 @@
               Delete</button>
           </span>
 
-          <button *ngIf="playlist.owner.id != currentUser.id" type="button" class="follow expand-effect">
-            Follow</button>
+          <div *ngIf="playlist.owner.id != currentUser.id" type="button" class="follow expand-effect">
+            <div *ngIf="!isFollowing">
+              <button type="button" class="follow-user expand-effect"
+                      (click) = toggleFollow()>Follow</button>
+            </div>
+
+            <div *ngIf="isFollowing">
+              <button type="button" class="follow-user expand-effect"
+                      (click) = toggleFollow()>Unfollow</button>
+            </div>
+          </div>
 
         </td>
       </tr>

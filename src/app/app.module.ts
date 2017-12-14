@@ -38,6 +38,9 @@ import {SongService} from "./services/song/song.service";
 import {SearchComponent} from "./components/search/search.component";
 import {ArtistService} from "./services/artist/artist.service";
 import {HistoryComponent} from "./components/history/history.component";
+import {AdminHomeComponent} from "./components/admin/home.component";
+import {AdminLayoutComponent} from "./components/adminlayout/adminlayout.component";
+import {AdminNavComponent} from "./components/adminnav/admin-nav.component";
 
 
 @NgModule({
@@ -64,7 +67,10 @@ import {HistoryComponent} from "./components/history/history.component";
     AdComponent,
     AlbumComponent,
     SearchComponent,
-    HistoryComponent
+    HistoryComponent,
+    AdminHomeComponent,
+    AdminLayoutComponent,
+    AdminNavComponent
   ],
   imports: [
     BrowserModule,

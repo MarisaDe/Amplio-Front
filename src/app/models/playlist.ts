@@ -2,6 +2,7 @@
 import {User} from './user';
 import {Song} from './song';
 import {Follower} from './follower';
+import {Config} from "../common/config";
 
 export class Playlist {
   private _id: number;
@@ -15,7 +16,11 @@ export class Playlist {
     // console.log(playlist);
     this._id = playlist.id;
     this._description = playlist.description;
-    this._image = playlist.image;
+    if (playlist.image != null) {
+      this._image = playlist.image;
+    } else {
+      this._image = Config.ALBUM_DEFAULT_IMAGE;
+    }
     this._title = playlist.title;
     if (playlist.owner != null) {
       this._owner = new Follower(playlist.owner);

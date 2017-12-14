@@ -49,7 +49,7 @@ export class LeftNavComponent implements OnInit {
         this.playlist = new Playlist(resp);
         this.playlist.owner = this.currentUser;
         console.log(this.playlist);
-        this.userPlaylists.push(this.playlist);
+        this.currentUser.playlists.push(this.playlist);
       },
       err => {
         console.error(err.message);
@@ -57,18 +57,18 @@ export class LeftNavComponent implements OnInit {
     );
   }
 
-  loadPlaylists() {
-    this.userService.getPlaylists().subscribe(
-      resp => {
-        console.log(resp);
-        this.userPlaylists = Playlist.generatePlaylistList(resp);
-        console.log(this.userPlaylists);
-      },
-      err => {
-        console.error(err);
-      }
-    );
-  }
+  // loadPlaylists() {
+  //   this.userService.getPlaylists().subscribe(
+  //     resp => {
+  //       console.log(resp);
+  //       this.userPlaylists = Playlist.generatePlaylistList(resp);
+  //       console.log(this.userPlaylists);
+  //     },
+  //     err => {
+  //       console.error(err);
+  //     }
+  //   );
+  // }
 
   updatePic(fileInput: any) {
     console.log('CHANGING IMAGE');
@@ -86,8 +86,8 @@ export class LeftNavComponent implements OnInit {
 
   ngOnInit() {
     this.userService.currentUser.subscribe(user => this.currentUser = user);
-    console.log(this.playlistImg);
-    this.loadPlaylists();
+    // console.log(this.playlistImg);
+    // this.loadPlaylists();
     // this.sub = this.route.params.subscribe(params => {
     //   const term = params['term'];
     //   this.service.get(term).then(result => { console.log(result); });

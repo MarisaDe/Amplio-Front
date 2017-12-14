@@ -18,12 +18,39 @@ export class PlaylistComponent implements OnInit {
   hideObject: string;
   deleted = false;
   private playPauseImg = Config.PLAY_IMAGE;
+  isFollowing = false;
 
   constructor(private userService: UserService,
               private playlistService: PlaylistService,
               private audioService: AudioService,
               private route: ActivatedRoute,
               private router: Router) {
+  }
+
+  toggleFollow() {
+    if (!this.isFollowing) {
+      this.userService.followPlaylist(this.playlist.id).subscribe(
+        resp => {
+          console.log('Playlist Followed!');
+          this.currentUser.followedPlaylists = Playlist.generatePlaylistList(resp);
+          this.isFollowing = true;
+        },
+        err => {
+          console.error(err.message);
+        }
+      );
+    } else {
+      this.userService.unfollowPlaylist(this.playlist.id).subscribe(
+        resp => {
+          console.log('Playlist Unfollowed!');
+          this.currentUser.followedPlaylists = Playlist.generatePlaylistList(resp);
+          this.isFollowing = false;
+        },
+        err => {
+          console.error(err.message);
+        }
+      );
+    }
   }
 
   // playPlaylist(songId: number = 0) {
@@ -83,6 +110,8 @@ export class PlaylistComponent implements OnInit {
   }
 
   deletePlaylist() {
+    let i = this.currentUser.playlists.indexOf(this.playlist);
+    this.currentUser.playlists.splice(i, 1);
     this.playlistService.deletePlaylist(this.playlist.id).subscribe(
       resp => {
         console.log(resp);

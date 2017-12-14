@@ -17,11 +17,27 @@ import {LyricsComponent} from "./components/lyrics/lyrics.component";
 import {AlbumComponent} from "./components/album/album.component";
 import {SearchComponent} from "./components/search/search.component";
 import {HistoryComponent} from "./components/history/history.component";
+import {AdminHomeComponent} from "./components/admin/home.component";
+import {AdminLayoutComponent} from "./components/adminlayout/adminlayout.component";
 
 const appRoutes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
-  {path: 'adminlogin', component: AdminloginComponent},
+  {
+    path: 'admin',
+    component: AdminLayoutComponent,
+    canActivate: [GuardService],
+    children: [
+      {
+        path: '',
+        canActivateChild: [GuardService],
+        children: [
+          {path: 'login', component: AdminloginComponent},
+          {path: 'home', component: AdminHomeComponent},
+        ]
+      }
+    ]
+  },
   {
     path: '',
     component: MainLayoutComponent,
@@ -47,6 +63,7 @@ const appRoutes: Routes = [
       }
     ]
   },
+
   // otherwise redirect to home
   {path: '**', redirectTo: 'home'}
 ];

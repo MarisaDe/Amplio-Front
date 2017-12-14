@@ -30,7 +30,7 @@
       </li>
     </div>
 
-    <li *ngFor = "let playlist of userPlaylists">
+    <li *ngFor = "let playlist of currentUser.playlists">
       <a [routerLink]="['/playlist/'+ playlist.id]">{{playlist.title}}</a>
     </li>
 

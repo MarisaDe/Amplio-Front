@@ -18,9 +18,9 @@ import {Artist} from "../../models/artist";
 export class SearchComponent implements OnInit {
   currentUser: User;
   query: string;
-  userResults: User[];
-  artistResults: Artist[];
-  playlistResults: Playlist[];
+  userResults: User[] = [];
+  artistResults: Artist[] = [];
+  playlistResults: Playlist[] = [];
   response: any;
   resultNum = 0;
 
@@ -40,7 +40,9 @@ export class SearchComponent implements OnInit {
         this.userResults = [];
         for (const result of this.response) {
           const resultElement = new User(result);
+          console.log(result);
           this.userResults.push(resultElement);
+          console.log(this.userResults);
           this.resultNum += 1;
         }
       });
