@@ -36,7 +36,7 @@ export class PlaylistComponent implements OnInit {
     if (!this.isFollowing) {
       this.userService.followPlaylist(this.playlist.id).subscribe(
         resp => {
-          console.log('Playlist Followed!');
+          console.log(resp);
           this.currentUser.followedPlaylists = Playlist.generatePlaylistList(resp);
           this.isFollowing = true;
         },

@@ -38,13 +38,15 @@
 
     <!-- Bios-->
     <div class="row">
-      <table>
-        <tr>
-          <td><h3>Bibliography</h3></td>
-          {{artist.biblio}}
-        </tr>
-      </table>
-      <hr>
+      <div style="text-align:left;">
+        <h3>Bibliography</h3><hr>
+      </div>
+          <div class="bib-overflow">
+            {{artist.biblio}}
+          </div>
+      <span style="float:right;">
+        <h4><a href="" class="green">See More >></a></h4>
+      </span>
     </div>
 
 
