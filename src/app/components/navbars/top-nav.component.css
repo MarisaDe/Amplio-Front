@@ -17,20 +17,6 @@ td{
   margin: 20px 0px;
 }
 
-.dropdown-menu{
-  background-color: #222222;
-  color: #F5F5F5;
-}
-
-.dropdown-menu > a{
-  background-color: #fefffc
-}
-
-
-.dropdown-menu a:hover {
-  background-color: #383738;
-  color: #1fb752;
-}
 
 .arrow {
   display: inline-block;
@@ -38,9 +24,6 @@ td{
   color: #4ab900;
 }
 
-.link {
-  color: #F5F5F5;
-}
 .modal-header{
   background-color: #222222;
   color: #1fb752;
