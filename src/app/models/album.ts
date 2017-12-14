@@ -17,6 +17,8 @@ export class Album {
       this._image = Config.ALBUM_DEFAULT_IMAGE;
     } else {
       this._image = Config.ALBUM_IMAGES + album.title + '.jpg';
+      this._image = decodeURI(this._image);
+      console.log(this._image);
     }
   }
 

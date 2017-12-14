@@ -37,6 +37,7 @@ import {AlbumService} from "./services/album/album.service";
 import {SongService} from "./services/song/song.service";
 import {SearchComponent} from "./components/search/search.component";
 import {ArtistService} from "./services/artist/artist.service";
+import {HistoryComponent} from "./components/history/history.component";
 
 
 @NgModule({
@@ -62,7 +63,8 @@ import {ArtistService} from "./services/artist/artist.service";
     LyricsComponent,
     AdComponent,
     AlbumComponent,
-    SearchComponent
+    SearchComponent,
+    HistoryComponent
   ],
   imports: [
     BrowserModule,
