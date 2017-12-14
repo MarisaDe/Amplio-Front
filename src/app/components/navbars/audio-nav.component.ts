@@ -54,17 +54,7 @@ export class AudioNavComponent implements OnInit {
           }
         });
         this.song.media.addEventListener('ended', () => {
-          switch (this.repeatState) {
-            case Repeat.Off:
-              this.playPauseImg = Config.PLAY_IMAGE;
-              break;
-            case Repeat.All:
-              this.nextSong();
-              break;
-            case Repeat.One:
-              this.song.media.play();
-              break;
-          }
+          this.nextSong();
         });
         if (this.playing) {
           this.song.media.play();
@@ -72,29 +62,6 @@ export class AudioNavComponent implements OnInit {
         }
       }
     });
-    // this.song = new Song({
-    //   id: 1,
-    //   duration: 180,
-    //   album: {
-    //     id: 1,
-    //     title: 'Curtain Call',
-    //     date: '06-06-2006',
-    //     image: Config.ALBUM_DEFAULT_IMAGE,
-    //     artist: {
-    //       id: 1,
-    //       name: 'Eminem',
-    //       bibliography: 'G.O.A.T'
-    //     },
-    //   },
-    //   lyrics: 'It\'s like I\'m in the dirt...',
-    //   numPlays: 1,
-    //   songName: 'Lose Yourself',
-    //   artist: {
-    //     id: 1,
-    //     name: 'Eminem',
-    //     bibliography: 'G.O.A.T'
-    //   }
-    // });
     this.shuffle = false;
     console.log(this.song);
   }
@@ -116,17 +83,17 @@ export class AudioNavComponent implements OnInit {
   toggleRepeat() {
     switch (this.repeatState) {
       case Repeat.Off: {
-        this.repeatImg = Config.REPEAT_OFF_IMAGE;
+        this.repeatImg = Config.REPEAT_ALL_IMAGE;
         this.repeatState = Repeat.All;
         break;
       }
       case Repeat.All: {
-        this.repeatImg = Config.REPEAT_ALL_IMAGE;
+        this.repeatImg = Config.REPEAT_ONE_IMAGE;
         this.repeatState = Repeat.One;
         break;
       }
       case Repeat.One: {
-        this.repeatImg = Config.REPEAT_ONE_IMAGE;
+        this.repeatImg = Config.REPEAT_OFF_IMAGE;
         this.repeatState = Repeat.Off;
         break;
       }
@@ -145,6 +112,9 @@ export class AudioNavComponent implements OnInit {
   }
 
   togglePlay() {
+    if (!this.song) {
+      return;
+    }
     if (this.playing) {
       this.song.media.pause();
       this.playPauseImg = Config.PLAY_IMAGE;
@@ -177,13 +147,13 @@ export class AudioNavComponent implements OnInit {
 
   nextSong() {
     this.song.media.pause();
-    this.audioService.nextSong();
+    this.audioService.nextSong(this.repeatState);
     // console.log('TODO: next song');
   }
 
   prevSong() {
     this.song.media.pause();
-    this.audioService.prevSong();
+    this.audioService.prevSong(this.repeatState);
     // console.log('TODO: prev song');
   }
 }
