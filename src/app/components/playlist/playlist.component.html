@@ -57,8 +57,10 @@
       <th>Artist</th>
       <th>Album</th>
       <th>Duration</th>
+      <th></th>
 
       <tr *ngFor = "let song of playlist.songs;let index = i">
+
         <td width="50px"><img [src] ="playPauseImg" class="grow play-each"
                               (click) = "playPlaylist(song.id)"></td>
         <td><i class="fa fa-plus" aria-hidden="true"></i></td>
@@ -70,6 +72,18 @@
           <a class ="green" [routerLink]="'/album/'+ song.album.id"> {{song.album.title}}</a>
         </td>
         <td>{{getMinSec(song.duration)}}</td>
+        <td width="50px">
+          <div class="dropdown">
+            <i class="arrow fa fa-chevron-down dropdown-toggle" data-toggle="dropdown" style = "padding-right: 10px"></i>
+            <ul class="dropdown-menu">
+              <li data-toggle="modal" data-target="#accInfo">
+                <a href="#" class="link">Add to Playlist</a></li>
+
+              <li data-toggle="modal" data-target="#set">
+                <a href="#" class="link">Add to Queue</a></li>
+            </ul>
+          </div>
+        </td>
       </tr>
     </table>
   </div>

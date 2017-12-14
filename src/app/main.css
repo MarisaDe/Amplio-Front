@@ -450,3 +450,23 @@ h1, h2, h3, h4, h5, h6 {
   margin-top:10%;
   height: 150px;
 }
+
+/********* Dropdown Styling *****************/
+.dropdown-menu{
+  background-color: #222222;
+  color: #F5F5F5;
+}
+
+.dropdown-menu > a{
+  background-color: #fefffc
+}
+
+
+.dropdown-menu a:hover {
+  background-color: #383738;
+  color: #1fb752;
+}
+
+.link {
+  color: #F5F5F5;
+}
