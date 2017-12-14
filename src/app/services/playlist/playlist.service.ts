@@ -59,4 +59,7 @@ export class PlaylistService {
   deletePlaylist(playlistId: number): Observable<any> {
     return this.http.delete(Config.API_URI + 'playlist/delete/' + playlistId, {withCredentials: true});
   }
+  editPlaylist(playlistId: number, playlistform: any) {
+    return this.http.post(Config.API_URI + 'playlist/edit/' + playlistId, playlistform, {withCredentials: true});
+  }
 }

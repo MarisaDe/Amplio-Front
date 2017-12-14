@@ -5,6 +5,8 @@ import {AuthService} from '../../services/auth/auth.service';
 import {Config} from "../../common/config";
 import {ActivatedRoute, Router} from "@angular/router";
 
+declare var jQuery: any;
+
 @Component({
   selector: 'top-nav',
   templateUrl: './top-nav.component.html',
@@ -40,10 +42,12 @@ export class TopNavComponent implements OnInit {
     console.log('Upgrade was clicked!');
     this.userService.upgradeUser(this.info).subscribe(
       resp => {
-         console.log(resp);
+        console.log(resp);
+        jQuery('#upgrade').modal('hide');
       },
       err => {
         console.error(err.message);
+        jQuery('#upgrade').modal('hide');
       }
     );
   }
@@ -73,5 +77,6 @@ export class TopNavComponent implements OnInit {
   setImg() {
     this.currentUser.profilePicture = this.displayImage;
     this.dismiss = 'modal';
+    jQuery('#progImg').modal('hide');
   }
 }

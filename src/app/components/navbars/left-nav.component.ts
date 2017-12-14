@@ -7,6 +7,8 @@ import {PlaylistService} from '../../services/playlist/playlist.service';
 import {ActivatedRoute} from '@angular/router';
 import {Follower} from "../../models/follower";
 
+declare var jQuery: any;
+
 @Component({
   selector: 'left-nav',
   templateUrl: './left-nav.component.html',
@@ -37,10 +39,12 @@ export class LeftNavComponent implements OnInit {
           lastName: this.currentUser.lastName,
           profilePicture: this.currentUser.profilePicture
         });
-        this.currentUser.playlists.push(this.playlist);
+        this.currentUser.playlists.push(playlist);
+        jQuery('#addPlaylist').modal('hide');
       },
       err => {
         console.error(err.message);
+        jQuery('#addPlaylist').modal('hide');
       }
     );
     this.playlist = {};
