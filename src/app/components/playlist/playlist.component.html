@@ -72,17 +72,24 @@
           <a class ="green" [routerLink]="'/album/'+ song.album.id"> {{song.album.title}}</a>
         </td>
         <td>{{getMinSec(song.duration)}}</td>
-        <td width="50px">
-          <div class="dropdown">
-            <i class="arrow fa fa-chevron-down dropdown-toggle" data-toggle="dropdown" style = "padding-right: 10px"></i>
-            <ul class="dropdown-menu">
-              <li data-toggle="modal" data-target="#accInfo">
-                <a href="#" class="link">Add to Playlist</a></li>
+        <td>
 
-              <li data-toggle="modal" data-target="#set">
-                <a href="#" class="link">Add to Queue</a></li>
+          <!-- sub menu -->
+          <div class="dropdown">
+            <i class="arrow fa fa-ellipsis-h dropdown-toggle" data-toggle="dropdown"></i>
+            <ul class="dropdown-menu">
+              <li><a href="#" class="link">Play Queue</a></li>
+              <li class="dropdown-submenu">
+                <a tabindex="-1" href="#" class="link">Add to Playlist</a>
+                <ul class="dropdown-menu">
+                  <li><a tabindex="-1" href="#" class="link">Second level</a></li>
+                  <li><a href="#" class="link">Second level</a></li>
+                  <li><a href="#" class="link">Second level</a></li>
+                </ul>
+              </li>
             </ul>
           </div>
+
         </td>
       </tr>
     </table>
