@@ -7,6 +7,8 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {AudioService} from '../../services/audio/audio.service';
 import {Config} from '../../common/config';
 
+declare var jQuery: any;
+
 @Component({
   selector: 'playlist',
   templateUrl: './playlist.component.html',
@@ -19,6 +21,9 @@ export class PlaylistComponent implements OnInit {
   deleted = false;
   private playPauseImg = Config.PLAY_IMAGE;
   isFollowing = false;
+  editInfo: any = {};
+  private displayImage: any;
+  files: FileList;
 
   constructor(private userService: UserService,
               private playlistService: PlaylistService,
@@ -53,6 +58,41 @@ export class PlaylistComponent implements OnInit {
     }
   }
 
+  editPlaylist() {
+    console.log(this.editInfo.image);
+    if (this.editInfo.image == null) {
+      this.editInfo.image = this.playlist.image;
+    }
+    this.playlistService.editPlaylist(this.playlist.id, this.editInfo).subscribe(
+      resp => {
+        console.log(resp);
+        jQuery('#editPlaylist').modal('hide');
+        for (let i = 0; i < this.currentUser.playlists.length; i++) {
+            if (this.currentUser.playlists[i].id === this.playlist.id) {
+              this.playlist = new Playlist(resp);
+              this.currentUser.playlists[i] = this.playlist;
+            }
+        }
+      },
+      err => {
+        console.error(err.message);
+        jQuery('#editPlaylist').modal('hide');
+      }
+    );
+  }
+
+  onChange(event) {
+    this.files = event.target.files;
+    const reader = new FileReader();
+    reader.onload = this.handleReaderLoaded.bind(this);
+    reader.readAsDataURL(this.files[0]);
+  }
+
+  handleReaderLoaded(e) {
+    const reader = e.target;
+    this.displayImage = reader.result;
+    this.editInfo.image = this.displayImage;
+  }
   // playPlaylist(songId: number = 0) {
   //   let index = -1;
   //   let songList = this.playlist.songs;
@@ -116,9 +156,12 @@ export class PlaylistComponent implements OnInit {
       resp => {
         console.log(resp);
         this.deleted = true;
+        jQuery('#delPlaylist').modal('hide');
+        this.router.navigate(['/home']);
       },
       err => {
         console.error(err.message);
+        jQuery('#delPlaylist').modal('hide');
       }
     );
   }
