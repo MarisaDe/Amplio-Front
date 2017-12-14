@@ -40,7 +40,7 @@ export class Playlist {
   }
 
   static generateUserPlaylists(user: any): Playlist[] {
-    const playlists: any = user.playlists;
+    const playlists: any = user.playlists || [];
     const playlistList: Playlist[] = [];
     for (const playlist of playlists) {
       console.log(playlist);

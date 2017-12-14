@@ -110,7 +110,7 @@ export class PlaylistComponent implements OnInit {
   }
 
   deletePlaylist() {
-    let i = this.currentUser.playlists.indexOf(this.playlist);
+    const i = this.currentUser.playlists.indexOf(this.playlist);
     this.currentUser.playlists.splice(i, 1);
     this.playlistService.deletePlaylist(this.playlist.id).subscribe(
       resp => {
