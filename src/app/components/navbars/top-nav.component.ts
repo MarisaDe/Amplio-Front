@@ -11,7 +11,7 @@ import {ActivatedRoute, Router} from "@angular/router";
   styleUrls: ['../../main.css', './top-nav.component.css']
 })
 export class TopNavComponent implements OnInit {
-  private currentUser: User;
+  currentUser: User;
   private displayImage: any;
   private readonly logoImg = Config.LOGO_SMALL_IMAGE;
   private readonly ccardImg = Config.CREDIT_CARDS_IMAGE;

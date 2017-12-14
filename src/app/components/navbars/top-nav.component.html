@@ -29,9 +29,9 @@
         <div class="dropdown">
           <i class="arrow fa fa-chevron-down dropdown-toggle" data-toggle="dropdown" style = "padding-right: 10px"></i>
           <ul class="dropdown-menu">
-            <li data-toggle="modal" data-target="#accSettings" id="one"><a href="#" class="link">Account Info</a></li>
-            <li><a href="#" class="link">Settings</a></li>
-            <li><a href="#" class="link" (click)="logout()">Logout</a></li>
+            <li data-toggle="modal" data-target="#accInfo" id="one"><a href="#" class="link">Account Info</a></li>
+            <li data-toggle="modal" data-target="#settings" id="teo"><a href="#"  class="link">Settings</a></li>
+            <li><a class="link" (click)="logout()">Logout</a></li>
           </ul>
         </div>
 
@@ -40,10 +40,11 @@
   </div>
 </nav>
 
-<!-- Account settings Modal --------------------------------------------------------------------->
+<!-- Account Info Modal --------------------------------------------------------------------->
 
 <!-- Modal -->
-<div id="accSettings" class="modal fade" tabindex="-1" role="dialog">
+<div id="accInfo" class="modal fade" tabindex="-1" role="dialog">
+  <div *ngIf="currentUser!=null">
   <div class="modal-dialog">
 
     <!-- Modal content-->
@@ -53,28 +54,77 @@
         <h4 class="modal-title">Account Information</h4>
       </div>
       <div class="modal-body">
+            <form class=""(ngSubmit)="f.form.valid && performLogin()" #f="ngForm">
+              User Name<br>
+              <div class="input-box">
+                <input id="user" type="text" class="form-control input_layout edit-info" name="userName"
+                       style="margin:10px 0px; width:98%" [placeholder]="currentUser.userName" required>
+              </div>
+              First Name<br>
 
-        <ul class="nav nav-tabs"id="tabContent">
-          <li class="active"><a href="#info" data-toggle="tab">Account Info</a></li>
-          <li><a href="#security" data-toggle="tab">Security</a></li>
-        </ul>
+              <div class="input-box">
+                <input id="firstName" type="text" class="form-control input_layout edit-info"
+                       style="margin:10px 0px; width:98%" name="password" [placeholder]="currentUser.firstName" required>
+              </div>
+              Last Name<br>
 
+              <div class="input-box">
+                <input id="lastName" type="text" class="form-control input_layout edit-info"
+                       style="margin:10px 0px; width:98%"  name="password" [placeholder]="currentUser.lastName" required>
+              </div>
+              Email<br>
 
-        <div class="tab-content">
-          <div class="tab-pane" id="info">
-            First Name
-            Last Name
-          </div>
-        </div>
+                <div class="input-box">
+                  <input id="email" type="text" class="form-control input_layout edit-info"
+                         style="margin:10px 0px; width:98%" name="password" [placeholder]="currentUser.email" required>
+                </div>
 
-        </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              <span *ngIf="currentUser.isPremium">
+              Status: Premium</span>
+              <span *ngIf="!currentUser.isPremium">
+                Status: Basic</span>
+<br>
+        </form>
+      <span>
+        <button class="delete expand-effect" style="width:20%">Delete</button>
+        <button class="cancel expand-effect" style="width:20%" data-dismiss="modal">Cancel</button>
+        <button type="submit" class="create expand-effect" style="width:20%" align="right">Save</button>
+      </span>
+      <br>
       </div>
-    </div>
 
   </div>
+  </div>
 </div>
+
+
+<!-- Settings Modal --------------------------------------------------------------------->
+
+<!-- Modal -->
+<div id="settings" class="modal fade" tabindex="-1" role="dialog">
+  <div *ngIf="currentUser!=null">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Settings</h4>
+        </div>
+        <div class="modal-body">
+        </div>
+        <span>
+        <button class="delete expand-effect" style="width:20%">Delete</button>
+        <button class="cancel expand-effect" style="width:20%" data-dismiss="modal">Cancel</button>
+        <button type="submit" class="create expand-effect" style="width:20%" align="right">Save</button>
+      </span>
+        <br>
+      </div>
+
+    </div>
+  </div>
+</div>
+
 
 <!-- Change Image Modal --------------------------------------------------------------------->
 

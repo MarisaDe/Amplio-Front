@@ -23,16 +23,33 @@ export class LeftNavComponent implements OnInit {
               route: ActivatedRoute) {
   }
 
+  // createPlaylist() {
+  //   if (this.playlist.image == null) {
+  //     this.playlist.image = Config.ALBUM_DEFAULT_IMAGE;
+  //   }
+  //   // this.playlist.owner = this.currentUser.id;
+  //   this.playlistService.createPlaylist(this.playlist).subscribe(
+  //     resp => {
+  //       console.log(resp);
+  //       this.currentUser.playlists = Playlist.generateUserPlaylists(resp);
+  //       console.log(this.userPlaylists);
+  //     },
+  //     err => {
+  //       console.error(err.message);
+  //     }
+  //   );
+  // }
   createPlaylist() {
     if (this.playlist.image == null) {
       this.playlist.image = Config.ALBUM_DEFAULT_IMAGE;
     }
-    this.playlist.owner = this.currentUser.id;
     this.playlistService.createPlaylist(this.playlist).subscribe(
       resp => {
         console.log(resp);
-        this.userPlaylists = Playlist.generatePlaylistList(resp);
-        console.log(this.userPlaylists);
+        this.playlist = new Playlist(resp);
+        this.playlist.owner = this.currentUser;
+        console.log(this.playlist);
+        this.userPlaylists.push(this.playlist);
       },
       err => {
         console.error(err.message);

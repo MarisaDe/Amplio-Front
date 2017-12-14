@@ -16,7 +16,9 @@ export class Playlist {
     this._description = playlist.description;
     this._image = playlist.image;
     this._title = playlist.title;
+    if (playlist.owner != null) {
     this._owner = new User(playlist.owner);
+    }
     this._songs = [];
     for (const song of playlist.songs) {
       this._songs.push(new Song(song));
@@ -27,6 +29,17 @@ export class Playlist {
     const playlistList: Playlist[] = [];
     for (const playlist of playlists) {
       playlistList.push(new Playlist(playlist));
+    }
+    return playlistList;
+  }
+
+  static generateUserPlaylists(playlists: any): Playlist[] {
+    const playlistList: Playlist[] = [];
+    for (const playlist of playlists) {
+      console.log(playlist);
+      let p = new Playlist(playlist)
+      p.owner = null;
+      playlistList.push(p);
     }
     return playlistList;
   }

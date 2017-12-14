@@ -20,7 +20,7 @@
       <!--<div *ngFor="let following of currentUser.followedArtists">-->
         <ul class="sidebar-nav-right" *ngFor="let following of currentUser.followedArtists">
           <li><a [routerLink]="['/artist/', following.id]"><span>
-            <img [src]="following.image" width="10%" style="padding-left:5px">
+            <img [src]="following.image" width="10%" style="border-radius: 50%; padding-left:5px">
           {{following.name}}</span></a></li>
         </ul>
       <!--</div>-->

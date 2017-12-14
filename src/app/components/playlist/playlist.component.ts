@@ -82,7 +82,6 @@ export class PlaylistComponent implements OnInit {
     this.playlistService.deletePlaylist(this.playlist.id).subscribe(
       resp => {
         console.log(resp);
-        this.router.navigate(['/home']);
         this.deleted = true;
       },
       err => {
@@ -95,9 +94,9 @@ export class PlaylistComponent implements OnInit {
     this.userService.currentUser.subscribe(user => this.currentUser = user);
     this.playlistService.getPlaylist(this.route.snapshot.params['id']).subscribe(
       resp => {
-        // console.log('Playlist Page: ' + resp);
+        console.log(resp);
         this.playlist = new Playlist(resp);
-        // console.log(this.playlist);
+        console.log(this.playlist);
       },
       err => {
         console.error(err);

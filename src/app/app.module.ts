@@ -37,6 +37,8 @@ import {AlbumService} from "./services/album/album.service";
 import {SongService} from "./services/song/song.service";
 import {SearchComponent} from "./components/search/search.component";
 import {ArtistService} from "./services/artist/artist.service";
+import { ContextmenuModule } from 'ng2-contextmenu';
+
 
 
 @NgModule({

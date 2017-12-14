@@ -16,10 +16,4 @@ export class RightNavComponent implements OnInit {
   ngOnInit() {
     this.userService.currentUser.subscribe(user => this.currentUser = user);
   }
-
-  // TODO Artist
-  loadPersonPage(userId: number) {
-    this.userService.getUser(userId);
-  }
-
 }

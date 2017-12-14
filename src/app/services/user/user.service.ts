@@ -4,6 +4,7 @@ import {HttpClient} from '@angular/common/http';
 import {Router} from '@angular/router';
 import {BehaviorSubject} from 'rxjs/BehaviorSubject';
 import {Config} from '../../common/config';
+import {Playlist} from "../../models/playlist";
 
 @Injectable()
 export class UserService {
@@ -12,6 +13,8 @@ export class UserService {
   public currentUser = this.userSource.asObservable();
   private personSource = new BehaviorSubject<User>(null);
   public person = this.personSource.asObservable(); // TODO: Artist
+  private playlistSource = new BehaviorSubject<Playlist>(null);
+  public playlists = this.playlistSource.asObservable();
 
   constructor(private http: HttpClient, private router: Router) { }
 

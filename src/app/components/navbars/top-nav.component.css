@@ -164,3 +164,8 @@ a.animated-button.green-effect:hover:after {
   opacity: 1;
   height: 200% !important;
 }
+
+
+.edit-info::placeholder {
+  color: black;
+}

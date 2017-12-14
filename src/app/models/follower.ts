@@ -9,7 +9,6 @@ export class Follower {
   private _profilePicture: any;
 
   constructor(info: any) {
-    console.log(info);
     this._id = info.id;
     this._userName = info.userName;
     this._firstName = info.firstName;
