@@ -187,12 +187,12 @@
         <div align="center">
           <img [src]="ccardImg" width="80%" align="center"><br>
         </div>
-
+<form name="form" (ngSubmit)="f.form.valid && performUpgrade()" #f="ngForm">
         <i class="fa fa-angle-double-right"></i>
         Card Number
         <input id="ccard" type="text" class="form-control input_layout credit"
                name="ccard" placeholder="1111 2222 3333 4444"
-                style="margin:10px 0px; width:98%"><br><br>
+                style="margin:10px 0px; width:98%" [(ngModel)]="info.credit"><br><br>
 
         <table cellspacing="0" cellpadding="0" width="100%">
           <tr>
@@ -237,7 +237,7 @@
             <i class="fa fa-angle-double-right"></i>
             Security code<br>
             <input id="security" type="text" class="form-control input_layout combobox"
-                   name="security" style="margin:10px 0px">
+                   name="security" style="margin:10px 0px" [(ngModel)]="info.ccv">
           </td>
           <td>
             <i class="fa fa-angle-double-right"></i>
@@ -247,6 +247,7 @@
           </td>
         </tr>
         </table>
+</form>
         <div class="disclaimer-box">
           <p align="left" class="disclaimer">
           "By purchasing, you authorize Amplio to charge you $9.99 + applicable tax for a 3-month trial.
@@ -258,7 +259,7 @@
         </div>
 
   <div align="center">
-        <button type="submit" formmethod="post" class="create expand-effect">START AMPLIO PREMIUM</button>
+        <button type="submit" class="create expand-effect">START AMPLIO PREMIUM</button>
   </div>
 
       </div>

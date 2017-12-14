@@ -18,6 +18,7 @@ export class TopNavComponent implements OnInit {
   private monthYear: Array <number>;
   private dismiss: any;
   files: FileList;
+  info: any = {};
 
   constructor(private userService: UserService,
               private authService: AuthService,
@@ -35,6 +36,17 @@ export class TopNavComponent implements OnInit {
     }
   }
 
+  performUpgrade() {
+    console.log('Upgrade was clicked!');
+    this.userService.upgradeUser(this.info).subscribe(
+      resp => {
+         console.log(resp);
+      },
+      err => {
+        console.error(err.message);
+      }
+    );
+  }
   enterSearch(value: string) {
     this.route.navigate(['/search/' + value]);
   }

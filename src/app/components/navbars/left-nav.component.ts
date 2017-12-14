@@ -86,6 +86,7 @@ export class LeftNavComponent implements OnInit {
 
   ngOnInit() {
     this.userService.currentUser.subscribe(user => this.currentUser = user);
+
     // console.log(this.playlistImg);
     // this.loadPlaylists();
     // this.sub = this.route.params.subscribe(params => {

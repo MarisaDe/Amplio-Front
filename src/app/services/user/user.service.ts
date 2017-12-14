@@ -5,6 +5,7 @@ import {Router} from '@angular/router';
 import {BehaviorSubject} from 'rxjs/BehaviorSubject';
 import {Config} from '../../common/config';
 import {Playlist} from "../../models/playlist";
+import {Observable} from "rxjs/Observable";
 
 @Injectable()
 export class UserService {
@@ -74,6 +75,9 @@ export class UserService {
       id: playlistId
     };
     return this.http.post(Config.API_URI + 'user/unfollowartist/' + playlistId, body, {withCredentials: true });
+  }
+  upgradeUser(model: any): Observable<any> {
+    return this.http.post(Config.API_URI + 'user/upgrade', model, { withCredentials: true });
   }
 
 }
