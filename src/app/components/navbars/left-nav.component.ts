@@ -5,6 +5,7 @@ import {Config} from '../../common/config';
 import {Playlist} from '../../models/playlist';
 import {PlaylistService} from '../../services/playlist/playlist.service';
 import {ActivatedRoute} from '@angular/router';
+import {Follower} from "../../models/follower";
 
 @Component({
   selector: 'left-nav',
@@ -12,33 +13,15 @@ import {ActivatedRoute} from '@angular/router';
   styleUrls: ['./left-nav.component.css', '../../main.css']
 })
 export class LeftNavComponent implements OnInit {
-  currentUser: User;
+  private currentUser: User;
   private playlistImg = Config.ALBUM_DEFAULT_IMAGE;
-  playlist: any = {};
-  userPlaylists: any;
-  followedPlaylists: any;
+  private playlist: any = {};
 
   constructor(private userService: UserService,
               private playlistService: PlaylistService,
               route: ActivatedRoute) {
   }
 
-  // createPlaylist() {
-  //   if (this.playlist.image == null) {
-  //     this.playlist.image = Config.ALBUM_DEFAULT_IMAGE;
-  //   }
-  //   // this.playlist.owner = this.currentUser.id;
-  //   this.playlistService.createPlaylist(this.playlist).subscribe(
-  //     resp => {
-  //       console.log(resp);
-  //       this.currentUser.playlists = Playlist.generateUserPlaylists(resp);
-  //       console.log(this.userPlaylists);
-  //     },
-  //     err => {
-  //       console.error(err.message);
-  //     }
-  //   );
-  // }
   createPlaylist() {
     if (this.playlist.image == null) {
       this.playlist.image = Config.ALBUM_DEFAULT_IMAGE;
@@ -46,29 +29,22 @@ export class LeftNavComponent implements OnInit {
     this.playlistService.createPlaylist(this.playlist).subscribe(
       resp => {
         console.log(resp);
-        this.playlist = new Playlist(resp);
-        this.playlist.owner = this.currentUser;
-        console.log(this.playlist);
+        const playlist = new Playlist(resp);
+        playlist.owner = new Follower ({
+          id: this.currentUser.id,
+          userName: this.currentUser.userName,
+          firstName: this.currentUser.firstName,
+          lastName: this.currentUser.lastName,
+          profilePicture: this.currentUser.profilePicture
+        });
         this.currentUser.playlists.push(this.playlist);
       },
       err => {
         console.error(err.message);
       }
     );
+    this.playlist = {};
   }
-
-  // loadPlaylists() {
-  //   this.userService.getPlaylists().subscribe(
-  //     resp => {
-  //       console.log(resp);
-  //       this.userPlaylists = Playlist.generatePlaylistList(resp);
-  //       console.log(this.userPlaylists);
-  //     },
-  //     err => {
-  //       console.error(err);
-  //     }
-  //   );
-  // }
 
   updatePic(fileInput: any) {
     console.log('CHANGING IMAGE');
@@ -86,13 +62,5 @@ export class LeftNavComponent implements OnInit {
 
   ngOnInit() {
     this.userService.currentUser.subscribe(user => this.currentUser = user);
-    // console.log(this.playlistImg);
-    // this.loadPlaylists();
-    // this.sub = this.route.params.subscribe(params => {
-    //   const term = params['term'];
-    //   this.service.get(term).then(result => { console.log(result); });
-    // });
-
-
   }
 }
