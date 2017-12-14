@@ -92,16 +92,18 @@ export class PlaylistComponent implements OnInit {
   ngOnInit() {
     this.hideObject = 'show';
     this.userService.currentUser.subscribe(user => this.currentUser = user);
-    this.playlistService.getPlaylist(this.route.snapshot.params['id']).subscribe(
-      resp => {
-        console.log(resp);
-        this.playlist = new Playlist(resp);
-        console.log(this.playlist);
-      },
-      err => {
-        console.error(err);
-      }
-    );
+
+    this.route.params.subscribe( params => {
+      this.playlistService.getPlaylist(params['id']).subscribe(
+        resp => {
+          console.log(params['id']);
+          this.playlist = new Playlist(resp);
+        },
+        err => {
+          console.error(err);
+        }
+      );
+    });
   }
 
 }

@@ -83,9 +83,9 @@ export class SearchComponent implements OnInit {
   ngOnInit() {
     this.route.params.subscribe(params => {
       this.query = params['id'];
+      this.getUserSearchResults();
+      this.getArtistSearchResults();
+      this.getPlaylistSearchResults();
     });
-    this.getUserSearchResults();
-    this.getArtistSearchResults();
-    this.getPlaylistSearchResults();
   }
 }

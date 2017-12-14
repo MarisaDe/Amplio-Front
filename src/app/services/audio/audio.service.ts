@@ -53,4 +53,28 @@ export class AudioService {
       return this.queueSource.getValue().slice(this.currentIndex + 1);
     }
   }
+
+  addToQueue(song: Song) {
+    const queue: Array<Song> = this.queueSource.getValue();
+    const head: Song = queue.shift();
+    queue.unshift(song);
+    queue.unshift(head);
+    this.queueSource.next(queue);
+  }
+
+  removeFromQueue(songId: number) {
+    const queue: Array<Song> = this.queueSource.getValue();
+    let index = -1;
+    for (let i = 0; i < queue.length; i++) {
+      if (queue[i].id === songId) {
+        index = i;
+        break;
+      }
+    }
+    if (index >= 0) {
+      queue.splice(index, 1);
+      this.queueSource.next(queue);
+    }
+  }
+
 }
