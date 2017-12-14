@@ -3,6 +3,8 @@ import 'howler';
 import {BehaviorSubject} from 'rxjs/BehaviorSubject';
 import {Song} from '../../models/song';
 import {Repeat} from "../../common/repeat.enum";
+import {HttpClient} from "@angular/common/http";
+import {Config} from "../../common/config";
 
 @Injectable()
 export class AudioService {
@@ -15,7 +17,11 @@ export class AudioService {
 
   private currentIndex = 0;
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
+
+  recordPlay(songId: number) {
+    this.http.get(Config.API_URI + 'song/play/' + songId, {withCredentials: true}).subscribe();
+  }
 
   setQueue(songs: Array<Song>) {
     this.queueSource.next(songs);

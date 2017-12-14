@@ -3,6 +3,8 @@ import {AudioService} from '../../services/audio/audio.service';
 import {Song} from '../../models/song';
 import {Repeat} from '../../common/repeat.enum';
 import {Config} from '../../common/config';
+import {UserService} from "../../services/user/user.service";
+import {User} from "../../models/user";
 
 @Component({
   selector: 'audio-nav',
@@ -10,7 +12,7 @@ import {Config} from '../../common/config';
   styleUrls: ['./audio-nav.component.css']
 })
 export class AudioNavComponent implements OnInit {
-  // private songQueue: Array<Song>;
+  private currentUser: User;
   private song: Song;
   private playing = false;
   private shuffle = false;
@@ -28,10 +30,11 @@ export class AudioNavComponent implements OnInit {
   private readonly prevImg = Config.PREVIOUS_IMAGE;
   private readonly queueImg = Config.QUEUE_IMAGE;
 
-  constructor(private audioService: AudioService) {
+  constructor(private audioService: AudioService, private userService: UserService) {
   }
 
   ngOnInit() {
+    this.userService.currentUser.subscribe(user => this.currentUser = user );
     // this.audioService.songQueue.subscribe(songQueue => this.songQueue = songQueue);
     this.audioService.currentSong.subscribe(song => {
       console.log(song);
@@ -60,6 +63,8 @@ export class AudioNavComponent implements OnInit {
           this.song.media.play();
           this.playPauseImg = Config.PAUSE_IMAGE;
         }
+        this.currentUser.history.push(this.song);
+        this.audioService.recordPlay(this.song.id);
       }
     });
     this.shuffle = false;

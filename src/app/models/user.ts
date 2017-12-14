@@ -2,6 +2,7 @@ import {Follower} from './follower';
 import {Config} from "../common/config";
 import {Playlist} from "./playlist";
 import {Artist} from "./artist";
+import {Song} from "./song";
 
 export class User {
 
@@ -17,6 +18,7 @@ export class User {
   private _followedPlaylists: Playlist[];
   private _followedArtists: Artist[];
   private _playlists: Playlist[];
+  private _history: Song[];
 
   constructor (info: any) {
     if (typeof info === 'string') {
@@ -38,6 +40,7 @@ export class User {
       this._followedPlaylists = Playlist.generatePlaylistList(info.followedPlaylists);
       this._followedArtists = Artist.generateArtistList(info.followedArtists);
       this._playlists = Playlist.generateUserPlaylists(info);
+      this._history = Song.generateSongList(info.songHistory);
     }
   }
 
@@ -147,5 +150,13 @@ export class User {
 
   set playlists(value: Playlist[]) {
     this._playlists = value;
+  }
+
+  get history(): Song[] {
+    return this._history;
+  }
+
+  set history(value: Song[]) {
+    this._history = value;
   }
 }

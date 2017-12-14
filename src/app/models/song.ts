@@ -30,13 +30,13 @@ export class Song {
     }
   }
 
-  // static generateSongList(songs: any): Song[] {
-  //   const songList: Song[] = [];
-  //   for (const song of songs) {
-  //     songList.push(new Song(song));
-  //   }
-  //   return songList;
-  // }
+  static generateSongList(songs: any): Song[] {
+    const songList: Song[] = [];
+    for (const song of songs) {
+      songList.push(new Song(song));
+    }
+    return songList;
+  }
 
   get id(): number {
     return this._id;
