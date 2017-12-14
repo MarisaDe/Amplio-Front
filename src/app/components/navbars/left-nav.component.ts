@@ -37,7 +37,7 @@ export class LeftNavComponent implements OnInit {
           lastName: this.currentUser.lastName,
           profilePicture: this.currentUser.profilePicture
         });
-        this.currentUser.playlists.push(this.playlist);
+        this.currentUser.playlists.push(playlist);
       },
       err => {
         console.error(err.message);

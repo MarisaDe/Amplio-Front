@@ -53,27 +53,33 @@ export class UserService {
   }
 
   unfollowArtist(artistId: number) {
-    const body = {
-      id: artistId
-    };
-    return this.http.post(Config.API_URI + 'user/unfollowartist/' + artistId, body, {withCredentials: true });
+    return this.http.post(Config.API_URI + 'user/unfollowartist/' + artistId, null, {withCredentials: true });
   }
 
   search(query: string) {
     return this.http.get(Config.API_URI + 'user/search/' + query,{withCredentials: true });
   }
   followPlaylist(playlistId: number) {
-    const body = {
-      id: playlistId
-    };
-    return this.http.post(Config.API_URI + 'user/followartist/' + playlistId, body, {withCredentials: true });
+    return this.http.post(Config.API_URI + 'user/followplaylist/' + playlistId, null, {withCredentials: true });
   }
 
   unfollowPlaylist(playlistId: number) {
-    const body = {
-      id: playlistId
-    };
-    return this.http.post(Config.API_URI + 'user/unfollowartist/' + playlistId, body, {withCredentials: true });
+    return this.http.post(Config.API_URI + 'user/unfollowplaylist/' + playlistId, null, {withCredentials: true });
   }
 
+  saveSong(songId: number) {
+    return this.http.post(Config.API_URI + 'user/savesong/' + songId, null, {withCredentials: true});
+  }
+
+  unsaveSong(songId: number) {
+    return this.http.post(Config.API_URI + 'user/unsavesong/' + songId, null, {withCredentials:true});
+  }
+
+  saveAlbum(albumId: number) {
+    return this.http.post(Config.API_URI + 'user/savealbum/' + albumId, null, {withCredentials: true});
+  }
+
+  unsaveAlbum(albumId: number) {
+    return this.http.post(Config.API_URI + 'user/unsavealbum/' + albumId, null, {withCredentials: true});
+  }
 }

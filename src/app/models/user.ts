@@ -3,6 +3,8 @@ import {Config} from "../common/config";
 import {Playlist} from "./playlist";
 import {Artist} from "./artist";
 import {Song} from "./song";
+import {Album} from "./album";
+import {Library} from "./library";
 
 export class User {
 
@@ -19,6 +21,7 @@ export class User {
   private _followedArtists: Artist[];
   private _playlists: Playlist[];
   private _history: Song[];
+  private _library: Library;
 
   constructor (info: any) {
     if (typeof info === 'string') {
@@ -41,6 +44,9 @@ export class User {
       this._followedArtists = Artist.generateArtistList(info.followedArtists);
       this._playlists = Playlist.generateUserPlaylists(info);
       this._history = Song.generateSongList(info.songHistory);
+      this._library = new Library();
+      this._library.albums = Album.generateAlbumList(info.savedAlbums);
+      this._library.songs = Song.generateSongList(info.savedSongs);
     }
   }
 

@@ -3,6 +3,7 @@ import {User} from '../../models/user';
 import {UserService} from '../../services/user/user.service';
 import {PlaylistService} from '../../services/playlist/playlist.service';
 import {Playlist} from '../../models/playlist';
+import {Library} from "../../models/library";
 
 @Component({
   selector: 'library',
@@ -11,13 +12,15 @@ import {Playlist} from '../../models/playlist';
 })
 export class LibraryComponent implements OnInit {
   currentUser: User;
-  libraryPlaylist: Playlist;
 
   constructor(private userService: UserService,
               private playlistService: PlaylistService) {
     console.log('howdy from the home compenent!');
 
   }
+
+
+
   ngOnInit() {
     console.log('hello from library component!');
     this.userService.currentUser.subscribe(user => this.currentUser = user);
