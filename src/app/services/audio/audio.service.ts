@@ -56,10 +56,31 @@ export class AudioService {
 
   addToQueue(song: Song) {
     const queue: Array<Song> = this.queueSource.getValue();
+    const updateCurrent = queue.length === 0;
     const head: Song = queue.shift();
     queue.unshift(song);
     queue.unshift(head);
     this.queueSource.next(queue);
+    if (updateCurrent) {
+      this.currentIndex = 0;
+      this.songSource.next(queue[this.currentIndex]);
+    }
+  }
+
+  addSongsToQueue(songs: Song[]) {
+    const queue: Array<Song> = this.queueSource.getValue();
+    const updateCurrent = queue.length === 0;
+    const head: Song = queue.shift();
+    for (const song of songs) {
+      queue.unshift(song);
+    }
+    queue.unshift(head);
+    console.log(queue);
+    this.queueSource.next(queue);
+    if (updateCurrent) {
+      this.currentIndex = 0;
+      this.songSource.next(queue[this.currentIndex]);
+    }
   }
 
   removeFromQueue(songId: number) {

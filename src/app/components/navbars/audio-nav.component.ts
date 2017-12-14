@@ -66,8 +66,10 @@ export class AudioNavComponent implements OnInit {
               break;
           }
         });
-        this.song.media.play();
-        this.playPauseImg = Config.PAUSE_IMAGE;
+        if (this.playing) {
+          this.song.media.play();
+          this.playPauseImg = Config.PAUSE_IMAGE;
+        }
       }
     });
     // this.song = new Song({

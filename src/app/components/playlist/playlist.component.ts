@@ -78,6 +78,10 @@ export class PlaylistComponent implements OnInit {
     this.hideObject = 'none';
   }
 
+  addToQueue() {
+    this.audioService.addSongsToQueue(this.playlist.songs);
+  }
+
   deletePlaylist() {
     this.playlistService.deletePlaylist(this.playlist.id).subscribe(
       resp => {
