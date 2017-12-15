@@ -18,6 +18,8 @@ export class LeftNavComponent implements OnInit {
   private currentUser: User;
   private playlistImg = Config.ALBUM_DEFAULT_IMAGE;
   private playlist: any = {};
+  files: FileList;
+  displayImage: any =  Config.ALBUM_DEFAULT_IMAGE;
 
   constructor(private userService: UserService,
               private playlistService: PlaylistService,
@@ -61,6 +63,25 @@ export class LeftNavComponent implements OnInit {
 
     reader.readAsDataURL(fileInput.target.files[0]);
     console.log(this.playlistImg);
+  }
+
+  onChange(event) {
+    this.files = event.target.files;
+    const reader = new FileReader();
+    reader.onload = this.handleReaderLoaded.bind(this);
+    console.log(this.files)
+    reader.readAsDataURL(this.files[0]);
+  }
+
+  handleReaderLoaded(e) {
+    const reader = e.target;
+    this.displayImage = reader.result;
+  }
+
+  setImg(files: any) {
+    console.log(files[0]);
+    this.playlistImg = Config.IMAGES_PATH + files[0].name;
+    jQuery('#addPlaylist').modal('hide');
   }
 
   ngOnInit() {

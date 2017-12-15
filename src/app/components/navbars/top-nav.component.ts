@@ -78,6 +78,7 @@ export class TopNavComponent implements OnInit {
     this.files = event.target.files;
     const reader = new FileReader();
     reader.onload = this.handleReaderLoaded.bind(this);
+    console.log(this.files)
     reader.readAsDataURL(this.files[0]);
   }
 
@@ -88,10 +89,14 @@ export class TopNavComponent implements OnInit {
 
   reset() {
     this.displayImage = Config.PROFILE_DEFAULT_IMAGE;
+    this.currentUser.profilePicture = Config.PROFILE_DEFAULT_IMAGE;
+    jQuery('#profImg').modal('hide');
   }
-  setImg() {
-    this.currentUser.profilePicture = this.displayImage;
+
+  setImg(files: any) {
+    console.log(files[0]);
+    this.currentUser.profilePicture = Config.IMAGES_PATH + files[0].name;
     this.dismiss = 'modal';
-    jQuery('#progImg').modal('hide');
+    jQuery('#profImg').modal('hide');
   }
 }

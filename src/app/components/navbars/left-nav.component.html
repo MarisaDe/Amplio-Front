@@ -68,10 +68,10 @@
           <tr>
             <td colspan="1" style = "padding:30px; padding-left: 0px">
               Image:<br>
-              <img [src] = "playlistImg" height="200px"><br>
+              <img [src] = "displayImage" height="200px"><br>
               <!--<button for = "myImage" type="button" class="btn-5 choose">-->
-                <input type="file" class="chooseImg" id="myImage" name="myImage" accept="image/x-png,image/gif,image/jpeg" #img
-                (change) = "updatePic($event)" [(ngModel)]="playlist.image"/>
+                <input type="file" class="chooseImg" id="myImage" name="myImage" accept="image/x-png,image/gif,image/jpeg"
+                (change) = "onChange($event)" #myImage/>
                 <label for = "myImage" class="choose expand-effect">
                   Choose an image</label>
               <!--</button>-->
@@ -88,7 +88,7 @@
 
             <div align="center">
               <button type="button" class="cancel expand-effect"  data-dismiss="modal">Cancel</button>
-              <button type="submit" class="create expand-effect">Create</button>
+              <button type="submit" class="create expand-effect" (click) = setImg(myImage.files)>Create</button>
             </div>
       </form>
       </div>
