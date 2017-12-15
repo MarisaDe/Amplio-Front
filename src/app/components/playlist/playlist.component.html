@@ -13,10 +13,10 @@
 
           <!-- Current user's playlists options -->
           <span *ngIf="playlist.owner.id == currentUser.id; else followButtons">
-              <button type="button" class="follow expand-effect" (click)="togglePrivate()" *ngIf="playlist.isPublic">
+              <button type="button" class="follow expand-effect" (click)= togglePrivate() *ngIf="playlist.isPublic">
                 Make Private</button>
 
-                <button type="button" class="follow expand-effect" (click)="togglePrivate()" *ngIf="!playlist.isPublic">
+                <button type="button" class="follow expand-effect" (click) = togglePrivate() *ngIf="!playlist.isPublic">
                 Make Public</button>
 
             <button type="button" class="follow expand-effect" data-toggle="modal" data-target="#editPlaylist">
