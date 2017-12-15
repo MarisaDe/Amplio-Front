@@ -4,6 +4,7 @@ import {UserService} from '../../services/user/user.service';
 import {PlaylistService} from '../../services/playlist/playlist.service';
 import {SongService} from "../../services/song/song.service";
 import {Playlist} from "../../models/playlist";
+import {AudioService} from "../../services/audio/audio.service";
 
 @Component({
   selector: 'topcharts',
@@ -15,10 +16,14 @@ export class TopchartsComponent implements OnInit {
   playlist: Playlist;
 
   constructor(private userService: UserService,
-              private playlistService: PlaylistService) {
+              private playlistService: PlaylistService,
+              private audioService: AudioService) {
 
   }
 
+  addToQueue() {
+    this.audioService.addSongsToQueue(this.playlist.songs);
+  }
   getMinSec(value: number): string {
     const min = Math.floor(value / 60);
     const sec = Math.round(value % 60);

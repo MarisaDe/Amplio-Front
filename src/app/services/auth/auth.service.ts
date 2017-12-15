@@ -17,14 +17,12 @@ export class AuthService {
 
   }
 
-  logout() {
+  logout(isDelete: boolean = false) {
     this.userService.setUser(null);
     localStorage.removeItem('currentUser');
-    this.http.post(Config.API_URI + 'session/logout', null, { withCredentials: true })
-      .subscribe(
-        resp => {},
-        err => {}
-      );
+    if (!isDelete) {
+      this.http.post(Config.API_URI + 'session/logout', null, { withCredentials: true }).subscribe();
+    }
     this.router.navigate(['/login']);
   }
 

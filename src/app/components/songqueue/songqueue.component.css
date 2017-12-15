@@ -1,20 +1,29 @@
-.table td,th,td{
+.songs.table td,th,td{
   border-color: #595959;
 }
-.table-hover>tbody>tr .play-each {
+.songs.table-hover>tbody>tr .play-each {
   height: 25px;
   visibility: hidden;
 }
 
-tr:hover{
+.songs.table-hover>tbody>tr:hover{
   background-color:#595959 !important;
 }
 
 
-.table-hover>tbody>tr:hover .play-each{
+.songs.table-hover>tbody>tr:hover .play-each{
   visibility: visible
 }
 
 .play-each:hover{
   transform: scale(1.1);
 }
+
+.right{
+  float:right;
+}
+
+.left{
+  float:left;
+}
+

@@ -38,6 +38,19 @@ export class TopNavComponent implements OnInit {
     }
   }
 
+  deleteAccount() {
+    this.userService.deleteUser().subscribe(
+      resp => {
+        jQuery('#accInfo').modal('hide');
+        this.authService.logout(true);
+      },
+      err => {
+        console.error(err);
+        jQuery('#accInfo').modal('hide');
+        this.authService.logout(true);
+      }
+    );
+  }
   performUpgrade() {
     console.log('Upgrade was clicked!');
     console.log(this.info);

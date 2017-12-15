@@ -71,6 +71,10 @@ export class UserService {
     return this.http.post(Config.API_URI + 'user/upgrade', model, { withCredentials: true });
   }
 
+  deleteUser() {
+    return this.http.delete(Config.API_URI + 'user/delete', {withCredentials: true});
+  }
+
   saveSong(songId: number) {
     return this.http.post(Config.API_URI + 'user/savesong/' + songId, null, {withCredentials: true});
   }

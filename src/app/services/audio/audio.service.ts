@@ -144,7 +144,8 @@ export class AudioService {
   }
 
   getRemainingQueue(): Song[] {
-    if (this.currentIndex === this.queueSource.getValue().length - 1) {
+    if (this.currentIndex === this.queueSource.getValue().length - 1
+    && this.repeatSource.getValue() === Repeat.All) {
       return this.queueSource.getValue();
     } else {
       return this.queueSource.getValue().slice(this.currentIndex + 1);

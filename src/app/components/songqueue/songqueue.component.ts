@@ -19,11 +19,11 @@ export class SongqueueComponent implements OnInit {
   private song: Song;
   private playPauseImg = Config.PLAY_IMAGE;
 
-  constructor(private userService: UserService,
-              private playlistService: PlaylistService,
-              private audioService: AudioService,
-              private route: ActivatedRoute,
-              private router: Router) {
+  constructor(private audioService: AudioService,
+              private userService: UserService) {}
+
+  resetQueue() {
+    this.audioService.setQueue([]);
   }
 
   getMinSec(value: number): string {
@@ -41,6 +41,7 @@ export class SongqueueComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.userService.currentUser.subscribe(user => this.currentUser = user);
     this.audioService.songQueue.subscribe(songQueue => {
       this.songQueue = this.audioService.getRemainingQueue();
     });

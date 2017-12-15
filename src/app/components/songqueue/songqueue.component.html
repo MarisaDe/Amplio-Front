@@ -1,10 +1,20 @@
 <div class = "bg">
   <div class="container">
     <div class="row">
-      <h1>SONG QUEUE</h1>
+      <table width="100%">
+        <tr>
+          <td align="left">
+            <h1>SONG QUEUE</h1>
+          </td>
+          <td align="right">
+            <button type="button" class="delete expand-effect" (click)="resetQueue()">
+              Reset</button>
+          </td>
+        </tr>
+      </table>
+
       <hr>
       <br>
-
       <h3>Now Playing</h3>
       <div class="row">
         <div *ngIf="song != null; else noCurrent">
@@ -49,14 +59,28 @@
               <td width="50px"><img [src] ="playPauseImg" class="grow play-each"></td>
               <td><i class="fa fa-plus" aria-hidden="true"></i></td>
               <td align="left" class="overflow">{{song.songName}}</td>
-              <!--<td class="overflow">Title</td>-->
-              <!--<td class="overflow">Artist Name</td>-->
               <td class="overflow">
               {{song.artist.name}}</td>
               <td class="overflow">{{song.album.title}}</td>
-              <!--<td class="overflow">Album</td>-->
-              <!--<td class="overflow">Time</td>-->
               <td>{{getMinSec(song.duration)}}</td>
+
+            <td>
+
+              <!-- sub menu -->
+              <div class="dropdown">
+                <i class="arrow fa fa-ellipsis-h dropdown-toggle" data-toggle="dropdown"></i>
+                <ul class="dropdown-menu">
+                  <li><a href="#" class="link">Add to Queue</a></li>
+                  <li class="dropdown-submenu">
+                    <a tabindex="-1" href="#" class="link">Add to Playlist</a>
+                    <ul class="dropdown-menu" *ngFor="let playlist of currentUser.playlists">
+                      <li><a tabindex="-1" href="#" class="link">{{playlist.title}}</a></li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+
+            </td>
               <!--</div>-->
             </tr>
         </table>
