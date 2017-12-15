@@ -48,7 +48,6 @@
         <div *ngIf="songQueue.length > 0; else noNext">
         <table class="table table-hover table-responsive songs">
           <th></th>
-          <th></th>
           <th>Title</th>
           <th>Artist</th>
           <th>Album</th>
@@ -57,7 +56,6 @@
           <tr *ngFor="let song of songQueue; let i = index">
               <!--<div *ngIf="i > 0">-->
               <td width="50px"><img [src] ="playPauseImg" class="grow play-each"></td>
-              <td><i class="fa fa-plus" aria-hidden="true"></i></td>
               <td align="left" class="overflow">{{song.songName}}</td>
               <td class="overflow">
               {{song.artist.name}}</td>
@@ -70,6 +68,7 @@
               <div class="dropdown">
                 <i class="arrow fa fa-ellipsis-h dropdown-toggle" data-toggle="dropdown"></i>
                 <ul class="dropdown-menu">
+                  <li><a href="#" class="link">Add to Library</a></li>
                   <li><a href="#" class="link">Add to Queue</a></li>
                   <li class="dropdown-submenu">
                     <a tabindex="-1" href="#" class="link">Add to Playlist</a>
