@@ -28,28 +28,46 @@
     <div class="row">
       <div class= "linkInfo">
         <ul align>
-          <li class = "current"> <a href="" class = "active">OVERVIEW</a></li>
-          <li> <a href="#">ALBUMS</a></li>
-          <li> <a href="#">ABOUT</a></li>
+          <li class = "current"> <a (click)="changePage(1)" class = "active">OVERVIEW</a></li>
+          <li> <a (click)="changePage(3)">ABOUT</a></li>
+          <li> <a (click)="changePage(4)">RELATED ARTISTS</a></li>
+          <li> <a (click)="changePage(2)">ALBUMS</a></li>
         </ul>
       </div>
     </div>
     <br>
 
+    <!--------------------------------------------------------------------------------------------------------------->
+
     <!-- Bios-->
+    <div *ngIf="page == 1">
     <div class="row">
       <div style="text-align:left;">
         <h3>About</h3><hr>
       </div>
-          <div class="bib-overflow">
+          <div class="bib-overflow about-text">
             {{artist.biblio}}
           </div>
       <span style="float:right;">
-        <h4><a href="" class="green">See More >></a></h4>
+        <h4><a (click)="changePage(3)" class="green">See More >></a></h4>
       </span>
+    </div>
+    </div>
+
+
+    <div *ngIf="page == 3">
+      <div class="row">
+        <div style="text-align:left;">
+          <h3>About (Full)</h3><hr>
+        </div>
+        <div class = "about-text">
+          {{artist.biblio}}
+        </div>
+      </div>
     </div>
 
     <!-- Related Artists-->
+    <div *ngIf="page == 1 || page == 4">
     <div class="row">
       <table>
         <tr>
@@ -70,8 +88,10 @@
         </div>
       </div>
     </div>
+    </div>
 
     <!-- Albums-->
+    <div *ngIf="page == 1 || page == 2">
     <div class="row">
       <table>
         <tr>
@@ -92,4 +112,8 @@
       </div>
     </div>
   </div>
+  </div>
+
+
+
 </div>

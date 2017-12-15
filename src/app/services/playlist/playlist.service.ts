@@ -62,4 +62,8 @@ export class PlaylistService {
   editPlaylist(playlistId: number, playlistform: any) {
     return this.http.post(Config.API_URI + 'playlist/edit/' + playlistId, playlistform, {withCredentials: true});
   }
+
+  getTopcharts() {
+    return this.http.get(Config.API_URI + 'playlist/topcharts', {withCredentials: true});
+  }
 }

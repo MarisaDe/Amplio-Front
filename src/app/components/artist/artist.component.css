@@ -22,3 +22,7 @@
 .alignright {
   float: right;
 }
+
+.about-text {
+  font-size: 18px;
+}

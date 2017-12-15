@@ -20,6 +20,7 @@ export class ArtistComponent implements OnInit {
   albums: Album[];
   isFollowing = false;
   relatedArtists: Artist[];
+  page = 1;
 
   constructor(private userService: UserService,
               private playlistService: PlaylistService,
@@ -88,6 +89,10 @@ export class ArtistComponent implements OnInit {
         console.error(err);
       }
     );
+  }
+
+  changePage(pageNum: number) {
+    this.page = pageNum;
   }
   ngOnInit() {
     this.userService.currentUser.subscribe(user => this.currentUser = user);

@@ -41,6 +41,7 @@ import {HistoryComponent} from "./components/history/history.component";
 import {AdminHomeComponent} from "./components/admin/home.component";
 import {AdminLayoutComponent} from "./components/adminlayout/adminlayout.component";
 import {AdminNavComponent} from "./components/adminnav/admin-nav.component";
+import {TopchartsComponent} from "./components/topcharts/topcharts.component";
 
 
 @NgModule({
@@ -70,7 +71,8 @@ import {AdminNavComponent} from "./components/adminnav/admin-nav.component";
     HistoryComponent,
     AdminHomeComponent,
     AdminLayoutComponent,
-    AdminNavComponent
+    AdminNavComponent,
+    TopchartsComponent
   ],
   imports: [
     BrowserModule,

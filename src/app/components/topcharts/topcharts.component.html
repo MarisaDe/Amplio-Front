@@ -1,0 +1,84 @@
+<div class = "bg">
+  <div class="container" *ngIf="playlist!=null">
+    <div class="row">
+      <table cellspacing="0" cellpadding="0">
+        <tr>
+          <td colspan="1" style = "padding:30px; padding-left: 0px"><img src ="{{playlist.image}}" class= "cover"></td>
+          <td rowspan="1">PLAYLIST<br>
+            <h1><b>{{playlist.title}}</b></h1><br>
+            Created by: <a routerLink="/user/{{playlist.owner.id}}" class="green">{{playlist.owner.name}}</a> - {{playlist.songs.length}} Songs <br><br>
+            <div></div>
+            <button type="button" class="play expand-effect" (click)="playPlaylist()">Play</button>
+            <button type="button" class="play expand-effect" (click)="addToQueue()">Add to Queue</button>
+            <!-- Current user's playlists options -->
+            <span *ngIf="playlist.owner.id != currentUser.id">
+              <button type="button" class="follow expand-effect" *ngIf="!isFollowing"
+                      (click) = toggleFollow()>Follow</button>
+
+              <button type="button" class="follow expand-effect" *ngIf="isFollowing"
+                      (click) = toggleFollow()>Unfollow</button>
+            </span>
+          </td>
+        </tr>
+      </table>
+
+    </div>
+
+    <div class ="row" *ngIf="playlist.description">
+      <h3>Description</h3><hr>
+      {{playlist.description}}
+      <br><br>
+    </div>
+
+    <br>
+    <div class="row">
+      <div *ngIf="playlist.songs.length == 0" align="center">
+        <i><h3>There doesn't seem to be any songs in this playlist yet.</h3></i>
+      </div>
+
+      <table class="table table-hover table-responsive" id = "songs" *ngIf="playlist.songs.length > 0">
+        <th></th>
+        <th></th>
+        <th>Title</th>
+        <th>Artist</th>
+        <th>Album</th>
+        <th>Duration</th>
+        <th></th>
+
+        <tr *ngFor = "let song of playlist.songs;let index = i">
+
+          <td width="50px"><img [src] ="playPauseImg" class="grow play-each"
+                                (click) = "playPlaylist(song.id)"></td>
+          <td><i class="fa fa-plus" aria-hidden="true"></i></td>
+          <td align="left" class="overflow">{{song.songName}}</td>
+          <!--<td class="overflow">{{song.artists[0].name}}</td>-->
+          <td class="overflow">
+            <a class ="green" [routerLink]="'/artist/'+ song.artist.id">{{song.artist.name}}</a></td>
+          <td class="overflow">
+            <a class ="green" [routerLink]="'/album/'+ song.album.id"> {{song.album.title}}</a>
+          </td>
+          <td>{{getMinSec(song.duration)}}</td>
+          <td>
+
+            <!-- sub menu -->
+            <div class="dropdown">
+              <i class="arrow fa fa-ellipsis-h dropdown-toggle" data-toggle="dropdown"></i>
+              <ul class="dropdown-menu">
+                <li><a href="#" class="link">Add to Queue</a></li>
+                <li class="dropdown-submenu">
+                  <a tabindex="-1" href="#" class="link">Add to Playlist</a>
+                  <ul class="dropdown-menu">
+                    <li><a tabindex="-1" href="#" class="link">Second level</a></li>
+                    <li><a href="#" class="link">Second level</a></li>
+                    <li><a href="#" class="link">Second level</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>

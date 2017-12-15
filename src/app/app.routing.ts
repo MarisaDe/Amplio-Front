@@ -19,6 +19,7 @@ import {SearchComponent} from "./components/search/search.component";
 import {HistoryComponent} from "./components/history/history.component";
 import {AdminHomeComponent} from "./components/admin/home.component";
 import {AdminLayoutComponent} from "./components/adminlayout/adminlayout.component";
+import {TopchartsComponent} from "./components/topcharts/topcharts.component";
 
 const appRoutes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -53,6 +54,7 @@ const appRoutes: Routes = [
           {path: 'user/:id', component: PersonComponent},
           {path: 'artist/:id', component: ArtistComponent},
           {path: 'queue', component: SongqueueComponent},
+          {path: 'topcharts', component: TopchartsComponent},
           {path: 'artists', component: ArtistsComponent},
           {path: 'library', component: LibraryComponent},
           {path: 'albums', component: AlbumsComponent},
