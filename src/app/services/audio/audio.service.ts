@@ -9,33 +9,70 @@ import {Config} from "../../common/config";
 @Injectable()
 export class AudioService {
 
-  private queueSource = new BehaviorSubject<Array<Song>>([]);
   private unshuffledQueue: Song[];
+  private queueSource = new BehaviorSubject<Array<Song>>([]);
   public songQueue = this.queueSource.asObservable();
   private songSource = new BehaviorSubject<Song>(null);
   public currentSong = this.songSource.asObservable();
+  private playingSource = new BehaviorSubject<boolean>(false);
+  public isPlaying = this.playingSource.asObservable();
+  private shuffleSource = new BehaviorSubject<boolean>(false);
+  public isShuffled = this.shuffleSource.asObservable();
+  private repeatSource = new BehaviorSubject<Repeat>(Repeat.Off);
+  public repeatState = this.repeatSource.asObservable();
 
   private currentIndex = 0;
 
   constructor(private http: HttpClient) { }
 
   recordPlay(songId: number) {
-    this.http.get(Config.API_URI + 'song/play/' + songId, {withCredentials: true}).subscribe();
+    this.http.post(Config.API_URI + 'song/play/' + songId, null,{withCredentials: true}).subscribe();
   }
 
   setQueue(songs: Array<Song>) {
     this.queueSource.next(songs);
+    if (this.shuffleSource.getValue()) {
+      this.shuffle(true);
+    }
     this.currentIndex = 0;
+    this.playingSource.next(true);
     this.songSource.next(null);
     this.songSource.next(songs[0]);
+  }
+
+  togglePlay() {
+    this.playingSource.next(!this.playingSource.getValue());
+  }
+
+  toggleRepeat() {
+    switch (this.repeatSource.getValue()) {
+      case Repeat.Off: {
+        this.repeatSource.next(Repeat.All);
+        break;
+      }
+      case Repeat.All: {
+        this.repeatSource.next(Repeat.One);
+        break;
+      }
+      case Repeat.One: {
+        this.repeatSource.next(Repeat.Off);
+        break;
+      }
+    }
   }
 
   // setCurrentSong(song: Song) {
   //   this.songSource.next(song);
   // }
+  toggleShuffle() {
+    this.shuffleSource.next(!this.shuffleSource.getValue());
+    this.shuffle(this.shuffleSource.getValue());
+  }
+
   shuffle(on: boolean) {
     if (on) {
-      this.unshuffledQueue = this.queueSource.getValue();
+      this.unshuffledQueue = [...this.queueSource.getValue()];
+      this.unshuffledQueue.shift();
       const queue = this.queueSource.getValue();
       for (let i = queue.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
@@ -47,10 +84,10 @@ export class AudioService {
     }
   }
 
-  nextSong(state: Repeat) {
+  nextSong() {
     const queue: Array<Song> = this.queueSource.getValue();
     let song: Song;
-    switch (state) {
+    switch (this.repeatSource.getValue()) {
       case Repeat.Off: {
         if (this.currentIndex === queue.length - 1) {
           song = null;
@@ -77,10 +114,10 @@ export class AudioService {
     this.songSource.next(song);
   }
 
-  prevSong(state: Repeat) {
+  prevSong() {
     const queue: Array<Song> = this.queueSource.getValue();
     let song: Song;
-    switch (state) {
+    switch (this.repeatSource.getValue()) {
       case Repeat.Off: {
         if (this.currentIndex === 0) {
           song = null;
@@ -159,4 +196,8 @@ export class AudioService {
     }
   }
 
+  resetQueue() {
+    this.queueSource.next([]);
+    this.currentIndex = 0;
+  }
 }

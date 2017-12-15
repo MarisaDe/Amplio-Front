@@ -15,12 +15,10 @@ export class AudioNavComponent implements OnInit {
   private currentUser: User;
   private song: Song;
   private playing = false;
-  private shuffle = false;
   private mute = false;
   private currentTime: number;
   private progress = 0;
   private progressMinSec = '';
-  private repeatState: Repeat;
   private playPauseImg = Config.PLAY_IMAGE;
   private repeatImg = Config.REPEAT_OFF_IMAGE;
   private volImg = Config.VOLUME_IMAGE;
@@ -30,11 +28,34 @@ export class AudioNavComponent implements OnInit {
   private readonly prevImg = Config.PREVIOUS_IMAGE;
   private readonly queueImg = Config.QUEUE_IMAGE;
 
-  constructor(private audioService: AudioService, private userService: UserService) {
-  }
+  constructor(private audioService: AudioService, private userService: UserService) { }
 
   ngOnInit() {
     this.userService.currentUser.subscribe(user => this.currentUser = user );
+    this.audioService.isPlaying.subscribe(playing => this.playing = playing );
+    this.audioService.isShuffled.subscribe(shuffle => {
+      if (shuffle) {
+        this.shuffleImg = Config.SHUFFLE_ON_IMAGE;
+      } else {
+        this.shuffleImg = Config.SHUFFLE_OFF_IMAGE;
+      }
+    });
+    this.audioService.repeatState.subscribe(repeatState => {
+      switch (repeatState) {
+        case Repeat.Off: {
+          this.repeatImg = Config.REPEAT_OFF_IMAGE;
+          break;
+        }
+        case Repeat.All: {
+          this.repeatImg = Config.REPEAT_ALL_IMAGE;
+          break;
+        }
+        case Repeat.One: {
+          this.repeatImg = Config.REPEAT_ONE_IMAGE;
+          break;
+        }
+      }
+    });
     // this.audioService.songQueue.subscribe(songQueue => this.songQueue = songQueue);
     this.audioService.currentSong.subscribe(song => {
       console.log(song);
@@ -67,8 +88,6 @@ export class AudioNavComponent implements OnInit {
         this.audioService.recordPlay(this.song.id);
       }
     });
-    this.shuffle = false;
-    console.log(this.song);
   }
 
   songSeek(value: number) {
@@ -77,32 +96,11 @@ export class AudioNavComponent implements OnInit {
   }
 
   toggleShuffle() {
-    if (this.shuffle) {
-      this.shuffleImg = Config.SHUFFLE_ON_IMAGE;
-    } else {
-      this.shuffleImg = Config.SHUFFLE_OFF_IMAGE;
-    }
-    this.shuffle = !this.shuffle;
+    this.audioService.toggleShuffle();
   }
 
   toggleRepeat() {
-    switch (this.repeatState) {
-      case Repeat.Off: {
-        this.repeatImg = Config.REPEAT_ALL_IMAGE;
-        this.repeatState = Repeat.All;
-        break;
-      }
-      case Repeat.All: {
-        this.repeatImg = Config.REPEAT_ONE_IMAGE;
-        this.repeatState = Repeat.One;
-        break;
-      }
-      case Repeat.One: {
-        this.repeatImg = Config.REPEAT_OFF_IMAGE;
-        this.repeatState = Repeat.Off;
-        break;
-      }
-    }
+    this.audioService.toggleRepeat();
   }
 
   toggleMute(value: number) {
@@ -127,7 +125,7 @@ export class AudioNavComponent implements OnInit {
       this.song.media.play();
       this.playPauseImg = Config.PAUSE_IMAGE;
     }
-    this.playing = !this.playing;
+    this.audioService.togglePlay();
   }
 
   getMinSec(value: number): string {
@@ -152,13 +150,13 @@ export class AudioNavComponent implements OnInit {
 
   nextSong() {
     this.song.media.pause();
-    this.audioService.nextSong(this.repeatState);
+    this.audioService.nextSong();
     // console.log('TODO: next song');
   }
 
   prevSong() {
     this.song.media.pause();
-    this.audioService.prevSong(this.repeatState);
+    this.audioService.prevSong();
     // console.log('TODO: prev song');
   }
 }

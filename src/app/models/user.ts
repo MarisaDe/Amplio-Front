@@ -165,4 +165,12 @@ export class User {
   set history(value: Song[]) {
     this._history = value;
   }
+
+  get library(): Library {
+    return this._library;
+  }
+
+  set library(value: Library) {
+    this._library = value;
+  }
 }

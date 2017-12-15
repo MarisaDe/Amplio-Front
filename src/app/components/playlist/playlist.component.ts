@@ -6,6 +6,7 @@ import {PlaylistService} from '../../services/playlist/playlist.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {AudioService} from '../../services/audio/audio.service';
 import {Config} from '../../common/config';
+import {Song} from "../../models/song";
 
 declare var jQuery: any;
 
@@ -165,6 +166,16 @@ export class PlaylistComponent implements OnInit {
       }
     );
   }
+
+  saveSongToLibrary(songId: number) {
+    // let song: Song;
+    // for (let i = 0; i < this.playlist.songs.length; i++) {
+    //   if (this.playlist.songs[i].id === songId) {
+    //     this.currentUser.library.addSong()
+    //   }
+    // }
+  }
+
   ngOnInit() {
     this.hideObject = 'show';
     this.userService.currentUser.subscribe(user => this.currentUser = user);
