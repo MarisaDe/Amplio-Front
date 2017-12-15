@@ -89,7 +89,10 @@ export class AlbumComponent implements OnInit {
   addSongToPlaylist(playlistId: number, songId: number) {
     this.playlistService.addToPlaylist(playlistId, songId).subscribe();
   }
-
+  addSongToLibrary(song: Song) {
+    this.userService.saveSong(song.id).subscribe();
+    this.currentUser.library.addSong(song);
+  }
   // generatePlaylist() {
   //   this.playlist = new Playlist(this.album);
   //   console.log(this.playlist);

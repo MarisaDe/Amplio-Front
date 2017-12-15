@@ -6,7 +6,7 @@ import {PlaylistService} from '../../services/playlist/playlist.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {AudioService} from '../../services/audio/audio.service';
 import {Config} from '../../common/config';
-import {Song} from "../../models/song";
+import {Song} from '../../models/song';
 
 declare var jQuery: any;
 
@@ -152,9 +152,23 @@ export class PlaylistComponent implements OnInit {
   addSongToQueue(song: Song) {
     this.audioService.addToQueue(song);
   }
+  removeSongFromPlaylist(playlistId: number, songId: number) {
+    this.playlistService.removeFromPlaylist(playlistId, songId).subscribe(
+    resp => {
+      this.playlist = new Playlist(resp);
+    },
+    err => {
+      console.error(err);
+    });
+  }
 
   addSongToPlaylist(playlistId: number, songId: number) {
     this.playlistService.addToPlaylist(playlistId, songId).subscribe();
+  }
+
+  addSongToLibrary(song: Song) {
+    this.userService.saveSong(song.id).subscribe();
+    this.currentUser.library.addSong(song);
   }
   deletePlaylist() {
     const i = this.currentUser.playlists.indexOf(this.playlist);

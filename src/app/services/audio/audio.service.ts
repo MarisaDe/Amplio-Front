@@ -185,7 +185,7 @@ export class AudioService {
     const queue: Array<Song> = this.queueSource.getValue();
     let index = -1;
     for (let i = 0; i < queue.length; i++) {
-      if (queue[i].id === songId) {
+      if (queue[i] && queue[i].id === songId) {
         index = i;
         break;
       }

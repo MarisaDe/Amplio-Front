@@ -6,6 +6,7 @@ import {Playlist} from '../../models/playlist';
 import {Library} from "../../models/library";
 import {AudioService} from "../../services/audio/audio.service";
 import {Song} from "../../models/song";
+import {Config} from "../../common/config";
 
 @Component({
   selector: 'library',
@@ -14,6 +15,7 @@ import {Song} from "../../models/song";
 })
 export class LibraryComponent implements OnInit {
   currentUser: User;
+  readonly playPauseImg = Config.PLAY_IMAGE;
 
   constructor(private userService: UserService,
               private playlistService: PlaylistService,
@@ -41,6 +43,14 @@ export class LibraryComponent implements OnInit {
 
   addSongToPlaylist(playlistId: number, songId: number) {
     this.playlistService.addToPlaylist(playlistId, songId).subscribe();
+  }
+  addSongToLibrary(song: Song) {
+    this.userService.saveSong(song.id).subscribe();
+    this.currentUser.library.addSong(song);
+  }
+  removeFromLibrary(song: Song) {
+    this.userService.unsaveSong(song.id).subscribe();
+    this.currentUser.library.removeSong(song.id);
   }
 
   ngOnInit() {

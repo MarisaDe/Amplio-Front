@@ -5,6 +5,7 @@ import {PlaylistService} from '../../services/playlist/playlist.service';
 import {Playlist} from '../../models/playlist';
 import {Song} from "../../models/song";
 import {AudioService} from "../../services/audio/audio.service";
+import {Config} from "../../common/config";
 
 @Component({
   selector: 'history',
@@ -14,6 +15,7 @@ import {AudioService} from "../../services/audio/audio.service";
 export class HistoryComponent implements OnInit {
   currentUser: User;
   genrePlaylists: Playlist[];
+  readonly playPauseImg = Config.PLAY_IMAGE;
 
   constructor(private userService: UserService,
               private playlistService: PlaylistService,
@@ -42,7 +44,10 @@ export class HistoryComponent implements OnInit {
   addSongToPlaylist(playlistId: number, songId: number) {
     this.playlistService.addToPlaylist(playlistId, songId).subscribe();
   }
-
+  addSongToLibrary(song: Song) {
+    this.userService.saveSong(song.id).subscribe();
+    this.currentUser.library.addSong(song);
+  }
 
   ngOnInit() {
     this.userService.currentUser.subscribe(user => this.currentUser = user);

@@ -39,8 +39,13 @@ export class SongqueueComponent implements OnInit {
     }
     return minstr + ':' + secstr;
   }
-
-
+  removeSongFromQueue(songId: number) {
+    this.audioService.removeFromQueue(songId);
+  }
+  addSongToLibrary(song: Song) {
+    this.userService.saveSong(song.id).subscribe();
+    this.currentUser.library.addSong(song);
+  }
   ngOnInit() {
     this.userService.currentUser.subscribe(user => this.currentUser = user);
     this.audioService.songQueue.subscribe(songQueue => {

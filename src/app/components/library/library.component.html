@@ -5,7 +5,7 @@
         <hr>
       <br>
 
-      <h3>Songs</h3>
+      <h3>Songs</h3><hr>
       <div class="row">
         <table class="table table-hover table-responsive songs">
           <th></th>
@@ -14,7 +14,7 @@
           <th>Album</th>
           <th>Duration</th>
 
-          <tr *ngFor="let song of currentUser.history">
+          <tr *ngFor="let song of currentUser.library.songs">
             <td width="50px"><img [src] ="playPauseImg" class="grow play-each"></td>
             <td align="left" class="overflow">{{song.songName}}</td>
             <td class="overflow">
@@ -28,7 +28,7 @@
               <div class="dropdown">
                 <i class="arrow fa fa-ellipsis-h dropdown-toggle" data-toggle="dropdown"></i>
                 <ul class="dropdown-menu">
-                  <li><a href="#" class="link">Add to Library</a></li>
+                  <li><a (click)="removeFromLibrary(song)" class="link">Remove from Library</a></li>
                   <li><a (click)="addSongToQueue(song)" class="link">Add to Queue</a></li>
                   <li class="dropdown-submenu">
                     <a tabindex="-1" href="#" class="link">Add to Playlist</a>
@@ -45,7 +45,15 @@
         </table>
       </div>
 
-      <br>
+
+     <h3>Albums</h3><hr>
+      <div class="row">
+        <div class="wrapper">
+          <div *ngFor="let album of currentUser.library.albums">
+            <a [routerLink]="['/album/'+ album.id]"><img [src]="album.image" class = "fade"></a>
+            <p>{{album.title}}</p>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-</div>

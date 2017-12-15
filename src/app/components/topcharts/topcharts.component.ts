@@ -6,6 +6,7 @@ import {SongService} from "../../services/song/song.service";
 import {Playlist} from "../../models/playlist";
 import {AudioService} from "../../services/audio/audio.service";
 import {Song} from "../../models/song";
+import {Config} from "../../common/config";
 
 @Component({
   selector: 'topcharts',
@@ -15,6 +16,7 @@ import {Song} from "../../models/song";
 export class TopchartsComponent implements OnInit {
   currentUser: User;
   playlist: Playlist;
+  readonly playPauseImg = Config.PLAY_IMAGE;
 
   constructor(private userService: UserService,
               private playlistService: PlaylistService,
@@ -43,6 +45,10 @@ export class TopchartsComponent implements OnInit {
     this.audioService.addToQueue(song);
   }
 
+  addSongToLibrary(song: Song) {
+    this.userService.saveSong(song.id).subscribe();
+    this.currentUser.library.addSong(song);
+  }
   addSongToPlaylist(playlistId: number, songId: number) {
     this.playlistService.addToPlaylist(playlistId, songId).subscribe();
   }

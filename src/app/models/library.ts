@@ -50,7 +50,7 @@ export class Library {
   removeSong(songId: number) {
     let index = -1;
     for (let i = 0; i < this._songs.length; i++) {
-      if (this._songs[i].id === songId) {
+      if (this._songs[i] && this._songs[i].id === songId) {
         index = i;
         break;
       }

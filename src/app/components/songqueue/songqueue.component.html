@@ -68,8 +68,8 @@
               <div class="dropdown">
                 <i class="arrow fa fa-ellipsis-h dropdown-toggle" data-toggle="dropdown"></i>
                 <ul class="dropdown-menu">
-                  <li><a href="#" class="link">Add to Library</a></li>
-                  <li><a (click)="addSongToQueue(song)" class="link">Add to Queue</a></li>
+                  <li><a (click) = "removeSongFromQueue(song.id)" class="link">Remove from Queue</a></li>
+                  <li><a (click)="addSongToLibrary(song)" class="link">Add to Library</a></li>
                   <li class="dropdown-submenu">
                     <a tabindex="-1" href="#" class="link">Add to Playlist</a>
                     <ul class="dropdown-menu" *ngFor="let playlist of currentUser.playlists">
