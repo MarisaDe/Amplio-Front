@@ -15,7 +15,7 @@
       <li>Followed Playlists</li>
     </div>
 
-    <li *ngFor = "let playlist of followedPlaylists">
+    <li *ngFor = "let playlist of currentUser.followedPlaylists">
       <a [routerLink]="['/playlist/'+ playlist.id]">{{playlist.title}}</a>
     </li>
 

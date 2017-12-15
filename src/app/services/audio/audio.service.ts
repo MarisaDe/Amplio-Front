@@ -31,10 +31,11 @@ export class AudioService {
 
   setQueue(songs: Array<Song>) {
     this.queueSource.next(songs);
+    this.currentIndex = 0;
+    this.unshuffledQueue = this.getRemainingQueue();
     if (this.shuffleSource.getValue()) {
       this.shuffle(true);
     }
-    this.currentIndex = 0;
     this.playingSource.next(true);
     this.songSource.next(null);
     this.songSource.next(songs[0]);
@@ -71,8 +72,6 @@ export class AudioService {
 
   shuffle(on: boolean) {
     if (on) {
-      this.unshuffledQueue = [...this.queueSource.getValue()];
-      this.unshuffledQueue.shift();
       const queue = this.queueSource.getValue();
       for (let i = queue.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
@@ -80,7 +79,7 @@ export class AudioService {
       }
       this.queueSource.next(queue);
     } else {
-      this.queueSource.next(this.unshuffledQueue);
+      this.queueSource.next([this.songSource.getValue(), ...this.unshuffledQueue]);
     }
   }
 

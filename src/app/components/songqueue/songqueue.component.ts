@@ -41,7 +41,9 @@ export class SongqueueComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.audioService.songQueue.subscribe(songQueue => this.songQueue = songQueue);
+    this.audioService.songQueue.subscribe(songQueue => {
+      this.songQueue = this.audioService.getRemainingQueue();
+    });
     this.audioService.currentSong.subscribe(song => {
       this.song = song;
       this.songQueue = this.audioService.getRemainingQueue();

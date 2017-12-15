@@ -30,7 +30,7 @@
         <ul align>
           <li class = "current"> <a href="" class = "active">OVERVIEW</a></li>
           <li> <a href="#">ALBUMS</a></li>
-          <li> <a href="#">BIBLIOGRAPHY</a></li>
+          <li> <a href="#">ABOUT</a></li>
         </ul>
       </div>
     </div>
@@ -39,7 +39,7 @@
     <!-- Bios-->
     <div class="row">
       <div style="text-align:left;">
-        <h3>Bibliography</h3><hr>
+        <h3>About</h3><hr>
       </div>
           <div class="bib-overflow">
             {{artist.biblio}}
@@ -49,6 +49,27 @@
       </span>
     </div>
 
+    <!-- Related Artists-->
+    <div class="row">
+      <table>
+        <tr>
+          <td><h3>Related Artists</h3></td>
+          <!--<td align="right" class = seeAll><a href = "#">See All</a></td>-->
+        </tr>
+      </table>
+      <hr>
+    </div>
+
+    <div class="row">
+      <div class="wrapper">
+        <div *ngFor="let artist of relatedArtists">
+          <a [routerLink]="['/artist/'+ artist.id]">
+            <img [src]="artist.image" class = "fade"
+                 style = "border-radius: 50%; border: 2px solid #999999; width:200px; height:200px; padding:0px"></a>
+          <h4 align="center">{{artist.name}}</h4>
+        </div>
+      </div>
+    </div>
 
     <!-- Albums-->
     <div class="row">
@@ -67,11 +88,8 @@
         <div *ngFor="let album of albums">
           <a [routerLink]="['/album/'+ album.id]"><img [src]="album.image" class = "fade"></a>
           <p>{{album.title}}</p>
-          <p>0 Followers</p>
         </div>
       </div>
     </div>
   </div>
-
 </div>
-

@@ -14,6 +14,10 @@ export class ArtistService {
     return this.http.get(Config.API_URI + 'artist/' + id, {withCredentials: true});
   }
 
+  getRelatedArtists(id: string) {
+    return this.http.get(Config.API_URI + 'artist/related/' + id, {withCredentials: true});
+  }
+
   search(query: string) {
     return this.http.get(Config.API_URI + 'artist/search/' + query,{withCredentials: true });
   }

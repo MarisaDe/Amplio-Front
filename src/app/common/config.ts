@@ -28,8 +28,7 @@ export class Config {
   public static readonly MUTE_IMAGE = Config.AUDIO_IMAGES + 'mute-on.svg';
   public static readonly REPEAT_OFF_IMAGE = Config.AUDIO_IMAGES + 'repeat.svg';
   public static readonly REPEAT_ALL_IMAGE = Config.AUDIO_IMAGES + 'repeat-on.svg';
-  // TODO Repeat one
-  public static readonly REPEAT_ONE_IMAGE = Config.AUDIO_IMAGES + 'repeat-on.svg';
+  public static readonly REPEAT_ONE_IMAGE = Config.AUDIO_IMAGES + 'repeat-one.png';
   public static readonly PLAYER_GRANULARITY = 1000000;
   public static readonly LYRICS_OFF_IMAGE = Config.AUDIO_IMAGES + 'lyrics.svg';
   public static readonly LYRICS_ON_IMAGE = Config.AUDIO_IMAGES + 'lyrics-on.svg';

@@ -19,6 +19,7 @@ export class ArtistComponent implements OnInit {
   artist: Artist;
   albums: Album[];
   isFollowing = false;
+  relatedArtists: Artist[];
 
   constructor(private userService: UserService,
               private playlistService: PlaylistService,
@@ -77,6 +78,17 @@ export class ArtistComponent implements OnInit {
     }
   }
 
+  getRelated(artistId: any) {
+    this.artistService.getRelatedArtists(artistId).subscribe(
+      resp => {
+        console.log(resp);
+        this.relatedArtists = Artist.generateArtistList(resp);
+      },
+      err => {
+        console.error(err);
+      }
+    );
+  }
   ngOnInit() {
     this.userService.currentUser.subscribe(user => this.currentUser = user);
     // this.userService.person.subscribe(person => this.person = person);
@@ -89,6 +101,8 @@ export class ArtistComponent implements OnInit {
           console.log(this.artist);
           this.loadAlbums(this.artist.id);
           this.checkFollowing();
+          // let i = this.artist.id;
+          this.getRelated(this.artist.id);
         },
         err => {
           console.error(err);
