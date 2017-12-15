@@ -66,4 +66,19 @@ export class PlaylistService {
   getTopcharts() {
     return this.http.get(Config.API_URI + 'playlist/topcharts', {withCredentials: true});
   }
+
+  addToPlaylist(playlistId: number, songId: number) {
+    const body = {
+      songId: songId
+    }
+    return this.http.post(Config.API_URI + 'playlist/addsong/' + playlistId, body,{withCredentials: true});
+  }
+
+  removeFromPlaylist(playlistId: number, songId: number) {
+    const body = {
+      songId: songId
+    }
+    return this.http.post(Config.API_URI + 'playlist/removesong/' + playlistId, body, {withCredentials: true});
+  }
+
 }
