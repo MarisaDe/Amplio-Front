@@ -37,7 +37,7 @@ export class Library {
   removeAlbum(albumId: number) {
     let index = -1;
     for (let i = 0; i < this._albums.length; i++) {
-      if (this._albums[i].id === albumId) {
+      if (this._albums[i].id && this._albums[i].id === albumId) {
         index = i;
         break;
       }

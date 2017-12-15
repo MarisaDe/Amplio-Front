@@ -10,6 +10,7 @@ import {Song} from '../../models/song';
 import {AudioService} from '../../services/audio/audio.service';
 import {PlaylistService} from '../../services/playlist/playlist.service';
 import {Config} from "../../common/config";
+import {inlineInterpolate} from "@angular/core/src/view";
 
 @Component({
   selector: 'album',
@@ -23,6 +24,8 @@ export class AlbumComponent implements OnInit {
   songList: Song[] = [];
   playlist: Playlist;
   readonly playPauseImg = Config.PLAY_IMAGE;
+  inLibrary = false;
+  relatedAlbums: Album[] = [];
 
   constructor(private userService: UserService,
               private songService: SongService,
@@ -33,15 +36,6 @@ export class AlbumComponent implements OnInit {
 
   }
 
-  getAlbum() {
-    this.albumService.getAlbum(this.albumId).subscribe(
-      resp => {
-        console.log(resp);
-        this.album = new Album(resp);
-        // this.album.image = decodeURI(this.album.image);
-        console.log(decodeURI(this.album.image));
-      });
-  }
   loadAlbumSongs() {
     this.songService.getAlbumSongs(this.albumId).subscribe(
       resp => {
@@ -93,16 +87,55 @@ export class AlbumComponent implements OnInit {
     this.userService.saveSong(song.id).subscribe();
     this.currentUser.library.addSong(song);
   }
+  addAlbumToLibrary() {
+    this.userService.saveAlbum(this.album.id).subscribe();
+    this.currentUser.library.addAlbum(this.album);
+    this.inLibrary = true;
+  }
+  removeAlbumFromLibrary() {
+    this.userService.unsaveAlbum(this.album.id).subscribe();
+    this.currentUser.library.removeAlbum(this.album.id);
+    this.inLibrary = false;
+  }
   // generatePlaylist() {
   //   this.playlist = new Playlist(this.album);
   //   console.log(this.playlist);
   // }
+
+  getRelatedAlbums() {
+    this.albumService.getRelatedAlbums(this.album.id).subscribe(
+      resp => {
+        console.log(resp);
+        this.relatedAlbums = Album.generateAlbumList(resp);
+      },
+      err => {
+        console.error(err);
+      }
+    );
+  }
+
+  checkIfSaved() {
+    this.inLibrary = false;
+    for (const album of this.currentUser.library.albums) {
+      if (album && this.album.id === album.id) {
+        this.inLibrary = true;
+        break;
+      }
+    }
+  }
   ngOnInit() {
     this.userService.currentUser.subscribe(user => this.currentUser = user);
     this.route.params.subscribe(params => {
       this.albumId = params['id'];
-      this.getAlbum();
-      this.loadAlbumSongs();
+      this.albumService.getAlbum(this.albumId).subscribe(
+        resp => {
+          console.log(resp);
+          this.album = new Album(resp);
+          // this.album.image = decodeURI(this.album.image);
+          console.log(decodeURI(this.album.image));
+          this.loadAlbumSongs();
+          this.checkIfSaved();
+        });
       // this.generatePlaylist();
     });
   }

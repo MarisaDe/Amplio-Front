@@ -10,9 +10,15 @@
             <div></div>
             <button type="button" class="play expand-effect" (click)="playAlbum()">Play</button>
 
+
             <!-- Current user's songs options -->
-            <button type="button" class="follow expand-effect">
-              Follow</button>
+            <button *ngIf="!inLibrary" type="button" class="follow expand-effect" (click)="addAlbumToLibrary()">
+              Save</button>
+
+            <!-- Current user's songs options -->
+            <button *ngIf="inLibrary" type="button" class="follow expand-effect" (click)="removeAlbumFromLibrary()">
+              Unsave</button>
+
           </td>
         </tr>
       </table>
@@ -69,5 +75,27 @@
         </tr>
       </table>
     </div>
+
+    <div class="row">
+      <table>
+        <tr>
+          <td><h3>Related Albums</h3></td>
+          <!--<td align="right" class = seeAll><a href = "#">See All</a></td>-->
+        </tr>
+      </table>
+      <hr>
+    </div>
+
+    <br>
+    <div class="row">
+      <div class="wrapper">
+        <div *ngFor="let album of relatedAlbums ">
+          <a [routerLink]="['/album/'+ album.id]"><img [src]="album.image" class = "fade"></a>
+          <p>{{album.title}}</p>
+        </div>
+      </div>
+    </div>
+
+
   </div>
 </div>
