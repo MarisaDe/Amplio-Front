@@ -70,10 +70,11 @@
   <br>
     <div class="row">
       <div class="wrapper">
-        <div *ngFor="let playlist of userPlaylists">
+        <div *ngFor="let playlist of currentUser.playlists">
+          <div *ngIf="playlist.isPublic">
           <a [routerLink]="['/playlist/'+ playlist.id]"><img [src]="playlist.image" class = "fade"></a>
           <p>{{playlist.title}}</p>
-          <p>0 Followers</p>
+          </div>
         </div>
       </div>
       </div>

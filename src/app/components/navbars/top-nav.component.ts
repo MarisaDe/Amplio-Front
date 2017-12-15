@@ -21,6 +21,7 @@ export class TopNavComponent implements OnInit {
   private dismiss: any;
   files: FileList;
   info: any = {};
+  update: any= {};
 
   constructor(private userService: UserService,
               private authService: AuthService,
@@ -37,7 +38,24 @@ export class TopNavComponent implements OnInit {
       this.monthYear.push(i);
     }
   }
+  cancel() {
+    this.userService.cancel().subscribe();
+    this.currentUser.isPremium = false;
+  }
 
+  updateUser() {
+    this.userService.updateUser(this.update).subscribe(
+      resp => {
+          console.log(resp);
+          jQuery('#accInfo').modal('hide');
+          this.currentUser = new User(resp);
+        },
+          err => {
+            console.error(err.message);
+            jQuery('#accInfo').modal('hide');
+          }
+      );
+}
   deleteAccount() {
     this.userService.deleteUser().subscribe(
       resp => {

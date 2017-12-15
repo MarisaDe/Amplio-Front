@@ -55,21 +55,21 @@ export class PersonComponent implements OnInit {
     }
   }
 
-  loadPlaylists() {
-    this.playlistService.getPlaylists(this.person.id).subscribe(
-      resp => {
-        this.userPlaylists = Playlist.generatePlaylistList(resp);
-      },
-      err => {
-        console.error(err);
-      }
-    );
-  }
+  // loadPlaylists() {
+  //   this.playlistService.getPlaylists(this.person.id).subscribe(
+  //     resp => {
+  //       this.userPlaylists = Playlist.generatePlaylistList(resp);
+  //     },
+  //     err => {
+  //       console.error(err);
+  //     }
+  //   );
+  // }
 
   checkFollowing() {
     this.isFollowing = false;
     for (const user of this.currentUser.following) {
-      if (this.person.id === user.id) {
+      if (user && this.person.id === user.id) {
         this.isFollowing = true;
         break;
       }
@@ -85,7 +85,7 @@ export class PersonComponent implements OnInit {
           console.log(resp);
           this.person = new User(resp);
           console.log(this.person);
-          this.loadPlaylists();
+          // this.loadPlaylists();
           this.checkFollowing();
         },
         err => {

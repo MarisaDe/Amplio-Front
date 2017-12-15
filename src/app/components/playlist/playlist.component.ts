@@ -25,6 +25,7 @@ export class PlaylistComponent implements OnInit {
   editInfo: any = {};
   private displayImage: any;
   files: FileList;
+  isPrivate: false;
 
   constructor(private userService: UserService,
               private playlistService: PlaylistService,
@@ -166,6 +167,10 @@ export class PlaylistComponent implements OnInit {
     this.playlistService.addToPlaylist(playlistId, songId).subscribe();
   }
 
+  togglePrivate() {
+    this.playlistService.togglePrivate(this.playlist.id).subscribe();
+    this.playlist.isPublic = !this.playlist.isPublic;
+  }
   addSongToLibrary(song: Song) {
     this.userService.saveSong(song.id).subscribe();
     this.currentUser.library.addSong(song);

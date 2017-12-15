@@ -11,10 +11,12 @@ export class Playlist {
   private _owner: Follower;
   private _songs: Array<Song>;
   private _title: string;
+  private _isPublic: boolean;
 
   constructor(playlist: any) {
     // console.log(playlist);
     this._id = playlist.id;
+    this._isPublic = playlist.isPublic;
     this._description = playlist.description;
     if (playlist.image != null) {
       this._image = playlist.image;
@@ -29,6 +31,14 @@ export class Playlist {
     for (const song of playlist.songs) {
       this._songs.push(new Song(song));
     }
+  }
+
+  get isPublic(): boolean {
+    return this._isPublic;
+  }
+
+  set isPublic(value: boolean) {
+    this._isPublic = value;
   }
 
   static generatePlaylistList(playlists: any): Playlist[] {

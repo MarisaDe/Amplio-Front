@@ -54,11 +54,11 @@
         <hr>
         <div class="row">
           <div class="wrapper">
-            <div *ngFor = "let result of plaResults">
+            <div *ngFor = "let result of playlistResults">
               <div>
-                <a [routerLink]="'/artist/'+ result.id">
+                <a [routerLink]="'/playlist/'+ result.id">
                   <img [src]="result.image" class = "fade" style = "width: 200px; height:200px;"></a>
-                <p align="center">{{result.name}}</p>
+                <p align="center">{{result.title}}</p>
               </div>
             </div>
           </div>

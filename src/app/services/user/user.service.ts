@@ -24,10 +24,15 @@ export class UserService {
     this.userSource.next(user);
   }
 
+  cancel() {
+    return this.http.post(Config.API_URI + 'user/downgrade',null, {withCredentials: true});
+  }
   getUser(userId: number) {
     return this.http.get(Config.API_URI + 'user/' + userId, {withCredentials: true});
   }
-
+  updateUser(model: any): Observable<any> {
+    return this.http.post(Config.API_URI + 'user/updateinfo', model, { withCredentials: true });
+  }
   getPlaylists() {
     return this.http.get(Config.API_URI + 'user/playlists', {withCredentials: true});
   }

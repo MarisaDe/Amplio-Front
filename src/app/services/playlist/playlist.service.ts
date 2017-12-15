@@ -67,6 +67,10 @@ export class PlaylistService {
     return this.http.get(Config.API_URI + 'playlist/topcharts', {withCredentials: true});
   }
 
+  togglePrivate(playlistId: number) {
+    return this.http.post(Config.API_URI + 'playlist/toggleprivate/' + playlistId, null, {withCredentials: true});
+  }
+
   addToPlaylist(playlistId: number, songId: number) {
     const body = {
       id: songId

@@ -135,6 +135,7 @@ export class AlbumComponent implements OnInit {
           console.log(decodeURI(this.album.image));
           this.loadAlbumSongs();
           this.checkIfSaved();
+          this.getRelatedAlbums();
         });
       // this.generatePlaylist();
     });
