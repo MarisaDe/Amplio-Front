@@ -40,10 +40,12 @@ export class TopNavComponent implements OnInit {
 
   performUpgrade() {
     console.log('Upgrade was clicked!');
+    console.log(this.info);
     this.userService.upgradeUser(this.info).subscribe(
       resp => {
         console.log(resp);
         jQuery('#upgrade').modal('hide');
+        this.currentUser.isPremium = true;
       },
       err => {
         console.error(err.message);

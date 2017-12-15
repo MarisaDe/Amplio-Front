@@ -59,11 +59,15 @@
         <h4 class="modal-title">Account Information</h4>
       </div>
       <div class="modal-body">
-            <form class=""(ngSubmit)="f.form.valid && performLogin()" #f="ngForm">
-              User Name<br>
+
+              User Name: {{currentUser.userName}}<br>
+              <span *ngIf="currentUser.isPremium">
+              Status: Premium</span>
+              <span *ngIf="!currentUser.isPremium">
+                Status: Basic</span>
+
+        <form class=""(ngSubmit)="f.form.valid && performLogin()" #f="ngForm">
               <div class="input-box">
-                <input id="user" type="text" class="form-control input_layout edit-info" name="userName"
-                       style="margin:10px 0px; width:98%" [placeholder]="currentUser.userName" required>
               </div>
               First Name<br>
 
@@ -84,10 +88,6 @@
                          style="margin:10px 0px; width:98%" name="password" [placeholder]="currentUser.email" required>
                 </div>
 
-              <span *ngIf="currentUser.isPremium">
-              Status: Premium</span>
-              <span *ngIf="!currentUser.isPremium">
-                Status: Basic</span>
 <br>
         </form>
       <span>
@@ -187,19 +187,18 @@
         <div align="center">
           <img [src]="ccardImg" width="80%" align="center"><br>
         </div>
-<form name="form" (ngSubmit)="f.form.valid && performUpgrade()" #f="ngForm">
+    <form name="form" (ngSubmit)="f.form.valid && performUpgrade()" #f="ngForm">
         <i class="fa fa-angle-double-right"></i>
         Card Number
         <input id="ccard" type="text" class="form-control input_layout credit"
                name="ccard" placeholder="1111 2222 3333 4444"
-                style="margin:10px 0px; width:98%" [(ngModel)]="info.credit"><br><br>
+                style="margin:10px 0px; width:98%" [(ngModel)]="info.num"><br><br>
 
         <table cellspacing="0" cellpadding="0" width="100%">
           <tr>
             <td>
               <i class="fa fa-angle-double-right"></i>
             Expiry date<br>
-            <form role="form" method="post" class="combobox" style="margin:10px 0px">
               <div class="form-group">
                 <select class="input-large form-control">
                   <option selected="selected">Select a Month</option>
@@ -217,37 +216,36 @@
                   <option value="9">12</option>
                 </select>
               </div>
-            </form>
             </td>
             <td>
               <br>
 
-              <form role="form" method="post" class="combobox" style="margin:10px 0px">
+
                 <div class="form-group">
                   <select class="input-large form-control">
                     <option selected="selected">Select a Year</option>
                     <option *ngFor="let i of monthYear">{{i}}</option>
                   </select>
                 </div>
-              </form>
+
             </td>
           </tr>
         <tr>
           <td>
             <i class="fa fa-angle-double-right"></i>
             Security code<br>
-            <input id="security" type="text" class="form-control input_layout combobox"
-                   name="security" style="margin:10px 0px" [(ngModel)]="info.ccv">
+            <input type="text" class="form-control input_layout combobox"
+                   name="sec" style="margin:10px 0px" [(ngModel)]="info.num2">
           </td>
           <td>
             <i class="fa fa-angle-double-right"></i>
             Zip Code<br>
-            <input id="zip" type="text" class="form-control input_layout combobox"
-                   name="zip" style="margin:10px 0px" placeholder="11111">
+            <input type="text" class="form-control input_layout combobox"
+                    style="margin:10px 0px" placeholder="11111">
           </td>
         </tr>
         </table>
-</form>
+
         <div class="disclaimer-box">
           <p align="left" class="disclaimer">
           "By purchasing, you authorize Amplio to charge you $9.99 + applicable tax for a 3-month trial.
@@ -261,7 +259,7 @@
   <div align="center">
         <button type="submit" class="create expand-effect">START AMPLIO PREMIUM</button>
   </div>
-
+    </form>
       </div>
     </div>
 

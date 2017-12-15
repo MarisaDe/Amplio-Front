@@ -3,9 +3,22 @@
     <div class="row">
     <table cellspacing="0" cellpadding="0">
       <tr>
-        <td colspan="1" style = "padding:30px; padding-left: 0px; padding-top: 5px;">
+
+        <td colspan="1" style = "padding:30px; padding-left: 0px; padding-top: 5px;" *ngIf="!currentUser.isPremium">
           <img [src] = "person.profilePicture" style = "border-radius: 50%; width: 200px"></td>
-        <td rowspan="1"><h3>USER</h3>
+        <td rowspan="1">
+
+        <td colspan="1" style = "padding:30px; padding-left: 0px; padding-top: 5px;" *ngIf="currentUser.isPremium">
+          <img [src] = "person.profilePicture" style = "border-radius: 50%; border: 4px solid #00d857; width: 200px"></td>
+        <td rowspan="1">
+
+          <span *ngIf="currentUser.isPremium">
+          <h3>PREMIUM USER</h3>
+          </span>
+
+          <span *ngIf="!currentUser.isPremium">
+          <h3>BASIC USER</h3>
+          </span>
           <h1>{{person.name}}</h1><br>
           <div></div>
 
@@ -34,7 +47,7 @@
       <ul align>
         <li class="header-no-break"> <a href="" class = "active">OVERVIEW</a></li>
         <li class="header-no-break"> <a href="#">RECENTLY PLAYED ARTISTS</a></li>
-        <li class="header-no-break"> <a href="#">PUBLIC PLAYLISTS({{person.following.length}}) </a></li>
+        <li class="header-no-break"> <a href="#">PUBLIC PLAYLISTS({{person.playlists.length}}) </a></li>
         <li class="header-no-break"> <a href="#">FOLLOWING ({{person.following.length}} users)</a></li>
       </ul>
     </div>
