@@ -149,7 +149,13 @@ export class PlaylistComponent implements OnInit {
   addToQueue() {
     this.audioService.addSongsToQueue(this.playlist.songs);
   }
+  addSongToQueue(song: Song) {
+    this.audioService.addToQueue(song);
+  }
 
+  addSongToPlaylist(playlistId: number, songId: number) {
+    this.playlistService.addToPlaylist(playlistId, songId).subscribe();
+  }
   deletePlaylist() {
     const i = this.currentUser.playlists.indexOf(this.playlist);
     this.currentUser.playlists.splice(i, 1);

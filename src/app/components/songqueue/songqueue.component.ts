@@ -40,6 +40,7 @@ export class SongqueueComponent implements OnInit {
     return minstr + ':' + secstr;
   }
 
+
   ngOnInit() {
     this.userService.currentUser.subscribe(user => this.currentUser = user);
     this.audioService.songQueue.subscribe(songQueue => {

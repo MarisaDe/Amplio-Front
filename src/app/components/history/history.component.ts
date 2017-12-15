@@ -3,6 +3,8 @@ import {User} from '../../models/user';
 import {UserService} from '../../services/user/user.service';
 import {PlaylistService} from '../../services/playlist/playlist.service';
 import {Playlist} from '../../models/playlist';
+import {Song} from "../../models/song";
+import {AudioService} from "../../services/audio/audio.service";
 
 @Component({
   selector: 'history',
@@ -14,7 +16,8 @@ export class HistoryComponent implements OnInit {
   genrePlaylists: Playlist[];
 
   constructor(private userService: UserService,
-              private playlistService: PlaylistService) {
+              private playlistService: PlaylistService,
+              private audioService: AudioService) {
 
   }
 
@@ -31,6 +34,15 @@ export class HistoryComponent implements OnInit {
     }
     return minstr + ':' + secstr;
   }
+
+  addSongToQueue(song: Song) {
+    this.audioService.addToQueue(song);
+  }
+
+  addSongToPlaylist(playlistId: number, songId: number) {
+    this.playlistService.addToPlaylist(playlistId, songId).subscribe();
+  }
+
 
   ngOnInit() {
     this.userService.currentUser.subscribe(user => this.currentUser = user);

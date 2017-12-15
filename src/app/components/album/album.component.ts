@@ -28,7 +28,8 @@ export class AlbumComponent implements OnInit {
               private songService: SongService,
               private albumService: AlbumService,
               private route: ActivatedRoute,
-              private playlistService: PlaylistService) {
+              private playlistService: PlaylistService,
+              private audioService: AudioService) {
 
   }
 
@@ -79,6 +80,14 @@ export class AlbumComponent implements OnInit {
       secstr = '0' + secstr;
     }
     return minstr + ':' + secstr;
+  }
+
+  addSongToQueue(song: Song) {
+    this.audioService.addToQueue(song);
+  }
+
+  addSongToPlaylist(playlistId: number, songId: number) {
+    this.playlistService.addToPlaylist(playlistId, songId).subscribe();
   }
 
   // generatePlaylist() {

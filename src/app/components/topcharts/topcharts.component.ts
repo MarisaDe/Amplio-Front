@@ -5,6 +5,7 @@ import {PlaylistService} from '../../services/playlist/playlist.service';
 import {SongService} from "../../services/song/song.service";
 import {Playlist} from "../../models/playlist";
 import {AudioService} from "../../services/audio/audio.service";
+import {Song} from "../../models/song";
 
 @Component({
   selector: 'topcharts',
@@ -38,7 +39,13 @@ export class TopchartsComponent implements OnInit {
     return minstr + ':' + secstr;
   }
 
+  addSongToQueue(song: Song) {
+    this.audioService.addToQueue(song);
+  }
 
+  addSongToPlaylist(playlistId: number, songId: number) {
+    this.playlistService.addToPlaylist(playlistId, songId).subscribe();
+  }
   ngOnInit() {
     this.userService.currentUser.subscribe(user => this.currentUser = user);
     this.playlistService.getTopcharts().subscribe(

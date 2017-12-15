@@ -55,12 +55,11 @@
               <i class="arrow fa fa-ellipsis-h dropdown-toggle" data-toggle="dropdown"></i>
               <ul class="dropdown-menu">
                 <li><a href="#" class="link">Add to Library</a></li>
-                <li><a href="#" class="link">Add to Queue</a></li>
+                <li><a (click)="addSongToQueue(song)" class="link">Add to Queue</a></li>
                 <li class="dropdown-submenu">
                   <a tabindex="-1" href="#" class="link">Add to Playlist</a>
                   <ul class="dropdown-menu" *ngFor="let playlist of currentUser.playlists">
-                    <li><a tabindex="-1" href="#" class="link">{{playlist.title}}</a></li>
-                    <li><a [routerLink]="'/playlist/' + playlist.id" class="link">Second level</a></li>
+                    <li><a tabindex="-1" (click)="addSongToPlaylist(playlist.id, song.id)" class="link">{{playlist.title}}</a></li>
                   </ul>
                 </li>
               </ul>

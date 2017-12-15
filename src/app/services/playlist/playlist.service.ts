@@ -69,14 +69,15 @@ export class PlaylistService {
 
   addToPlaylist(playlistId: number, songId: number) {
     const body = {
-      songId: songId
-    }
+      id: songId
+    };
+    console.log(body);
     return this.http.post(Config.API_URI + 'playlist/addsong/' + playlistId, body,{withCredentials: true});
   }
 
   removeFromPlaylist(playlistId: number, songId: number) {
     const body = {
-      songId: songId
+      id: songId
     }
     return this.http.post(Config.API_URI + 'playlist/removesong/' + playlistId, body, {withCredentials: true});
   }
