@@ -1,6 +1,10 @@
-![Amplio - Another music streaming service.](src/assets/images/AmplioLogo.png)
 
--------------------------------------------------------------------------------------------------------
+<p align="center"> 
+<img src="src/assets/images/AmplioLogo.png">
+</p>
+
+This is the repo for the front end of Amplio. Amplio was created using Angular 5/HTML/CSS/Bootstrap. 
+
 # AngularFrontend
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.5.0.
